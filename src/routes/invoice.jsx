@@ -1,15 +1,15 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { useParams, useNavigate } from "react-router-dom";
-import { getInvoice, deleteInvoice } from "../data";
+import { useParams, useNavigate } from 'react-router-dom'
+import { getInvoice, deleteInvoice } from '../data'
 
 export const Invoice = () => {
-  let navigate = useNavigate();
-  let params = useParams();
-  let invoice = getInvoice(parseInt(params.invoiceId, 10));
+  let navigate = useNavigate()
+  let params = useParams()
+  let invoice = getInvoice(parseInt(params.invoiceId, 10))
 
   return (
-    <main style={{ padding: "1rem" }}>
+    <main style={{ padding: '1rem' }}>
       <h2>Total Due: {invoice.amount}</h2>
       <p>
         {invoice.name}: {invoice.number}
@@ -18,13 +18,13 @@ export const Invoice = () => {
       <p>
         <button
           onClick={() => {
-            deleteInvoice(invoice.number);
-            navigate("/invoices");
+            deleteInvoice(invoice.number)
+            navigate('/invoices')
           }}
         >
           Delete
         </button>
       </p>
     </main>
-  );
+  )
 }
