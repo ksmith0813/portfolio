@@ -6,6 +6,7 @@ import { Charts } from './routes/charts'
 import { Invoices } from './routes/invoices'
 import { Invoice } from './routes/invoice'
 import './index.scss'
+import 'antd/dist/antd.min.css'
 
 ReactDOM.render(
   <BrowserRouter>
