@@ -5,8 +5,8 @@ export const App = () => {
   return (
     <div>
       <h1>Kevin Smith</h1>
-      <nav style={{ borderBottom: 'solid 1px', paddingBottom: '1rem' }}>
-        <Link to='/invoices'>Invoices</Link> | <Link to='/expenses'>Expenses</Link>
+      <nav style={{ borderBottom: 'solid 1px', paddingBottom: '1em' }}>
+        <Link to='/invoices'>Invoices</Link> | <Link to='/charts'>Charts</Link>
       </nav>
       <Outlet />
     </div>

@@ -1,44 +1,48 @@
-import * as React from 'react'
-import { useLocation, NavLink, Outlet, useSearchParams } from 'react-router-dom'
-import { getInvoices } from '../data'
+import * as React from "react";
+import {
+  useLocation,
+  NavLink,
+  Outlet,
+  useSearchParams,
+} from "react-router-dom";
+import { getInvoices } from "../data";
 
 export const Invoices = () => {
-  let location = useLocation()
-  let invoices = getInvoices()
-  let [searchParams, setSearchParams] = useSearchParams()
+  let invoices = getInvoices();
+  let [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <div style={{ display: 'flex' }}>
-      <nav style={{ borderRight: 'solid 1px', padding: '1rem' }}>
+    <div style={{ display: "flex" }}>
+      <nav style={{ borderRight: "solid 1px", padding: "1rem" }}>
         <input
-          value={searchParams.get('filter') || ''}
+          value={searchParams.get("filter") || ""}
           onChange={(event) => {
-            let filter = event.target.value
+            let filter = event.target.value;
             if (filter) {
-              setSearchParams({ filter })
+              setSearchParams({ filter });
             } else {
-              setSearchParams({})
+              setSearchParams({});
             }
           }}
         />
         {invoices
           .filter((invoice) => {
-            let filter = searchParams.get('filter')
-            if (!filter) return true
-            let name = invoice.name.toLowerCase()
-            return name.startsWith(filter.toLowerCase())
+            let filter = searchParams.get("filter");
+            if (!filter) return true;
+            let name = invoice.name.toLowerCase();
+            return name.startsWith(filter.toLowerCase());
           })
           .map((invoice) => (
             <NavLink
               key={invoice.number}
               style={({ isActive }) => {
                 return {
-                  display: 'block',
-                  margin: '1rem 0',
-                  color: isActive ? 'var(--theme-color-2)' : '',
-                }
+                  display: "block",
+                  margin: "1rem 0",
+                  color: isActive ? "red" : "",
+                };
               }}
-              to={`/invoices/${invoice.number}${location.search}`}
+              to={`/invoices/${invoice.number}`}
             >
               {invoice.name}
             </NavLink>
@@ -46,5 +50,10 @@ export const Invoices = () => {
       </nav>
       <Outlet />
     </div>
-  )
+  );
 }
+
+const QueryNavLink = ({ to, ...props }) => {
+  let location = useLocation();
+  return <NavLink to={to + location.search} {...props} />;
+};

@@ -1,7 +1,7 @@
 import * as React from 'react'
-
 import { useParams, useNavigate } from 'react-router-dom'
 import { getInvoice, deleteInvoice } from '../data'
+import moment from 'moment'
 
 export const Invoice = () => {
   let navigate = useNavigate()
@@ -14,7 +14,7 @@ export const Invoice = () => {
       <p>
         {invoice.name}: {invoice.number}
       </p>
-      <p>Due Date: {invoice.due}</p>
+      <p>Due Date: {moment(invoice.due).format('MM/DD/YYYY')}</p>
       <p>
         <button
           onClick={() => {
