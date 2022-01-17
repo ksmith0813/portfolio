@@ -5,13 +5,17 @@ import { App } from './App'
 import { Charts } from './routes/charts'
 import { Invoices } from './routes/invoices'
 import { Invoice } from './routes/invoice'
+import { Home } from 'components/home/home'
 import './index.scss'
+import './antd-overrides.scss'
 import 'antd/dist/antd.min.css'
+import { Result } from 'antd'
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<App />}>
+        <Route path='home' element={<Home />} />
         <Route path='invoices' element={<Invoices />}>
           <Route
             index
@@ -27,8 +31,12 @@ ReactDOM.render(
         <Route
           path='*'
           element={
-            <main style={{ padding: '1rem' }}>
-              <p>There's nothing here!</p>
+            <main className='page-center'>
+              <Result
+                status='404'
+                title='404'
+                subTitle='Sorry, the page you visited does not exist.'
+              />
             </main>
           }
         />

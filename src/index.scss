@@ -62,15 +62,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .page {
-  height: calc(100vh - 100px);
-  margin: 1.5em;
+  height: calc(100vh - 60px);
+  padding: 2em;
+}
+.page-header {
+  background-color: var(--gray-900);
+  color: #ffffff;
+  font-size: 1.5em;
+  height: 50px;
 }
 .page-center {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 50px);
+}
+.site-link {
+  margin-left: 1em;
+  font-size: .8em;
+  color: #ffffff;
+}
+.site-link.active {
+  color: #1890ff;
 }
 .logo {
   display: flex;
@@ -93,13 +107,13 @@ body {
   width: 100%;
 }
 .full-height {
-  height: calc(100vh - 80px);
+  height: 100vh;
 }
 .half-height {
-  height: calc(50vh - 80px);
+  height: 50vh;
 }
 .half-width {
-  width: calc(50vw - 80px);
+  width: 50vw;
 }
 .category-container {
   background-color: var(--gray-200);

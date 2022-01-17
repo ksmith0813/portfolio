@@ -1,0 +1,24 @@
+.ant-table-filter-column-title {
+  padding: 0 !important;
+}
+
+.ant-table-column-sorter {
+  position: absolute;
+  right: 2em;
+}
+
+.ant-layout-sider-children,
+.ant-menu {
+  background-color: var(--gray-800) !important;
+  border-right: none !important;
+}
+.ant-menu-item {
+  color: #ffffff !important;
+  height: 50px !important;
+  line-height: 50px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.ant-menu-item-selected {
+  background-color: var(--gray-700) !important;
+}

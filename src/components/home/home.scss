@@ -1,0 +1,60 @@
+.home-cover-image {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: url(../../assets/woods.jpg) no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+.bio-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 5em;
+  position: absolute;
+}
+.bio-container .description {
+  width: 26%;
+  height: 750px;
+  font-size: 1.95em;
+  opacity: 0.8;
+  background-color: #95cfff;
+  border-radius: var(--button-border-radius);
+  text-align: justify;
+}
+.me-image {
+  border-radius: 50%;
+  height: 400px;
+  margin-top: -250px;
+}
+.bio-signature {
+  position: relative;
+  height: 100%;
+}
+.signature {
+  bottom: 3em;
+  right: -0.5em;
+  position: absolute;
+}
+.sound-cloud {
+  height: 48px;
+  width: 75px;
+  margin-left: -0.3em;
+}
+@media only screen and (max-width: 1920px) {
+  .bio-container .description {
+    font-size: 1.6em;
+  }
+}
+@media only screen and (max-width: 1680px) {
+  .bio-container .description {
+    font-size: 1.54em;
+  }
+}
+@media only screen and (max-width: 1440px) {
+  .bio-container .description {
+    font-size: 1.45em;
+  }
+}
