@@ -5,6 +5,17 @@ import soundCloud from 'assets/sound-cloud.png'
 
 export const App = () => {
   const [activePage, setActivePage] = useState('')
+
+  const SiteLink = ({ page, title }) => (
+    <Link
+      to={`/${page}`}
+      onClick={() => setActivePage(page)}
+      className={`site-link ${activePage === page ? 'active' : ''}`}
+    >
+      {title}
+    </Link>
+  )
+  
   const rightControls = (
     <div>
       <LinkedinFilled
@@ -33,34 +44,11 @@ export const App = () => {
       <div className='page-header pl-100 flex justify-sb items-center'>
         <div>
           <span className='pr-200'>Kevin Smith - Software Engineer</span>
-          <Link
-            to='/home'
-            onClick={() => setActivePage('')}
-            className={`site-link ${activePage === '' ? 'active' : ''}`}
-          >
-            Home
-          </Link>
-          <Link
-            to='/charts'
-            onClick={() => setActivePage('charts')}
-            className={`site-link ${activePage === 'charts' ? 'active' : ''}`}
-          >
-            Charts
-          </Link>
-          <Link
-            to='/table'
-            onClick={() => setActivePage('table')}
-            className={`site-link ${activePage === 'table' ? 'active' : ''}`}
-          >
-            Grid
-          </Link>
-          <Link
-            to='/form'
-            onClick={() => setActivePage('form')}
-            className={`site-link ${activePage === 'form' ? 'active' : ''}`}
-          >
-            Form
-          </Link>
+          <SiteLink page='home' title='Home' />
+          <SiteLink page='dashboard' title='Dashboard' />
+          <SiteLink page='charts' title='Charts' />
+          <SiteLink page='grid' title='Grid' />
+          <SiteLink page='form' title='Form' />
         </div>
         {rightControls && <div className='right-controls'>{rightControls}</div>}
       </div>
