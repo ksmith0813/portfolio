@@ -56,6 +56,7 @@ export const Navigation = () => {
           <span className='pl-075 pr-200'>Kevin Smith</span>
           <SiteLink page='home' title='Home' />
           <SiteLink page='dashboard' title='Dashboard' />
+          <SiteLink page='shop' title='Shop' />
           <SiteLink page='charts' title='Charts' />
           <SiteLink page='grid' title='Grid' />
           <SiteLink page='form' title='Form' />

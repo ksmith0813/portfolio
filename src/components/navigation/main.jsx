@@ -4,6 +4,7 @@ import { Result } from 'antd'
 import { Navigation } from 'components/navigation/navigation'
 import { Home } from 'components/home/home'
 import { Dashboard } from 'components/dashboard/dashboard'
+import { Shop } from 'components/shop/shop'
 import { Charts } from 'components/charts/charts'
 import { Grid } from 'components/grid/grid'
 import { Form } from 'components/form/form'
@@ -14,9 +15,10 @@ export const Main = () => (
       <Route path='/' element={<Navigation />}>
         <Route path='home' element={<Home />} />
         <Route path='dashboard' element={<Dashboard />} />
+        <Route path='shop' element={<Shop />} />
+        <Route path='charts' element={<Charts />} />
         <Route path='grid' element={<Grid />} />
         <Route path='form' element={<Form />} />
-        <Route path='charts' element={<Charts />} />
         <Route
           path='*'
           element={
