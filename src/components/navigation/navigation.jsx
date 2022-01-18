@@ -5,15 +5,14 @@ import soundCloud from 'assets/sound-cloud.png'
 import { useEffect } from 'react'
 
 export const Navigation = () => {
+  const [activePage, setActivePage] = useState()
   const location = useLocation()
   const navigate = useNavigate()
-  const getActivePage = () => location.pathname.substring(1)
-  const [activePage, setActivePage] = useState(getActivePage())
-
+  
   useEffect(() => {
     if (location.pathname === '/') navigate('../home')
-    setActivePage(getActivePage())
-  }, [location.pathname])
+    setActivePage(location.pathname.substring(1))
+  }, [location.pathname, navigate])
 
   const SiteLink = ({ page, title }) => (
     <Link
@@ -33,7 +32,7 @@ export const Navigation = () => {
       />
       <GithubFilled
         className='mt-1 pl-050'
-        onClick={() => (window.location.href = 'https://https://github.com/ksmith0813/kevin_smith')}
+        onClick={() => (window.location.href = 'https://github.com/ksmith0813/portfolio')}
       />
       <FacebookFilled
         className='mt-1 pl-050'
