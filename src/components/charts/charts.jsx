@@ -16,9 +16,6 @@ export const Charts = () => {
   return (
     <>
       <div className='category-container'>
-        <h2 className='pr-100 pt-050'>
-          <b>Categories</b>
-        </h2>
         {categories.map((c, i) => (
           <Tag className={`${selectedChart === c && 'selected'} clickable`} key={i} onClick={() => handleChange(c)}>
             {c}

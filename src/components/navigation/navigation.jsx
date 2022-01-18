@@ -29,21 +29,21 @@ export const Navigation = () => {
     <div>
       <LinkedinFilled
         className='external-link clickable'
-        onClick={() => (window.location.href = 'https://www.linkedin.com/in/kevin-smith-26339411a/')}
+        onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
       />
       <GithubFilled
         className='external-link clickable'
-        onClick={() => (window.location.href = 'https://github.com/ksmith0813/portfolio')}
+        onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
       />
       <FacebookFilled
         className='external-link clickable'
-        onClick={() => (window.location.href = 'https://www.facebook.com/profile.php?id=20614115')}
+        onClick={() => window.open('https://www.facebook.com/profile.php?id=20614115', '_blank')}
       />
       <img
         alt=''
         src={soundCloud}
         className='sound-cloud clickable'
-        onClick={() => (window.location.href = 'https://soundcloud.com/kevbot0813')}
+        onClick={() => window.open('https://soundcloud.com/kevbot0813', '_blank')}
       />
     </div>
   )
@@ -52,7 +52,7 @@ export const Navigation = () => {
     <>
       <div className='page-header'>
         <div>
-          <Avatar src={luna}>KS</Avatar>
+          <Avatar src={luna} />
           <span className='pl-075 pr-200'>Kevin Smith - Software Engineer</span>
           <SiteLink page='home' title='Home' />
           <SiteLink page='dashboard' title='Dashboard' />
