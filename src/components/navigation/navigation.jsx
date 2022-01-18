@@ -53,7 +53,7 @@ export const Navigation = () => {
       <div className='page-header'>
         <div>
           <Avatar src={luna} />
-          <span className='pl-075 pr-200'>Kevin Smith - Software Engineer</span>
+          <span className='pl-075 pr-200'>Kevin Smith</span>
           <SiteLink page='home' title='Home' />
           <SiteLink page='dashboard' title='Dashboard' />
           <SiteLink page='charts' title='Charts' />
