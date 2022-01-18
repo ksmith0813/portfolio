@@ -10,7 +10,7 @@
 }
 .bio-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   margin-left: 5em;
   position: absolute;
@@ -24,13 +24,12 @@
     padding-left: 1.5em;
     padding-right: 1.5em;
     padding-top: 1.5em;
-    margin-right: 2em;
+    margin-right: 3em;
   }
 }
 .me-image {
   border-radius: 50%;
   height: 400px;
-  margin-top: -250px;
 }
 .bio-signature {
   position: relative;
