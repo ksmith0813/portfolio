@@ -1,10 +1,19 @@
 import React, { useState } from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
 import soundCloud from 'assets/sound-cloud.png'
+import { useEffect } from 'react'
 
-export const App = () => {
-  const [activePage, setActivePage] = useState('')
+export const Navigation = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const getActivePage = () => location.pathname.substring(1)
+  const [activePage, setActivePage] = useState(getActivePage())
+
+  useEffect(() => {
+    if (location.pathname === '/') navigate('../home')
+    setActivePage(getActivePage())
+  }, [location.pathname])
 
   const SiteLink = ({ page, title }) => (
     <Link
@@ -15,7 +24,7 @@ export const App = () => {
       {title}
     </Link>
   )
-  
+
   const rightControls = (
     <div>
       <LinkedinFilled
