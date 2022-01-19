@@ -24,15 +24,21 @@
 }
 
 .ant-btn.anchor-button {
+  color: var(--theme-color-1);
   border: none;
+  padding: 0;
+  margin: 0;
+  height: 0;
 }
 
-.ant-btn.dark {
+.ant-btn.anchor-button:hover {
+  color: var(--theme-color-1-hover);
+}
+
+.ant-btn.dark,
+.ant-btn.dark:hover,
+.ant-btn.dark:active,
+.ant-btn.dark:focus {
   background: var(--gray-900);
   color: #ffffff;
-}
-
-.ant-btn.dark:hover {
-  border: 1px solid var(--gray-900);
-  color: var(--gray-900);
 }

@@ -22,6 +22,7 @@
   --gray-200: #e9ecef;
   --gray-100: #f8f9fa;
   --theme-color-1: #1890ff;
+  --theme-color-1-hover: #40a9ff;
   --theme-error: #f22939;
   --theme-success: #64d28d;
   --theme-warning: #f26e29;
@@ -82,6 +83,10 @@ body {
 
 .box-shadow {
   box-shadow: var(--box-shadow);
+}
+
+.border-bottom-light {
+  border-bottom: 1px solid var(--gray-300);
 }
 
 .full-width {

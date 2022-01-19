@@ -11,19 +11,19 @@ export const CartModal = () => {
 
   return (
     <Modal
-      title='Your Shopping Cart'
+      title={<span className='fs-125'>Cart Items</span>}
       visible={showingCartModal}
       onOk={() => setShowingCartModal(false)}
       onCancel={() => setShowingCartModal(false)}
-      width={800}
+      width={900}
     >
       {hasItems && (
         <>
-          <Row className='p-100'>
+          <Row className='p-100 items-center border-bottom-light'>
             <Col span={15}>
               <b>Title</b>
             </Col>
-            <Col span={3} align='right'>
+            <Col span={3} align='center'>
               <b>Qty</b>
             </Col>
             <Col span={3} align='center'>
@@ -35,11 +35,11 @@ export const CartModal = () => {
           </Row>
           {items.map((c, i) => (
             <div key={i}>
-              <Row className='p-100'>
+              <Row className='border-bottom-light p-100'>
                 <Col span={15}>
-                  <b>{getAbbreviation(c.title, 60)}</b>
+                  <b>{getAbbreviation(c.title, 100)}</b>
                 </Col>
-                <Col span={3} align='right'>
+                <Col span={3} align='center'>
                   <b>{c.quantity}</b>
                 </Col>
                 <Col span={3} align='center'>
@@ -52,9 +52,9 @@ export const CartModal = () => {
                 </Col>
               </Row>
               {i + 1 === items.length && (
-                <Row className='p-100'>
-                  <Col span={24} align='right'>
-                    Total: <b>${totalAmount.toFixed(2)}</b>
+                <Row className='pt-100 fs-125'>
+                  <Col flex={1} align='right'>
+                    Subtotal: <b>${totalAmount.toFixed(2)}</b>
                   </Col>
                 </Row>
               )}
