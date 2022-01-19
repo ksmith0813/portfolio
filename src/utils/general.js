@@ -85,3 +85,5 @@ export const showMessage = (description, type = "error") => {
       break
   }
 }
+
+export const showHideModal = (handler, show) => handler(show)
