@@ -8,7 +8,7 @@ export const NivoWaffle = () => (
     rows={18}
     columns={14}
     margin={{ top: 120, right: 150, bottom: 150, left: 150 }}
-    colors={{ scheme: 'set3' }}
+    colors={{ scheme: 'nivo' }}
     borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
     animate
     motionStiffness={90}
