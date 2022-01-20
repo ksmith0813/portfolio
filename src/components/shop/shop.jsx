@@ -62,9 +62,9 @@ const ShopContents = () => {
           </>
         )}
       </div>
-      <div className='product-container flex justify-sb box-shadow'>
+      <div className='product-container'>
         {loadingProducts && (
-          <div className='full-width flex justify-center items-center'>
+          <div className='page-center'>
             <Spin size='large' />
           </div>
         )}
