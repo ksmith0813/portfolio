@@ -17,7 +17,6 @@ export const Shop = () => {
 
 const ShopContents = () => {
   const {
-    loadingCategories,
     loadingProducts,
     selectedCategory,
     products,
@@ -41,20 +40,16 @@ const ShopContents = () => {
 
   return (
     <>
-      {!loadingCategories && !loadingProducts && (
-        <>
-          <CartModal />
-          <div className='category-container'>
-            <Categories items={categories} selected={selectedCategory} onClick={changeCategory} />
-            <div className='cart-container'>
-              <ShoppingCartOutlined className='cart-icon' onClick={() => setShowingCartModal(true)} />
-              <span className='cart-count'>{cartItems ? cartItems.length : 0}</span>
-            </div>
-          </div>
-        </>
-      )}
-      {(loadingCategories || loadingProducts) && <Loader />}
+      <CartModal />
+      <div className='category-container'>
+        <Categories items={categories} selected={selectedCategory} onClick={changeCategory} />
+        <div className='cart-container'>
+          <ShoppingCartOutlined className='cart-icon' onClick={() => setShowingCartModal(true)} />
+          <span className='cart-count'>{cartItems ? cartItems.length : 0}</span>
+        </div>
+      </div>
       <div className='product-container'>
+        {loadingProducts && <Loader />}
         {!loadingProducts && products.map((p, i) => <ProductCard key={i} product={p} updateCart={updateCart} />)}
       </div>
     </>

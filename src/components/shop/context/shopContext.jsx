@@ -6,7 +6,6 @@ const ShopContext = createContext(null)
 
 export const ShopContextProvider = ({ children }) => {
   const [loadingProducts, setLoadingProducts] = useState(true)
-  const [loadingCategories, setLoadingCategories] = useState(true)
   const [showingCartModal, setShowingCartModal] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('ALL')
   const [categories, setCategories] = useState([])
@@ -14,10 +13,8 @@ export const ShopContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([])
 
   const getCategories = () => {
-    if (!loadingCategories) return
     api.getProductCategories().then(({ data }) => {
       setCategories(['ALL'].concat(data))
-      setLoadingCategories(false)
     })
   }
 
@@ -68,7 +65,6 @@ export const ShopContextProvider = ({ children }) => {
     <ShopContext.Provider
       value={{
         // state
-        loadingCategories,
         loadingProducts,
         cartItems,
         showingCartModal,
