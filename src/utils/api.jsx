@@ -17,8 +17,11 @@ const getUrl = (api) => {
     case 'product':
       config.url = 'https://fakestoreapi.com/'
       break
+    case 'user':
+      config.url = 'https://randomuser.me/'
+      break
     default:
-      config.url = 'TODO'
+      config.url = ''
       break
   }
 
@@ -49,10 +52,14 @@ axios.interceptors.response.use(
 )
 
 const q = {
+  // Product API
   getProductCategories: () => get('products/categories', 'product'),
   getAllProducts: () => get(`products`, 'product'),
   getProductsByCategory: (category) => get(`products/category/${category}`, 'product'),
   saveProduct: (product) => post('products/save', 'product', product),
+
+  // Random User API
+  getUsers: (params) => get(`api?${params}`, 'user')
 }
 
 export default q

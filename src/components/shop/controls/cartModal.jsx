@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col, Button, Modal } from 'antd'
-import { getAbbreviation } from 'utils/general'
+import { addCommasToNumber, getAbbreviation } from 'utils/general'
 import { useShopContext } from '../context/shopContext'
 
 export const CartModal = () => {
@@ -48,13 +48,13 @@ export const CartModal = () => {
                   </Button>
                 </Col>
                 <Col span={3} align='right'>
-                  ${c.total.toLocaleString()}
+                  ${addCommasToNumber(c.total.toFixed(2))}
                 </Col>
               </Row>
               {i + 1 === items.length && (
                 <Row className='pt-100 fs-125'>
                   <Col flex={1} align='right'>
-                    Subtotal: <b>${totalAmount.toLocaleString()}</b>
+                    Subtotal: <b>${addCommasToNumber(totalAmount.toFixed(2))}</b>
                   </Col>
                 </Row>
               )}
