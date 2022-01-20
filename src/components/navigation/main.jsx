@@ -7,7 +7,7 @@ import { Dashboard } from 'components/dashboard/dashboard'
 import { Shop } from 'components/shop/shop'
 import { Charts } from 'components/charts/charts'
 import { Grid } from 'components/grid/grid'
-import { Form } from 'components/form/form'
+import { Register } from 'components/register/register'
 
 export const Main = () => (
   <BrowserRouter>
@@ -18,7 +18,7 @@ export const Main = () => (
         <Route path='shop' element={<Shop />} />
         <Route path='charts' element={<Charts />} />
         <Route path='grid' element={<Grid />} />
-        <Route path='form' element={<Form />} />
+        <Route path='register' element={<Register />} />
         <Route
           path='*'
           element={
