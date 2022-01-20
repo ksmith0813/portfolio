@@ -4,6 +4,7 @@
   height: calc(100vh - 130px);
   overflow: auto;
   padding-top: 2em;
+  background: var(--gray-100);
 }
 .product-card {
   display: flex;
@@ -11,6 +12,7 @@
   align-items: center;
   border-radius: var(--container-border-radius);
   box-shadow: var(--box-shadow);
+  background: #ffffff;
   height: 500px;
   width: 400px;
   padding: 1em;
