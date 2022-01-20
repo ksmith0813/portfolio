@@ -14,7 +14,7 @@ export const Home = () => (
         <div className='bio-signature'>
           Experienced Software Engineer with a demonstrated history of success in the computer software industry. Strong
           engineering professional skilled in React, JavaScript, HTML, CSS, C#, .NET, Python, MongoDB, SQL Server. I
-          love getting lost in the woods and canyons. Traveling the world and going on endless adventures will forever
+          love hanging out on the beach and getting lost in the woods and canyons. Traveling the world and going on endless adventures will forever
           keep me moving forward. Music has always been and always will be a big part of my life. I am lucky enough to
           have a home music studio enabling me to write, create, and record my own music. Let's crank some code and rock
           out!
