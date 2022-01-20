@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { Avatar } from 'antd'
 import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
-import luna from 'assets/luna.jpg'
+import kevin from 'assets/Kevin.jpg'
 import soundCloud from 'assets/sound-cloud.png'
 
 export const Navigation = () => {
@@ -52,7 +52,7 @@ export const Navigation = () => {
     <>
       <div className='page-header'>
         <div>
-          <Avatar src={luna} />
+          <Avatar src={kevin} />
           <span className='pl-075 pr-200'>Kevin Smith</span>
           <SiteLink page='home' title='Home' />
           <SiteLink page='dashboard' title='Dashboard' />
