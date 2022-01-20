@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Spin, Tag, Avatar } from 'antd'
+import { Spin, Tag } from 'antd'
 import { ShoppingCartOutlined } from '@ant-design/icons'
 import { ShopContextProvider, useShopContext } from './context/shopContext'
 import { ProductCard } from './controls/productCard'
@@ -54,10 +54,10 @@ const ShopContents = () => {
               </Tag>
             ))}
             <div className='cart-container'>
-              <ShoppingCartOutlined className='cart-icon pr-025' onClick={() => setShowingCartModal(true)} />
-              <Avatar className='cart-count' size='small'>
+              <ShoppingCartOutlined className='cart-icon' onClick={() => setShowingCartModal(true)} />
+              <span className='cart-count'>
                 {cartItems ? cartItems.length : 0}
-              </Avatar>
+              </span>
             </div>
           </>
         )}

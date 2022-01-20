@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Row, Input, Button } from 'antd'
+import { Button } from 'antd'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
-import { getAbbreviation } from 'utils/general'
 import { useShopContext } from '../context/shopContext'
 
 export const ProductCard = ({ product }) => {
@@ -11,46 +10,41 @@ export const ProductCard = ({ product }) => {
   const image = product.image
   const title = product.title
   const price = parseFloat(product.price).toFixed(2)
+  const quantityDisplay = `${quantity} item${quantity > 1 ? 's' : ''} ${
+    quantity > 1 ? 'have' : 'has'
+  } been added to your cart`
 
-  const subtractQty = () => {
-    if (quantity > 1) setQuantity(quantity - 1)
-  }
+  const subtractQty = () => quantity > 1 && setQuantity(quantity - 1)
 
-  const addQty = () => {
-    setQuantity(quantity + 1)
-  }
+  const addQty = () => setQuantity(quantity + 1)
 
   return (
-    <div className='product-card pt-050 p-250 m-300'>
-      <div className='flex justify-sb items-center pt-150'>
-        <b className='fs-125'>{getAbbreviation(title)}</b>
-        <b className='fs-125'>${price}</b>
+    <div className='product-card'>
+      <div className='text'>
+        <b>{title}</b>
       </div>
-      <img src={image} className='pb-250 pt-300' alt='' />
-      <div className='pt-100 pb-150 flex justify-sb items-end'>
+      <div className='pt-025'>
+        <b className='fs-150'>${price}</b>
+      </div>
+      <img src={image} alt='' />
+      <div className='add-to-cart'>
         <div>
-          <MinusOutlined className='mr-100 change-cart-count' onClick={subtractQty} />
-          <Input style={{ width: 50, textAlign: 'center', disabled: 'disabled' }} value={quantity} />
-          <PlusOutlined className='ml-100 change-cart-count' onClick={addQty} />
+          <MinusOutlined className='mr-100' onClick={subtractQty} />
+          <span className='item-count'>{quantity}</span>
+          <PlusOutlined className='ml-100' onClick={addQty} />
         </div>
         <Button
-          className='dark'
+          className='dark ml-300'
           onClick={() => {
             setShowingAdd(true)
-            window.setTimeout(() => setShowingAdd(false), 2000)
+            window.setTimeout(() => setShowingAdd(false), 3000)
             updateCart(product, quantity)
           }}
         >
           Add To Cart
         </Button>
       </div>
-      {showingAdd && (
-        <Row justify='center'>
-          <b>
-            {`${quantity} item${quantity > 1 ? 's' : ''} ${quantity > 1 ? 'have' : 'has'} been added to your cart!`}
-          </b>
-        </Row>
-      )}
+      {showingAdd && <div className='items-added'>{quantityDisplay}</div>}
     </div>
   )
 }

@@ -48,13 +48,13 @@ export const CartModal = () => {
                   </Button>
                 </Col>
                 <Col span={3} align='right'>
-                  ${c.total.toFixed(2)}
+                  ${c.total.toLocaleString()}
                 </Col>
               </Row>
               {i + 1 === items.length && (
                 <Row className='pt-100 fs-125'>
                   <Col flex={1} align='right'>
-                    Subtotal: <b>${totalAmount.toFixed(2)}</b>
+                    Subtotal: <b>${totalAmount.toLocaleString()}</b>
                   </Col>
                 </Row>
               )}
