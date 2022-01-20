@@ -53,7 +53,7 @@ const ShopContents = () => {
           </div>
         </>
       )}
-      {loadingCategories || (loadingProducts && <Loader />)}
+      {(loadingCategories || loadingProducts) && <Loader />}
       <div className='product-container'>
         {!loadingProducts && products.map((p, i) => <ProductCard key={i} product={p} updateCart={updateCart} />)}
       </div>
