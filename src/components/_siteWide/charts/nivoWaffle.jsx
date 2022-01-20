@@ -7,7 +7,7 @@ export const NivoWaffle = () => (
     total={100}
     rows={18}
     columns={14}
-    margin={{ top: 50, right: 100, bottom: 50, left: 100 }}
+    margin={{ top: 130, right: 100, bottom: 100, left: 100 }}
     colors={{ scheme: 'paired' }}
     borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
     animate
@@ -15,14 +15,14 @@ export const NivoWaffle = () => (
     motionDamping={11}
     legends={[
       {
-        anchor: 'top-right',
-        direction: 'column',
+        anchor: 'top',
+        direction: 'row',
         justify: false,
-        translateX: 0,
-        translateY: 0,
-        itemsSpacing: 10,
-        itemWidth: 300,
-        itemHeight: 20,
+        translateX: 30,
+        translateY: -50,
+        itemsSpacing: 0,
+        itemWidth: 100,
+        itemHeight: 0,
         itemDirection: 'left-to-right',
         itemOpacity: 1,
         itemTextColor: '#777',
