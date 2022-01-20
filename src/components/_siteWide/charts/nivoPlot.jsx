@@ -4,7 +4,7 @@ import { ResponsiveScatterPlot } from '@nivo/scatterplot'
 export const NivoPlot = () => (
   <ResponsiveScatterPlot
     data={data}
-    margin={{ top: 100, right: 150, bottom: 100, left: 150 }}
+    margin={{ top: 150, right: 150, bottom: 150, left: 150 }}
     xScale={{ type: 'linear', min: 0, max: 'auto' }}
     xFormat={(e) => {
       return e + ' kg'
@@ -36,16 +36,16 @@ export const NivoPlot = () => (
     }}
     legends={[
       {
-        anchor: 'bottom-right',
-        direction: 'column',
+        anchor: 'top',
+        direction: 'row',
         justify: false,
-        translateX: 130,
-        translateY: 0,
+        translateX: 30,
+        translateY: -80,
         itemWidth: 100,
         itemHeight: 12,
-        itemsSpacing: 5,
+        itemsSpacing: 10,
         itemDirection: 'left-to-right',
-        symbolSize: 12,
+        symbolSize: 20,
         symbolShape: 'circle',
         effects: [
           {
@@ -62,7 +62,7 @@ export const NivoPlot = () => (
 
 const data = [
   {
-    id: 'Group A',
+    id: 'Dogs',
     data: [
       {
         x: 71,
@@ -267,7 +267,7 @@ const data = [
     ],
   },
   {
-    id: 'Group B',
+    id: 'Cats',
     data: [
       {
         x: 98,
@@ -472,7 +472,7 @@ const data = [
     ],
   },
   {
-    id: 'Group C',
+    id: 'Birds',
     data: [
       {
         x: 23,
@@ -677,7 +677,7 @@ const data = [
     ],
   },
   {
-    id: 'Group D',
+    id: 'Fish',
     data: [
       {
         x: 40,
@@ -882,7 +882,7 @@ const data = [
     ],
   },
   {
-    id: 'Group E',
+    id: 'Reptiles',
     data: [
       {
         x: 30,

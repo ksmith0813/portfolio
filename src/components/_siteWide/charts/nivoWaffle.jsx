@@ -7,8 +7,8 @@ export const NivoWaffle = () => (
     total={100}
     rows={18}
     columns={14}
-    margin={{ top: 130, right: 100, bottom: 100, left: 100 }}
-    colors={{ scheme: 'paired' }}
+    margin={{ top: 120, right: 150, bottom: 150, left: 150 }}
+    colors={{ scheme: 'set3' }}
     borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
     animate
     motionStiffness={90}
@@ -20,13 +20,14 @@ export const NivoWaffle = () => (
         justify: false,
         translateX: 30,
         translateY: -50,
-        itemsSpacing: 0,
+        itemsSpacing: 10,
         itemWidth: 100,
-        itemHeight: 0,
+        itemHeight: 12,
         itemDirection: 'left-to-right',
         itemOpacity: 1,
         itemTextColor: '#777',
         symbolSize: 20,
+        symbolShape: 'circle',
         effects: [
           {
             on: 'hover',
@@ -43,18 +44,28 @@ export const NivoWaffle = () => (
 
 const data = [
   {
-    id: 'Birds',
-    label: 'Birds',
-    value: 15,
-  },
-  {
     id: 'Dogs',
     label: 'Dogs',
-    value: 60,
+    value: 40,
   },
   {
     id: 'Cats',
     label: 'Cats',
     value: 25,
+  },
+  {
+    id: 'Birds',
+    label: 'Birds',
+    value: 10,
+  },
+  {
+    id: 'Fish',
+    label: 'Fish',
+    value: 15,
+  },
+  {
+    id: 'Reptiles',
+    label: 'Reptiles',
+    value: 10,
   },
 ]

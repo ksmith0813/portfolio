@@ -57,7 +57,7 @@ export const Navigation = () => {
           <SiteLink page='home' title='Home' />
           <SiteLink page='dashboard' title='Dashboard' />
           <SiteLink page='shop' title='Shop' />
-          <SiteLink page='charts' title='Charts' />
+          <SiteLink page='charts' title='Visuals' />
           <SiteLink page='grid' title='Grid' />
           <SiteLink page='form' title='Form' />
         </div>

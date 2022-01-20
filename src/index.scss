@@ -60,7 +60,7 @@ body {
   height: calc(100vh - 50px);
 }
 .site-link {
-  margin-left: 1em;
+  margin-left: 1.25em;
   font-size: 0.8em;
   color: #ffffff;
     &.active {
@@ -162,17 +162,6 @@ body {
   text-align: center !important;
 }
 
-@media screen and (min-height: 900px) {
-}
-@media screen and (max-height: 900px) {
-}
-
-@media only screen and (max-width: 1024px) {
-}
-
-@media only screen and (max-width: 1400px) {
-}
-
 @media only screen and (max-width: 1440px) {
   body {
     font-size: 10px;
@@ -183,10 +172,4 @@ body {
   body {
     font-size: 11px;
   }
-}
-
-@media only screen and (min-width: 1900px) {
-}
-
-@media only screen and (min-width: 2500px) {
 }

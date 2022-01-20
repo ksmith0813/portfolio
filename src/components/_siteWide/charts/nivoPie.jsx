@@ -4,7 +4,7 @@ import { ResponsivePie } from '@nivo/pie'
 export const NivoPie = () => (
   <ResponsivePie
     data={data}
-    margin={{ top: 50, right: 100, bottom: 100, left: 100 }}
+    margin={{ top: 150, right: 150, bottom: 150, left: 150 }}
     innerRadius={0.5}
     padAngle={0.7}
     cornerRadius={3}
@@ -17,6 +17,31 @@ export const NivoPie = () => (
     arcLinkLabelsColor={{ from: 'color' }}
     arcLabelsSkipAngle={10}
     arcLabelsTextColor={{ from: 'color', modifiers: [['darker', 2]] }}
+    legends={[
+      {
+        anchor: 'top',
+        direction: 'row',
+        justify: false,
+        translateX: 30,
+        translateY: -80,
+        itemsSpacing: 10,
+        itemWidth: 100,
+        itemHeight: 12,
+        itemTextColor: '#999',
+        itemDirection: 'left-to-right',
+        itemOpacity: 1,
+        symbolSize: 20,
+        symbolShape: 'circle',
+        effects: [
+          {
+            on: 'hover',
+            style: {
+              itemTextColor: '#000',
+            },
+          },
+        ],
+      },
+    ]}
     defs={[
       {
         id: 'dots',
@@ -40,76 +65,21 @@ export const NivoPie = () => (
     fill={[
       {
         match: {
-          id: 'ruby',
+          id: 'Dogs',
         },
         id: 'dots',
       },
       {
         match: {
-          id: 'c',
+          id: 'Birds',
         },
         id: 'dots',
       },
       {
         match: {
-          id: 'go',
-        },
-        id: 'dots',
-      },
-      {
-        match: {
-          id: 'python',
-        },
-        id: 'dots',
-      },
-      {
-        match: {
-          id: 'scala',
+          id: 'Fish',
         },
         id: 'lines',
-      },
-      {
-        match: {
-          id: 'lisp',
-        },
-        id: 'lines',
-      },
-      {
-        match: {
-          id: 'elixir',
-        },
-        id: 'lines',
-      },
-      {
-        match: {
-          id: 'javascript',
-        },
-        id: 'lines',
-      },
-    ]}
-    legends={[
-      {
-        anchor: 'bottom',
-        direction: 'row',
-        justify: false,
-        translateX: 0,
-        translateY: 56,
-        itemsSpacing: 0,
-        itemWidth: 100,
-        itemHeight: 18,
-        itemTextColor: '#999',
-        itemDirection: 'left-to-right',
-        itemOpacity: 1,
-        symbolSize: 18,
-        symbolShape: 'circle',
-        effects: [
-          {
-            on: 'hover',
-            style: {
-              itemTextColor: '#000',
-            },
-          },
-        ],
       },
     ]}
   />
@@ -117,33 +87,33 @@ export const NivoPie = () => (
 
 const data = [
   {
-    id: 'go',
-    label: 'go',
-    value: 321,
+    id: 'Dogs',
+    label: 'Dogs',
+    value: 591,
     color: 'hsl(11, 70%, 50%)',
   },
   {
-    id: 'sass',
-    label: 'sass',
+    id: 'Cats',
+    label: 'Cats',
     value: 504,
     color: 'hsl(13, 70%, 50%)',
   },
   {
-    id: 'hack',
-    label: 'hack',
-    value: 227,
+    id: 'Birds',
+    label: 'Birds',
+    value: 127,
     color: 'hsl(24, 70%, 50%)',
   },
   {
-    id: 'erlang',
-    label: 'erlang',
-    value: 228,
+    id: 'Fish',
+    label: 'Fish',
+    value: 304,
     color: 'hsl(9, 70%, 50%)',
   },
   {
-    id: 'haskell',
-    label: 'haskell',
-    value: 590,
+    id: 'Reptiles',
+    label: 'Reptiles',
+    value: 156,
     color: 'hsl(330, 70%, 50%)',
   },
 ]

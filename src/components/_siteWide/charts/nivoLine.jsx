@@ -4,7 +4,7 @@ import { ResponsiveLine } from '@nivo/line'
 export const NivoLine = () => (
   <ResponsiveLine
     data={data}
-    margin={{ top: 100, right: 150, bottom: 100, left: 150 }}
+    margin={{ top: 150, right: 150, bottom: 150, left: 150 }}
     xScale={{ type: 'point' }}
     yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
     yFormat=' >-.2f'
@@ -12,17 +12,17 @@ export const NivoLine = () => (
     axisRight={null}
     axisBottom={{
       orient: 'bottom',
-      tickSize: 5,
-      tickPadding: 5,
+      tickSize: 0,
+      tickPadding: 20,
       tickRotation: 0,
       legend: 'Transportation',
-      legendOffset: 60,
       legendPosition: 'middle',
+      legendOffset: 70,
     }}
     axisLeft={{
       orient: 'left',
-      tickSize: 5,
-      tickPadding: 5,
+      tickSize: 0,
+      tickPadding: 20,
       tickRotation: 0,
       legend: 'Count',
       legendOffset: -75,
@@ -37,19 +37,17 @@ export const NivoLine = () => (
     useMesh
     legends={[
       {
-        anchor: 'bottom-right',
-        direction: 'column',
+        anchor: 'top',
+        direction: 'row',
         justify: false,
-        translateX: 100,
-        translateY: 0,
-        itemsSpacing: 0,
+        translateX: 30,
+        translateY: -80,
+        itemWidth: 100,
+        itemHeight: 12,
+        itemsSpacing: 10,
         itemDirection: 'left-to-right',
-        itemWidth: 80,
-        itemHeight: 20,
-        itemOpacity: 0.75,
-        symbolSize: 12,
+        symbolSize: 20,
         symbolShape: 'circle',
-        symbolBorderColor: 'rgba(0, 0, 0, .5)',
         effects: [
           {
             on: 'hover',
@@ -66,271 +64,231 @@ export const NivoLine = () => (
 
 const data = [
   {
-    id: 'japan',
+    id: 'Japan',
     color: 'hsl(197, 70%, 50%)',
     data: [
       {
-        x: 'plane',
+        x: 'Plane',
         y: 273,
       },
       {
-        x: 'helicopter',
+        x: 'Helicopter',
         y: 291,
       },
       {
-        x: 'boat',
+        x: 'Boat',
         y: 187,
       },
       {
-        x: 'train',
+        x: 'Train',
         y: 228,
       },
       {
-        x: 'subway',
+        x: 'Subway',
         y: 175,
       },
       {
-        x: 'bus',
+        x: 'Bus',
         y: 114,
       },
       {
-        x: 'car',
+        x: 'Car',
         y: 200,
       },
       {
-        x: 'moto',
-        y: 213,
-      },
-      {
-        x: 'bicycle',
+        x: 'Bicycle',
         y: 20,
       },
       {
-        x: 'horse',
-        y: 261,
-      },
-      {
-        x: 'skateboard',
+        x: 'Skateboard',
         y: 297,
       },
       {
-        x: 'others',
+        x: 'Other',
         y: 149,
       },
     ],
   },
   {
-    id: 'france',
+    id: 'France',
     color: 'hsl(189, 70%, 50%)',
     data: [
       {
-        x: 'plane',
+        x: 'Plane',
         y: 114,
       },
       {
-        x: 'helicopter',
+        x: 'Helicopter',
         y: 17,
       },
       {
-        x: 'boat',
+        x: 'Boat',
         y: 46,
       },
       {
-        x: 'train',
+        x: 'Train',
         y: 241,
       },
       {
-        x: 'subway',
+        x: 'Subway',
         y: 76,
       },
       {
-        x: 'bus',
+        x: 'Bus',
         y: 73,
       },
       {
-        x: 'car',
+        x: 'Car',
         y: 16,
       },
       {
-        x: 'moto',
-        y: 24,
-      },
-      {
-        x: 'bicycle',
+        x: 'Bicycle',
         y: 219,
       },
       {
-        x: 'horse',
-        y: 53,
-      },
-      {
-        x: 'skateboard',
+        x: 'Skateboard',
         y: 12,
       },
       {
-        x: 'others',
+        x: 'Other',
         y: 41,
       },
     ],
   },
   {
-    id: 'us',
+    id: 'Italy',
     color: 'hsl(76, 70%, 50%)',
     data: [
       {
-        x: 'plane',
+        x: 'Plane',
         y: 80,
       },
       {
-        x: 'helicopter',
+        x: 'Helicopter',
         y: 239,
       },
       {
-        x: 'boat',
+        x: 'Boat',
         y: 176,
       },
       {
-        x: 'train',
+        x: 'Train',
         y: 16,
       },
       {
-        x: 'subway',
+        x: 'Subway',
         y: 204,
       },
       {
-        x: 'bus',
+        x: 'Bus',
         y: 255,
       },
       {
-        x: 'car',
+        x: 'Car',
         y: 20,
       },
       {
-        x: 'moto',
-        y: 6,
-      },
-      {
-        x: 'bicycle',
+        x: 'Bicycle',
         y: 236,
       },
       {
-        x: 'horse',
-        y: 175,
-      },
-      {
-        x: 'skateboard',
+        x: 'Skateboard',
         y: 204,
       },
       {
-        x: 'others',
+        x: 'Other',
         y: 133,
       },
     ],
   },
   {
-    id: 'germany',
+    id: 'Germany',
     color: 'hsl(266, 70%, 50%)',
     data: [
       {
-        x: 'plane',
+        x: 'Plane',
         y: 98,
       },
       {
-        x: 'helicopter',
+        x: 'Helicopter',
         y: 264,
       },
       {
-        x: 'boat',
+        x: 'Boat',
         y: 14,
       },
       {
-        x: 'train',
+        x: 'Train',
         y: 280,
       },
       {
-        x: 'subway',
+        x: 'Subway',
         y: 6,
       },
       {
-        x: 'bus',
+        x: 'Bus',
         y: 106,
       },
       {
-        x: 'car',
+        x: 'Car',
         y: 139,
       },
       {
-        x: 'moto',
-        y: 157,
-      },
-      {
-        x: 'bicycle',
+        x: 'Bicycle',
         y: 140,
       },
       {
-        x: 'horse',
-        y: 135,
-      },
-      {
-        x: 'skateboard',
+        x: 'Skateboard',
         y: 203,
       },
       {
-        x: 'others',
+        x: 'Other',
         y: 180,
       },
     ],
   },
   {
-    id: 'norway',
+    id: 'Norway',
     color: 'hsl(211, 70%, 50%)',
     data: [
       {
-        x: 'plane',
+        x: 'Plane',
         y: 233,
       },
       {
-        x: 'helicopter',
+        x: 'Helicopter',
         y: 32,
       },
       {
-        x: 'boat',
+        x: 'Boat',
         y: 213,
       },
       {
-        x: 'train',
+        x: 'Train',
         y: 138,
       },
       {
-        x: 'subway',
+        x: 'Subway',
         y: 43,
       },
       {
-        x: 'bus',
+        x: 'Bus',
         y: 136,
       },
       {
-        x: 'car',
+        x: 'Car',
         y: 211,
       },
       {
-        x: 'moto',
-        y: 136,
-      },
-      {
-        x: 'bicycle',
+        x: 'Bicycle',
         y: 190,
       },
       {
-        x: 'horse',
-        y: 68,
-      },
-      {
-        x: 'skateboard',
+        x: 'Skateboard',
         y: 83,
       },
       {
-        x: 'others',
+        x: 'Other',
         y: 271,
       },
     ],
