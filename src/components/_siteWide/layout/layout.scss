@@ -1,0 +1,38 @@
+.category-container {
+  background-color: var(--gray-200);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  > span {
+    margin-left: 1em;
+    font-size: 1.2em;
+    padding: 0.5em;
+    width: 180px;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: var(--button-border-radius);
+    box-shadow: var(--box-shadow);
+    background-color: var(--gray-200);
+    &.selected {
+      background-color: var(--gray-600);
+      border: 1px solid #ffffff;
+      color: #ffffff;
+    }
+    &:hover {
+      background-color: var(--gray-400);
+      border: 1px solid #ffffff;
+      color: var(--gray-800);
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .category-container {
+    > span {
+      font-size: 1em;
+      width: 140px;
+    }
+  }
+}

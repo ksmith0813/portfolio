@@ -4,7 +4,7 @@
   justify-content: center;
   height: calc(100vh - 130px);
   overflow: auto;
-  padding-top: 2em;
+  padding-top: 1em;
   background: var(--gray-100);
 }
 .product-card {
@@ -19,7 +19,6 @@
   padding: 1em;
   margin: 3em;
   .text {
-    display: flex;
     padding: 1.5em;
     padding-bottom: 0;
     text-align: center;

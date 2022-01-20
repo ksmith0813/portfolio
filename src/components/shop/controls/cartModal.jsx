@@ -19,7 +19,7 @@ export const CartModal = () => {
     >
       {hasItems && (
         <>
-          <Row className='p-100 items-center border-bottom-light'>
+          <Row className='p-100 pr-000 items-center border-bottom-light'>
             <Col span={15}>
               <b>Title</b>
             </Col>
@@ -35,7 +35,7 @@ export const CartModal = () => {
           </Row>
           {items.map((c, i) => (
             <div key={i}>
-              <Row className='border-bottom-light p-100'>
+              <Row className='border-bottom-light p-100 pr-000'>
                 <Col span={15}>
                   <b>{getAbbreviation(c.title, 100)}</b>
                 </Col>
