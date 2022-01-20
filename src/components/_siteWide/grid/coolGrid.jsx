@@ -193,6 +193,7 @@ const FilterTags = ({ entries, removeTag }) => {
         return (
           <Tag
             className='mt-150'
+            color='blue'
             key={i}
             closable
             onClose={() => {
