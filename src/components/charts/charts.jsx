@@ -1,26 +1,22 @@
 import React, { useState } from 'react'
-import { Tag } from 'antd'
 import { NivoBar } from 'components/_siteWide/charts/nivoBar'
 import { NivoPie } from 'components/_siteWide/charts/nivoPie'
 import { NivoLine } from 'components/_siteWide/charts/nivoLine'
 import { NivoPlot } from 'components/_siteWide/charts/nivoPlot'
 import { NivoWaffle } from 'components/_siteWide/charts/nivoWaffle'
+import { Categories } from 'components/_siteWide/layout/categories'
 import './charts.scss'
 
 export const Charts = () => {
   const [selectedChart, setSelectedChart] = useState('bar')
   const categories = ['bar', 'line', 'plot', 'pie', 'waffle']
 
-  const handleChange = (value) => setSelectedChart(value)
+  const changeChart = (value) => setSelectedChart(value)
 
   return (
     <>
       <div className='category-container'>
-        {categories.map((c, i) => (
-          <Tag className={`${selectedChart === c && 'selected'} clickable`} key={i} onClick={() => handleChange(c)}>
-            {c}
-          </Tag>
-        ))}
+        <Categories items={categories} selected={selectedChart} onClick={changeChart} />
       </div>
       <div className='chart-display'>
         {selectedChart === 'bar' && <NivoBar />}

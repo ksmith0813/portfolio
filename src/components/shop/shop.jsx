@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { Spin, Tag } from 'antd'
+import { Spin } from 'antd'
 import { ShoppingCartOutlined } from '@ant-design/icons'
+import { Categories } from 'components/_siteWide/layout/categories'
 import { ShopContextProvider, useShopContext } from './context/shopContext'
 import { ProductCard } from './controls/productCard'
 import { CartModal } from './controls/cartModal'
@@ -44,20 +45,10 @@ const ShopContents = () => {
       <div className='category-container'>
         {!loadingCategories && (
           <>
-            {categories.map((c, i) => (
-              <Tag
-                className={`${selectedCategory === c && 'selected'} clickable`}
-                key={i}
-                onClick={() => changeCategory(c)}
-              >
-                {c}
-              </Tag>
-            ))}
+            <Categories items={categories} selected={selectedCategory} onClick={changeCategory} />
             <div className='cart-container'>
               <ShoppingCartOutlined className='cart-icon' onClick={() => setShowingCartModal(true)} />
-              <span className='cart-count'>
-                {cartItems ? cartItems.length : 0}
-              </span>
+              <span className='cart-count'>{cartItems ? cartItems.length : 0}</span>
             </div>
           </>
         )}
