@@ -1,9 +1,9 @@
 import React, { useState, useContext, createContext } from 'react'
 import { hasProperties } from 'utils/general'
 import api from 'utils/api'
+import { getColumns } from '../columns/gridColumns'
 import moment from 'moment'
 import qs from 'qs'
-import { getColumns } from '../columns/gridColumns'
 
 const GridContext = createContext(null)
 const store = window.localStorage
