@@ -4,9 +4,12 @@ import api from 'utils/api'
 import qs from 'qs'
 
 const GridContext = createContext(null)
-const columns = ['Picture', 'Name', 'Gender', 'Email', 'Phone', 'RegisterDate']
+const defaultColumns = ['Picture', 'Name', 'Gender', 'Email', 'Phone', 'RegisterDate']
+const store = window.localStorage
 
 export const GridContextProvider = ({ children }) => {
+  const storageFilters = store.getItem('grid-filters')
+  const storageColumns = store.getItem('grid-columns')
   const [initialLoad, setInitialLoad] = useState(true)
   const [loading, setLoading] = useState(false)
   const [state, setState] = useState({
@@ -20,57 +23,58 @@ export const GridContextProvider = ({ children }) => {
       SortColumn: '',
       SortDirection: '',
       Search: '',
-      Config: {},
+      Config: storageFilters ? JSON.parse(storageFilters) : {},
       Options: {},
     },
     SelectAll: false,
     SelectedIds: [],
     SelectedGridKeys: [],
-    VisibleColumns: columns,
+    VisibleColumns: storageColumns ? JSON.parse(storageColumns) : defaultColumns,
   })
 
-  const getData = () => {
+  const getData = async () => {
+    setLoading(true)
+    let copy = { ...state }
+    const config = copy.Filters.Config
+
     if (initialLoad) {
-      getInitialData()
-    } else {
-      const copy = { ...state }
-      const config = copy.Filters.Config
-      if (hasProperties(config)) {
-        let filteredData = copy.OriginalData
-        // eslint-disable-next-line
-        Object.entries(config).map((p) => {
-          const property = p[0]
-          const value = p[1]
-          if (property === 'Gender') {
-            filteredData = filteredData.filter((d) => d[property].toLowerCase().trim() === value.toLowerCase().trim())
-          } else {
-            filteredData = filteredData.filter((d) =>
-              d[property].toLowerCase().trim().includes(value.toLowerCase().trim())
-            )
-          }
-        })
-
-        copy.Data = filteredData
-        copy.Total = filteredData.length
-      } else {
-        copy.Data = copy.OriginalData
-        copy.Total = copy.OriginalData.length
-      }
-
-      setState(copy)
+      copy = await getInitialData(copy)
+      setInitialLoad(false)
     }
+
+    if (hasProperties(config)) {
+      let filteredData = copy.OriginalData
+      // eslint-disable-next-line
+      Object.entries(config).map((p) => {
+        const property = p[0]
+        const value = p[1]
+        if (property === 'Gender') {
+          filteredData = filteredData.filter((d) => d[property].toLowerCase().trim() === value.toLowerCase().trim())
+        } else {
+          filteredData = filteredData.filter((d) =>
+            d[property].toLowerCase().trim().includes(value.toLowerCase().trim())
+          )
+        }
+      })
+
+      copy.Data = filteredData
+      copy.Total = filteredData.length
+    } else {
+      copy.Data = copy.OriginalData
+      copy.Total = copy.OriginalData.length
+    }
+
+    setState(copy)
+    setLoading(false)
   }
 
-  const getInitialData = () => {
-    setInitialLoad(false)
-    setLoading(true)
+  const getInitialData = async (copy) => {
     const params = qs.stringify({
       results: 200,
       page: state.Filters.CurrentPage,
     })
 
-    api.getUsers(params).then(({ data }) => {
-      const copy = { ...state }
+    await api.getUsers(params).then(({ data }) => {
       const results = data.results
       copy.Data = results
       const transforms = []
@@ -88,12 +92,10 @@ export const GridContextProvider = ({ children }) => {
         })
       })
 
-      copy.Data = transforms
       copy.OriginalData = transforms
-      copy.Total = transforms.length
-      setState(copy)
-      setLoading(false)
     })
+
+    return copy
   }
 
   const setDetail = () => {

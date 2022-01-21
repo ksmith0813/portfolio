@@ -66,7 +66,7 @@ const GridContents = () => {
     Name: '',
     Gender: '',
     Email: '',
-    Phone: ''
+    Phone: '',
   }
 
   return (
@@ -80,8 +80,8 @@ const GridContents = () => {
           getData={getData}
           defaultSearch={defaultSearch}
           rowKey='RowId'
-          storageKey='table-filters'
-          tableClass='table-example'
+          storageKey='grid-filters'
+          tableClass='grid-example'
         />
       </div>
     </>
