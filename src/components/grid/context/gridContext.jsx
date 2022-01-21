@@ -14,14 +14,14 @@ export const GridContextProvider = ({ children }) => {
   const defaultColumns = [
     'Picture',
     'Name',
-    'RegisterDate',
-    'Email',
-    'Phone',
     'Gender',
     'Country',
     'State',
     'City',
     'PostalCode',
+    'Email',
+    'Phone',
+    'RegisterDate',
   ]
   const [initialLoad, setInitialLoad] = useState(true)
   const [loading, setLoading] = useState(false)
