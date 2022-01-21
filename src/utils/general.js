@@ -1,5 +1,5 @@
-import moment from "moment"
-import { message } from "antd"
+import moment from 'moment'
+import { message } from 'antd'
 
 export const changeTheme = (checked) => {
   //less variables that will be used here must be declared in themeVariables on config-overrides.js

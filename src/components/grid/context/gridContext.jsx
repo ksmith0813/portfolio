@@ -1,7 +1,9 @@
 import React, { useState, useContext, createContext } from 'react'
-import { hasProperties } from 'utils/general'
+import { hasProperties, sortAlphebetically } from 'utils/general'
 import api from 'utils/api'
+import moment from 'moment'
 import qs from 'qs'
+import Avatar from 'antd/lib/avatar/avatar'
 
 const GridContext = createContext(null)
 const defaultColumns = ['Picture', 'Name', 'Gender', 'Email', 'Phone', 'RegisterDate']
@@ -12,6 +14,7 @@ export const GridContextProvider = ({ children }) => {
   const storageColumns = store.getItem('grid-columns')
   const [initialLoad, setInitialLoad] = useState(true)
   const [loading, setLoading] = useState(false)
+  const [user, setUser] = useState()
   const [state, setState] = useState({
     Key: 0,
     OriginalData: [],
@@ -81,14 +84,25 @@ export const GridContextProvider = ({ children }) => {
 
       // eslint-disable-next-line
       results.map((d, i) => {
+        const location = d.location
         transforms.push({
           RowId: i,
-          Picture: d.picture.thumbnail,
+          Thumbnail: d.picture.thumbnail,
+          Picture: d.picture.large,
           Name: `${d.name.first} ${d.name.last}`,
+          UserName: d.login.username,
           Gender: d.gender,
+          Country: location.country,
+          State: location.state,
+          City: location.city,
+          PostalCode: location.postcode,
+          Latitude: location.coordinates.latitude,
+          Longitude: location.coordinates.longitude,
           Email: d.email,
           Phone: d.phone,
           RegisterDate: d.registered?.date,
+          DateOfBirth: d.dob.date,
+          Age: d.dob.age,
         })
       })
 
@@ -98,12 +112,84 @@ export const GridContextProvider = ({ children }) => {
     return copy
   }
 
-  const setDetail = () => {
-    // todo
-  }
+  const columns = [
+    {
+      title: 'Picture',
+      dataIndex: 'Thumbnail',
+      noFilter: true,
+      noSort: true,
+      width: 80,
+      render: (value) => <Avatar src={value} />,
+    },
+    {
+      title: 'Name',
+      dataIndex: 'Name',
+      type: 'text',
+      noSort: true,
+      sorter: (a, b) => sortAlphebetically(a, b, 'Name'),
+    },
+    {
+      title: 'Gender',
+      dataIndex: 'Gender',
+      type: 'select',
+      options: [{ value: 'male' }, { value: 'female' }],
+      noSort: true,
+      sorter: (a, b) => sortAlphebetically(a, b, 'Gender'),
+    },
+    {
+      title: 'Country',
+      dataIndex: 'Country',
+      type: 'text',
+      noSort: true,
+      sorter: (a, b) => sortAlphebetically(a, b, 'Country'),
+    },
+    {
+      title: 'State',
+      dataIndex: 'State',
+      type: 'text',
+      noSort: true,
+      sorter: (a, b) => sortAlphebetically(a, b, 'State'),
+    },
+    {
+      title: 'City',
+      dataIndex: 'City',
+      type: 'text',
+      noSort: true,
+      sorter: (a, b) => sortAlphebetically(a, b, 'City'),
+    },
+    {
+      title: 'PostalCode',
+      dataIndex: 'PostalCode',
+      type: 'text',
+      noSort: true,
+      sorter: (a, b) => sortAlphebetically(a, b, 'PostalCode'),
+    },
+    {
+      title: 'Email',
+      dataIndex: 'Email',
+      type: 'text',
+      noSort: true,
+      sorter: (a, b) => sortAlphebetically(a, b, 'Email'),
+      render: (value) => <a href={`mailto: ksmith0813@gmail.com`}>{value}</a>
+    },
+    {
+      title: 'Phone',
+      dataIndex: 'Phone',
+      type: 'text',
+      noSort: true,
+    },
+    {
+      title: 'Register Date',
+      dataIndex: 'RegisterDate',
+      type: 'date',
+      noFilter: true,
+      noSort: true,
+      render: (value) => moment(value).format('MM/DD/YYYY'),
+    },
+  ]
 
   return (
-    <GridContext.Provider value={{ initialLoad, loading, state, setState, getData, setDetail }}>
+    <GridContext.Provider value={{ initialLoad, loading, state, setState, user, getData, setUser, columns }}>
       {children}
     </GridContext.Provider>
   )

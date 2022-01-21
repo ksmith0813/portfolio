@@ -3,13 +3,13 @@ import { AutoComplete, Input, Row, Select, Table, DatePicker, Space, Button, Tag
 import { CalendarOutlined, CloseOutlined, SearchOutlined } from '@ant-design/icons'
 import { hasProperties, spacesToProperty, getDateRanges, showMessage } from 'utils/general'
 import moment from 'moment'
-import './coolGrid.scss'
+import './fastGrid.scss'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
 const store = window.localStorage
 
-export const CoolGrid = ({
+export const FastGrid = ({
   state,
   setState,
   defaultSearch = {},
@@ -135,7 +135,15 @@ export const CoolGrid = ({
   columns.map((c) => {
     return filterColumns.push({
       ...c,
-      title: sortHeader(c.dataIndex, state.Filters, updateSorting, c.title, c.noSort),
+      title: (
+        <SortHeader
+          property={c.dataIndex}
+          filter={state.Filters}
+          update={updateSorting}
+          title={c.title}
+          noSort={c.noSort}
+        />
+      ),
       ...getSearchColumn(c.dataIndex, c.type, c.options, c.filter, c.noFilter),
     })
   })
@@ -169,7 +177,7 @@ export const CoolGrid = ({
         rowSelection={rowSelection}
         columns={filterColumns}
         dataSource={state.Data}
-        scroll={{ y: 900 }}
+        scroll={{ y: 1010 }}
         pagination={pagination}
         onRow={(row) => {
           return {
@@ -208,7 +216,7 @@ const FilterTags = ({ entries, removeTag }) => {
   )
 }
 
-const sortHeader = (property, filter, update, title, noSort) => {
+const SortHeader = ({ property, filter, update, title, noSort }) => {
   const defaultProperty = property
   const display = title || spacesToProperty(property)
 
