@@ -3,6 +3,7 @@ import { FastGrid } from 'components/_siteWide/fastGrid/fastGrid'
 import { useGridContext } from './context/gridContext'
 import { GridContextProvider } from './context/gridContext'
 import { User } from './user/user'
+import { GridControls } from './controls/gridControls'
 import './grid.scss'
 
 export const Grid = () => {
@@ -29,7 +30,8 @@ const GridContents = () => {
           getData={getData}
           setDetail={setUser}
           defaultSearch={defaultSearch}
-          rowKey='RowId'
+          rightControls={<GridControls />}
+          rowKey='Id'
           storageKey='grid-filters'
           tableClass='user-grid'
         />

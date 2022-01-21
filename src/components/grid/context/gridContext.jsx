@@ -6,12 +6,23 @@ import qs from 'qs'
 import Avatar from 'antd/lib/avatar/avatar'
 
 const GridContext = createContext(null)
-const defaultColumns = ['Picture', 'Name', 'Gender', 'Email', 'Phone', 'RegisterDate']
 const store = window.localStorage
 
 export const GridContextProvider = ({ children }) => {
   const storageFilters = store.getItem('grid-filters')
   const storageColumns = store.getItem('grid-columns')
+  const defaultColumns = [
+    'Thumbnail',
+    'Name',
+    'RegisterDate',
+    'Email',
+    'Phone',
+    'Gender',
+    'Country',
+    'State',
+    'City',
+    'PostalCode',
+  ]
   const [initialLoad, setInitialLoad] = useState(true)
   const [loading, setLoading] = useState(false)
   const [user, setUser] = useState()
@@ -32,7 +43,9 @@ export const GridContextProvider = ({ children }) => {
     SelectAll: false,
     SelectedIds: [],
     SelectedGridKeys: [],
+    DefaultColumns: defaultColumns,
     VisibleColumns: storageColumns ? JSON.parse(storageColumns) : defaultColumns,
+    IgnoreColumns: ['Id', 'Picture'],
   })
 
   const getData = async () => {
@@ -47,7 +60,6 @@ export const GridContextProvider = ({ children }) => {
 
     if (hasProperties(config)) {
       let filteredData = copy.OriginalData
-      // eslint-disable-next-line
       Object.entries(config).map((p) => {
         const property = p[0]
         const value = p[1]
@@ -65,6 +77,8 @@ export const GridContextProvider = ({ children }) => {
             d[property].toLowerCase().trim().includes(value.toLowerCase().trim())
           )
         }
+
+        return p
       })
 
       copy.Data = filteredData
@@ -88,12 +102,10 @@ export const GridContextProvider = ({ children }) => {
       const results = data.results
       copy.Data = results
       const transforms = []
-
-      // eslint-disable-next-line
       results.map((d, i) => {
         const location = d.location
         transforms.push({
-          RowId: i,
+          Id: i,
           Thumbnail: d.picture.thumbnail,
           Picture: d.picture.large,
           Name: `${d.name.first} ${d.name.last}`,
@@ -111,6 +123,8 @@ export const GridContextProvider = ({ children }) => {
           DateOfBirth: d.dob.date,
           Age: d.dob.age,
         })
+
+        return d
       })
 
       copy.OriginalData = transforms

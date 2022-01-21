@@ -31,11 +31,11 @@ const ShopContents = () => {
 
   useEffect(() => {
     getCategories()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [])
   useEffect(() => {
     getProducts()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [selectedCategory])
 
   return (

@@ -15,7 +15,7 @@ export const changeTheme = (checked) => {
     })
 }
 
-export const ArrayRemove = (arr, value) => {
+export const arrayRemove = (arr, value) => {
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] === value) {
       arr.splice(i, 1)
@@ -23,6 +23,20 @@ export const ArrayRemove = (arr, value) => {
     }
   }
 }
+
+export const arrayMove = (array, from, to) => {
+  array = [...array]
+  const start = from < 0 ? array.length + from : from
+
+  if (start >= 0 && start < array.length) {
+    const end = to < 0 ? array.length + to : to
+    const item = array.splice(from, 1)[0]
+    array.splice(end, 0, item)
+  }
+
+  return array
+}
+
 export const getAbbreviation = (value, length = 20) => {
   return `${value.substring(0, length)}${value.length > length ? "..." : ""}`
 }

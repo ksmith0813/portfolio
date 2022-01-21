@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { AutoComplete, Input, Row, Select, Table, DatePicker, Space, Button, Tag } from 'antd'
+import { AutoComplete, Input, Row, Col, Select, Table, DatePicker, Space, Button, Tag } from 'antd'
 import { CalendarOutlined, CloseOutlined, SearchOutlined } from '@ant-design/icons'
 import { hasProperties, spacesToProperty, getDateRanges, showMessage } from 'utils/general'
 import moment from 'moment'
@@ -22,7 +22,7 @@ export const FastGrid = ({
   tableClass,
   selections,
   setDays,
-  toolbar,
+  rightControls,
   noFilter,
 }) => {
   const [search, setSearch] = useState(defaultSearch)
@@ -165,11 +165,13 @@ export const FastGrid = ({
     <>
       {!noFilter && (
         <Row className='filter-tags-container'>
-          {properties && filtersTags}
-          {!properties && <b className='fs-125'>Currently viewing all users</b>}
+          <Col flex={1}>
+            {properties && filtersTags}
+            {!properties && <b className='fs-125'>Currently viewing all users</b>}
+          </Col>
+          {rightControls && <Col>{rightControls}</Col>}
         </Row>
       )}
-      {toolbar}
       <Table
         className={`${tableClass} mt-150`}
         rowKey={rowKey}
