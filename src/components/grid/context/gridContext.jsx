@@ -53,6 +53,13 @@ export const GridContextProvider = ({ children }) => {
         const value = p[1]
         if (property === 'Gender') {
           filteredData = filteredData.filter((d) => d[property].toLowerCase().trim() === value.toLowerCase().trim())
+        } else if (property === 'RegisterDate') {
+          const dates = value.split(',')
+          const start = dates[0]
+          const end = dates[1]
+          filteredData = filteredData.filter(
+            (d) => moment(d.RegisterDate) >= moment(start) && moment(d.RegisterDate) <= moment(end)
+          )
         } else {
           filteredData = filteredData.filter((d) =>
             d[property].toLowerCase().trim().includes(value.toLowerCase().trim())
@@ -125,13 +132,41 @@ export const GridContextProvider = ({ children }) => {
       title: 'Name',
       dataIndex: 'Name',
       type: 'text',
+      width: 150,
       noSort: true,
       sorter: (a, b) => sortAlphebetically(a, b, 'Name'),
+      render: (value) => <b>{value}</b>,
+    },
+    {
+      title: 'Register Date',
+      dataIndex: 'RegisterDate',
+      type: 'date',
+      width: 200,
+      noSort: true,
+      render: (value) => moment(value).format('MM/DD/YYYY'),
+      sorter: (a, b) => moment(a.RegisterDate) - moment(b.RegisterDate),
+    },
+    {
+      title: 'Email',
+      dataIndex: 'Email',
+      type: 'text',
+      width: 250,
+      noSort: true,
+      sorter: (a, b) => sortAlphebetically(a, b, 'Email'),
+      render: (value) => <a href={`mailto:${value}`}>{value}</a>,
+    },
+    {
+      title: 'Phone',
+      dataIndex: 'Phone',
+      type: 'text',
+      width: 150,
+      noSort: true,
     },
     {
       title: 'Gender',
       dataIndex: 'Gender',
       type: 'select',
+      width: 100,
       options: [{ value: 'male' }, { value: 'female' }],
       noSort: true,
       sorter: (a, b) => sortAlphebetically(a, b, 'Gender'),
@@ -140,6 +175,7 @@ export const GridContextProvider = ({ children }) => {
       title: 'Country',
       dataIndex: 'Country',
       type: 'text',
+      width: 150,
       noSort: true,
       sorter: (a, b) => sortAlphebetically(a, b, 'Country'),
     },
@@ -147,6 +183,7 @@ export const GridContextProvider = ({ children }) => {
       title: 'State',
       dataIndex: 'State',
       type: 'text',
+      width: 200,
       noSort: true,
       sorter: (a, b) => sortAlphebetically(a, b, 'State'),
     },
@@ -154,6 +191,7 @@ export const GridContextProvider = ({ children }) => {
       title: 'City',
       dataIndex: 'City',
       type: 'text',
+      width: 200,
       noSort: true,
       sorter: (a, b) => sortAlphebetically(a, b, 'City'),
     },
@@ -161,30 +199,9 @@ export const GridContextProvider = ({ children }) => {
       title: 'PostalCode',
       dataIndex: 'PostalCode',
       type: 'text',
+      width: 100,
       noSort: true,
-      sorter: (a, b) => sortAlphebetically(a, b, 'PostalCode'),
-    },
-    {
-      title: 'Email',
-      dataIndex: 'Email',
-      type: 'text',
-      noSort: true,
-      sorter: (a, b) => sortAlphebetically(a, b, 'Email'),
-      render: (value) => <a href={`mailto: ksmith0813@gmail.com`}>{value}</a>
-    },
-    {
-      title: 'Phone',
-      dataIndex: 'Phone',
-      type: 'text',
-      noSort: true,
-    },
-    {
-      title: 'Register Date',
-      dataIndex: 'RegisterDate',
-      type: 'date',
-      noFilter: true,
-      noSort: true,
-      render: (value) => moment(value).format('MM/DD/YYYY'),
+      sorter: (a, b) => a.PostalCode - b.PostalCode,
     },
   ]
 

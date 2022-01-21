@@ -1,3 +1,11 @@
+.ant-table-body tr:nth-child(odd) td {
+  background-color: var(--gray-100);
+}
+
+.ant-table-body tr:hover {
+  cursor: pointer;
+}
+
 .ant-table-filter-column-title {
   padding: 0 !important;
 }
@@ -46,4 +54,13 @@
 
 .ant-tag-hidden {
   display: inline !important;
+}
+
+.ant-tag-close-icon:hover {
+  cursor: pointer;
+}
+
+.ant-picker-ranges {
+  display: flex;
+  justify-content: space-around;
 }
