@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from 'react'
+import React, { useState, useEffect, useContext, createContext } from 'react'
 import api from 'utils/api'
 import _ from 'lodash'
 
@@ -12,13 +12,12 @@ export const ShopContextProvider = ({ children }) => {
   const [products, setProducts] = useState([])
   const [cartItems, setCartItems] = useState([])
 
-  const getCategories = () => {
+  useEffect(() => {
     api.getProductCategories().then(({ data }) => {
       setCategories(['ALL'].concat(data))
     })
-  }
-
-  const getProducts = () => {
+  }, [])
+  useEffect(() => {
     setLoadingProducts(true)
 
     if (selectedCategory === 'ALL') {
@@ -32,7 +31,7 @@ export const ShopContextProvider = ({ children }) => {
         setLoadingProducts(false)
       })
     }
-  }
+  }, [selectedCategory])
 
   const getCartItems = () => {
     const items = []
@@ -74,8 +73,6 @@ export const ShopContextProvider = ({ children }) => {
         selectedCategory,
 
         // functions
-        getCategories,
-        getProducts,
         getCartItems,
         changeCategory,
         updateCart,

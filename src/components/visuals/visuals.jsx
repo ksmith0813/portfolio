@@ -5,9 +5,9 @@ import { NivoLine } from 'components/_siteWide/charts/nivoLine'
 import { NivoPlot } from 'components/_siteWide/charts/nivoPlot'
 import { NivoWaffle } from 'components/_siteWide/charts/nivoWaffle'
 import { Categories } from 'components/_siteWide/layout/categories'
-import './charts.scss'
+import './visuals.scss'
 
-export const Charts = () => {
+export const Visuals = () => {
   const [selectedChart, setSelectedChart] = useState('bar')
   const categories = ['bar', 'line', 'plot', 'pie', 'waffle']
 

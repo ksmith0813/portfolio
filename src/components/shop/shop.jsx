@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ShoppingCartOutlined } from '@ant-design/icons'
 import { Categories } from 'components/_siteWide/layout/categories'
 import { ShopContextProvider, useShopContext } from './context/shopContext'
@@ -21,22 +21,11 @@ const ShopContents = () => {
     selectedCategory,
     products,
     categories,
-    getCategories,
-    getProducts,
     changeCategory,
     cartItems,
     updateCart,
     setShowingCartModal,
   } = useShopContext()
-
-  useEffect(() => {
-    getCategories()
-    // eslint-disable-next-line
-  }, [])
-  useEffect(() => {
-    getProducts()
-    // eslint-disable-next-line
-  }, [selectedCategory])
 
   return (
     <>
