@@ -6,8 +6,8 @@ import moment from 'moment'
 export const getColumns = () => {
     return [
       {
-        title: 'Thumbnail',
-        dataIndex: 'Thumbnail',
+        title: 'Picture',
+        dataIndex: 'Picture',
         noFilter: true,
         noSort: true,
         width: 80,

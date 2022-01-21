@@ -12,7 +12,7 @@ export const GridContextProvider = ({ children }) => {
   const storageFilters = store.getItem('grid-filters')
   const storageColumns = store.getItem('grid-columns')
   const defaultColumns = [
-    'Thumbnail',
+    'Picture',
     'Name',
     'RegisterDate',
     'Email',
@@ -25,7 +25,6 @@ export const GridContextProvider = ({ children }) => {
   ]
   const [initialLoad, setInitialLoad] = useState(true)
   const [loading, setLoading] = useState(false)
-  const [user, setUser] = useState()
   const [state, setState] = useState({
     Key: 0,
     OriginalData: [],
@@ -45,7 +44,7 @@ export const GridContextProvider = ({ children }) => {
     SelectedGridKeys: [],
     DefaultColumns: defaultColumns,
     VisibleColumns: storageColumns ? JSON.parse(storageColumns) : defaultColumns,
-    IgnoreColumns: ['Id', 'Picture'],
+    IgnoreColumns: ['Id'],
   })
 
   const getData = async () => {
@@ -106,8 +105,7 @@ export const GridContextProvider = ({ children }) => {
         const location = d.location
         transforms.push({
           Id: i,
-          Thumbnail: d.picture.thumbnail,
-          Picture: d.picture.large,
+          Picture: d.picture.thumbnail,
           Name: `${d.name.first} ${d.name.last}`,
           UserName: d.login.username,
           Gender: d.gender,
@@ -176,8 +174,6 @@ export const GridContextProvider = ({ children }) => {
         loading,
         state,
         setState,
-        user,
-        setUser,
 
         // functions
         getData,

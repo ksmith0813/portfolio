@@ -2,7 +2,6 @@ import React from 'react'
 import { FastGrid } from 'components/_siteWide/fastGrid/fastGrid'
 import { useGridContext } from './context/gridContext'
 import { GridContextProvider } from './context/gridContext'
-import { User } from './user/user'
 import { GridControls } from './controls/gridControls'
 import './grid.scss'
 
@@ -15,9 +14,7 @@ export const Grid = () => {
 }
 
 const GridContents = () => {
-  const { loading, state, setState, user, setUser, getData, getGridColumns, defaultSearch } = useGridContext()
-
-  if (user) return <User />
+  const { loading, state, setState, getData, getGridColumns, defaultSearch } = useGridContext()
 
   return (
     <>
@@ -28,7 +25,6 @@ const GridContents = () => {
           loading={loading}
           columns={getGridColumns()}
           getData={getData}
-          setDetail={setUser}
           defaultSearch={defaultSearch}
           rightControls={<GridControls />}
           rowKey='Id'
