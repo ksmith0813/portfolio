@@ -43,8 +43,6 @@ export const ColumnSelection = ({ state, setState, defaultColumns, columnList, s
     // eslint-disable-next-line
   }, [state.Key])
 
-  if (!columnList.length || !items.length) return null
-
   const onChange = (property, show) => {
     let copy = [...items]
     const match = copy.filter((c) => c.property === property)[0]
