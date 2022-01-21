@@ -26,7 +26,7 @@ const GridContents = () => {
           state={state}
           setState={setState}
           loading={loading}
-          columns={columns}
+          columns={columns.filter((c) => state.VisibleColumns.includes(c.dataIndex))}
           getData={getData}
           setDetail={setUser}
           defaultSearch={defaultSearch}

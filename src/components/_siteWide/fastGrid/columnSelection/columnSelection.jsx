@@ -55,6 +55,7 @@ export const ColumnSelection = ({
 
   const setDefaultColumns = (columns) => {
     let copy = { ...state }
+    copy.Key = ++copy.Key
     copy.VisibleColumns = columns
     setState(copy)
     setShowingSelection(false)
