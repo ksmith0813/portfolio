@@ -7,15 +7,7 @@ import './columnSelection.scss'
 
 const store = window.localStorage
 
-export const ColumnSelection = ({
-  state,
-  setState,
-  defaultColumns,
-  storageColumns,
-  columnList,
-  setShowingSelection,
-  storeKey,
-}) => {
+export const ColumnSelection = ({ state, setState, defaultColumns, columnList, setShowingSelection, storeKey }) => {
   const [items, setItems] = useState([])
 
   const resetIds = (options) => {
@@ -29,20 +21,27 @@ export const ColumnSelection = ({
 
   useEffect(() => {
     let orderedColumns = []
+    const storedColumnList = JSON.parse(store.getItem(storeKey))
 
-    if (storageColumns) {
-      storageColumns.map((s) => {
+    if (storedColumnList) {
+      storedColumnList.map((s) => {
         const match = columnList.filter((c) => c.property === s)[0]
-        if (match) orderedColumns.push({ ...match, show: true })
+        orderedColumns.push({ ...match, show: true })
         return s
       })
+
+      if (orderedColumns.length < columnList.length) {
+        for (let i = orderedColumns.length; i < columnList.length; i++) {
+          orderedColumns.push({ ...columnList[i], show: false })
+        }
+      }
     } else {
-      orderedColumns = columnList
+      orderedColumns = columnList.sort((a, b) => b.show - a.show)
     }
 
     setItems(resetIds(orderedColumns))
     // eslint-disable-next-line
-  }, [])
+  }, [state.Key])
 
   if (!columnList.length || !items.length) return null
 
@@ -51,14 +50,6 @@ export const ColumnSelection = ({
     const match = copy.filter((c) => c.property === property)[0]
     if (match) match.show = !show
     setItems(copy)
-  }
-
-  const setDefaultColumns = (columns) => {
-    let copy = { ...state }
-    copy.Key = ++copy.Key
-    copy.VisibleColumns = columns
-    setState(copy)
-    setShowingSelection(false)
   }
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
@@ -77,7 +68,7 @@ export const ColumnSelection = ({
 
     resetIds(columnList)
     setItems(columnList)
-    setDefaultColumns(defaultColumns)
+    updateDefaultColumns(defaultColumns)
     store.removeItem(storeKey)
   }
 
@@ -87,7 +78,16 @@ export const ColumnSelection = ({
       return c.show && values.push(c.property)
     })
 
-    setDefaultColumns(values)
+    updateDefaultColumns(values)
+  }
+
+  const updateDefaultColumns = (columns) => {
+    let copy = { ...state }
+    copy.Key = ++copy.Key
+    copy.VisibleColumns = columns
+    setState(copy)
+    setShowingSelection(false)
+    store.setItem(storeKey, JSON.stringify(columns))
   }
 
   const DragHandle = SortableHandle(() => <MenuOutlined className='column-menu-grab' />)

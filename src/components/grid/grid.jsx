@@ -15,7 +15,7 @@ export const Grid = () => {
 }
 
 const GridContents = () => {
-  const { loading, state, setState, user, setUser, getData, columns, defaultSearch } = useGridContext()
+  const { loading, state, setState, user, setUser, getData, getGridColumns, defaultSearch } = useGridContext()
 
   if (user) return <User />
 
@@ -26,7 +26,7 @@ const GridContents = () => {
           state={state}
           setState={setState}
           loading={loading}
-          columns={columns.filter((c) => state.VisibleColumns.includes(c.dataIndex))}
+          columns={getGridColumns()}
           getData={getData}
           setDetail={setUser}
           defaultSearch={defaultSearch}

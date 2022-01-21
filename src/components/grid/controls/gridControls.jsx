@@ -6,21 +6,9 @@ import { ColumnSelection } from 'components/_siteWide/fastGrid/columnSelection/c
 
 export const GridControls = () => {
   const [showingSelection, setShowingSelection] = useState(false)
-  const { state, setState, storageColumns } = useGridContext()
+  const { state, setState, getColummSelectionList } = useGridContext()
 
   if (!state.OriginalData.length) return null
-
-  let columnList = []
-  Object.keys(state.OriginalData[0]).map((p, i) => {
-    if (state.IgnoreColumns.includes(p)) return p
-    columnList.push({
-      id: i,
-      property: p,
-      show: state.VisibleColumns.includes(p),
-    })
-
-    return p
-  })
 
   return (
     <div className='grid-controls'>
@@ -36,8 +24,7 @@ export const GridControls = () => {
             state={state}
             setState={setState}
             defaultColumns={state.DefaultColumns}
-            storageColumns={storageColumns}
-            columnList={columnList}
+            columnList={getColummSelectionList()}
             setShowingSelection={setShowingSelection}
             storeKey='grid-columns'
           />

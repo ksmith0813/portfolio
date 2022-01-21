@@ -1,9 +1,9 @@
 import React, { useState, useContext, createContext } from 'react'
-import { hasProperties, sortAlphebetically } from 'utils/general'
+import { hasProperties } from 'utils/general'
 import api from 'utils/api'
 import moment from 'moment'
 import qs from 'qs'
-import Avatar from 'antd/lib/avatar/avatar'
+import { getColumns } from '../columns/gridColumns'
 
 const GridContext = createContext(null)
 const store = window.localStorage
@@ -133,135 +133,58 @@ export const GridContextProvider = ({ children }) => {
     return copy
   }
 
-  const columns = [
-    {
-      title: 'Picture',
-      dataIndex: 'Thumbnail',
-      noFilter: true,
-      noSort: true,
-      width: 80,
-      render: (value) => <Avatar src={value} />,
-    },
-    {
-      title: 'Name',
-      dataIndex: 'Name',
-      type: 'text',
-      width: 150,
-      noSort: true,
-      sorter: (a, b) => sortAlphebetically(a, b, 'Name'),
-      render: (value) => <b>{value}</b>,
-    },
-    {
-      title: 'UserName',
-      dataIndex: 'UserName',
-      type: 'text',
-      width: 150,
-      noSort: true,
-      sorter: (a, b) => sortAlphebetically(a, b, 'UserName'),
-    },
-    {
-      title: 'Gender',
-      dataIndex: 'Gender',
-      type: 'select',
-      width: 100,
-      options: [{ value: 'male' }, { value: 'female' }],
-      noSort: true,
-      sorter: (a, b) => sortAlphebetically(a, b, 'Gender'),
-    },
-    {
-      title: 'Country',
-      dataIndex: 'Country',
-      type: 'text',
-      width: 150,
-      noSort: true,
-      sorter: (a, b) => sortAlphebetically(a, b, 'Country'),
-    },
-    {
-      title: 'State',
-      dataIndex: 'State',
-      type: 'text',
-      width: 200,
-      noSort: true,
-      sorter: (a, b) => sortAlphebetically(a, b, 'State'),
-    },
-    {
-      title: 'City',
-      dataIndex: 'City',
-      type: 'text',
-      width: 200,
-      noSort: true,
-      sorter: (a, b) => sortAlphebetically(a, b, 'City'),
-    },
-    {
-      title: 'PostalCode',
-      dataIndex: 'PostalCode',
-      type: 'text',
-      width: 100,
-      noSort: true,
-      sorter: (a, b) => a.PostalCode - b.PostalCode,
-    },
-    {
-      title: 'Latitude',
-      dataIndex: 'Latitude',
-      type: 'text',
-      width: 100,
-      noSort: true,
-      sorter: (a, b) => a.Latitude - b.Latitude,
-    },
-    {
-      title: 'Longitude',
-      dataIndex: 'Longitude',
-      type: 'text',
-      width: 100,
-      noSort: true,
-      sorter: (a, b) => a.Longitude - b.Longitude,
-    },
-    {
-      title: 'Email',
-      dataIndex: 'Email',
-      type: 'text',
-      width: 250,
-      noSort: true,
-      sorter: (a, b) => sortAlphebetically(a, b, 'Email'),
-      render: (value) => <a href={`mailto:${value}`}>{value}</a>,
-    },
-    {
-      title: 'Phone',
-      dataIndex: 'Phone',
-      type: 'text',
-      width: 150,
-      noSort: true,
-    },
-    {
-      title: 'Register Date',
-      dataIndex: 'RegisterDate',
-      type: 'date',
-      width: 200,
-      noSort: true,
-      render: (value) => moment(value).format('MM/DD/YYYY'),
-      sorter: (a, b) => moment(a.RegisterDate) - moment(b.RegisterDate),
-    },
-    {
-      title: 'Date Of Birth',
-      dataIndex: 'DateOfBirth',
-      type: 'date',
-      width: 200,
-      noSort: true,
-      render: (value) => moment(value).format('MM/DD/YYYY'),
-      sorter: (a, b) => moment(a.DateOfBirth) - moment(b.DateOfBirth),
-    },
-    {
-      title: 'Age',
-      dataIndex: 'Age',
-      type: 'text',
-      width: 100,
-      noSort: true,
-      sorter: (a, b) => a.Age - b.Age,
-    },
-  ]
+  const getColummSelectionList = () => {
+    let columnList = []
+    Object.keys(state.OriginalData[0]).map((p, i) => {
+      if (state.IgnoreColumns.includes(p)) return p
+      columnList.push({
+        id: i,
+        property: p,
+        show: state.VisibleColumns.includes(p),
+      })
+
+      return p
+    })
+
+    return columnList
+  }
+
+  const getGridColumns = () => {
+    let columns = getColumns()
+    let visibleColumns = columns.filter((c) => state.VisibleColumns.includes(c.dataIndex))
+    let orderedColumns = []
+    const storedColumnList = JSON.parse(store.getItem('grid-columns'))
+
+    if (storedColumnList) {
+      storedColumnList.map((s) => {
+        const match = visibleColumns.filter((c) => c.dataIndex === s)[0]
+        orderedColumns.push(match)
+        return s
+      })
+    } else {
+      orderedColumns = visibleColumns
+    }
+
+    return orderedColumns
+  }
 
   return (
-    <GridContext.Provider value={{ initialLoad, loading, state, setState, user, getData, setUser, columns }}>
+    <GridContext.Provider
+      value={{
+        // state
+        initialLoad,
+        loading,
+        state,
+        setState,
+        user,
+        setUser,
+
+        // functions
+        getData,
+        getGridColumns,
+        getColummSelectionList,
+      }}
+    >
       {children}
     </GridContext.Provider>
   )

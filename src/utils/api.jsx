@@ -56,6 +56,8 @@ const q = {
   getProductCategories: () => get('products/categories', 'product'),
   getAllProducts: () => get(`products`, 'product'),
   getProductsByCategory: (category) => get(`products/category/${category}`, 'product'),
+
+  // This is not used, just a post example
   saveProduct: (product) => post('products/save', 'product', product),
 
   // Random User API
