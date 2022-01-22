@@ -1,20 +1,6 @@
 import moment from 'moment'
 import { message } from 'antd'
 
-export const changeTheme = (checked) => {
-  //less variables that will be used here must be declared in themeVariables on config-overrides.js
-  window.less
-    .modifyVars({
-      '@primary-color': checked ? '#52c41a' : '@blue-6',
-    })
-    .then(() => {
-      console.log('color changed!')
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-}
-
 export const arrayRemove = (arr, value) => {
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] === value) {
@@ -99,5 +85,3 @@ export const showMessage = (description, type = "error") => {
       break
   }
 }
-
-export const showHideModal = (handler, show) => handler(show)
