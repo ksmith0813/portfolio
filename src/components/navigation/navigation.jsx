@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { Avatar } from 'antd'
 import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
-import kevin from 'assets/Kevin.jpg'
+import kevin from 'assets/kevin.jpg'
 import soundCloud from 'assets/sound-cloud.png'
 
 export const Navigation = () => {
