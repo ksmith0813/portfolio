@@ -1,4 +1,20 @@
-@import './styles/mixins.scss';
+@mixin classBuilder($selector, $property, $start, $end) {
+  @for $i from $start through $end {
+    .#{$selector}-#{$i}00 {
+      #{$property}: #{$i}em;
+    }
+    .#{$selector}-#{$i}25 {
+      #{$property}: #{$i + 0.25}em;
+    }
+    .#{$selector}-#{$i}50 {
+      #{$property}: #{$i + 0.5}em;
+    }
+    .#{$selector}-#{$i}75 {
+      #{$property}: #{$i + 0.75}em;
+    }
+  }
+}
+
 @include classBuilder('fs', 'font-size', 0, 5);
 @include classBuilder('p', 'padding', 0, 5);
 @include classBuilder('pt', 'padding-top', 0, 5);
