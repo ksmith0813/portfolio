@@ -27,7 +27,7 @@ const RegisterContent = () => {
       content: <Contact />,
     },
     {
-      title: 'Movie',
+      title: 'Movies',
       content: <Movie />,
     },
     {
@@ -47,7 +47,10 @@ const RegisterContent = () => {
   return (
     <div className='register-container'>
       <Row justify='center'>
-        <Col span='13'>
+        <Col span='10'>
+          <div className='fs-150 pb-300 text-center'>
+            <span>Please complete the registration form below</span>
+          </div>
           <Steps current={step}>
             {steps.map((item) => (
               <Step key={item.title} title={item.title} />
