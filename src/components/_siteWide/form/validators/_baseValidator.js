@@ -2,7 +2,7 @@ import { getRequiredMessage } from '../util'
 
 export const validateProperty = (
   validator,
-  formData,
+  form,
   property,
   nestedProperty = null,
   required = false,
@@ -13,34 +13,34 @@ export const validateProperty = (
 
   if (Array.isArray(property)) {
     propertyName = property[1]
-    value = formData[nestedProperty][property[0]][propertyName]
+    value = form[nestedProperty][property[0]][propertyName]
   } else {
-    value = formData[property]
+    value = form[property]
   }
 
-  formData.errors = formData.errors.filter((e) => e.property !== propertyName)
+  form.errors = form.errors.filter((e) => e.property !== propertyName)
   let error
 
   if (nestedProperty) {
-    const values = formData[nestedProperty]
+    const values = form[nestedProperty]
     if (values) {
       values.map((v, i) => {
         error = null
         if (required && !v[propertyName]) error = getRequiredMessage(propertyName)
-        else if (validator) error = validator(v[propertyName], formData, property)
-
-        if (!error) return
-        addError(formData, propertyName, error, section, nestedProperty, i)
+        else if (validator) error = validator(v[propertyName], form, property)
+        if (error) return addError(form, propertyName, error, section, nestedProperty, i)
+        return v
       })
     }
   } else {
-    if (validator) error = validator(value, formData, property)
+    if (validator) error = validator(value, form, property)
     if (!value && !error && required) error = getRequiredMessage(propertyName)
+    if (error) addError(form, propertyName, error, section)
   }
 }
 
-export const addError = (formData, property, error, section = null, nestedProperty = null, index = null) => {
-  formData.errors.push({
+export const addError = (form, property, error, section = null, nestedProperty = null, index = null) => {
+  form.errors.push({
     property: property,
     nestedProperty: nestedProperty,
     message: error,

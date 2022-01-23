@@ -32,7 +32,7 @@ export const FormSelect = ({
 
   const select = (
     <FormFloatLabel label={label || spacesToProperty(name)} name={name} inputValue={initialValue}>
-      <Select value={initialValue} onChange={onChange} style={{ width: width }} {...others}>
+      <Select value={initialValue} onChange={(value) => onChange(value)} style={{ width: width }} {...others}>
         {options.map((o, i) => (
           <Option key={i} value={o.value}>
             {o.text}

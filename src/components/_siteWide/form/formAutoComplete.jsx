@@ -38,7 +38,13 @@ export const FormAutoComplete = ({
       rules={[{ required: required, message: message }]}
     >
       <FormFloatLabel label={label || spacesToProperty(name)} name={name} inputValue={initialValue}>
-        <AutoComplete value={initialValue} options={options} onChange={onChange} style={{ width: width }} {...others} />
+        <AutoComplete
+          value={initialValue}
+          options={options}
+          onChange={(value) => onChange(value)}
+          style={{ width: width }}
+          {...others}
+        />
       </FormFloatLabel>
     </Form.Item>
   )

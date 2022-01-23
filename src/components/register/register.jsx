@@ -1,5 +1,5 @@
 import React from 'react'
-import { Steps, Row, Col, Button } from 'antd'
+import { Steps, Row, Col } from 'antd'
 import { RegisterContextProvider, useRegisterContext } from './context/registerContext'
 import { Contact } from './steps/contact'
 import { Movie } from './steps/movie'
@@ -19,7 +19,7 @@ export const Register = () => {
 }
 
 const RegisterContent = () => {
-  const { step, nextStep, previousStep, complete } = useRegisterContext()
+  const { step } = useRegisterContext()
 
   const steps = [
     {
@@ -56,24 +56,7 @@ const RegisterContent = () => {
               <Step key={item.title} title={item.title} />
             ))}
           </Steps>
-          <div className='steps-content'>{steps[step].content}</div>
-          <div className='steps-action'>
-            {step > 0 && (
-              <Button className='mr-100' size='large' onClick={() => previousStep()}>
-                Previous
-              </Button>
-            )}
-            {step < steps.length - 1 && (
-              <Button type='primary' size='large' onClick={() => nextStep()}>
-                Next
-              </Button>
-            )}
-            {step === steps.length - 1 && (
-              <Button type='primary' size='large' onClick={() => complete()}>
-                Done
-              </Button>
-            )}
-          </div>
+          {steps[step].content}
         </Col>
       </Row>
     </div>

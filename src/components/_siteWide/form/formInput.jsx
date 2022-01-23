@@ -21,6 +21,7 @@ export const FormInput = ({
   isNumber = false,
   isPassword,
   width = '100%',
+  ...others
 }) => {
   const error = element && getError(name, element)
 
@@ -45,7 +46,7 @@ export const FormInput = ({
     <Input
       value={initialValue}
       disabled={disabled}
-      onChange={onChange}
+      onChange={(e) => onChange(e.target.value)}
       autoComplete='off'
       className={`${noFloat ? 'no-float' : ''}`}
       style={{ width: width }}

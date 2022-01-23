@@ -38,7 +38,7 @@ export const FormMaskInput = ({
       value={initialValue}
       mask={mask}
       disabled={disabled}
-      onChange={onChange}
+      onChange={(e) => onChange(e.target.value)}
       autoComplete='off'
       className={`ant-input ${extraClasses} ${noFloat ? 'no-float' : ''}`}
       width={width}

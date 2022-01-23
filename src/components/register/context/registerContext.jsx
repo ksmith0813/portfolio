@@ -1,5 +1,4 @@
 import React, { useState, useContext, createContext } from 'react'
-import api from 'utils/api'
 import { showMessage } from 'utils/general'
 
 const RegisterContext = createContext(null)
@@ -7,8 +6,8 @@ const RegisterContext = createContext(null)
 export const RegisterContextProvider = ({ children }) => {
   const [step, setStep] = useState(0)
   const [contact, setContact] = useState({
-    LastName: '',
     FirstName: '',
+    LastName: '',
     Address: '',
     Address2: '',
     City: '',
@@ -37,44 +36,8 @@ export const RegisterContextProvider = ({ children }) => {
     // hit imdb EP
   }
 
-  const validateForm = () => {
-    let isValid = true
-    switch (step) {
-      case 1:
-        isValid = validateMovie()
-        break
-      case 2:
-        isValid = validateMusic()
-        break
-      case 3:
-        isValid = validateTravel()
-        break
-      default:
-        isValid = validateContact()
-        break
-    }
-
-    return isValid
-  }
-
-  const validateMovie = () => {
-    return true
-  }
-
-  const validateMusic = () => {
-    return true
-  }
-
-  const validateTravel = () => {
-    return true
-  }
-
-  const validateContact = () => {
-    return true
-  }
-
-  const nextStep = () => {
-    if (!validateForm()) {
+  const nextStep = (form) => {
+    if (!handleFormUpdate(form)) {
       showMessage('Please fix all form errors.')
       return
     }
@@ -83,6 +46,75 @@ export const RegisterContextProvider = ({ children }) => {
   }
 
   const previousStep = () => setStep(step - 1)
+
+  const handleFormUpdate = (form) => {
+    let isValid = true
+    switch (step) {
+      case 1:
+        isValid = handleMoveUpdate(form)
+        break
+      case 2:
+        isValid = handleMusicUpdate(form)
+        break
+      case 3:
+        isValid = handleTravelUpdate(form)
+        break
+      default:
+        isValid = handleContactUpdate(form)
+        break
+    }
+
+    return isValid
+  }
+
+  const handleMoveUpdate = (form) => {
+    let copy = { ...movie }
+    copy.FavoriteMovie = form.FavoriteMovie
+    copy.FavoriteGenre = form.FavoriteGenre
+    // TODO - valid
+    setMovie(copy)
+    return true
+  }
+
+  const handleMusicUpdate = (form) => {
+    let copy = { ...music }
+    copy.FavoriteBand = form.FavoriteBand
+    copy.FavoriteSong = form.FavoriteSong
+    copy.Instruments = form.Instruments
+    copy.SoundCloud = form.SoundCloud
+    // TODO - valid
+    return true
+  }
+
+  const handleTravelUpdate = (form) => {
+    let copy = { ...travel }
+    copy.FavoriteCountry = form.FavoriteCountry
+    copy.FavoriteCity = form.FavoriteCity
+    copy.PlacesVisited = form.PlacesVisited
+    // TODO - valid
+    setMovie(copy)
+    return true
+  }
+
+  const handleContactUpdate = (form) => {
+    let copy = { ...contact }
+    copy.FirstName = form.FirstName
+    copy.LastName = form.LastName
+    copy.Address = form.Address
+    copy.Address2 = form.Address2
+    copy.City = form.City
+    copy.State = form.State
+    copy.Zip = form.Zip
+    copy.Email = form.Email
+    copy.Phone = form.Phone
+    // TODO - valid
+    setMovie(copy)
+    return true
+  }
+
+  const handleErrors = (formData, errors) => {
+    // TODO
+  }
 
   const complete = () => showMessage('Your information has been successfully submitted!', 'success')
 
@@ -104,6 +136,7 @@ export const RegisterContextProvider = ({ children }) => {
         searchMovies,
         nextStep,
         previousStep,
+        handleErrors,
         complete,
       }}
     >

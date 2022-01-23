@@ -34,7 +34,7 @@ export const FormTextArea = ({
     <textarea
       value={initialValue}
       disabled={disabled}
-      onChange={onChange}
+      onChange={(value) => onChange(value)}
       className={`${noFloat ? 'no-float' : ''}`}
       style={{ width: width, height: height }}
       {...others}

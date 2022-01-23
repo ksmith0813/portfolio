@@ -35,7 +35,7 @@ export const FormNumber = ({
     <InputNumber
       value={initialValue}
       disabled={disabled}
-      onChange={onChange}
+      onChange={(e) => onChange(e.target.value)}
       precision={2}
       formatter={(value) => `${isCurrency ? '$' : ''}${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       parser={(value) => value.replace(/\$\s?|(,*)/g, '')}

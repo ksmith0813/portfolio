@@ -17,16 +17,16 @@ export const getError = (property, element) => {
     propertyName = property[1]
     error = element.errors.filter((e) => e.property === propertyName && e.index === index)[0]
   } else {
-    element.errors.filter((e) => e.property === propertyName)[0]
+    error = element.errors.filter((e) => e.property === propertyName)[0]
   }
 
   return error
 }
 
-export const validateRequiredFields = (formData, optionalFields = []) => {
-  Object.keys(formData).forEach((k) => {
+export const validateRequiredFields = (form, optionalFields = []) => {
+  Object.keys(form).forEach((k) => {
     if (optionalFields.includes(k)) return
-    if (!formData[k]) formData.errors.push({ property: k, message: getRequiredMessage(k) })
+    if (!form[k]) form.errors.push({ property: k, message: getRequiredMessage(k) })
   })
 }
 
@@ -40,6 +40,8 @@ export const handleFormChange = (property, nestedProperty, value, element, isNum
   } else {
     copy[property] = value
   }
+
+  return copy
 }
 
 export const getRequiredMessage = (property) => `${spacesToProperty(property)} is required`
