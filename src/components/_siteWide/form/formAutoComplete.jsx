@@ -2,7 +2,7 @@ import React from 'react'
 import { AutoComplete, Form } from 'antd'
 import { spacesToProperty } from 'utils/general'
 import { getError, handleFormChange } from './util'
-import { FormFloatLabel } from './FormFloatLabel'
+import { FormFloatLabel } from './formFloatLabel'
 
 export const FormAutoComplete = ({
   name,

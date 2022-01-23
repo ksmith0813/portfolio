@@ -1,9 +1,9 @@
 import React from 'react'
 import { InputNumber, Form } from 'antd'
 import { spacesToProperty } from 'utils/general'
-import { validateProperty } from './Validators/_BaseValidator'
+import { validateProperty } from './validators/_baseValidator'
 import { getError, getRules, handleFormChange } from './util'
-import { FormFloatLabel } from './FormFloatLabel'
+import { FormFloatLabel } from './formFloatLabel'
 
 export const FormNumber = ({
   name,

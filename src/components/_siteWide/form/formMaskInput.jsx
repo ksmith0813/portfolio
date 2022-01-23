@@ -2,9 +2,9 @@ import React from 'react'
 import { Form } from 'antd'
 import MaskedInput from 'react-text-mask'
 import { spacesToProperty } from 'utils/general'
-import { validateProperty } from './Validators/_BaseValidator'
+import { validateProperty } from './validators/_baseValidator'
 import { getError, handleFormChange } from './util'
-import { FormFloatLabel } from './FormFloatLabel'
+import { FormFloatLabel } from './formFloatLabel'
 
 export const FormMaskInput = ({
   name,

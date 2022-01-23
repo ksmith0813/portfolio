@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Select } from 'antd'
 import { spacesToProperty } from 'utils/general'
 import { getError, handleFormChange } from './util'
-import { FormFloatLabel } from './FormFloatLabel'
+import { FormFloatLabel } from './formFloatLabel'
 
 export const FormSelect = ({
   name,
