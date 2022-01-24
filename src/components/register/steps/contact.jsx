@@ -1,11 +1,11 @@
 import React from 'react'
 import { Form, Row, Col } from 'antd'
-import { states } from 'constants/states'
 import { FormInput } from 'components/_siteWide/form/formInput'
 import { FormSelect } from 'components/_siteWide/form/formSelect'
 import { validateZip } from 'components/_siteWide/form/validators/validateZip'
 import { validatePhone } from 'components/_siteWide/form/validators/validatePhone'
 import { validateEmail } from 'components/_siteWide/form/validators/validateEmail'
+import { states } from 'constants/states'
 import { useRegisterContext } from '../context/registerContext'
 import { Actions } from './actions'
 

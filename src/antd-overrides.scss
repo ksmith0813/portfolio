@@ -1,18 +1,15 @@
 .ant-form .ant-input {
-  padding: 16px 12px 4px 11px !important;
+  padding: 20px 12px 4px 15px !important;
+  height: 55px !important;
 }
 
 .ant-form .ant-select .ant-select-selector {
-  padding: 16px 10px 4px 11px !important;
+  padding: 20px 10px 4px 15px !important;
+  height: 55px !important;
 }
 
-.ant-form .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
-  padding: 12px 10px 4px 11px !important;
-  height: 44px !important;
-}
-
-.ant-form .ant-select-single .ant-select-selector .ant-select-selection-search {
-  top: 16px !important;
+.ant-form .ant-select.ant-select-multiple .ant-select-selection-item {
+  margin-top: 6px;
 }
 
 .ant-table-body tr:nth-child(odd) td {

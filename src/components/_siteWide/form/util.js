@@ -19,8 +19,11 @@ export const getError = (property, element) => {
 
 export const validateRequiredFields = (form, optionalFields = []) => {
   Object.keys(form).forEach((k) => {
-    if (optionalFields.includes(k)) return
-    if (!form[k]) form.errors.push({ property: k, message: getRequiredMessage(k) })
+    if (optionalFields.includes(k) || k === 'errors') return
+    const value = form[k]
+    if ((Array.isArray(value) && !value.length) || !value) {
+      form.errors.push({ property: k, message: getRequiredMessage(k) })
+    }
   })
 
   return form

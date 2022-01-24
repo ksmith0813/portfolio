@@ -24,7 +24,7 @@ export const RegisterContextProvider = ({ children }) => {
   })
   const [movie, setMovie] = useState({
     FavoriteMovie: '',
-    FavoriteGenre: '',
+    FavoriteGenres: [],
     errors: [],
   })
   const [music, setMusic] = useState({
@@ -42,11 +42,10 @@ export const RegisterContextProvider = ({ children }) => {
   })
 
   const searchMovies = (search) => {
-    // hit imdb EP
+    // TODO - hit IMDB EP
   }
 
-  const nextStep = (form) => {
-    console.log(form)
+  const nextStep = () => {
     if (!handleFormUpdate()) {
       showMessage('Please fix all form errors.')
       return
@@ -79,6 +78,7 @@ export const RegisterContextProvider = ({ children }) => {
 
   const handleMovieUpdate = () => {
     let copy = { ...movie }
+    copy.errors = []
     copy = validateRequiredFields(copy)
     setMovie(copy)
     return !copy.errors.length
@@ -86,20 +86,23 @@ export const RegisterContextProvider = ({ children }) => {
 
   const handleMusicUpdate = () => {
     let copy = { ...music }
-    copy = validateRequiredFields(music, ['Instruments', 'SoundCloud'])
-    setMusic(music)
+    copy.errors = []
+    copy = validateRequiredFields(copy, ['Instruments', 'SoundCloud'])
+    setMusic(copy)
     return !copy.errors.length
   }
 
   const handleTravelUpdate = () => {
     let copy = { ...travel }
-    copy = validateRequiredFields(contact, ['PlacesVisited'])
-    setTravel(travel)
+    copy.errors = []
+    copy = validateRequiredFields(copy, ['PlacesVisited'])
+    setTravel(copy)
     return !copy.errors.length
   }
 
   const handleContactUpdate = () => {
     let copy = { ...contact }
+    copy.errors = []
     copy = validateRequiredFields(copy, ['Address2'])
     validateProperty(validateZip, copy, 'Zip', null, true)
     validateProperty(validatePhone, copy, 'Phone', null, true)

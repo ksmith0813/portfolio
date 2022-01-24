@@ -122,6 +122,14 @@ body {
   opacity: .7;
 }
 
+.light-text {
+  color: var(--gray-500)
+}
+
+.medium-text {
+  color: var(--gray-600)
+}
+
 .flex {
   display: flex;
 }

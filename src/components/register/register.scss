@@ -1,19 +1,27 @@
 .register-container {
-  height: calc(100vh -55px);
+  height: calc(100vh - 55px);
   overflow: auto;
   padding: 2em;
   padding-top: 3em;
 }
 
 .steps-content {
-  min-height: 700px;
+  min-height: 800px;
   margin-top: 2em;
+  padding: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: var(--box-shadow);
   border: 1px solid var(--gray-300);
   border-radius: var(--container-border-radius);
+  .section {
+    background-color: var(--gray-100);
+    border-radius: var(--container-border-radius);
+    padding: 1em;
+    margin: 3em;
+    margin-top: 2em;
+  }
 }
 
 .steps-action {

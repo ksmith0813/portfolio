@@ -4,6 +4,7 @@ import { spacesToProperty } from 'utils/general'
 import { validateProperty } from './validators/_baseValidator'
 import { getError, handleFormChange } from './util'
 import { FormFloatLabel } from './formFloatLabel'
+import { TagRender } from '../layout/tagRender'
 
 export const FormSelect = ({
   name,
@@ -14,6 +15,7 @@ export const FormSelect = ({
   validator,
   customHandler,
   disabled,
+  mode = null,
   label = null,
   property = null,
   section = null,
@@ -34,7 +36,14 @@ export const FormSelect = ({
 
   const select = (
     <FormFloatLabel label={label || spacesToProperty(name)} name={name} inputValue={initialValue}>
-      <Select value={initialValue} onChange={(value) => onChange(value)} style={{ width: width }} {...others}>
+      <Select
+        value={initialValue}
+        onChange={(value) => onChange(value)}
+        mode={mode}
+        tagRender={mode && TagRender}
+        style={{ width: width }}
+        {...others}
+      >
         {options.map((o, i) => (
           <Option key={i} value={o.value}>
             {o.text}

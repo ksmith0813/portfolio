@@ -3,13 +3,13 @@
   font-weight: normal;
   position: absolute;
   pointer-events: none;
-  left: 11px;
+  left: 16px;
   transition: 0.2s ease all;
   &.default {
-    top: 11px;
+    top: 16px;
   }
   &.float {
     font-size: 0.8em;
-    top: 5px;
+    top: 8px;
   }
 }

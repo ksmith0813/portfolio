@@ -1,0 +1,17 @@
+export const movieGenres = [
+  { value: 'Action' },
+  { value: 'Adventure' },
+  { value: 'Anime' },
+  { value: 'Biography' },
+  { value: 'Comedy' },
+  { value: 'Documentary' },
+  { value: 'Drama' },
+  { value: 'Fantasy' },
+  { value: 'Horror' },
+  { value: 'Mystery' },
+  { value: 'Musical' },
+  { value: 'Romance' },
+  { value: 'Rom Com' },
+  { value: 'Science Fiction' },
+  { value: 'Thriller' },
+]
