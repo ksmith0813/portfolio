@@ -6,6 +6,8 @@ import { Actions } from './actions'
 export const Movie = () => {
   const { nextStep } = useRegisterContext()
   const [form] = Form.useForm()
+  // Use multiselect for movie genres
+  // hit IMDB for movie search
   return (
     <Form form={form} onFinish={(data) => nextStep(data)}>
       <div className='steps-content'></div>

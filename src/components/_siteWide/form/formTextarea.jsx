@@ -62,12 +62,7 @@ export const FormTextArea = ({
   }
 
   return (
-    <Form.Item
-      name={name}
-      rules={[!disabled && getRules(name, required)]}
-      help={disabled && ''}
-      style={{ height: height }}
-    >
+    <Form.Item name={name} help={disabled && ''} style={{ height: height }}>
       {input}
     </Form.Item>
   )

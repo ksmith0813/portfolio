@@ -2,7 +2,7 @@ import React from 'react'
 import { Input, Form } from 'antd'
 import { spacesToProperty } from 'utils/general'
 import { validateProperty } from './validators/_baseValidator'
-import { getError, getRules, handleFormChange } from './util'
+import { getError, handleFormChange } from './util'
 import { FormFloatLabel } from './formFloatLabel'
 
 export const FormInput = ({
@@ -74,12 +74,8 @@ export const FormInput = ({
     )
   }
 
-  if (!error && !validator) {
-    return <Form.Item name={name}>{input}</Form.Item>
-  }
-
   return (
-    <Form.Item name={name} rules={[!disabled && getRules(name, required)]} help={disabled && ''}>
+    <Form.Item name={name} help={disabled && ''}>
       {input}
     </Form.Item>
   )

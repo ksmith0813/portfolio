@@ -65,12 +65,8 @@ export const FormNumber = ({
     )
   }
 
-  if (!error && !validator) {
-    return <Form.Item name={name}>{input}</Form.Item>
-  }
-
   return (
-    <Form.Item name={name} rules={[!disabled && getRules(name, required)]}>
+    <Form.Item name={name} help={disabled && ''}>
       {input}
     </Form.Item>
   )

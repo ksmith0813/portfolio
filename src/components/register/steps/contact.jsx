@@ -3,6 +3,9 @@ import { Form, Row, Col } from 'antd'
 import { states } from 'constants/states'
 import { FormInput } from 'components/_siteWide/form/formInput'
 import { FormSelect } from 'components/_siteWide/form/formSelect'
+import { validateZip } from 'components/_siteWide/form/validators/validateZip'
+import { validatePhone } from 'components/_siteWide/form/validators/validatePhone'
+import { validateEmail } from 'components/_siteWide/form/validators/validateEmail'
 import { useRegisterContext } from '../context/registerContext'
 import { Actions } from './actions'
 
@@ -10,11 +13,14 @@ export const Contact = () => {
   const { contact, setContact, nextStep } = useRegisterContext()
   const [form] = Form.useForm()
   return (
-    <Form form={form} onFinish={(data) => nextStep(data)}>
+    <Form form={form} onFinish={() => nextStep()}>
       <div className='steps-content'>
-        <Col span={13}>
+        <Col span={14}>
           <Row>
-            <Col span={24}>
+            <Col span={24} className='fs-200 text-center'>
+              Contact Info
+            </Col>
+            <Col span={24} className='pt-200'>
               <FormInput
                 name='FirstName'
                 initialValue={contact.FirstName}
@@ -23,7 +29,7 @@ export const Contact = () => {
                 required
               />
             </Col>
-            <Col span={24}>
+            <Col span={24} className='pt-050'>
               <FormInput
                 name='LastName'
                 initialValue={contact.LastName}
@@ -32,7 +38,7 @@ export const Contact = () => {
                 required
               />
             </Col>
-            <Col span={24}>
+            <Col span={24} className='pt-050'>
               <FormInput
                 name='Address'
                 initialValue={contact.Address}
@@ -41,7 +47,7 @@ export const Contact = () => {
                 required
               />
             </Col>
-            <Col span={24}>
+            <Col span={24} className='pt-050'>
               <FormInput
                 name='Address2'
                 label='Apt #'
@@ -52,10 +58,10 @@ export const Contact = () => {
             </Col>
           </Row>
           <Row>
-            <Col span={12}>
+            <Col span={12} className='pt-050'>
               <FormInput name='City' initialValue={contact.City} element={contact} setElement={setContact} required />
             </Col>
-            <Col span={6} className='pl-100'>
+            <Col span={6} className='pl-100 pt-050'>
               <FormSelect
                 name='State'
                 initialValue={contact.State}
@@ -65,14 +71,35 @@ export const Contact = () => {
                 required
               />
             </Col>
-            <Col span={6} className='pl-100'>
-              <FormInput name='Zip' initialValue={contact.Zip} element={contact} setElement={setContact} required />
+            <Col span={6} className='pl-100 pt-050'>
+              <FormInput
+                name='Zip'
+                initialValue={contact.Zip}
+                element={contact}
+                setElement={setContact}
+                validator={validateZip}
+                required
+              />
             </Col>
             <Col span={12}>
-              <FormInput name='Phone' initialValue={contact.Phone} element={contact} setElement={setContact} required />
+              <FormInput
+                name='Phone'
+                initialValue={contact.Phone}
+                element={contact}
+                setElement={setContact}
+                validator={validatePhone}
+                required
+              />
             </Col>
-            <Col span={24}>
-              <FormInput name='Email' initialValue={contact.Email} element={contact} setElement={setContact} required />
+            <Col span={24} className='pt-050'>
+              <FormInput
+                name='Email'
+                initialValue={contact.Email}
+                element={contact}
+                setElement={setContact}
+                validator={validateEmail}
+                required
+              />
             </Col>
           </Row>
         </Col>

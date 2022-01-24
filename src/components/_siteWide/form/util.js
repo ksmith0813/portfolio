@@ -1,11 +1,5 @@
 import { addCommasToNumber, spacesToProperty } from 'utils/general'
 
-export const getRules = (property, required) => {
-  let propertyName = property
-  if (Array.isArray(property)) propertyName = property[1]
-  return { required: required, message: required && getRequiredMessage(propertyName) }
-}
-
 export const getError = (property, element) => {
   if (!element) return null
   if (!element.errors) element.errors = []
@@ -28,6 +22,8 @@ export const validateRequiredFields = (form, optionalFields = []) => {
     if (optionalFields.includes(k)) return
     if (!form[k]) form.errors.push({ property: k, message: getRequiredMessage(k) })
   })
+
+  return form
 }
 
 export const handleFormChange = (property, nestedProperty, value, element, isNumber = false) => {

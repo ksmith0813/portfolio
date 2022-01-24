@@ -13,6 +13,7 @@ export const FormSelect = ({
   message,
   validator,
   customHandler,
+  disabled,
   label = null,
   property = null,
   section = null,
@@ -49,7 +50,11 @@ export const FormSelect = ({
         {select}
       </Form.Item>
     )
-  } else {
-    return <Form.Item name={name}>{select}</Form.Item>
   }
+
+  return (
+    <Form.Item name={name} help={disabled && ''}>
+      {select}
+    </Form.Item>
+  )
 }

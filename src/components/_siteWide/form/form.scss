@@ -1,15 +1,15 @@
 .label {
-  color: var(--gray-600);
+  color: var(--gray-500);
   font-weight: normal;
   position: absolute;
   pointer-events: none;
-  left: 12px;
+  left: 11px;
   transition: 0.2s ease all;
   &.default {
-    top: 13px;
+    top: 11px;
   }
   &.float {
     font-size: 0.8em;
-    top: 6px;
+    top: 5px;
   }
 }

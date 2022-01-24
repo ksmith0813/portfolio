@@ -65,5 +65,9 @@ export const FormMaskInput = ({
     )
   }
 
-  return <Form.Item name={name}>{input}</Form.Item>
+  return (
+    <Form.Item name={name} help={disabled && ''}>
+      {input}
+    </Form.Item>
+  )
 }

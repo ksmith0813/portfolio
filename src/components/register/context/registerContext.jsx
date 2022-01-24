@@ -1,5 +1,10 @@
 import React, { useState, useContext, createContext } from 'react'
 import { showMessage } from 'utils/general'
+import { validateRequiredFields } from 'components/_siteWide/form/util'
+import { validateProperty } from 'components/_siteWide/form/validators/_baseValidator'
+import { validateZip } from 'components/_siteWide/form/validators/validateZip'
+import { validatePhone } from 'components/_siteWide/form/validators/validatePhone'
+import { validateEmail } from 'components/_siteWide/form/validators/validateEmail'
 
 const RegisterContext = createContext(null)
 
@@ -15,21 +20,25 @@ export const RegisterContextProvider = ({ children }) => {
     Zip: '',
     Email: '',
     Phone: '',
+    errors: [],
   })
   const [movie, setMovie] = useState({
     FavoriteMovie: '',
     FavoriteGenre: '',
+    errors: [],
   })
   const [music, setMusic] = useState({
     FavoriteBand: '',
     FavoriteSong: '',
     Instruments: [],
     SoundCloud: '',
+    errors: [],
   })
   const [travel, setTravel] = useState({
     FavoriteCountry: '',
     FavoriteCity: '',
     PlacesVisited: [],
+    errors: [],
   })
 
   const searchMovies = (search) => {
@@ -37,7 +46,8 @@ export const RegisterContextProvider = ({ children }) => {
   }
 
   const nextStep = (form) => {
-    if (!handleFormUpdate(form)) {
+    console.log(form)
+    if (!handleFormUpdate()) {
       showMessage('Please fix all form errors.')
       return
     }
@@ -47,69 +57,55 @@ export const RegisterContextProvider = ({ children }) => {
 
   const previousStep = () => setStep(step - 1)
 
-  const handleFormUpdate = (form) => {
+  const handleFormUpdate = () => {
     let isValid = true
     switch (step) {
       case 1:
-        isValid = handleMoveUpdate(form)
+        isValid = handleMovieUpdate()
         break
       case 2:
-        isValid = handleMusicUpdate(form)
+        isValid = handleMusicUpdate()
         break
       case 3:
-        isValid = handleTravelUpdate(form)
+        isValid = handleTravelUpdate()
         break
       default:
-        isValid = handleContactUpdate(form)
+        isValid = handleContactUpdate()
         break
     }
 
     return isValid
   }
 
-  const handleMoveUpdate = (form) => {
+  const handleMovieUpdate = () => {
     let copy = { ...movie }
-    copy.FavoriteMovie = form.FavoriteMovie
-    copy.FavoriteGenre = form.FavoriteGenre
-    // TODO - valid
+    copy = validateRequiredFields(copy)
     setMovie(copy)
-    return true
+    return !copy.errors.length
   }
 
-  const handleMusicUpdate = (form) => {
+  const handleMusicUpdate = () => {
     let copy = { ...music }
-    copy.FavoriteBand = form.FavoriteBand
-    copy.FavoriteSong = form.FavoriteSong
-    copy.Instruments = form.Instruments
-    copy.SoundCloud = form.SoundCloud
-    // TODO - valid
-    return true
+    copy = validateRequiredFields(music, ['Instruments', 'SoundCloud'])
+    setMusic(music)
+    return !copy.errors.length
   }
 
-  const handleTravelUpdate = (form) => {
+  const handleTravelUpdate = () => {
     let copy = { ...travel }
-    copy.FavoriteCountry = form.FavoriteCountry
-    copy.FavoriteCity = form.FavoriteCity
-    copy.PlacesVisited = form.PlacesVisited
-    // TODO - valid
-    setMovie(copy)
-    return true
+    copy = validateRequiredFields(contact, ['PlacesVisited'])
+    setTravel(travel)
+    return !copy.errors.length
   }
 
-  const handleContactUpdate = (form) => {
+  const handleContactUpdate = () => {
     let copy = { ...contact }
-    copy.FirstName = form.FirstName
-    copy.LastName = form.LastName
-    copy.Address = form.Address
-    copy.Address2 = form.Address2
-    copy.City = form.City
-    copy.State = form.State
-    copy.Zip = form.Zip
-    copy.Email = form.Email
-    copy.Phone = form.Phone
-    // TODO - valid
-    setMovie(copy)
-    return true
+    copy = validateRequiredFields(copy, ['Address2'])
+    validateProperty(validateZip, copy, 'Zip', null, true)
+    validateProperty(validatePhone, copy, 'Phone', null, true)
+    validateProperty(validateEmail, copy, 'Email', null, true)
+    setContact(copy)
+    return !copy.errors.length
   }
 
   const complete = () => showMessage('Your information has been successfully submitted!', 'success')
