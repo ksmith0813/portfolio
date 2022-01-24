@@ -6,8 +6,8 @@ TODO list:
 
 - Create Dashboard component contents
 
-- Look into Redux, I am currently using React context
+- Implement Redux, I am currently using React context
 
 - Add theming
 
-- Add Apollo Client
+- Add Apollo Client, I am currently using axios
