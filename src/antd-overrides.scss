@@ -13,12 +13,12 @@
 }
 
 .ant-form .ant-select.ant-select-multiple .ant-select-selection-overflow-item {
-    margin-top: .25em;
+  margin-top: 0.25em;
 }
 
 .ant-form .ant-select.ant-select-auto-complete .ant-select-selector .ant-select-selection-search-input {
-    padding: 15px 10px 4px 5px !important;
-    min-height: 55px !important;
+  padding: 15px 10px 4px 5px !important;
+  min-height: 55px !important;
 }
 
 .ant-table-body tr:nth-child(odd) td {
@@ -82,7 +82,8 @@
 }
 
 .ant-tag-hidden {
-  display: block !important;
+  display: initial !important;
+  padding: 3.35px 7px !important;
 }
 
 .ant-tag-close-icon:hover {
@@ -95,5 +96,5 @@
 }
 
 .ant-steps-item-icon .ant-steps-icon {
-  top: -2.5px !important
+  top: -2.5px !important;
 }
