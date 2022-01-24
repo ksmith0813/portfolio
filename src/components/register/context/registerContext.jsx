@@ -112,10 +112,6 @@ export const RegisterContextProvider = ({ children }) => {
     return true
   }
 
-  const handleErrors = (formData, errors) => {
-    // TODO
-  }
-
   const complete = () => showMessage('Your information has been successfully submitted!', 'success')
 
   return (
@@ -136,7 +132,6 @@ export const RegisterContextProvider = ({ children }) => {
         searchMovies,
         nextStep,
         previousStep,
-        handleErrors,
         complete,
       }}
     >

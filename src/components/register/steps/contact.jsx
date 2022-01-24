@@ -7,11 +7,10 @@ import { useRegisterContext } from '../context/registerContext'
 import { Actions } from './actions'
 
 export const Contact = () => {
-  const { contact, setContact, nextStep, handleErrors } = useRegisterContext()
+  const { contact, setContact, nextStep } = useRegisterContext()
   const [form] = Form.useForm()
-
   return (
-    <Form form={form} onFinish={(data) => nextStep(data)} onFinishFailed={(errors) => handleErrors(contact, errors)}>
+    <Form form={form} onFinish={(data) => nextStep(data)}>
       <div className='steps-content'>
         <Col span={13}>
           <Row>
