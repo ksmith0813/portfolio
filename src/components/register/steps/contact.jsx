@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form, Row, Col } from 'antd'
+import { states } from 'constants/states'
 import { FormInput } from 'components/_siteWide/form/formInput'
+import { FormSelect } from 'components/_siteWide/form/formSelect'
 import { useRegisterContext } from '../context/registerContext'
 import { Actions } from './actions'
 
@@ -55,7 +57,14 @@ export const Contact = () => {
               <FormInput name='City' initialValue={contact.City} element={contact} setElement={setContact} required />
             </Col>
             <Col span={6} className='pl-100'>
-              <FormInput name='State' initialValue={contact.State} element={contact} setElement={setContact} required />
+              <FormSelect
+                name='State'
+                initialValue={contact.State}
+                element={contact}
+                setElement={setContact}
+                options={states}
+                required
+              />
             </Col>
             <Col span={6} className='pl-100'>
               <FormInput name='Zip' initialValue={contact.Zip} element={contact} setElement={setContact} required />
