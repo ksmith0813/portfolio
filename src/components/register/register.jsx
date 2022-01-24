@@ -47,7 +47,7 @@ const RegisterContent = () => {
   return (
     <div className='register-container'>
       <Row justify='center'>
-        <Col span='10'>
+        <Col span={11}>
           <div className='fs-150 pb-300 text-center'>
             <span>Please complete the registration form below</span>
           </div>

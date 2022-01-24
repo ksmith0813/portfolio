@@ -89,9 +89,8 @@ const MovieContent = () => {
         <Col className='p-100'>
           <DataItem
             label='Favorite Genres'
-            classes='pt-025'
             children={movie.FavoriteGenres.map((g, i) => (
-              <Tag color='blue' key={i}>
+              <Tag color='blue' key={i} className='item-tag-list'>
                 {g}
               </Tag>
             ))}
@@ -121,9 +120,8 @@ const MusicContent = () => {
         <Col className='p-100'>
           <DataItem
             label='Instruments'
-            classes='pt-025'
             children={music.Instruments.map((g, i) => (
-              <Tag color='blue' key={i}>
+              <Tag color='blue' key={i} className='item-tag-list'>
                 {g}
               </Tag>
             ))}
@@ -158,9 +156,8 @@ const TravelContent = () => {
         <Col className='p-100'>
           <DataItem
             label='Places Visited'
-            classes='pt-025'
             children={travel.PlacesVisited.map((g, i) => (
-              <Tag color='blue' key={i}>
+              <Tag color='blue' key={i} className='item-tag-list'>
                 {g}
               </Tag>
             ))}

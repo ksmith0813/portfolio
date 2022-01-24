@@ -30,22 +30,26 @@
   margin-top: 3em;
 }
 
+.item-tag-list {
+  margin: .5em .5em 0 0 !important;
+}
+
 @media only screen and (max-width: 1440px) {
-  .ant-col-10 {
+  .ant-col-11 {
     flex: 0 0 100% !important;
     max-width: 100% !important;
   }
 }
 
 @media only screen and (max-width: 1680px) {
-  .ant-col-10 {
+  .ant-col-11 {
     flex: 0 0 70% !important;
     max-width: 70% !important;
   }
 }
 
 @media only screen and (max-width: 1920px) {
-  .ant-col-10 {
+  .ant-col-11 {
     flex: 0 0 70% !important;
     max-width: 70% !important;
   }

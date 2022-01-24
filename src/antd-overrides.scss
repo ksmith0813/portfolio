@@ -5,11 +5,15 @@
 
 .ant-form .ant-select .ant-select-selector {
   padding: 20px 10px 4px 15px !important;
-  height: 55px !important;
+  min-height: 55px !important;
 }
 
 .ant-form .ant-select.ant-select-multiple .ant-select-selection-item {
   margin-top: 6px;
+}
+
+.ant-form .ant-select.ant-select-multiple .ant-select-selection-overflow-item {
+    margin-top: .25em;
 }
 
 .ant-table-body tr:nth-child(odd) td {
