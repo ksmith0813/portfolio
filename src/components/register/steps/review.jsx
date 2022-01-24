@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col, Form, Tag, Card } from 'antd'
-import { UserOutlined, VideoCameraOutlined, AudioOutlined, CarOutlined, SaveOutlined } from '@ant-design/icons'
+import { UserOutlined, VideoCameraOutlined, AudioOutlined, CarOutlined } from '@ant-design/icons'
 import { useRegisterContext } from '../context/registerContext'
 import { Actions } from './actions'
 import { DataItem } from 'components/_siteWide/layout/dataItem'
@@ -97,6 +97,8 @@ const MovieContent = () => {
         <Col className='p-100'>
           <DataItem label='Favorite Movie' children={movie.FavoriteMovie} />
         </Col>
+      </Row>
+      <Row>
         <Col className='p-100'>
           <DataItem
             label='Favorite Genres'
