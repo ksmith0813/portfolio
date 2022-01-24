@@ -1,6 +1,8 @@
 .register-container {
+  height: calc(100vh -55px);
+  overflow: auto;
   padding: 2em;
-  margin-top: 5em;
+  padding-top: 3em;
 }
 
 .steps-content {
@@ -18,4 +20,25 @@
   display: flex;
   justify-content: center;
   margin-top: 3em;
+}
+
+@media only screen and (max-width: 1440px) {
+  .ant-col-10 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .ant-col-10 {
+    flex: 0 0 70% !important;
+    max-width: 70% !important;
+  }
+}
+
+@media only screen and (max-width: 1920px) {
+  .ant-col-10 {
+    flex: 0 0 70% !important;
+    max-width: 70% !important;
+  }
 }
