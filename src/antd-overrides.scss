@@ -71,8 +71,12 @@
   color: #ffffff;
 }
 
+.ant-tag {
+  padding: 0px 7px !important;
+}
+
 .ant-tag-hidden {
-  display: inline !important;
+  display: block !important;
 }
 
 .ant-tag-close-icon:hover {

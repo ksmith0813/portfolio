@@ -7,7 +7,7 @@ export const Music = () => {
   const { nextStep } = useRegisterContext()
   const [form] = Form.useForm()
   return (
-    <Form form={form} onFinish={(data) => nextStep(data)}>
+    <Form form={form} onFinish={() => nextStep()}>
       <div className='steps-content'></div>
       <Actions form={form} />
     </Form>
