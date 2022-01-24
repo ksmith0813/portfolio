@@ -16,6 +16,11 @@
     margin-top: .25em;
 }
 
+.ant-form .ant-select.ant-select-auto-complete .ant-select-selector .ant-select-selection-search-input {
+    padding: 15px 10px 4px 5px !important;
+    min-height: 55px !important;
+}
+
 .ant-table-body tr:nth-child(odd) td {
   background-color: var(--gray-100);
 }

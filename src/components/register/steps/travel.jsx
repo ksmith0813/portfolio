@@ -5,12 +5,13 @@ import { FormSelect } from 'components/_siteWide/form/formSelect'
 import { useRegisterContext } from '../context/registerContext'
 import { Actions } from './actions'
 import { countries } from 'constants/countries'
+import { FormAutoComplete } from 'components/_siteWide/form/formAutoComplete'
 
 export const Travel = () => {
   const { travel, setTravel, nextStep } = useRegisterContext()
   const [form] = Form.useForm()
   return (
-    <Form form={form} onFinish={() => nextStep()}>
+    <Form form={form} onFinish={() => nextStep()} onFinishFailed={() => nextStep()}>
       <div className='steps-content'>
         <Col span={14}>
           <Row>
@@ -18,11 +19,12 @@ export const Travel = () => {
               Travel Info
             </Col>
             <Col span={24} className='pt-200'>
-              <FormInput
+              <FormAutoComplete
                 name='FavoriteCountry'
                 initialValue={travel.FavoriteCountry}
                 element={travel}
                 setElement={setTravel}
+                options={countries}
                 required
               />
             </Col>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AutoComplete, Form } from 'antd'
 import { spacesToProperty } from 'utils/general'
 import { validateProperty } from './validators/_baseValidator'
@@ -21,6 +21,7 @@ export const FormAutoComplete = ({
   width = '100%',
   ...others
 }) => {
+  const [foundOptions, setFoundOptions] = useState(options)
   const error = element && getError(name, element)
 
   const onChange = (value) => {
@@ -40,8 +41,17 @@ export const FormAutoComplete = ({
       <FormFloatLabel label={label || spacesToProperty(name)} name={name} inputValue={initialValue}>
         <AutoComplete
           value={initialValue}
-          options={options}
+          options={foundOptions}
           onChange={(value) => onChange(value)}
+          onSearch={(v) => {
+            if (v) {
+              v = v.toLowerCase()
+              const filteredOptions = options.filter((o) => o.value.toLowerCase().includes(v))
+              setFoundOptions(filteredOptions)
+            } else {
+              setFoundOptions(options)
+            }
+          }}
           style={{ width: width }}
           {...others}
         />
