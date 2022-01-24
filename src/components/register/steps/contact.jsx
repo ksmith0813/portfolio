@@ -82,7 +82,7 @@ export const Contact = () => {
                 required
               />
             </Col>
-            <Col span={12}>
+            <Col span={12} className='pt-050'>
               <FormInput
                 name='Phone'
                 initialValue={contact.Phone}
