@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect, forwardRef } from 'react'
 import { Input, Form } from 'antd'
 import { spacesToProperty } from 'utils/general'
 import { validateProperty } from './validators/_baseValidator'
@@ -20,9 +20,16 @@ export const FormInput = ({
   required = false,
   isNumber = false,
   isPassword,
+  focus,
   width = '100%',
   ...others
 }) => {
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    focus && inputRef.current?.focus()
+  }, [focus])
+
   const error = element && getError(name, element)
 
   const onChange = (value) => {
@@ -32,24 +39,14 @@ export const FormInput = ({
     setElement(updated)
   }
 
-  let inputContent = isPassword ? (
-    <Input.Password
-      value={initialValue}
-      disabled={disabled}
-      onChange={onChange}
-      autoComplete='off'
-      className={`${noFloat ? 'no-float' : ''}`}
-      style={{ width: width }}
-      {...others}
-    />
-  ) : (
-    <Input
+  let inputContent = (
+    <ControlInput
+      ref={inputRef}
       value={initialValue}
       disabled={disabled}
       onChange={(e) => onChange(e.target.value)}
-      autoComplete='off'
-      className={`${noFloat ? 'no-float' : ''}`}
-      style={{ width: width }}
+      noFloat={noFloat}
+      width={width}
       {...others}
     />
   )
@@ -80,3 +77,29 @@ export const FormInput = ({
     </Form.Item>
   )
 }
+
+const ControlInput = forwardRef((props, ref) => {
+  return props.isPassword ? (
+    <Input.Password
+      ref={ref}
+      value={props.value}
+      disabled={props.disabled}
+      onChange={props.onChange}
+      autoComplete='off'
+      className={`${props.noFloat ? 'no-float' : ''}`}
+      style={{ width: props.width }}
+      {...props.others}
+    />
+  ) : (
+    <Input
+      ref={ref}
+      value={props.value}
+      disabled={props.disabled}
+      onChange={props.onChange}
+      autoComplete='off'
+      className={`${props.noFloat ? 'no-float' : ''}`}
+      style={{ width: props.width }}
+      {...props.others}
+    />
+  )
+})

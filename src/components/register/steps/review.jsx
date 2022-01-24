@@ -1,5 +1,6 @@
 import React from 'react'
-import { Row, Col, Form, Tag } from 'antd'
+import { Row, Col, Form, Tag, Card } from 'antd'
+import { UserOutlined, VideoCameraOutlined, AudioOutlined, CarOutlined, SaveOutlined } from '@ant-design/icons'
 import { useRegisterContext } from '../context/registerContext'
 import { Actions } from './actions'
 import { DataItem } from 'components/_siteWide/layout/dataItem'
@@ -30,10 +31,15 @@ export const Review = () => {
 const ContactContent = () => {
   const { contact } = useRegisterContext()
   return (
-    <div className='section'>
-      <Row>
-        <Col className='fs-125 p-075 medium-text'>Contact</Col>
-      </Row>
+    <Card
+      title={
+        <>
+          <UserOutlined className='card-title-icon' color='blue'></UserOutlined>
+          <span className='pl-150'>Contact</span>
+        </>
+      }
+      className='section'
+    >
       <Row>
         <Col className='p-100'>
           <DataItem label='First Name' children={contact.FirstName} />
@@ -71,17 +77,22 @@ const ContactContent = () => {
           <DataItem label='Email' children={contact.Email} />
         </Col>
       </Row>
-    </div>
+    </Card>
   )
 }
 
 const MovieContent = () => {
   const { movie } = useRegisterContext()
   return (
-    <div className='section'>
-      <Row>
-        <Col className='fs-125 p-075 medium-text'>Movies</Col>
-      </Row>
+    <Card
+      title={
+        <>
+          <VideoCameraOutlined className='card-title-icon' color='blue'></VideoCameraOutlined>
+          <span className='pl-150'>Movies</span>
+        </>
+      }
+      className='section'
+    >
       <Row>
         <Col className='p-100'>
           <DataItem label='Favorite Movie' children={movie.FavoriteMovie} />
@@ -97,17 +108,22 @@ const MovieContent = () => {
           />
         </Col>
       </Row>
-    </div>
+    </Card>
   )
 }
 
 const MusicContent = () => {
   const { music } = useRegisterContext()
   return (
-    <div className='section'>
-      <Row>
-        <Col className='fs-125 p-075 medium-text'>Music</Col>
-      </Row>
+    <Card
+      title={
+        <>
+          <AudioOutlined className='card-title-icon' color='blue'></AudioOutlined>
+          <span className='pl-150'>Music</span>
+        </>
+      }
+      className='section'
+    >
       <Row>
         <Col className='p-100'>
           <DataItem label='Favorite Band' children={music.FavoriteBand} />
@@ -133,17 +149,22 @@ const MusicContent = () => {
           <DataItem label='SoundCloud' children={music.SoundCloud} />
         </Col>
       </Row>
-    </div>
+    </Card>
   )
 }
 
 const TravelContent = () => {
   const { travel } = useRegisterContext()
   return (
-    <div className='section'>
-      <Row>
-        <Col className='fs-125 p-075 medium-text'>Travel</Col>
-      </Row>
+    <Card
+      title={
+        <>
+          <CarOutlined className='card-title-icon' color='blue'></CarOutlined>
+          <span className='pl-150'>Travel</span>
+        </>
+      }
+      className='section'
+    >
       <Row>
         <Col className='p-100'>
           <DataItem label='Favorite Country' children={travel.FavoriteCountry} />
@@ -164,6 +185,6 @@ const TravelContent = () => {
           />
         </Col>
       </Row>
-    </div>
+    </Card>
   )
 }

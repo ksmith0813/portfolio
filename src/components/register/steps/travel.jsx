@@ -26,6 +26,7 @@ export const Travel = () => {
                 setElement={setTravel}
                 options={countries}
                 required
+                focus
               />
             </Col>
             <Col span={24} className='pt-200'>

@@ -130,6 +130,20 @@ body {
   color: var(--gray-600)
 }
 
+.item-tag-list {
+  margin: .5em .5em 0 0 !important;
+  border-radius: var(--container-border-radius) !important;
+}
+
+
+.card-title-icon svg {
+  position: absolute;
+  top: .4em;
+  font-size: 2em;
+  padding-right: .5em;
+  color: var(--theme-color-1);
+}
+
 .flex {
   display: flex;
 }

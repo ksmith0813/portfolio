@@ -27,6 +27,7 @@ export const Contact = () => {
                 element={contact}
                 setElement={setContact}
                 required
+                focus
               />
             </Col>
             <Col span={24} className='pt-050'>

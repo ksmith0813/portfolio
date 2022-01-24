@@ -19,7 +19,7 @@ export const Actions = ({ form = {} }) => {
         )}
         {step === 4 && (
           <Button type='primary' size='large' onClick={() => complete()}>
-            Done
+            Submit
           </Button>
         )}
       </div>

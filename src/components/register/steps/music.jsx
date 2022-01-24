@@ -24,6 +24,7 @@ export const Music = () => {
                 element={music}
                 setElement={setMusic}
                 required
+                focus
               />
             </Col>
             <Col span={24} className='pt-200'>

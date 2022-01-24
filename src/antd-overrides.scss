@@ -1,10 +1,10 @@
 .ant-form .ant-input {
-  padding: 20px 12px 4px 15px !important;
+  padding: 16px 12px 4px 15px !important;
   height: 55px !important;
 }
 
 .ant-form .ant-select .ant-select-selector {
-  padding: 20px 10px 4px 15px !important;
+  padding: 16px 10px 10px 15px !important;
   min-height: 55px !important;
 }
 
@@ -94,4 +94,8 @@
 
 .ant-steps-item-icon .ant-steps-icon {
   top: -2.5px !important;
+}
+
+.ant-card-head {
+    border-bottom: 1px solid var(--gray-300) !important;
 }
