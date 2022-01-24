@@ -13,7 +13,7 @@ export const Contact = () => {
   return (
     <Form form={form} onFinish={(data) => nextStep(data)} onFinishFailed={(errors) => handleErrors(contact, errors)}>
       <div className='steps-content'>
-        <Col span={12}>
+        <Col span={13}>
           <Row>
             <Col span={24}>
               <FormInput

@@ -24,7 +24,7 @@ export const FormTextArea = ({
   const error = element && getError(name, element)
 
   const onChange = (value) => {
-    let updated = handleFormChange(name, property, value, element, isNumber)
+    let updated = handleFormChange(name, property, value, element)
     customHandler && customHandler(value, updated)
     validateProperty(validator, updated, name, property, required, section)
     setElement(updated)

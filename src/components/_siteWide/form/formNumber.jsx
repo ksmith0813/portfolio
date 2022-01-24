@@ -18,14 +18,13 @@ export const FormNumber = ({
   section = null,
   noFloat = false,
   required = false,
-  isNumber = false,
   isCurrency = false,
   width = '100%',
 }) => {
   const error = element && getError(name, element)
 
   const onChange = (value) => {
-    let updated = handleFormChange(name, property, value, element, isNumber)
+    let updated = handleFormChange(name, property, value, element, true)
     customHandler && customHandler(value, updated)
     validateProperty(validator, updated, name, property, required, section)
     setElement(updated)
