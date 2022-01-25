@@ -6,7 +6,7 @@ import kevin from 'assets/kevin.jpg'
 import soundCloud from 'assets/sound-cloud.png'
 
 export const Navigation = () => {
-  const [activePage, setActivePage] = useState()
+  const [activePage, setActivePage] = useState('home')
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -16,11 +16,7 @@ export const Navigation = () => {
   }, [location.pathname, navigate])
 
   const SiteLink = ({ page, title }) => (
-    <Link
-      to={`/${page}`}
-      onClick={() => setActivePage(page)}
-      className={`site-link ${activePage === page ? 'active' : ''}`}
-    >
+    <Link to={`/${page}`} className={`site-link ${activePage === page ? 'active' : ''}`}>
       {title}
     </Link>
   )
@@ -54,12 +50,17 @@ export const Navigation = () => {
         <div>
           <Avatar src={kevin} />
           <span className='pl-075 pr-200'>Kevin Smith</span>
-          <SiteLink page='home' title='Home' />
-          <SiteLink page='dashboard' title='Dashboard' />
-          <SiteLink page='register' title='Register' />
-          <SiteLink page='grid' title='Grid' />
-          <SiteLink page='shop' title='Shop' />
-          <SiteLink page='visuals' title='Visuals' />
+          {activePage !== 'home' && (
+            <>
+              <SiteLink page='home' title='Home' />
+              <SiteLink page='dashboard' title='Dashboard' />
+              <SiteLink page='register' title='Register' />
+              <SiteLink page='grid' title='Grid' />
+              <SiteLink page='shop' title='Shop' />
+              <SiteLink page='visuals' title='Visuals' />
+              <SiteLink page='about' title='About' />
+            </>
+          )}
         </div>
         {externalLinks}
       </div>

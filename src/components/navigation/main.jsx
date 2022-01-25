@@ -4,10 +4,11 @@ import { Result } from 'antd'
 import { Navigation } from 'components/navigation/navigation'
 import { Home } from 'components/home/home'
 import { Dashboard } from 'components/dashboard/dashboard'
+import { Register } from 'components/register/register'
+import { Grid } from 'components/grid/grid'
 import { Shop } from 'components/shop/shop'
 import { Visuals } from 'components/visuals/visuals'
-import { Grid } from 'components/grid/grid'
-import { Register } from 'components/register/register'
+import { About } from 'components/about/about'
 
 export const Main = () => (
   <BrowserRouter>
@@ -15,10 +16,11 @@ export const Main = () => (
       <Route path='/' element={<Navigation />}>
         <Route path='home' element={<Home />} />
         <Route path='dashboard' element={<Dashboard />} />
+        <Route path='register' element={<Register />} />
+        <Route path='grid' element={<Grid />} />
         <Route path='shop' element={<Shop />} />
         <Route path='visuals' element={<Visuals />} />
-        <Route path='grid' element={<Grid />} />
-        <Route path='register' element={<Register />} />
+        <Route path='about' element={<About />} />
         <Route
           path='*'
           element={

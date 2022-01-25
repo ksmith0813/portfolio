@@ -1,27 +1,86 @@
-import React from 'react'
-import kevin from 'assets/kevin.jpg'
-import signature from 'assets/signature.png'
+import React, { useEffect, useState } from 'react'
+import { CircleMenu, CircleMenuItem } from 'react-circular-menu'
+import { useNavigate } from 'react-router-dom'
+import {
+  LoadingOutlined,
+  DashboardOutlined,
+  FormOutlined,
+  ShoppingCartOutlined,
+  TableOutlined,
+  BarChartOutlined,
+  UserOutlined,
+} from '@ant-design/icons'
 import './home.scss'
 
-export const Home = () => (
-  <div className='page-center'>
-    <div className='home-cover-image' />
-    <div className='bio-container'>
-      <div className='description'>
-        <span className='fs-125'>
-          <b>Bio</b>
-        </span>
-        <div className='bio-signature'>
-          Experienced Software Engineer with a demonstrated history of success in the computer software industry. Strong
-          engineering professional skilled in React, JavaScript, HTML, CSS, C#, .NET, Python, MongoDB, SQL Server. I
-          love hanging out on the beach and getting lost in the woods and canyons. Traveling the world and going on
-          endless adventures will forever keep me moving forward. Music has always been and always will be a big part of
-          my life. I am lucky enough to have a home music studio enabling me to write, create, and record my own music.
-          Let's crank some code and rock out!
-          <img className='signature' src={signature} alt='' />
-        </div>
+export const Home = () => {
+  const [startAngle, setStartAngle] = useState(-90)
+  const [activePage, setActivePage] = useState()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const centerControl = document.querySelector('.home > div > div:nth-child(2)')
+    centerControl.click()
+  }, [])
+
+  const goToPage = (page) => {
+    switch (page) {
+      case 'dashboard':
+        setStartAngle(270)
+        break
+      case 'register':
+        setStartAngle(210)
+        break
+      case 'grid':
+        setStartAngle(150)
+        break
+      case 'shop':
+        setStartAngle(90)
+        break
+      case 'visuals':
+        setStartAngle(30)
+        break
+      default:
+        setStartAngle(-30)
+        break
+    }
+
+    setTimeout(() => setActivePage(page), 700)
+    setTimeout(() => navigate(`../${page}`), 2000)
+  }
+
+  return (
+    <>
+      <div className='home-cover-image' />
+      <div className='page-center home'>
+        <span className='title'>Home</span>
+        <CircleMenu
+          menuActive={1}
+          startAngle={startAngle}
+          rotationAngle={360}
+          itemSize={10}
+          radius={20}
+          rotationAngleInclusive={false}
+        >
+          <CircleMenuItem onClick={() => goToPage('dashboard')} tooltip='Dashboard' tooltipPlacement='top'>
+            {activePage === 'dashboard' ? <LoadingOutlined /> : <DashboardOutlined />}
+          </CircleMenuItem>
+          <CircleMenuItem onClick={() => goToPage('register')} tooltip='Register' tooltipPlacement='top'>
+            {activePage === 'register' ? <LoadingOutlined /> : <FormOutlined />}
+          </CircleMenuItem>
+          <CircleMenuItem onClick={() => goToPage('grid')} tooltip='Grid' tooltipPlacement='top'>
+            {activePage === 'grid' ? <LoadingOutlined /> : <TableOutlined />}
+          </CircleMenuItem>
+          <CircleMenuItem onClick={() => goToPage('shop')} tooltip='Shop' tooltipPlacement='top'>
+            {activePage === 'shop' ? <LoadingOutlined /> : <ShoppingCartOutlined />}
+          </CircleMenuItem>
+          <CircleMenuItem onClick={() => goToPage('visuals')} tooltip='Visuals' tooltipPlacement='top'>
+            {activePage === 'visuals' ? <LoadingOutlined /> : <BarChartOutlined />}
+          </CircleMenuItem>
+          <CircleMenuItem onClick={() => goToPage('about')} tooltip='About' tooltipPlacement='top'>
+            {activePage === 'about' ? <LoadingOutlined /> : <UserOutlined />}
+          </CircleMenuItem>
+        </CircleMenu>
       </div>
-      <img className='me-image' src={kevin} alt='' />
-    </div>
-  </div>
-)
+    </>
+  )
+}

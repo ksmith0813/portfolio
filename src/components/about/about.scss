@@ -1,0 +1,66 @@
+.bio-cover-image {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: url(../../assets/arch.jpg) no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+.bio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5em;
+  position: absolute;
+  .description {
+    width: 30%;
+    height: 700px;
+    font-size: 1.95em;
+    background-color: #95cfff;
+    border-radius: var(--button-border-radius);
+    text-align: justify;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-top: 1.5em;
+    margin-right: 3em;
+  }
+}
+.me-image {
+  border-radius: 50%;
+  height: 400px;
+}
+.bio-signature {
+  position: relative;
+  height: 100%;
+}
+.signature {
+  bottom: 3em;
+  right: -0.5em;
+  position: absolute;
+}
+
+@media only screen and (max-width: 1920px) {
+  .bio-container .description {
+    font-size: 1.65em;
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .bio-container .description {
+    font-size: 1.54em;
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .bio-container .description {
+    font-size: 1.43em;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .bio-container .description {
+    font-size: 1.2em;
+  }
+}
