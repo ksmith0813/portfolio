@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Input, Row, Col, Select, Switch, Spin } from 'antd'
-import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import { FrownOutlined, MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { arrayRemove, showMessage } from 'utils/general'
 import api from 'utils/api'
 import { userNames } from 'constants/users'
@@ -70,7 +70,14 @@ export const List = () => {
               <Spin />
             </div>
           )}
-          {!loading && !todos.length && <div className='fs-150 content-center'>Sorry, no results found my friend</div>}
+          {!loading && !todos.length && (
+            <div className='fs-150 content-center'>
+              <div>Sorry, no results found my friend</div>
+              <div className='pl-050'>
+                <FrownOutlined className='icon-blue' />
+              </div>
+            </div>
+          )}
           {!loading && todos.length > 0 && (
             <>
               <TodoHeader />
