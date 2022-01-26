@@ -1,9 +1,9 @@
 import moment from 'moment'
 import { message } from 'antd'
 
-export const arrayRemove = (arr, value) => {
+export const arrayRemove = (arr, property, value) => {
   for (var i = 0; i < arr.length; i++) {
-    if (arr[i] === value) {
+    if (arr[i][property] === value) {
       arr.splice(i, 1)
       return
     }

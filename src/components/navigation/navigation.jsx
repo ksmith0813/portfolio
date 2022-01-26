@@ -56,13 +56,14 @@ export const Navigation = () => {
               <SiteLink page='dashboard' title='Dashboard' />
               <SiteLink page='register' title='Register' />
               <SiteLink page='grid' title='Grid' />
+              <SiteLink page='list' title='List' />
               <SiteLink page='shop' title='Shop' />
               <SiteLink page='visuals' title='Visuals' />
               <SiteLink page='about' title='About' />
             </>
           )}
         </div>
-        {externalLinks}
+        {activePage !== 'home' && externalLinks}
       </div>
       <Outlet />
     </>

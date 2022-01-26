@@ -21,7 +21,7 @@ const getUrl = (api) => {
       config.url = 'https://randomuser.me/'
       break
     default:
-      config.url = ''
+      config.url = 'https://jsonplaceholder.typicode.com/'
       break
   }
 
@@ -61,7 +61,9 @@ const q = {
   saveProduct: (product) => post('products/save', 'product', product),
 
   // Random User API
-  getUsers: (params) => get(`api?${params}`, 'user')
+  getUsers: (params) => get(`api?${params}`, 'user'),
+
+  getTodos: () => get('todos', ''),
 }
 
 export default q

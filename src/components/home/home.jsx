@@ -9,6 +9,7 @@ import {
   TableOutlined,
   BarChartOutlined,
   UserOutlined,
+  UnorderedListOutlined,
 } from '@ant-design/icons'
 import './home.scss'
 
@@ -28,16 +29,19 @@ export const Home = () => {
         setStartAngle(270)
         break
       case 'register':
-        setStartAngle(210)
+        setStartAngle(220)
         break
       case 'grid':
-        setStartAngle(150)
+        setStartAngle(170)
+        break
+      case 'list':
+        setStartAngle(120)
         break
       case 'shop':
-        setStartAngle(90)
+        setStartAngle(70)
         break
       case 'visuals':
-        setStartAngle(30)
+        setStartAngle(20)
         break
       default:
         setStartAngle(-30)
@@ -69,6 +73,9 @@ export const Home = () => {
           </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('grid')} tooltip='Grid' tooltipPlacement='top'>
             {activePage === 'grid' ? <LoadingOutlined /> : <TableOutlined />}
+          </CircleMenuItem>
+          <CircleMenuItem onClick={() => goToPage('list')} tooltip='List' tooltipPlacement='top'>
+            {activePage === 'list' ? <LoadingOutlined /> : <UnorderedListOutlined />}
           </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('shop')} tooltip='Shop' tooltipPlacement='top'>
             {activePage === 'shop' ? <LoadingOutlined /> : <ShoppingCartOutlined />}

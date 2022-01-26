@@ -97,5 +97,18 @@
 }
 
 .ant-card-head {
-    border-bottom: 1px solid var(--gray-300) !important;
+  border-bottom: 1px solid var(--gray-300) !important;
+}
+
+.add-item.anticon:hover {
+  color: var(--theme-color-1);
+  cursor: pointer;
+}
+
+.remove-item.anticon {
+  color: var(--gray-400);
+  :hover {
+    color: var(--theme-error);
+    cursor: pointer;
+  }
 }

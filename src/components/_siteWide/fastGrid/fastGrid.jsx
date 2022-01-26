@@ -167,7 +167,7 @@ export const FastGrid = ({
         <Row className='filter-tags-container'>
           <Col flex={1}>
             {properties && filtersTags}
-            {!properties && <b className='fs-125'>Viewing All Records</b>}
+            {!properties && <span className='fs-125'>Viewing All Records</span>}
           </Col>
           {rightControls && <Col>{rightControls}</Col>}
         </Row>

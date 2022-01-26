@@ -6,6 +6,7 @@ import { Home } from 'components/home/home'
 import { Dashboard } from 'components/dashboard/dashboard'
 import { Register } from 'components/register/register'
 import { Grid } from 'components/grid/grid'
+import { List } from 'components/list/list'
 import { Shop } from 'components/shop/shop'
 import { Visuals } from 'components/visuals/visuals'
 import { About } from 'components/about/about'
@@ -18,6 +19,7 @@ export const Main = () => (
         <Route path='dashboard' element={<Dashboard />} />
         <Route path='register' element={<Register />} />
         <Route path='grid' element={<Grid />} />
+        <Route path='list' element={<List />} />
         <Route path='shop' element={<Shop />} />
         <Route path='visuals' element={<Visuals />} />
         <Route path='about' element={<About />} />

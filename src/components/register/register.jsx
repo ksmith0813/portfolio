@@ -54,9 +54,7 @@ const RegisterContent = () => {
     <div className='register-container'>
       <Row justify='center'>
         <Col span={11}>
-          <div className='fs-150 pb-300 text-center'>
-            <span>Please complete the registration form below</span>
-          </div>
+          <Row className='fs-150 pb-300 text-center'>Please complete the registration form below</Row>
           <Steps current={step}>
             {steps.map((item) => (
               <Step key={item.title} title={item.title} icon={item.icon} />
