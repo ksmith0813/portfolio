@@ -25,7 +25,6 @@ export const List = () => {
 
   const addTodo = () => {
     let copy = [...todos]
-    debugger
     copy.unshift({
       id: todos.length + 1,
       userId: null,
