@@ -10,19 +10,19 @@
     font-size: 5em;
   }
   > div > div:nth-child(2) {
-    background-color: var(--gray-600);
+    background-color: var(--gray-500);
   }
   > div > div:nth-child(2):hover {
-    background-color: var(--theme-color-1);
+    background-color: var(--theme-color-1-hover);
   }
   > div div:nth-child(3) div {
-    background-color: var(--gray-400);
+    background-color: var(--gray-300);
     .anticon-loading {
       color: var(--theme-color-1);
     }
   }
   > div div:nth-child(3) div:hover {
-    background-color: var(--theme-color-1);
+    background-color: var(--theme-color-1-hover);
   }
 }
 
@@ -30,7 +30,7 @@
   position: absolute;
   height: calc(100vh - 50px);
   width: 100%;
-  background: url(../../assets/texture.jpg) repeat;
+  background: linear-gradient(90deg, rgba(4,0,65,1) 0%, rgba(204,229,255,1) 50%, rgba(24,144,255,0.8636498544730392) 100%);
 }
 
 @media only screen and (max-width: 1920px) {

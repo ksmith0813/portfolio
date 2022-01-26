@@ -50,20 +50,16 @@ export const Navigation = () => {
         <div>
           <Avatar src={kevin} />
           <span className='pl-075 pr-200'>Kevin Smith</span>
-          {activePage !== 'home' && (
-            <>
-              <SiteLink page='home' title='Home' />
-              <SiteLink page='dashboard' title='Dashboard' />
-              <SiteLink page='register' title='Register' />
-              <SiteLink page='grid' title='Grid' />
-              <SiteLink page='list' title='List' />
-              <SiteLink page='shop' title='Shop' />
-              <SiteLink page='visuals' title='Visuals' />
-              <SiteLink page='about' title='About' />
-            </>
-          )}
+          <SiteLink page='home' title='Home' />
+          <SiteLink page='dashboard' title='Dashboard' />
+          <SiteLink page='register' title='Register' />
+          <SiteLink page='grid' title='Grid' />
+          <SiteLink page='list' title='List' />
+          <SiteLink page='shop' title='Shop' />
+          <SiteLink page='visuals' title='Visuals' />
+          <SiteLink page='about' title='About' />
         </div>
-        {activePage !== 'home' && externalLinks}
+        {externalLinks}
       </div>
       <Outlet />
     </>
