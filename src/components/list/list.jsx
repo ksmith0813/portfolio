@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Input, Row, Col, Select, Switch, Spin } from 'antd'
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
-import api from 'utils/api'
 import { arrayRemove, showMessage } from 'utils/general'
-import './list.scss'
+import api from 'utils/api'
 import { userNames } from 'constants/users'
+import './list.scss'
 
 const { Option } = Select
 
