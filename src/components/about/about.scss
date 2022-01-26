@@ -55,12 +55,14 @@
 
 @media only screen and (max-width: 1440px) {
   .bio-container .description {
-    font-size: 1.43em;
+    font-size: 1.3em;
+    height: 600px;
   }
 }
 
 @media only screen and (max-width: 1024px) {
   .bio-container .description {
-    font-size: 1.2em;
+    font-size: 1.1em;
+    height: 600px;
   }
 }

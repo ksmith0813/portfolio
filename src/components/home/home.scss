@@ -32,3 +32,52 @@
   width: 100%;
   background: url(../../assets/texture.jpg) repeat;
 }
+
+@media only screen and (max-width: 1920px) {
+  .home {
+    .title {
+      font-size: 3em;
+      top: 2em;
+    }
+    .anticon {
+      font-size: 3em;
+    }
+    > div {
+      margin-top: 3em;
+    }
+    > div > div:nth-child(2),
+    > div div:nth-child(3) div {
+      height: 8em;
+      width: 8em;
+    }
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .home {
+    .title {
+      display: inline;
+      font-size: 3em;
+      top: 2em;
+    }
+    .anticon {
+      font-size: 4em;
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .home {
+    .title {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .home {
+    .title {
+      display: none;
+    }
+  }
+}

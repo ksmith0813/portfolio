@@ -6,6 +6,16 @@
   height: 800px;
   overflow-y: auto;
   .user-select {
-      width: 100%;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1920px) {
+  .todo-list-container {
+    height: 500px;
+  }
+  .ant-col-12 {
+    flex: 0 0 80% !important;
+    max-width: 80% !important;
   }
 }
