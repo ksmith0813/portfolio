@@ -53,6 +53,7 @@ body {
   font-family: 'Roboto', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--gray-100) !important;
 }
 .page {
   height: calc(100vh - 50px);
