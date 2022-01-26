@@ -5,7 +5,10 @@
   border: 1px solid var(--gray-300);
   border-radius: var(--container-border-radius);
   height: 800px;
-  overflow-y: auto;
+  .todo-list-items {
+    height: 675px;
+    overflow-y: auto;
+  }
   .user-select {
     width: 100%;
   }
@@ -14,6 +17,10 @@
 @media only screen and (max-width: 1920px) {
   .todo-list-container {
     height: 500px;
+    .todo-list-items {
+      height: 375px;
+      overflow-y: auto;
+    }
   }
   .ant-col-12 {
     flex: 0 0 80% !important;
