@@ -8,9 +8,9 @@ import {
   ShoppingCartOutlined,
   TableOutlined,
   BarChartOutlined,
-  UserOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons'
+import kevin from 'assets/kevin.jpg'
 import './home.scss'
 
 export const Home = () => {
@@ -25,26 +25,26 @@ export const Home = () => {
 
   const goToPage = (page) => {
     switch (page) {
-      case 'dashboard':
+      case 'about':
         setStartAngle(270)
         break
-      case 'register':
+      case 'dashboard':
         setStartAngle(220)
         break
-      case 'grid':
+      case 'register':
         setStartAngle(170)
         break
+      case 'grid':
+        setStartAngle(117)
+        break
       case 'list':
-        setStartAngle(120)
+        setStartAngle(66)
         break
       case 'shop':
-        setStartAngle(70)
-        break
-      case 'visuals':
-        setStartAngle(20)
+        setStartAngle(16)
         break
       default:
-        setStartAngle(-30)
+        setStartAngle(-36)
         break
     }
 
@@ -65,6 +65,9 @@ export const Home = () => {
           radius={20}
           rotationAngleInclusive={false}
         >
+          <CircleMenuItem onClick={() => goToPage('about')} tooltip='About' tooltipPlacement='top'>
+            {activePage === 'about' ? <LoadingOutlined /> : <img src={kevin} className='kevin' alt='' />}
+          </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('dashboard')} tooltip='Dashboard' tooltipPlacement='top'>
             {activePage === 'dashboard' ? <LoadingOutlined /> : <DashboardOutlined />}
           </CircleMenuItem>
@@ -82,9 +85,6 @@ export const Home = () => {
           </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('visuals')} tooltip='Visuals' tooltipPlacement='top'>
             {activePage === 'visuals' ? <LoadingOutlined /> : <BarChartOutlined />}
-          </CircleMenuItem>
-          <CircleMenuItem onClick={() => goToPage('about')} tooltip='About' tooltipPlacement='top'>
-            {activePage === 'about' ? <LoadingOutlined /> : <UserOutlined />}
           </CircleMenuItem>
         </CircleMenu>
       </div>
