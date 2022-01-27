@@ -16,10 +16,8 @@ This site uses:
 
 TODO list:
 
-- Create Dashboard component contents
+- Add Redux
 
-- Consider replacing React Context with Redux
-
-- Add theming
+- Add sitewide theming
 
 - Add Apollo Client
