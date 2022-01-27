@@ -2,7 +2,7 @@ import React from 'react'
 import { MyLocation } from './widgets/myLocation'
 import { ApolloMissions } from './widgets/apolloMissions'
 import { Breweries } from './widgets/breweries'
-import { Transportation } from './widgets/transportation'
+import { FoodByCountry } from './widgets/FoodByCountry'
 import { Election } from './widgets/election'
 import { AnimalCategories } from './widgets/animalCategories'
 import './dashboard.scss'
@@ -13,7 +13,7 @@ export const Dashboard = () => {
       <MyLocation />
       <ApolloMissions />
       <Breweries />
-      <Transportation />
+      <FoodByCountry />
       <Election />
       <AnimalCategories />
     </div>
