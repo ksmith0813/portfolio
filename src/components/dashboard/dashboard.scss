@@ -1,0 +1,131 @@
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: calc(100vh - 50px);
+  overflow: auto;
+  padding-top: 1em;
+  padding: 2em;
+  .card-display {
+    height: 500px;
+    &.apollo {
+      overflow-y: auto;
+      padding-top: 1em;
+      padding-right: 2em;
+    }
+    &.usa {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .us-state-map {
+    height: 470px;
+  }
+}
+
+path {
+  pointer-events: all;
+}
+
+path:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1920px) {
+  .dashboard-container {
+    .card-display {
+      height: 350px;
+    }
+    .us-state-map {
+      height: 350px;
+    }
+    .ant-timeline-item-tail,
+    .ant-timeline-item-head,
+    .ant-timeline-item-content {
+      left: 30% !important;
+    }
+
+    .ant-timeline-item-content {
+      width: 65% !important;
+    }
+    .ant-table-body {
+      max-height: 295px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .dashboard-container {
+    .card-display {
+      height: 300px;
+    }
+    .us-state-map {
+      height: 300px;
+    }
+    .ant-timeline-item-tail,
+    .ant-timeline-item-head,
+    .ant-timeline-item-content {
+      left: 37% !important;
+    }
+    .ant-timeline-item-content {
+      width: 60% !important;
+    }
+    .ant-table-body {
+      max-height: 246px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .dashboard-container {
+    .card-display {
+      height: 300px;
+    }
+    .us-state-map {
+      height: 300px;
+    }
+    .ant-timeline-item-tail,
+    .ant-timeline-item-head,
+    .ant-timeline-item-content {
+      left: 45% !important;
+    }
+    .ant-timeline-item-content {
+      width: 50% !important;
+      font-size: 0.8em;
+    }
+    .ant-table-body {
+      max-height: 244px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .dashboard-container {
+    .card-display {
+      height: 200px;
+    }
+    .us-state-map {
+      height: 200px;
+    }
+    .ant-timeline-item-tail,
+    .ant-timeline-item-head,
+    .ant-timeline-item-content {
+      left: 50% !important;
+    }
+    .ant-timeline-item-label {
+      left: -30% !important;
+      top: -1px !important;
+      font-size: 0.6em;
+    }
+    .ant-timeline-item-content {
+      left: 40% !important;
+      width: 50% !important;
+      top: -3px !important;
+      font-size: 0.8em;
+    }
+    .ant-table-body {
+      max-height: 120px !important;
+    }
+  }
+}

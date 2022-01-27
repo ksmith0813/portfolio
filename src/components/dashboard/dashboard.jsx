@@ -1,15 +1,21 @@
-import { Result } from 'antd'
 import React from 'react'
+import { ApolloMissions } from './widgets/apolloMissions'
 import './dashboard.scss'
+import { AnimalCategories } from './widgets/animalCategories'
+import { Election } from './widgets/election'
+import { Breweries } from './widgets/breweries'
+import { Transportation } from './widgets/transportation'
 
 export const Dashboard = () => {
   return (
-    <div className='page-center fs-300'>
-      <Result
-        status='404'
-        title='Under Construction'
-        subTitle='Sorry, the page you visited is currently being built.'
-      />
+    <div className='dashboard-container'>
+      <>
+        <AnimalCategories />
+        <ApolloMissions />
+        <Breweries />
+        <Election />
+        <Transportation />
+      </>
     </div>
   )
 }

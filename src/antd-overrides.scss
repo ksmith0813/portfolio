@@ -96,6 +96,10 @@
   top: -2.5px !important;
 }
 
+.ant-card {
+  border-radius: var(--container-border-radius) !important;
+}
+
 .ant-card-head {
   border-bottom: 1px solid var(--gray-300) !important;
 }
@@ -115,4 +119,18 @@
 
 .icon-blue.anticon {
   color: var(--theme-color-1);
+}
+
+.ant-timeline.ant-timeline-label .ant-timeline-item-label {
+  width: 80px !important;
+}
+
+.ant-timeline-item-tail,
+.ant-timeline-item-head,
+.ant-timeline-item-content {
+  left: 20% !important;
+}
+
+.ant-timeline-item-content {
+  width: 70% !important;
 }

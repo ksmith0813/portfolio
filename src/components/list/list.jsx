@@ -57,7 +57,7 @@ export const List = () => {
 
   return (
     <div className='page-center'>
-      <Col span={12}>
+      <Col span={13}>
         <Row justify='center' className='fs-150 text-center'>
           Things you need to do...
         </Row>

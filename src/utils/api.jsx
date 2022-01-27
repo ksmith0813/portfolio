@@ -20,6 +20,9 @@ const getUrl = (api) => {
     case 'user':
       config.url = 'https://randomuser.me/'
       break
+    case 'beer':
+      config.url = 'https://api.openbrewerydb.org/'
+      break
     default:
       config.url = 'https://jsonplaceholder.typicode.com/'
       break
@@ -63,7 +66,11 @@ const q = {
   // Random User API
   getUsers: (params) => get(`api?${params}`, 'user'),
 
+  // Todos API
   getTodos: () => get('todos', ''),
+
+  // Breweries API
+  getBreweries: () => get('breweries?per_page=100', 'beer'),
 }
 
 export default q

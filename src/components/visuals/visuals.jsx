@@ -12,7 +12,7 @@ export const Visuals = () => {
   const categories = ['bar', 'line', 'plot', 'pie', 'waffle']
 
   const changeChart = (value) => setSelectedChart(value)
-
+  
   return (
     <>
       <div className='category-container'>
