@@ -7,7 +7,7 @@
   padding-top: 1em;
   padding: 2em;
   .card-display {
-    height: 500px;
+    height: 470px;
     &.apollo {
       overflow-y: auto;
       padding-top: 1em;
@@ -20,6 +20,23 @@
   }
   .us-state-map {
     height: 470px;
+  }
+  .moon {
+    width: 20px;
+  }
+  .ant-timeline.ant-timeline-label .ant-timeline-item-label {
+    color: var(--theme-color-1);
+    width: 80px !important;
+  }
+
+  .ant-timeline-item-tail,
+  .ant-timeline-item-head,
+  .ant-timeline-item-content {
+    left: 20% !important;
+  }
+
+  .ant-timeline-item-content {
+    width: 70% !important;
   }
 }
 

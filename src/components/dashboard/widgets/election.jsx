@@ -24,7 +24,7 @@ export const Election = () => {
   }
 
   return (
-    <Col span={12} className='pt-200'>
+    <Col span={6} className='pt-200 pl-200'>
       <Card title='2020 Election'>
         <div className='card-display usa'>
           <USAMap customize={getConfig()} />

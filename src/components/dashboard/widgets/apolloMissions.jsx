@@ -1,12 +1,13 @@
 import React from 'react'
 import { Card, Col, Timeline } from 'antd'
+import moon from 'assets/moon.ico'
 
 export const ApolloMissions = () => (
   <Col span={6} className='pl-200'>
     <Card title='Apollo Space Timeline'>
       <div className='card-display apollo'>
         <Timeline mode='left'>
-          <Timeline.Item label='01-27-1967'>
+          <Timeline.Item label='01-27-1967' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 1</b>
             <p className='pt-100'>
               One of the worst tragedies in the history of spaceflight occurred on January 27, 1967 when the crew of Gus
@@ -17,7 +18,7 @@ export const ApolloMissions = () => (
               Saturn 1B was not fueled. The plan was to go through an entire countdown sequence.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='10-22-1968'>
+          <Timeline.Item label='10-22-1968' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 7</b>
             <p className='pt-100'>
               Apollo 7 was the first crewed flight of the Apollo spacecraft, with astronauts Walter Schirra, Jr, Donn
@@ -27,7 +28,7 @@ export const ApolloMissions = () => (
               experiments were planned.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='12-27-1968'>
+          <Timeline.Item label='12-27-1968' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 8</b>
             <p className='pt-100'>
               Apollo 8 was originally intended to be an Earth-orbital test of the Lunar Module. However, completion of
@@ -40,7 +41,7 @@ export const ApolloMissions = () => (
               developing operational experience with deep space navigation, communication, and tracking.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='03-13-1969'>
+          <Timeline.Item label='03-13-1969' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 9</b>
             <p className='pt-100'>
               Apollo 9 was the third crewed Apollo flight and the first crewed flight to include the Lunar Module (LM).
@@ -52,7 +53,7 @@ export const ApolloMissions = () => (
               systems, crew, and procedures. A multispectral photographic experiment was also performed.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='05-18-1969'>
+          <Timeline.Item label='05-18-1969' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 10</b>
             <p className='pt-100'>
               Apollo 10 was launched on May 18, 1969 and performed the final dress rehearsal for the first landing on
@@ -70,7 +71,7 @@ export const ApolloMissions = () => (
               clearing the way for Apollo 11 to attempt the first human landing on the Moon.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='07-16-1969'>
+          <Timeline.Item label='07-16-1969' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 11</b>
             <p className='pt-100'>
               Apollo 11 was launched on July 16, 1969, at 8:32 AM Central Daylight Time (CDT) with the goal of
@@ -82,7 +83,7 @@ export const ApolloMissions = () => (
               the mission caused Eagle to be about 7 kilometers beyond the planned landing location.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='10-14-1969'>
+          <Timeline.Item label='10-14-1969' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 12</b>
             <p className='pt-100'>
               Apollo 12 was the second mission in which humans walked on the lunar surface and returned to Earth. On 19
@@ -95,7 +96,7 @@ export const ApolloMissions = () => (
               the astronauts returned to Earth on 24 November.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='04-11-1970'>
+          <Timeline.Item label='04-11-1970' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 13</b>
             <p className='pt-100'>
               Apollo 13 was intended to be the third mission to carry humans to the surface of the Moon, but an
@@ -105,7 +106,7 @@ export const ApolloMissions = () => (
               to Earth on 17 April 1970.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='12-31-1971'>
+          <Timeline.Item label='12-31-1971' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 14</b>
             <p className='pt-100'>
               Apollo 14 was the third mission in which humans walked on the lunar surface and returned to Earth. On 5
@@ -116,7 +117,7 @@ export const ApolloMissions = () => (
               from the Moon on 6 February and the astronauts returned to Earth on 9 February.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='07-26-1971'>
+          <Timeline.Item label='07-26-1971' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 15</b>
             <p className='pt-100'>
               Apollo 15 was the fourth mission in which humans walked on the lunar surface and returned to Earth. On 30
@@ -127,7 +128,7 @@ export const ApolloMissions = () => (
               from the Moon on 2 August and the astronauts returned to Earth on 7 August.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='04-16-1972'>
+          <Timeline.Item label='04-16-1972' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 16</b>
             <p className='pt-100'>
               Apollo 16 was the fifth mission in which humans walked on the lunar surface and returned to Earth. On 21
@@ -138,7 +139,7 @@ export const ApolloMissions = () => (
               Moon on 24 April and the astronauts returned to Earth on 27 April.
             </p>
           </Timeline.Item>
-          <Timeline.Item label='12-07-1972'>
+          <Timeline.Item label='12-07-1972' dot={<img src={moon} className='moon' alt='' />}>
             <b>Apollo 17</b>
             <p className='pt-100'>
               Apollo 17 was the sixth and last Apollo mission in which humans walked on the lunar surface. On 11

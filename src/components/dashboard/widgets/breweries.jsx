@@ -42,7 +42,7 @@ export const Breweries = () => {
     <Col span={12} className='pl-200'>
       <Card title='Breweries'>
         <div className='card-display'>
-          <Table rowKey='id' dataSource={breweries} columns={columns} pagination={false} scroll={{ y: 445 }} />
+          <Table rowKey='id' dataSource={breweries} columns={columns} pagination={false} scroll={{ y: 417 }} />
         </div>
       </Card>
     </Col>
