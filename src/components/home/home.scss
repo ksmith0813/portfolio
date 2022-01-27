@@ -18,7 +18,7 @@
   > div div:nth-child(3) div {
     background-color: var(--gray-300);
     .anticon-loading {
-      color: var(--theme-color-1);
+      color: var(--theme-color-1-hover);
     }
   }
   > div div:nth-child(3) div:hover {
@@ -30,7 +30,12 @@
   position: absolute;
   height: calc(100vh - 50px);
   width: 100%;
-  background: linear-gradient(90deg, rgba(4,0,65,1) 0%, rgba(204,229,255,1) 50%, rgba(24,144,255,0.8636498544730392) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(4, 0, 65, 1) 0%,
+    rgba(204, 229, 255, 1) 50%,
+    rgba(24, 144, 255, 0.8636498544730392) 100%
+  );
 }
 
 @media only screen and (max-width: 1920px) {

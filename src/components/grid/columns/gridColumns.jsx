@@ -88,15 +88,6 @@ export const getColumns = () => {
         sorter: (a, b) => a.Longitude - b.Longitude,
       },
       {
-        title: 'Email',
-        dataIndex: 'Email',
-        type: 'text',
-        width: 250,
-        noSort: true,
-        sorter: (a, b) => sortAlphebetically(a, b, 'Email'),
-        render: (value) => <a href={`mailto:${value}`}>{value}</a>,
-      },
-      {
         title: 'Phone',
         dataIndex: 'Phone',
         type: 'text',

@@ -19,7 +19,6 @@ export const GridContextProvider = ({ children }) => {
     'State',
     'City',
     'PostalCode',
-    'Email',
     'Phone',
     'RegisterDate',
   ]
@@ -115,7 +114,6 @@ export const GridContextProvider = ({ children }) => {
           PostalCode: location.postcode,
           Latitude: location.coordinates.latitude,
           Longitude: location.coordinates.longitude,
-          Email: d.email,
           Phone: d.phone,
           RegisterDate: d.registered?.date,
           DateOfBirth: d.dob.date,
