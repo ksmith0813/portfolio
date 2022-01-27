@@ -48,7 +48,7 @@ export const Contact = () => {
                 required
               />
             </Col>
-            <Col span={24} className='pt-050'>
+            <Col span={12} className='pt-050'>
               <FormInput
                 name='Address2'
                 label='Apt #'
