@@ -18,7 +18,7 @@ export const MyLocation = () => (
 )
 
 const Map = () => (
-  <GoogleMap defaultZoom={10} defaultCenter={{ lat: 36.06258, lng: -94.15743 }}>
+  <GoogleMap defaultZoom={14} defaultCenter={{ lat: 36.06258, lng: -94.15743 }}>
     <Marker
       position={{
         lat: 36.06258,
