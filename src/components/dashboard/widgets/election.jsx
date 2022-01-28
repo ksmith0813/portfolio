@@ -1,15 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import USAMap from 'react-usa-map'
 import { Col, Card } from 'antd'
 import { states } from 'constants/states'
 
-const randomPositives = ['better', 'greater', 'superior', 'exceeding', 'more desireable', 'prominent']
+const randomPositives = [
+  'better',
+  'greater',
+  'superior',
+  'radical',
+  'bodatious',
+  'tubular',
+  'far out',
+  'cooler',
+  'cooler that you',
+  'wicked awesome',
+  'more desireable',
+  'prominent',
+  'awesome',
+]
 
 export const Election = () => {
   const [message, setMessage] = useState({})
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setMessage('')
+    }, 3000)
+    return () => clearTimeout(timeoutId)
+  }, [message])
+
   const getConfig = () => {
     const config = {}
-
     democrats.map((state) => {
       config[state] = {}
       config[state].fill = '#76abf3'
