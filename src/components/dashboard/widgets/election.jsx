@@ -1,22 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import USAMap from 'react-usa-map'
 import { Col, Card } from 'antd'
-import { showMessage } from 'utils/general'
+import { states } from 'constants/states'
+
+const randomPositives = ['better', 'greater', 'superior', 'exceeding', 'more desireable', 'prominent']
 
 export const Election = () => {
+  const [message, setMessage] = useState({})
   const getConfig = () => {
     const config = {}
 
     democrats.map((state) => {
       config[state] = {}
       config[state].fill = '#76abf3'
-      config[state].clickHandler = () => showMessage(`${state} liked Biden better.`, 'info')
+      config[state].clickHandler = () => {
+        const display = states.filter((s) => s.code === state)[0].value
+        const random = randomPositives[Math.floor(Math.random() * randomPositives.length)]
+        setMessage({ display: `${display} - Biden was ${random}` })
+      }
       return state
     })
     republicans.map((state) => {
       config[state] = {}
       config[state].fill = '#f22939'
-      config[state].clickHandler = () => showMessage(`${state} liked Trump better.`, 'error')
+      config[state].clickHandler = () => {
+        const display = states.filter((s) => s.code === state)[0].value
+        const random = randomPositives[Math.floor(Math.random() * randomPositives.length)]
+        setMessage({ display: `${display} - Trump was ${random}` })
+      }
       return state
     })
 
@@ -25,7 +36,15 @@ export const Election = () => {
 
   return (
     <Col span={6} className='pt-200 pl-200'>
-      <Card title='2020 Election'>
+      <Card
+        title='2020 Election'
+        extra={
+          <>
+            <span className='fs-100 pr-050'>{message.icon}</span>
+            {message.display}
+          </>
+        }
+      >
         <div className='card-display usa'>
           <USAMap customize={getConfig()} />
         </div>

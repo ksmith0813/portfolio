@@ -66,6 +66,7 @@ export const Breweries = () => {
       onChange={onCityChange}
       onSearch={(value) => onAutoCompleteSearch(value, allCities, setCities)}
       style={{ width: '170px' }}
+      allowClear
     />
   )
 
