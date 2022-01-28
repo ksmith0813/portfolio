@@ -76,6 +76,17 @@ export const RegisterContextProvider = ({ children }) => {
     return isValid
   }
 
+   const handleContactUpdate = () => {
+     let copy = { ...contact }
+     copy.errors = []
+     copy = validateRequiredFields(copy, ['Address2'])
+     validateProperty(validateZip, copy, 'Zip', null, true)
+     validateProperty(validatePhone, copy, 'Phone', null, true)
+     validateProperty(validateEmail, copy, 'Email', null, true)
+     setContact(copy)
+     return !copy.errors.length
+   }
+
   const handleMovieUpdate = () => {
     let copy = { ...movie }
     copy.errors = []
@@ -97,17 +108,6 @@ export const RegisterContextProvider = ({ children }) => {
     copy.errors = []
     copy = validateRequiredFields(copy, ['PlacesVisited'])
     setTravel(copy)
-    return !copy.errors.length
-  }
-
-  const handleContactUpdate = () => {
-    let copy = { ...contact }
-    copy.errors = []
-    copy = validateRequiredFields(copy, ['Address2'])
-    validateProperty(validateZip, copy, 'Zip', null, true)
-    validateProperty(validatePhone, copy, 'Phone', null, true)
-    validateProperty(validateEmail, copy, 'Email', null, true)
-    setContact(copy)
     return !copy.errors.length
   }
 

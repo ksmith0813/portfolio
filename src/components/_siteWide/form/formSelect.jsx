@@ -1,10 +1,11 @@
 import React from 'react'
-import { Form, Select } from 'antd'
+import { Select } from 'antd'
 import { spacesToProperty } from 'utils/general'
 import { validateProperty } from './validators/_baseValidator'
 import { getError, handleFormChange } from './util'
 import { FormFloatLabel } from './formFloatLabel'
 import { TagRender } from '../layout/tagRender'
+import { FormItem } from './formItem'
 
 export const FormSelect = ({
   name,
@@ -53,17 +54,5 @@ export const FormSelect = ({
     </FormFloatLabel>
   )
 
-  if (error) {
-    return (
-      <Form.Item name={name} validateStatus='error' help={error.message}>
-        {select}
-      </Form.Item>
-    )
-  }
-
-  return (
-    <Form.Item name={name} help={disabled && ''}>
-      {select}
-    </Form.Item>
-  )
+  return <FormItem control={select} name={name} error={error} />
 }

@@ -1,9 +1,6 @@
 import React from 'react'
-import { Form } from 'antd'
-import { spacesToProperty } from 'utils/general'
 import { validateProperty } from './validators/_baseValidator'
-import { getError, getRules, handleFormChange } from './util'
-import { FormFloatLabel } from './formFloatLabel'
+import { getError, handleFormChange } from './util'
 
 export const FormTextArea = ({
   name,
@@ -30,7 +27,7 @@ export const FormTextArea = ({
     setElement(updated)
   }
 
-  let inputContent = (
+  let input = (
     <textarea
       value={initialValue}
       disabled={disabled}
@@ -41,29 +38,6 @@ export const FormTextArea = ({
     />
   )
 
-  let input
-
-  if (noFloat) {
-    input = inputContent
-  } else {
-    input = (
-      <FormFloatLabel label={label || spacesToProperty(name)} name={name} inputValue={initialValue}>
-        {inputContent}
-      </FormFloatLabel>
-    )
-  }
-
-  if (error) {
-    return (
-      <Form.Item name={name} validateStatus='error' help={error.message} style={{ height: height }}>
-        {input}
-      </Form.Item>
-    )
-  }
-
-  return (
-    <Form.Item name={name} help={disabled && ''} style={{ height: height }}>
-      {input}
-    </Form.Item>
-  )
+  input = <FormFloat control={input} name={name} label={label} noFloat={noFloat} inputValue={initialValue} />
+  return <FormItem control={input} name={name} error={error} style={{ height: height }} />
 }

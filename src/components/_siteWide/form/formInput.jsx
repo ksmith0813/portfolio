@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, forwardRef } from 'react'
-import { Input, Form } from 'antd'
-import { spacesToProperty } from 'utils/general'
+import { Input } from 'antd'
 import { validateProperty } from './validators/_baseValidator'
 import { getError, handleFormChange } from './util'
-import { FormFloatLabel } from './formFloatLabel'
+import { FormItem } from './formItem'
+import { FormFloat } from './formItem'
 
 export const FormInput = ({
   name,
@@ -39,7 +39,7 @@ export const FormInput = ({
     setElement(updated)
   }
 
-  let inputContent = (
+  let input = (
     <ControlInput
       ref={inputRef}
       value={initialValue}
@@ -51,31 +51,8 @@ export const FormInput = ({
     />
   )
 
-  let input
-
-  if (noFloat) {
-    input = inputContent
-  } else {
-    input = (
-      <FormFloatLabel label={label || spacesToProperty(name)} name={name} inputValue={initialValue}>
-        {inputContent}
-      </FormFloatLabel>
-    )
-  }
-
-  if (error) {
-    return (
-      <Form.Item name={name} validateStatus='error' help={error.message}>
-        {input}
-      </Form.Item>
-    )
-  }
-
-  return (
-    <Form.Item name={name} help={disabled && ''}>
-      {input}
-    </Form.Item>
-  )
+  input = <FormFloat control={input} name={name} label={label} noFloat={noFloat} inputValue={initialValue} />
+  return <FormItem control={input} name={name} error={error} />
 }
 
 const ControlInput = forwardRef((props, ref) => {

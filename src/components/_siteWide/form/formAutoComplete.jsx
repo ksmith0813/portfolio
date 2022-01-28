@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, forwardRef } from 'react'
 import { AutoComplete, Form } from 'antd'
-import { spacesToProperty } from 'utils/general'
+import { onAutoCompleteSearch, spacesToProperty } from 'utils/general'
 import { validateProperty } from './validators/_baseValidator'
 import { getError, handleFormChange } from './util'
 import { FormFloatLabel } from './formFloatLabel'
@@ -49,16 +49,8 @@ export const FormAutoComplete = ({
           ref={inputRef}
           value={initialValue}
           options={foundOptions}
-          onChange={onChange}
-          onSearch={(v) => {
-            if (v) {
-              v = v.toLowerCase()
-              const filteredOptions = options.filter((o) => o.value.toLowerCase().includes(v))
-              setFoundOptions(filteredOptions)
-            } else {
-              setFoundOptions(options)
-            }
-          }}
+          onChange={(value) => onChange(value)}
+          onSearch={(value) => onAutoCompleteSearch(value, options, setFoundOptions)}
           style={{ width: width }}
           {...others}
         />
@@ -72,7 +64,7 @@ const ControlInput = forwardRef((props, ref) => (
     ref={ref}
     value={props.value}
     options={props.options}
-    onChange={(v) => props.onChange(v)}
+    onChange={props.onChange}
     onSearch={props.onSearch}
     style={{ width: props.width }}
     {...props.others}
