@@ -7,7 +7,7 @@ export const MyLocation = () => (
     <Card title='My Location - Fayetteville, AR'>
       <div className='card-display'>
         <MapComponent
-          googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyA4p2QdYaSOfJUH42GRsq1LYfTaPz1JX8o&v=3.exp&libraries=geometry,drawing,places'
+          googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `100%`, width: '100%' }} />}
           mapElement={<div style={{ height: `100%` }} />}
