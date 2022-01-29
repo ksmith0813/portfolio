@@ -1,20 +1,22 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Button, Modal } from 'antd'
 import { addCommasToNumber, getAbbreviation } from 'utils/general'
-import { useShopContext } from '../context/shopContext'
+import { getState, removeProduct, closeModal } from 'store/slices/shopSlice'
 
 export const CartModal = () => {
-  const { getCartItems, removeProduct, showingCartModal, setShowingCartModal } = useShopContext()
-  const items = getCartItems()
-  const hasItems = items.length > 0
-  const totalAmount = hasItems && items.reduce((a, n) => a + parseFloat(n.total), 0)
+  const state = useSelector(getState)
+  const dispatch = useDispatch()
+  const items = state.cartItems
+  const hasItems = items.length
+  const totalAmount = hasItems && items.reduce((a, n) => a + n.price * n.qty, 0)
 
   return (
     <Modal
       title={<span className='fs-125'>Cart Items</span>}
-      visible={showingCartModal}
-      onOk={() => setShowingCartModal(false)}
-      onCancel={() => setShowingCartModal(false)}
+      visible={state.showingCartModal}
+      onOk={() => dispatch(closeModal())}
+      onCancel={() => dispatch(closeModal())}
       width={900}
     >
       {hasItems && (
@@ -40,21 +42,21 @@ export const CartModal = () => {
                   <b>{getAbbreviation(c.title, 100)}</b>
                 </Col>
                 <Col span={3} align='center'>
-                  <b>{c.quantity}</b>
+                  <b>{c.qty}</b>
                 </Col>
                 <Col span={3} align='center'>
-                  <Button className='anchor-button' onClick={() => removeProduct(c)}>
+                  <Button className='anchor-button' onClick={() => dispatch(removeProduct(c))}>
                     Remove
                   </Button>
                 </Col>
                 <Col span={3} align='right'>
-                  ${addCommasToNumber(c.total.toFixed(2))}
+                  ${addCommasToNumber((c.price * c.qty).toFixed(2))}
                 </Col>
               </Row>
               {i + 1 === items.length && (
                 <Row className='pt-100 fs-125'>
                   <Col flex={1} align='right'>
-                    Subtotal: <b>${addCommasToNumber(totalAmount.toFixed(2))}</b>
+                    Subtotal: <b>${addCommasToNumber(totalAmount?.toFixed(2))}</b>
                   </Col>
                 </Row>
               )}

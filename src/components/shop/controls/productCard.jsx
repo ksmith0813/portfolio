@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Button } from 'antd'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
-import { useShopContext } from '../context/shopContext'
+import { updateCart } from 'store/slices/shopSlice'
+import { showMessage } from 'utils/general'
 
 export const ProductCard = ({ product }) => {
-  const { updateCart } = useShopContext()
+  const dispatch = useDispatch()
   const [quantity, setQuantity] = useState(1)
-  const [showingAdd, setShowingAdd] = useState(false)
   const image = product.image
   const title = product.title
   const price = parseFloat(product.price).toFixed(2)
@@ -36,15 +37,14 @@ export const ProductCard = ({ product }) => {
         <Button
           className='dark ml-300'
           onClick={() => {
-            setShowingAdd(true)
-            window.setTimeout(() => setShowingAdd(false), 3000)
-            updateCart(product, quantity)
+            setQuantity(1)
+            showMessage(quantityDisplay, 'success')
+            dispatch(updateCart({ ...product, qty: quantity }))
           }}
         >
           Add To Cart
         </Button>
       </div>
-      {showingAdd && <div className='items-added'>{quantityDisplay}</div>}
     </div>
   )
 }
