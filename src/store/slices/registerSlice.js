@@ -41,7 +41,6 @@ export const slice = createSlice({
   name: 'register',
   initialState: {
     step: 0,
-    changed: false,
     contact: defaultContact,
     movie: defaultMovie,
     music: defaultMusic,
@@ -86,7 +85,6 @@ export const slice = createSlice({
       }
 
       state.step = state.step + 1
-      state.changed = false
     },
     complete: () => showMessage('Your information has been successfully submitted!', 'success'),
   },
