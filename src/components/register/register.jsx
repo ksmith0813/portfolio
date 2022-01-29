@@ -1,27 +1,20 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Steps, Row, Col } from 'antd'
 import { UserOutlined, VideoCameraOutlined, AudioOutlined, CarOutlined, SaveOutlined } from '@ant-design/icons'
-import { RegisterContextProvider, useRegisterContext } from './context/registerContext'
-import { Contact } from './steps/contact'
-import { Movie } from './steps/movie'
-import { Music } from './steps/music'
-import { Travel } from './steps/travel'
+import { getState } from 'store/slices/registerSlice'
+import Contact from './steps/contact'
+import Movie from './steps/movie'
+import Music from './steps/music'
+import Travel from './steps/travel'
 import { Review } from './steps/review'
 import './register.scss'
 
 const { Step } = Steps
 
 export const Register = () => {
-  return (
-    <RegisterContextProvider>
-      <RegisterContent />
-    </RegisterContextProvider>
-  )
-}
-
-const RegisterContent = () => {
-  const { step } = useRegisterContext()
-
+  const state = useSelector(getState)
+  const step = state.step
   const steps = [
     {
       title: 'Contact',

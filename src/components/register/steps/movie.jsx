@@ -1,16 +1,31 @@
-import React from 'react'
-import { Row, Col, Form } from 'antd'
-import { FormInput } from 'components/_siteWide/form/formInput'
-import { FormSelect } from 'components/_siteWide/form/formSelect'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
+import { Form, Input, Select, Row, Col } from 'antd'
+import { FormItem } from 'components/_siteWide/form/formItem'
 import { movieGenres } from 'constants/movieGenres'
-import { useRegisterContext } from '../context/registerContext'
+import { setMovie, getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
-export const Movie = () => {
-  const { movie, setMovie, nextStep } = useRegisterContext()
+const { Option } = Select
+const inputField = FormItem(Input)
+const selectField = FormItem(Select)
+
+const Movie = () => {
+  const [initial, setInitial] = useState(true)
+  const state = useSelector(getState)
+  const dispatch = useDispatch()
+  const movie = state.movie
   const [form] = Form.useForm()
+
   return (
-    <Form form={form} onFinish={() => nextStep()}>
+    <Form
+      form={form}
+      onFinish={() => {
+        setInitial(false)
+        dispatch(nextStep(movie))
+      }}
+    >
       <div className='steps-content'>
         <Col span={14}>
           <Row>
@@ -18,25 +33,33 @@ export const Movie = () => {
               Movie Info
             </Col>
             <Col span={24} className='pt-200'>
-              <FormInput
+              <Field
                 name='FavoriteMovie'
-                initialValue={movie.FavoriteMovie}
-                element={movie}
-                setElement={setMovie}
+                defaultValue={movie.FavoriteMovie}
+                component={inputField}
+                onChange={(e) => dispatch(setMovie({ ...movie, FavoriteMovie: e.target.value }))}
+                initialValues={initial}
                 required
-                focus
+                hasFeedback
               />
             </Col>
             <Col span={24} className='pt-050'>
-              <FormSelect
+              <Field
                 name='FavoriteGenres'
-                initialValue={movie.FavoriteGenres}
-                element={movie}
-                setElement={setMovie}
-                options={movieGenres}
-                required
+                defaultValue={movie.FavoriteGenres}
+                component={selectField}
+                onChange={(value) => dispatch(setMovie({ ...movie, FavoriteGenres: value }))}
+                initialValues={initial}
                 mode='multiple'
-              />
+                required
+                hasFeedback
+              >
+                {movieGenres.map((s) => (
+                  <Option key={s.value} value={s.value}>
+                    {s.value}
+                  </Option>
+                ))}
+              </Field>
             </Col>
           </Row>
         </Col>
@@ -45,3 +68,7 @@ export const Movie = () => {
     </Form>
   )
 }
+
+export default reduxForm({
+  form: 'movie',
+})(Movie)

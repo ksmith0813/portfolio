@@ -54,7 +54,7 @@ export const spacesToProperty = (property) => {
   let propertyName = property
   if (Array.isArray(property)) propertyName = property[1]
   if (property.includes("_")) propertyName = propertyName.replace("_", " ")
-  return propertyName.replace(/([a-z])([A-Z])/g, "$1 $2")
+  return propertyName.replace(/([a-z])([A-Z])/g, '$1 $2')
 }
 
 export const getDateRanges = () => {

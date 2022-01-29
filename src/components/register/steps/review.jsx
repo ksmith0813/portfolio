@@ -1,15 +1,16 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Form, Tag, Card } from 'antd'
 import { UserOutlined, VideoCameraOutlined, AudioOutlined, CarOutlined } from '@ant-design/icons'
-import { useRegisterContext } from '../context/registerContext'
-import { Actions } from './actions'
 import { DataItem } from 'components/_siteWide/layout/dataItem'
+import { getState, nextStep } from 'store/slices/registerSlice'
+import { Actions } from './actions'
 
 export const Review = () => {
-  const { nextStep } = useRegisterContext()
+  const dispatch = useDispatch()
   const [form] = Form.useForm()
   return (
-    <Form form={form} onFinish={() => nextStep()}>
+    <Form form={form} onFinish={() => dispatch(nextStep())}>
       <div className='steps-content'>
         <Col span={14}>
           <Row>
@@ -29,7 +30,8 @@ export const Review = () => {
 }
 
 const ContactContent = () => {
-  const { contact } = useRegisterContext()
+  const state = useSelector(getState)
+  const contact = state.contact
   return (
     <Card
       title={
@@ -52,9 +54,9 @@ const ContactContent = () => {
         <Col className='p-100'>
           <DataItem label='Address' children={contact.Address} />
         </Col>
-        {contact.Address2 && (
+        {contact.Apt && (
           <Col className='p-100'>
-            <DataItem label='APT #' children={contact.Address2} />
+            <DataItem label='APT #' children={contact.Apt} />
           </Col>
         )}
       </Row>
@@ -82,7 +84,8 @@ const ContactContent = () => {
 }
 
 const MovieContent = () => {
-  const { movie } = useRegisterContext()
+  const state = useSelector(getState)
+  const movie = state.movie
   return (
     <Card
       title={
@@ -115,7 +118,8 @@ const MovieContent = () => {
 }
 
 const MusicContent = () => {
-  const { music } = useRegisterContext()
+  const state = useSelector(getState)
+  const music = state.music
   return (
     <Card
       title={
@@ -156,7 +160,8 @@ const MusicContent = () => {
 }
 
 const TravelContent = () => {
-  const { travel } = useRegisterContext()
+  const state = useSelector(getState)
+  const travel = state.travel
   return (
     <Card
       title={
@@ -169,7 +174,14 @@ const TravelContent = () => {
     >
       <Row>
         <Col className='p-100'>
-          <DataItem label='Favorite Country' children={travel.FavoriteCountry} />
+          <DataItem
+            label='Favorite Countries'
+            children={travel.FavoriteCountries.map((g, i) => (
+              <Tag color='blue' key={i} className='item-tag-list'>
+                {g}
+              </Tag>
+            ))}
+          />
         </Col>
         <Col className='p-100'>
           <DataItem label='Favorite City' children={travel.FavoriteCity} />

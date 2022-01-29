@@ -1,19 +1,34 @@
-import React from 'react'
-import { Form, Row, Col } from 'antd'
-import { FormInput } from 'components/_siteWide/form/formInput'
-import { FormSelect } from 'components/_siteWide/form/formSelect'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
+import { Form, Input, Select, Row, Col } from 'antd'
 import { validateZip } from 'components/_siteWide/form/validators/validateZip'
 import { validatePhone } from 'components/_siteWide/form/validators/validatePhone'
 import { validateEmail } from 'components/_siteWide/form/validators/validateEmail'
+import { FormItem } from 'components/_siteWide/form/formItem'
 import { states } from 'constants/states'
-import { useRegisterContext } from '../context/registerContext'
+import { setContact, getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
-export const Contact = () => {
-  const { contact, setContact, nextStep } = useRegisterContext()
+const { Option } = Select
+const inputField = FormItem(Input)
+const selectField = FormItem(Select)
+
+const Contact = () => {
+  const [initial, setInitial] = useState(true)
+  const state = useSelector(getState)
+  const dispatch = useDispatch()
+  const contact = state.contact
   const [form] = Form.useForm()
+
   return (
-    <Form form={form} onFinish={() => nextStep()}>
+    <Form
+      form={form}
+      onFinish={() => {
+        setInitial(false)
+        dispatch(nextStep(contact))
+      }}
+    >
       <div className='steps-content'>
         <Col span={14}>
           <Row>
@@ -21,85 +36,110 @@ export const Contact = () => {
               Contact Info
             </Col>
             <Col span={24} className='pt-200'>
-              <FormInput
+              <Field
                 name='FirstName'
-                initialValue={contact.FirstName}
-                element={contact}
-                setElement={setContact}
+                defaultValue={contact.FirstName}
+                component={inputField}
+                onChange={(e) => dispatch(setContact({ ...contact, FirstName: e.target.value }))}
+                initialValues={initial}
                 required
-                focus
+                hasFeedback
               />
             </Col>
             <Col span={24} className='pt-050'>
-              <FormInput
+              <Field
                 name='LastName'
-                initialValue={contact.LastName}
-                element={contact}
-                setElement={setContact}
+                defaultValue={contact.LastName}
+                component={inputField}
+                onChange={(e) => dispatch(setContact({ ...contact, LastName: e.target.value }))}
+                initialValues={initial}
                 required
+                hasFeedback
               />
             </Col>
             <Col span={24} className='pt-050'>
-              <FormInput
+              <Field
                 name='Address'
-                initialValue={contact.Address}
-                element={contact}
-                setElement={setContact}
+                defaultValue={contact.Address}
+                component={inputField}
+                onChange={(e) => dispatch(setContact({ ...contact, Address: e.target.value }))}
+                initialValues={initial}
                 required
+                hasFeedback
               />
             </Col>
             <Col span={12} className='pt-050'>
-              <FormInput
-                name='Address2'
-                label='Apt #'
-                initialValue={contact.Address2}
-                element={contact}
-                setElement={setContact}
+              <Field
+                name='Apt'
+                defaultValue={contact.Apt}
+                component={inputField}
+                onChange={(e) => dispatch(setContact({ ...contact, Apt: e.target.value }))}
               />
             </Col>
           </Row>
           <Row>
             <Col span={12} className='pt-050'>
-              <FormInput name='City' initialValue={contact.City} element={contact} setElement={setContact} required />
-            </Col>
-            <Col span={6} className='pl-100 pt-050'>
-              <FormSelect
-                name='State'
-                initialValue={contact.State}
-                element={contact}
-                setElement={setContact}
-                options={states}
+              <Field
+                name='City'
+                defaultValue={contact.City}
+                component={inputField}
+                onChange={(e) => dispatch(setContact({ ...contact, City: e.target.value }))}
+                initialValues={initial}
                 required
+                hasFeedback
               />
             </Col>
             <Col span={6} className='pl-100 pt-050'>
-              <FormInput
+              <Field
+                name='State'
+                defaultValue={contact.State}
+                component={selectField}
+                onChange={(value) => dispatch(setContact({ ...contact, State: value }))}
+                initialValues={initial}
+                required
+                hasFeedback
+              >
+                {states.map((s) => (
+                  <Option key={s.code} value={s.value}>
+                    {s.value}
+                  </Option>
+                ))}
+              </Field>
+            </Col>
+            <Col span={6} className='pl-100 pt-050'>
+              <Field
                 name='Zip'
-                initialValue={contact.Zip}
-                element={contact}
-                setElement={setContact}
+                defaultValue={contact.Zip}
+                component={inputField}
+                onChange={(e) => dispatch(setContact({ ...contact, Zip: e.target.value }))}
+                initialValues={initial}
                 validator={validateZip}
                 required
+                hasFeedback
               />
             </Col>
             <Col span={12} className='pt-050'>
-              <FormInput
+              <Field
                 name='Phone'
-                initialValue={contact.Phone}
-                element={contact}
-                setElement={setContact}
+                defaultValue={contact.Phone}
+                component={inputField}
+                onChange={(e) => dispatch(setContact({ ...contact, Phone: e.target.value }))}
+                initialValues={initial}
                 validator={validatePhone}
                 required
+                hasFeedback
               />
             </Col>
             <Col span={24} className='pt-050'>
-              <FormInput
+              <Field
                 name='Email'
-                initialValue={contact.Email}
-                element={contact}
-                setElement={setContact}
+                defaultValue={contact.Email}
+                component={inputField}
+                onChange={(e) => dispatch(setContact({ ...contact, Email: e.target.value }))}
+                initialValues={initial}
                 validator={validateEmail}
                 required
+                hasFeedback
               />
             </Col>
           </Row>
@@ -109,3 +149,7 @@ export const Contact = () => {
     </Form>
   )
 }
+
+export default reduxForm({
+  form: 'contact',
+})(Contact)

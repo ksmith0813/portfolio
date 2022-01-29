@@ -1,16 +1,30 @@
-import React from 'react'
-import { Row, Col, Form } from 'antd'
-import { FormInput } from 'components/_siteWide/form/formInput'
-import { FormSelect } from 'components/_siteWide/form/formSelect'
-import { useRegisterContext } from '../context/registerContext'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
+import { Form, Input, Select, Row, Col } from 'antd'
+import { FormItem } from 'components/_siteWide/form/formItem'
 import { instruments } from 'constants/instruments'
+import { setMusic, getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
-export const Music = () => {
-  const { music, setMusic, nextStep } = useRegisterContext()
+const { Option } = Select
+const inputField = FormItem(Input)
+const selectField = FormItem(Select)
+
+const Music = () => {
+  const [initial, setInitial] = useState(true)
+  const state = useSelector(getState)
+  const dispatch = useDispatch()
+  const music = state.music
   const [form] = Form.useForm()
   return (
-    <Form form={form} onFinish={() => nextStep()}>
+    <Form
+      form={form}
+      onFinish={() => {
+        setInitial(false)
+        dispatch(nextStep(music))
+      }}
+    >
       <div className='steps-content'>
         <Col span={14}>
           <Row>
@@ -18,41 +32,54 @@ export const Music = () => {
               Music Info
             </Col>
             <Col span={24} className='pt-200'>
-              <FormInput
+              <Field
                 name='FavoriteBand'
-                initialValue={music.FavoriteBand}
-                element={music}
-                setElement={setMusic}
+                defaultValue={music.FavoriteBand}
+                component={inputField}
+                onChange={(e) => dispatch(setMusic({ ...music, FavoriteBand: e.target.value }))}
+                initialValues={initial}
                 required
-                focus
+                hasFeedback
               />
             </Col>
             <Col span={24} className='pt-200'>
-              <FormInput
+              <Field
                 name='FavoriteSong'
-                initialValue={music.FavoriteSong}
-                element={music}
-                setElement={setMusic}
+                defaultValue={music.FavoriteSong}
+                component={inputField}
+                onChange={(e) => dispatch(setMusic({ ...music, FavoriteSong: e.target.value }))}
+                initialValues={initial}
                 required
+                hasFeedback
               />
             </Col>
             <Col span={24} className='pt-050'>
-              <FormSelect
+              <Field
                 name='Instruments'
-                initialValue={music.Instruments}
-                element={music}
-                setElement={setMusic}
-                options={instruments}
+                defaultValue={music.Instruments}
+                component={selectField}
+                onChange={(value) => dispatch(setMusic({ ...music, Instruments: value }))}
+                initialValues={initial}
                 mode='multiple'
-              />
+                required
+                hasFeedback
+              >
+                {instruments.map((s) => (
+                  <Option key={s.value} value={s.value}>
+                    {s.value}
+                  </Option>
+                ))}
+              </Field>
             </Col>
             <Col span={24} className='pt-200'>
-              <FormInput
+              <Field
                 name='SoundCloud'
-                label='SoundCloud'
-                initialValue={music.SoundCloud}
-                element={music}
-                setElement={setMusic}
+                defaultValue={music.SoundCloud}
+                component={inputField}
+                onChange={(e) => dispatch(setMusic({ ...music, SoundCloud: e.target.value }))}
+                initialValues={initial}
+                required
+                hasFeedback
               />
             </Col>
           </Row>
@@ -62,3 +89,7 @@ export const Music = () => {
     </Form>
   )
 }
+
+export default reduxForm({
+  form: 'music',
+})(Music)

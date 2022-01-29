@@ -20,14 +20,13 @@ export const Shop = () => {
   }, [dispatch])
 
   useEffect(() => {
-    const category = state.selectedCategory
     dispatch(loading())
-    if (category === 'ALL') {
+    if (state.selectedCategory === 'ALL') {
       api.getAllProducts().then(({ data }) => {
         dispatch(setProducts(data))
       })
     } else {
-      api.getProductsByCategory(category).then(({ data }) => {
+      api.getProductsByCategory(state.selectedCategory).then(({ data }) => {
         dispatch(setProducts(data))
       })
     }

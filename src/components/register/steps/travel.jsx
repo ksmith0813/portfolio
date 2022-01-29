@@ -1,17 +1,30 @@
-import React from 'react'
-import { Row, Col, Form } from 'antd'
-import { FormInput } from 'components/_siteWide/form/formInput'
-import { FormSelect } from 'components/_siteWide/form/formSelect'
-import { useRegisterContext } from '../context/registerContext'
-import { Actions } from './actions'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
+import { Form, Input, Select, Row, Col } from 'antd'
+import { FormItem } from 'components/_siteWide/form/formItem'
 import { countries } from 'constants/countries'
-import { FormAutoComplete } from 'components/_siteWide/form/formAutoComplete'
+import { setTravel, getState, nextStep } from 'store/slices/registerSlice'
+import { Actions } from './actions'
 
-export const Travel = () => {
-  const { travel, setTravel, nextStep } = useRegisterContext()
+const { Option } = Select
+const inputField = FormItem(Input)
+const selectField = FormItem(Select)
+
+const Travel = () => {
+  const [initial, setInitial] = useState(true)
+  const state = useSelector(getState)
+  const dispatch = useDispatch()
+  const travel = state.travel
   const [form] = Form.useForm()
   return (
-    <Form form={form} onFinish={() => nextStep()} onFinishFailed={() => nextStep()}>
+    <Form
+      form={form}
+      onFinish={() => {
+        setInitial(false)
+        dispatch(nextStep(travel))
+      }}
+    >
       <div className='steps-content'>
         <Col span={14}>
           <Row>
@@ -19,34 +32,51 @@ export const Travel = () => {
               Travel Info
             </Col>
             <Col span={24} className='pt-200'>
-              <FormAutoComplete
-                name='FavoriteCountry'
-                initialValue={travel.FavoriteCountry}
-                element={travel}
-                setElement={setTravel}
-                options={countries}
+              <Field
+                name='FavoriteCountries'
+                defaultValue={travel.FavoriteCountries}
+                component={selectField}
+                onChange={(value) => dispatch(setTravel({ ...travel, FavoriteCountries: value }))}
+                initialValues={initial}
+                mode='multiple'
                 required
-                focus
-              />
+                hasFeedback
+              >
+                {countries.map((s) => (
+                  <Option key={s.value} value={s.value}>
+                    {s.value}
+                  </Option>
+                ))}
+              </Field>
             </Col>
             <Col span={24} className='pt-200'>
-              <FormInput
+              <Field
                 name='FavoriteCity'
-                initialValue={travel.FavoriteCity}
-                element={travel}
-                setElement={setTravel}
+                defaultValue={travel.FavoriteCity}
+                component={inputField}
+                onChange={(e) => dispatch(setTravel({ ...travel, FavoriteCity: e.target.value }))}
+                initialValues={initial}
                 required
+                hasFeedback
               />
             </Col>
             <Col span={24} className='pt-050'>
-              <FormSelect
+              <Field
                 name='PlacesVisited'
-                initialValue={travel.PlacesVisited}
-                element={travel}
-                setElement={setTravel}
-                options={countries}
+                defaultValue={travel.PlacesVisited}
+                component={selectField}
+                onChange={(value) => dispatch(setTravel({ ...travel, PlacesVisited: value }))}
+                initialValues={initial}
                 mode='multiple'
-              />
+                required
+                hasFeedback
+              >
+                {countries.map((s) => (
+                  <Option key={s.value} value={s.value}>
+                    {s.value}
+                  </Option>
+                ))}
+              </Field>
             </Col>
           </Row>
         </Col>
@@ -55,3 +85,7 @@ export const Travel = () => {
     </Form>
   )
 }
+
+export default reduxForm({
+  form: 'travel',
+})(Travel)

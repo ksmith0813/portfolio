@@ -6,18 +6,10 @@ This site uses:
 
 - React Functional Components
 
-- React Context
+- Redux/Redux Toolkit/Redux Form
 
 - ANT Design
 
 - Axios
 
 - SCSS
-
-TODO list:
-
-- Add Redux
-
-- Add sitewide theming
-
-- Add Apollo Client
