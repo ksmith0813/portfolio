@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { CircleMenu, CircleMenuItem } from 'react-circular-menu'
 import { useNavigate } from 'react-router-dom'
-import {
-  LoadingOutlined,
-  DashboardOutlined,
-  FormOutlined,
-  ShoppingCartOutlined,
-  TableOutlined,
-  BarChartOutlined,
-  UnorderedListOutlined,
-} from '@ant-design/icons'
+import { LoadingOutlined } from '@ant-design/icons'
 import kevin from 'assets/kevin.jpg'
+import dashboard from 'assets/dashboard.svg'
+import register from 'assets/register.svg'
+import grid from 'assets/grid.svg'
+import list from 'assets/list.svg'
+import shop from 'assets/shop.svg'
+import chart from 'assets/chart.svg'
 import './home.scss'
 
 export const Home = () => {
@@ -69,22 +67,22 @@ export const Home = () => {
             {activePage === 'about' ? <LoadingOutlined /> : <img src={kevin} className='kevin' alt='' />}
           </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('dashboard')} tooltip='Dashboard' tooltipPlacement='top'>
-            {activePage === 'dashboard' ? <LoadingOutlined /> : <DashboardOutlined />}
+            {activePage === 'dashboard' ? <LoadingOutlined /> : <img src={dashboard} className='p-125' alt='' />}
           </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('register')} tooltip='Register' tooltipPlacement='top'>
-            {activePage === 'register' ? <LoadingOutlined /> : <FormOutlined />}
+            {activePage === 'register' ? <LoadingOutlined /> : <img src={register} className='p-125 ml-075' alt='' />}
           </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('grid')} tooltip='Grid' tooltipPlacement='top'>
-            {activePage === 'grid' ? <LoadingOutlined /> : <TableOutlined />}
+            {activePage === 'grid' ? <LoadingOutlined /> : <img src={grid} className='p-200' alt='' />}
           </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('list')} tooltip='List' tooltipPlacement='top'>
-            {activePage === 'list' ? <LoadingOutlined /> : <UnorderedListOutlined />}
+            {activePage === 'list' ? <LoadingOutlined /> : <img src={list} className='p-175' alt='' />}
           </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('shop')} tooltip='Shop' tooltipPlacement='top'>
-            {activePage === 'shop' ? <LoadingOutlined /> : <ShoppingCartOutlined />}
+            {activePage === 'shop' ? <LoadingOutlined /> : <img src={shop} className='p-175' alt='' />}
           </CircleMenuItem>
           <CircleMenuItem onClick={() => goToPage('visuals')} tooltip='Visuals' tooltipPlacement='top'>
-            {activePage === 'visuals' ? <LoadingOutlined /> : <BarChartOutlined />}
+            {activePage === 'visuals' ? <LoadingOutlined /> : <img src={chart} className='p-050' alt='' />}
           </CircleMenuItem>
         </CircleMenu>
       </div>
