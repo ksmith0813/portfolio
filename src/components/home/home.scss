@@ -72,7 +72,25 @@
 }
 
 @media only screen and (max-width: 1440px) {
-}
-
-@media only screen and (max-width: 1024px) {
+  .tile-container {
+    flex-wrap: wrap;
+    .tile {
+      min-width: 200px !important;
+      .tile-icon {
+        height: 200px !important;
+        &.default {
+          padding: 1em !important;
+        }
+        &.register {
+          padding: 1em 0em 1.25em 2em !important;
+        }
+        &.grid {
+          padding: 1.75em !important;
+        }
+        &.shop {
+          padding: 1.75em !important;
+        }
+      }
+    }
+  }
 }
