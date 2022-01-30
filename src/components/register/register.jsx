@@ -47,7 +47,7 @@ export const Register = () => {
     <div className='register-container'>
       <Row justify='center'>
         <Col span={11}>
-          <Row justify='center' className='fs-150 pb-300'>
+          <Row justify='center' className='fs-175 pb-300'>
             Please complete the registration form below
           </Row>
           <Steps current={step}>
