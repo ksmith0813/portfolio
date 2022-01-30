@@ -25,41 +25,43 @@
       margin-top: -0.75em;
     }
   }
-  .tile {
-    margin-top: 3em;
-    margin: 1.5em;
-    width: 250px;
-    text-align: center;
-    border-radius: var(--container-border-radius);
-    background-color: var(--gray-200);
-    .tile-icon {
-      height: 200px;
-      width: 100%;
-      background-color: var(--gray-300);
-      border-bottom-left-radius: var(--container-border-radius);
-      border-bottom-right-radius: var(--container-border-radius);
-      &.default {
-        padding: 2em;
+  .tile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    padding-top: 3em;
+    height: calc(100vh - 250px);
+    .tile {
+      margin: 2em;
+      width: 300px;
+      text-align: center;
+      border-radius: var(--container-border-radius);
+      background-color: var(--gray-200);
+      .tile-icon {
+        height: 270px;
+        width: 100%;
+        background-color: var(--gray-300);
+        border-bottom-left-radius: var(--container-border-radius);
+        border-bottom-right-radius: var(--container-border-radius);
+        &.default {
+          padding: 2em;
+        }
+        &.register {
+          padding: 1.75em 1em 2em 2.5em;
+        }
+        &.grid {
+          padding: 2.75em;
+        }
+        &.shop {
+          padding: 2.75em;
+        }
       }
-      &.register {
-        padding: 1.75em 1em 2em 2.5em;
-      }
-      &.grid {
-        padding: 2.75em;
-      }
-      &.shop {
-        padding: 2.75em;
+      &:hover {
+        opacity: 0.9em;
+        color: var(--theme-color-1);
       }
     }
-    &:hover {
-      opacity: 0.9em;
-      color: var(--theme-color-1);
-    }
-  }
-  .kevin {
-    height: 10em;
-    width: 10em;
-    border-radius: 50%;
   }
 }
 
