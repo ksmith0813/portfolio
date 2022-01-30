@@ -41,12 +41,16 @@ export const slice = createSlice({
   name: 'register',
   initialState: {
     step: 0,
+    clean: true,
     contact: defaultContact,
     movie: defaultMovie,
     music: defaultMusic,
     travel: defaultTravel,
   },
   reducers: {
+    setClean: (state, action) => {
+      state.clean = action.payload
+    },
     setContact: (state, action) => {
       state.contact = action.payload
     },
@@ -74,9 +78,11 @@ export const slice = createSlice({
           state.contact = defaultContact
           break
       }
+      state.clean = true
     },
     previousStep: (state) => {
       state.step = state.step - 1
+      state.clean = true
     },
     nextStep: (state, action) => {
       if (!handleFormUpdate(state, action.payload)) {
@@ -85,12 +91,14 @@ export const slice = createSlice({
       }
 
       state.step = state.step + 1
+      state.clean = true
     },
     complete: () => showMessage('Your information has been successfully submitted!', 'success'),
   },
 })
 
-export const { setContact, setMovie, setMusic, setTravel, reset, previousStep, nextStep, complete } = slice.actions
+export const { setClean, setContact, setMovie, setMusic, setTravel, reset, previousStep, nextStep, complete } =
+  slice.actions
 
 export const getState = (state) => state.register
 

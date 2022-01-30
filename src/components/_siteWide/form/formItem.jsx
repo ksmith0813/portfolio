@@ -6,8 +6,15 @@ export const FormItem =
   (Component) =>
   ({ input, defaultValue, validator, initialValues, required, meta, children, hasFeedback, ...rest }) => {
     let error
-    if (!initialValues)
-      error = validator && defaultValue ? validator(defaultValue) : required && !defaultValue && 'Required'
+    if (!initialValues) {
+      if (validator) error = validator(defaultValue)
+      else if (required) {
+        if ((Array.isArray(defaultValue) && !defaultValue.length) || !defaultValue) {
+          error = 'Required'
+        }
+      }
+    }
+
     input.value = defaultValue
     return (
       <Form.Item validateStatus={error ? 'error' : 'success'} hasFeedback={hasFeedback && error} help={error}>

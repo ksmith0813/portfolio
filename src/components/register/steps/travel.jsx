@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Form, Input, Select, Row, Col } from 'antd'
 import { FormItem } from 'components/_siteWide/form/formItem'
 import { countries } from 'constants/countries'
-import { setTravel, getState, nextStep } from 'store/slices/registerSlice'
+import { setClean, setTravel, getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
 const { Option } = Select
@@ -12,16 +12,16 @@ const inputField = FormItem(Input)
 const selectField = FormItem(Select)
 
 const Travel = () => {
-  const [initial, setInitial] = useState(true)
   const state = useSelector(getState)
   const dispatch = useDispatch()
   const travel = state.travel
+  const clean = state.clean
   const [form] = Form.useForm()
   return (
     <Form
       form={form}
       onFinish={() => {
-        setInitial(false)
+        dispatch(setClean(false))
         dispatch(nextStep(travel))
       }}
     >
@@ -37,7 +37,7 @@ const Travel = () => {
                 defaultValue={travel.FavoriteCountries}
                 component={selectField}
                 onChange={(value) => dispatch(setTravel({ ...travel, FavoriteCountries: value }))}
-                initialValues={initial}
+                initialValues={clean}
                 mode='multiple'
                 required
                 hasFeedback
@@ -55,7 +55,7 @@ const Travel = () => {
                 defaultValue={travel.FavoriteCity}
                 component={inputField}
                 onChange={(e) => dispatch(setTravel({ ...travel, FavoriteCity: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 required
                 hasFeedback
               />
@@ -66,9 +66,8 @@ const Travel = () => {
                 defaultValue={travel.PlacesVisited}
                 component={selectField}
                 onChange={(value) => dispatch(setTravel({ ...travel, PlacesVisited: value }))}
-                initialValues={initial}
+                initialValues={clean}
                 mode='multiple'
-                required
                 hasFeedback
               >
                 {countries.map((s) => (

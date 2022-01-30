@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Form, Input, Select, Row, Col } from 'antd'
@@ -7,7 +7,7 @@ import { validatePhone } from 'components/_siteWide/form/validators/validatePhon
 import { validateEmail } from 'components/_siteWide/form/validators/validateEmail'
 import { FormItem } from 'components/_siteWide/form/formItem'
 import { states } from 'constants/states'
-import { setContact, getState, nextStep } from 'store/slices/registerSlice'
+import { setClean, setContact, getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
 const { Option } = Select
@@ -15,17 +15,17 @@ const inputField = FormItem(Input)
 const selectField = FormItem(Select)
 
 const Contact = () => {
-  const [initial, setInitial] = useState(true)
   const state = useSelector(getState)
   const dispatch = useDispatch()
   const contact = state.contact
+  const clean = state.clean
   const [form] = Form.useForm()
 
   return (
     <Form
       form={form}
       onFinish={() => {
-        setInitial(false)
+        dispatch(setClean(false))
         dispatch(nextStep(contact))
       }}
     >
@@ -41,7 +41,7 @@ const Contact = () => {
                 defaultValue={contact.FirstName}
                 component={inputField}
                 onChange={(e) => dispatch(setContact({ ...contact, FirstName: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 required
                 hasFeedback
               />
@@ -52,7 +52,7 @@ const Contact = () => {
                 defaultValue={contact.LastName}
                 component={inputField}
                 onChange={(e) => dispatch(setContact({ ...contact, LastName: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 required
                 hasFeedback
               />
@@ -63,7 +63,7 @@ const Contact = () => {
                 defaultValue={contact.Address}
                 component={inputField}
                 onChange={(e) => dispatch(setContact({ ...contact, Address: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 required
                 hasFeedback
               />
@@ -84,7 +84,7 @@ const Contact = () => {
                 defaultValue={contact.City}
                 component={inputField}
                 onChange={(e) => dispatch(setContact({ ...contact, City: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 required
                 hasFeedback
               />
@@ -95,7 +95,7 @@ const Contact = () => {
                 defaultValue={contact.State}
                 component={selectField}
                 onChange={(value) => dispatch(setContact({ ...contact, State: value }))}
-                initialValues={initial}
+                initialValues={clean}
                 required
                 hasFeedback
               >
@@ -112,7 +112,7 @@ const Contact = () => {
                 defaultValue={contact.Zip}
                 component={inputField}
                 onChange={(e) => dispatch(setContact({ ...contact, Zip: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 validator={validateZip}
                 required
                 hasFeedback
@@ -124,7 +124,7 @@ const Contact = () => {
                 defaultValue={contact.Phone}
                 component={inputField}
                 onChange={(e) => dispatch(setContact({ ...contact, Phone: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 validator={validatePhone}
                 required
                 hasFeedback
@@ -136,7 +136,7 @@ const Contact = () => {
                 defaultValue={contact.Email}
                 component={inputField}
                 onChange={(e) => dispatch(setContact({ ...contact, Email: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 validator={validateEmail}
                 required
                 hasFeedback

@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Form, Input, Select, Row, Col } from 'antd'
 import { FormItem } from 'components/_siteWide/form/formItem'
 import { instruments } from 'constants/instruments'
-import { setMusic, getState, nextStep } from 'store/slices/registerSlice'
+import { setClean, setMusic, getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
 const { Option } = Select
@@ -12,16 +12,16 @@ const inputField = FormItem(Input)
 const selectField = FormItem(Select)
 
 const Music = () => {
-  const [initial, setInitial] = useState(true)
   const state = useSelector(getState)
   const dispatch = useDispatch()
   const music = state.music
+  const clean = state.clean
   const [form] = Form.useForm()
   return (
     <Form
       form={form}
       onFinish={() => {
-        setInitial(false)
+        dispatch(setClean(false))
         dispatch(nextStep(music))
       }}
     >
@@ -37,7 +37,7 @@ const Music = () => {
                 defaultValue={music.FavoriteBand}
                 component={inputField}
                 onChange={(e) => dispatch(setMusic({ ...music, FavoriteBand: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 required
                 hasFeedback
               />
@@ -48,7 +48,7 @@ const Music = () => {
                 defaultValue={music.FavoriteSong}
                 component={inputField}
                 onChange={(e) => dispatch(setMusic({ ...music, FavoriteSong: e.target.value }))}
-                initialValues={initial}
+                initialValues={clean}
                 required
                 hasFeedback
               />
@@ -59,9 +59,8 @@ const Music = () => {
                 defaultValue={music.Instruments}
                 component={selectField}
                 onChange={(value) => dispatch(setMusic({ ...music, Instruments: value }))}
-                initialValues={initial}
+                initialValues={clean}
                 mode='multiple'
-                required
                 hasFeedback
               >
                 {instruments.map((s) => (
@@ -77,8 +76,7 @@ const Music = () => {
                 defaultValue={music.SoundCloud}
                 component={inputField}
                 onChange={(e) => dispatch(setMusic({ ...music, SoundCloud: e.target.value }))}
-                initialValues={initial}
-                required
+                initialValues={clean}
                 hasFeedback
               />
             </Col>

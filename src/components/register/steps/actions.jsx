@@ -9,9 +9,11 @@ export const Actions = ({ form }) => {
   const step = state.step
   return (
     <div className='steps-action'>
-      <Button className='mr-100' size='large' onClick={() => dispatch(reset())}>
-        Reset
-      </Button>
+      {step < 4 && (
+        <Button className='mr-100' size='large' onClick={() => dispatch(reset())}>
+          Reset
+        </Button>
+      )}
       {step > 0 && (
         <Button className='mr-100' size='large' onClick={() => dispatch(previousStep())}>
           Previous
