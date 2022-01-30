@@ -1,98 +1,76 @@
 .home {
   background-color: var(--gray-100);
-  flex-direction: column;
-  .title {
-    font-size: 3em;
-    position: absolute;
-    top: 3em;
-  }
   .anticon {
-    font-size: 5em;
+    color: var(--theme-color-1);
+  }
+  .banner {
+    color: #ffffff;
+    padding: 2em;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+      90deg,
+      rgba(4, 0, 65, 1) 0%,
+      rgba(204, 229, 255, 1) 50%,
+      rgba(24, 144, 255, 0.8636498544730392) 100%
+    );
+    .title {
+      font-size: 5em;
+      padding-left: 1em;
+    }
+    .description {
+      font-size: 1.5em;
+      padding-left: 3.5em;
+      margin-top: -0.75em;
+    }
+  }
+  .tile {
+    margin-top: 3em;
+    margin: 1.5em;
+    width: 250px;
+    text-align: center;
+    border-radius: var(--container-border-radius);
+    background-color: var(--gray-200);
+    .tile-icon {
+      height: 200px;
+      width: 100%;
+      background-color: var(--gray-300);
+      border-bottom-left-radius: var(--container-border-radius);
+      border-bottom-right-radius: var(--container-border-radius);
+      &.default {
+        padding: 2em;
+      }
+      &.register {
+        padding: 1.75em 1em 2em 2.5em;
+      }
+      &.grid {
+        padding: 2.75em;
+      }
+      &.shop {
+        padding: 2.75em;
+      }
+    }
+    &:hover {
+      opacity: 0.9em;
+      color: var(--theme-color-1);
+    }
   }
   .kevin {
     height: 10em;
     width: 10em;
     border-radius: 50%;
   }
-  > div > div:nth-child(2) {
-    background-color: var(--gray-500);
-  }
-  > div > div:nth-child(2):hover {
-    background-color: var(--theme-color-1-hover);
-  }
-  > div div:nth-child(3) div {
-    background-color: var(--gray-300);
-    .anticon-loading {
-      color: var(--theme-color-1-hover);
-    }
-  }
-  > div div:nth-child(3) div:hover {
-    background-color: var(--theme-color-1-hover);
-  }
-}
-
-.home-cover-image {
-  position: absolute;
-  height: calc(100vh - 50px);
-  width: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(4, 0, 65, 1) 0%,
-    rgba(204, 229, 255, 1) 50%,
-    rgba(24, 144, 255, 0.8636498544730392) 100%
-  );
 }
 
 @media only screen and (max-width: 1920px) {
-  .home {
-    .title {
-      font-size: 3em;
-      top: 2em;
-    }
-    .anticon {
-      font-size: 3.4em;
-    }
-    .kevin {
-      height: 8em;
-      width: 8em !important;
-      border-radius: 50%;
-    }
-    > div {
-      margin-top: 3em;
-    }
-    > div > div:nth-child(2),
-    > div div:nth-child(3) div {
-      height: 8em;
-      width: 8em;
-    }
-  }
 }
 
 @media only screen and (max-width: 1680px) {
-  .home {
-    .title {
-      display: inline;
-      font-size: 3em;
-      top: 2em;
-    }
-    .anticon {
-      font-size: 4em;
-    }
-  }
 }
 
 @media only screen and (max-width: 1440px) {
-  .home {
-    .title {
-      display: none;
-    }
-  }
 }
 
 @media only screen and (max-width: 1024px) {
-  .home {
-    .title {
-      display: none;
-    }
-  }
 }
