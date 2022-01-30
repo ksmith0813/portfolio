@@ -27,3 +27,10 @@
     max-width: 80% !important;
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .ant-col-13 {
+    flex: 0 0 90% !important;
+    max-width: 90% !important;
+  }
+}

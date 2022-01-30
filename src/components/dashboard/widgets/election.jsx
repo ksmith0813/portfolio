@@ -58,7 +58,7 @@ export const Election = () => {
   return (
     <Col span={6} className='pt-200 pl-200'>
       <Card
-        title='2020 Election'
+        title={<span className='fs-125'>2020 Election</span>}
         extra={
           <>
             <span className='fs-100 pr-050'>{message.icon}</span>

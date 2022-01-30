@@ -4,7 +4,7 @@ import moon from 'assets/moon.ico'
 
 export const ApolloMissions = () => (
   <Col span={6} className='pl-200'>
-    <Card title='Apollo Space Timeline'>
+    <Card title={<span className='fs-125'>Apollo Space Timeline</span>}>
       <div className='card-display apollo'>
         <Timeline mode='left'>
           <Timeline.Item label='01-27-1967' dot={<img src={moon} className='moon' alt='' />}>

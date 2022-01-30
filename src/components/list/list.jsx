@@ -1,59 +1,39 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, Input, Row, Col, Select, Switch, Spin } from 'antd'
-import { FrownOutlined, MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
-import { arrayRemove, showMessage } from 'utils/general'
-import api from 'utils/api'
+import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { userNames } from 'constants/users'
+import {
+  getState,
+  setLoading,
+  setOriginalTodos,
+  setTodos,
+  addTodo,
+  removeTodo,
+  updateTodo,
+  submit,
+} from 'store/slices/listSlice'
+import api from 'utils/api'
 import './list.scss'
 
 const { Option } = Select
 
 export const List = () => {
-  const [loading, setLoading] = useState(false)
-  const [originalTodos, setOriginalTodos] = useState()
-  const [todos, setTodos] = useState([])
+  const state = useSelector(getState)
+  const loading = state.loading
+  const todos = state.todos
+  const originalTodos = state.originalTodos
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    setLoading(true)
+    if (originalTodos.length) return
     api.getTodos().then(({ data }) => {
-      setTodos(data)
-      setOriginalTodos(data)
-      setLoading(false)
+      dispatch(setTodos(data))
+      dispatch(setOriginalTodos(data))
+      dispatch(setLoading(false))
     })
+    // eslint-disable-next-line
   }, [])
-
-  const addTodo = () => {
-    let copy = [...todos]
-    copy.unshift({
-      id: todos.length + 1,
-      userId: null,
-      title: '',
-      completed: false,
-      isNew: true,
-    })
-
-    setTodos(copy)
-  }
-
-  const removeTodo = (id) => {
-    let copy = [...todos]
-    arrayRemove(copy, 'id', id)
-    setTodos(copy)
-  }
-
-  const updateTodo = (todo) => {
-    let copy = [...todos]
-    const match = copy.filter((t) => t.id === todo.id)[0]
-
-    if (match) {
-      match.completed = todo.completed
-      match.title = todo.title
-      match.userId = todo.userId
-      setTodos(copy)
-    }
-  }
-
-  const submit = () => showMessage('Successfully updated your todo list!', 'success')
 
   return (
     <div className='page-center'>
@@ -72,10 +52,7 @@ export const List = () => {
           )}
           {!loading && !todos.length && (
             <div className='fs-150 content-center'>
-              <div>Sorry, no results found my friend</div>
-              <div className='pl-050'>
-                <FrownOutlined className='icon-blue' />
-              </div>
+              <div>Sorry, no results found my friend.</div>
             </div>
           )}
           {!loading && todos.length > 0 && (
@@ -83,21 +60,14 @@ export const List = () => {
               <TodoHeader />
               <div className='todo-list-items'>
                 {todos.map((t, i) => (
-                  <TodoRow
-                    key={t.id}
-                    index={i}
-                    todo={t}
-                    addTodo={addTodo}
-                    removeTodo={removeTodo}
-                    updateTodo={updateTodo}
-                  />
+                  <TodoRow key={t.id} index={i} todo={t} />
                 ))}
               </div>
             </>
           )}
         </div>
         <Row justify='center'>
-          <Button type='primary' size='large' onClick={submit}>
+          <Button type='primary' size='large' disabled={loading} onClick={() => dispatch(submit())}>
             Submit
           </Button>
         </Row>
@@ -109,20 +79,24 @@ export const List = () => {
 const Search = ({ todos, setTodos }) => {
   const [search, setSearch] = useState('')
   const [searchChanged, setSearchChanged] = useState(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (searchChanged) {
         if (search) {
-          const matches = todos.filter((c) => c.userId && c.title.toLowerCase().includes(search.toLowerCase()))
-          setTodos(matches)
+          const matches = todos.filter(
+            (c) => c.userId && c.title.toLowerCase().trim().includes(search.toLowerCase().trim())
+          )
+          dispatch(setTodos(matches))
         } else {
-          setTodos(todos)
+          dispatch(setTodos(todos))
         }
       }
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [search, searchChanged, todos, setTodos])
+    // eslint-disable-next-line
+  }, [search, searchChanged])
 
   const onSearchChange = (e) => {
     setSearchChanged(true)
@@ -151,10 +125,11 @@ const TodoHeader = () => (
   </Row>
 )
 
-const TodoRow = ({ index, todo, addTodo, removeTodo, updateTodo }) => {
+const TodoRow = ({ index, todo }) => {
   const [currentTodo, setCurrentTodo] = useState()
   const [title, setTitle] = useState()
   const [titleChanged, setTitleChanged] = useState(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setCurrentTodo(todo)
@@ -169,9 +144,9 @@ const TodoRow = ({ index, todo, addTodo, removeTodo, updateTodo }) => {
           let copyCurrent = { ...currentTodo }
           copyCurrent.title = title
           setCurrentTodo(copyCurrent)
-          updateTodo({ ...copyCurrent, title: title })
+          dispatch(updateTodo({ ...copyCurrent, title: title, userId: todo.userId }))
         } else {
-          updateTodo({ ...currentTodo, title: '' })
+          dispatch(updateTodo({ ...currentTodo, title: '', userId: todo.userId }))
         }
       }
     }, 1000)
@@ -187,14 +162,19 @@ const TodoRow = ({ index, todo, addTodo, removeTodo, updateTodo }) => {
   return (
     <Row className='pt-200'>
       <Col span={1} className='fs-150'>
-        {index === 0 && <PlusCircleOutlined onClick={() => addTodo()} className='clickable add-item' />}
-        {index > 0 && <MinusCircleOutlined onClick={() => removeTodo(todo.id)} className='clickable remove-item' />}
+        {index === 0 && <PlusCircleOutlined onClick={() => dispatch(addTodo())} className='clickable add-item' />}
+        {index > 0 && (
+          <MinusCircleOutlined
+            onClick={() => dispatch(removeTodo({ id: todo.id }))}
+            className='clickable remove-item'
+          />
+        )}
       </Col>
       <Col span={5} className='pl-150'>
         <Select
           value={userNames.filter((n) => n.id === todo.userId)[0]?.value}
           className='user-select'
-          onChange={(value) => updateTodo({ ...todo, userId: value })}
+          onChange={(value) => dispatch(updateTodo({ ...todo, userId: value }))}
         >
           {userNames.map((u, i) => (
             <Option key={i} value={u.id}>
@@ -211,7 +191,7 @@ const TodoRow = ({ index, todo, addTodo, removeTodo, updateTodo }) => {
           checked={todo.completed}
           checkedChildren='Yes'
           unCheckedChildren='No'
-          onClick={() => updateTodo({ ...todo, completed: !todo.completed })}
+          onClick={() => dispatch(updateTodo({ ...todo, completed: !todo.completed }))}
         />
       </Col>
     </Row>

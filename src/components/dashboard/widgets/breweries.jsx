@@ -73,7 +73,7 @@ export const Breweries = () => {
   return (
     <Col span={12} className='pl-200'>
       <Card
-        title='Breweries'
+        title={<span className='fs-125'>Breweries</span>}
         extra={
           <>
             <span className='pr-100'>City</span>
@@ -88,7 +88,7 @@ export const Breweries = () => {
             columns={columns}
             loading={loading}
             pagination={false}
-            scroll={{ y: 417 }}
+            scroll={{ y: 406 }}
           />
         </div>
       </Card>

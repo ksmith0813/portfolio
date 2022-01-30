@@ -1,13 +1,15 @@
 import moment from 'moment'
 import { message } from 'antd'
 
-export const arrayRemove = (arr, property, value) => {
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i][property] === value) {
-      arr.splice(i, 1)
-      return
+export const arrayRemove = (array, property, value) => {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i][property] === value) {
+      array.splice(i, 1)
+      return array
     }
   }
+
+  return array
 }
 
 export const arrayMove = (array, from, to) => {

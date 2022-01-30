@@ -4,7 +4,7 @@ import { withGoogleMap, withScriptjs, GoogleMap, Marker } from 'react-google-map
 
 export const MyLocation = () => (
   <Col span={6}>
-    <Card title='My Location - Fayetteville, AR'>
+    <Card title={<span className='fs-125'>My Location - Fayetteville, AR</span>}>
       <div className='card-display'>
         <MapComponent
           googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'

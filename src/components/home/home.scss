@@ -26,6 +26,8 @@
       background-color: var(--gray-200);
       box-shadow: var(--box-shadow);
       .tile-title {
+        color: var(--gray-700);
+        font-weight: bold;
         font-size: 1.75em;
         padding: 0.5em;
       }
@@ -50,7 +52,9 @@
       }
       &:hover {
         opacity: 0.9em;
-        color: var(--theme-color-1);
+        .tile-title {
+          color: var(--theme-color-1);
+        }
       }
     }
   }
