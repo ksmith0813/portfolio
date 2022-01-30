@@ -1,21 +1,32 @@
 .home {
   background-color: var(--gray-100);
+  height: calc(100vh - 50px);
+  overflow-y: auto;
   .anticon {
     color: var(--theme-color-1);
   }
   .tile-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 2em;
     padding-top: 3em;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 325px);
+    .tile-header {
+      font-size: 2em;
+      padding-bottom: 2em;
+    }
     .tile {
       margin: 2em;
       width: 300px;
       text-align: center;
       border-radius: var(--container-border-radius);
       background-color: var(--gray-200);
+      .tile-title {
+        font-size: 1.75em;
+        padding: 0.5em;
+      }
       .tile-icon {
         height: 270px;
         width: 100%;
@@ -44,29 +55,97 @@
 }
 
 @media only screen and (max-width: 1920px) {
+  .home {
+    .tile-container {
+      .tile {
+        width: 250px;
+        .tile-icon {
+          height: 200px;
+          &.default {
+            padding: 1em;
+          }
+          &.register {
+            padding: 1em 0em 1.25em 2em;
+          }
+          &.grid {
+            padding: 2em;
+          }
+          &.shop {
+            padding: 2em;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 1680px) {
+  .home {
+    .tile-container {
+      .tile {
+        width: 200px;
+        .tile-icon {
+          height: 200px;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 1440px) {
-  .tile-container {
-    flex-wrap: wrap;
-    .tile {
-      min-width: 200px !important;
-      .tile-icon {
-        height: 200px !important;
-        &.default {
-          padding: 1em !important;
+  .home {
+    .tile-container {
+      .tile-header {
+        font-size: 1.75em;
+        padding-bottom: 1.75em;
+      }
+      .tile {
+        width: 170px;
+        .tile-title {
+          font-size: 1em;
+          padding: 0.5em;
         }
-        &.register {
-          padding: 1em 0em 1.25em 2em !important;
+        .tile-icon {
+          height: 170px;
+          &.register {
+            padding: 1.5em 0em 1.5em 1.5em;
+          }
+          &.grid {
+            padding: 2em;
+          }
+          &.shop {
+            padding: 2em;
+          }
         }
-        &.grid {
-          padding: 1.75em !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .home {
+    .tile-container {
+      .tile-header {
+        font-size: 1.5em;
+        padding-bottom: 1.5em;
+      }
+      .tile {
+        width: 100px;
+        .tile-title {
+          font-size: 1em;
+          padding: 0.5em;
         }
-        &.shop {
-          padding: 1.75em !important;
+        .tile-icon {
+          height: 100px;
+          &.register {
+            padding: 1em 0em 1.25em 1em;
+          }
+          &.grid {
+            padding: 1.5em;
+          }
+          &.shop {
+            padding: 1.5em;
+          }
         }
       }
     }

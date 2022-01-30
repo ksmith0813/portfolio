@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Spin } from 'antd'
 import dashboard from 'assets/dashboard.svg'
 import register from 'assets/register.svg'
 import grid from 'assets/grid.svg'
@@ -7,7 +8,6 @@ import list from 'assets/list.svg'
 import shop from 'assets/shop.svg'
 import visuals from 'assets/chart.svg'
 import './home.scss'
-import { Spin } from 'antd'
 
 export const Home = () => {
   const [activePage, setActivePage] = useState()
@@ -20,7 +20,7 @@ export const Home = () => {
 
   const Tile = ({ title, image, className = 'default' }) => (
     <div className='tile clickable' onClick={() => goToPage(title.toLowerCase())}>
-      <div className='fs-175 p-050'>{activePage === title.toLowerCase() ? <Spin /> : title}</div>
+      <div className='tile-title'>{activePage === title.toLowerCase() ? <Spin /> : title}</div>
       <img src={image} className={`tile-icon ${className}`} alt='' />
     </div>
   )
@@ -33,12 +33,15 @@ export const Home = () => {
           <div className='description'>Welcome to my React portfolio app.</div>
         </div>
         <div className='tile-container'>
-          <Tile title='Dashboard' image={dashboard} />
-          <Tile title='Register' image={register} className='register' />
-          <Tile title='Grid' image={grid} className='grid' />
-          <Tile title='List' image={list} />
-          <Tile title='Shop' image={shop} className='shop' />
-          <Tile title='Visuals' image={visuals} className='visuals' />
+          <div className='tile-header'>Please check out some of these cool examples below.</div>
+          <div className='flex flex-wrap'>
+            <Tile title='Dashboard' image={dashboard} />
+            <Tile title='Register' image={register} className='register' />
+            <Tile title='Grid' image={grid} className='grid' />
+            <Tile title='List' image={list} />
+            <Tile title='Shop' image={shop} className='shop' />
+            <Tile title='Visuals' image={visuals} className='visuals' />
+          </div>
         </div>
       </div>
     </>
