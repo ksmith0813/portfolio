@@ -4,20 +4,22 @@ import signature from 'assets/signature.png'
 import './about.scss'
 
 export const About = () => (
-  <div className='page-center'>
-    <div className='bio-cover-image' />
+  <div className='about'>
+    <div className='banner'>
+      <div className='title'>Bio.</div>
+      <div className='description'>Software Developer, musician, and world traveler.</div>
+    </div>
     <div className='bio-container'>
       <div className='description'>
         <span className='fs-125'>
-          <b>Bio</b>
+          <b>Hello!</b>
         </span>
         <div className='bio-signature'>
-          Experienced Software Engineer with a demonstrated history of success in the computer software industry. Strong
-          engineering professional skilled in React, JavaScript, HTML, CSS, C#, .NET, Python, MongoDB, SQL Server. I
-          love hanging out on the beach and getting lost in the woods and canyons. Traveling the world and going on
-          endless adventures will forever keep me moving forward. Music has always been and always will be a big part of
-          my life. I am lucky enough to have a home music studio enabling me to write, create, and record my own music.
-          Let's crank some code and rock out!
+          I am a passionate Software Developer with a demonstrated history of success in the computer software industry.
+          Strong engineering professional skilled in React, Redux, JavaScript, HTML, CSS, C#, .NET, Python, SQL Server,
+          and MongoDB. I love hanging out on the beach and getting lost in the woods and canyons. Traveling the world
+          and going on endless adventures will always keep me moving forward. Aside from building software applications,
+          I have a passion for making music in my home studio. Let's crank some code and rock out!
           <img className='signature' src={signature} alt='' />
         </div>
       </div>

@@ -50,6 +50,8 @@ export const Navigation = () => {
         <div>
           <Avatar src={kevin} />
           <span className='pl-075 pr-200'>Kevin Smith</span>
+        </div>
+        <div>
           <SiteLink page='home' title='Home' />
           <SiteLink page='dashboard' title='Dashboard' />
           <SiteLink page='register' title='Register' />
@@ -57,7 +59,7 @@ export const Navigation = () => {
           <SiteLink page='list' title='List' />
           <SiteLink page='shop' title='Shop' />
           <SiteLink page='visuals' title='Visuals' />
-          <SiteLink page='about' title='About' />
+          <SiteLink page='about' title='Bio' />
         </div>
         {externalLinks}
       </div>

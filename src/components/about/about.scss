@@ -1,19 +1,10 @@
-.bio-cover-image {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(90deg, rgba(4,0,65,1) 0%, rgba(204,229,255,1) 50%, rgba(24,144,255,0.8636498544730392) 100%);
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-}
 .bio-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 5em;
-  position: absolute;
+  padding: 2em;
+  padding-top: 3em;
+  height: calc(100vh - 250px);
   .description {
     width: 40%;
     height: 560px;
@@ -29,11 +20,12 @@
 }
 .me-image {
   border-radius: 50%;
-  height: 400px;
+  height: 450px;
 }
 .bio-signature {
   position: relative;
   height: 100%;
+  padding-top: .5em;
 }
 .signature {
   bottom: 3em;
@@ -44,25 +36,39 @@
 @media only screen and (max-width: 1920px) {
   .bio-container .description {
     font-size: 1.65em;
+    height: 500px;
   }
 }
 
 @media only screen and (max-width: 1680px) {
   .bio-container .description {
     font-size: 1.54em;
+    height: 500px;
   }
 }
 
 @media only screen and (max-width: 1440px) {
   .bio-container .description {
     font-size: 1.3em;
-    height: 600px;
+    height: 420px;
+  }
+  .me-image {
+    height: 360px;
+  }
+  .signature {
+    width: 200px;
   }
 }
 
 @media only screen and (max-width: 1024px) {
   .bio-container .description {
     font-size: 1.1em;
-    height: 600px;
+    height: 420px;
+  }
+  .me-image {
+    height: 340px;
+  }
+  .signature {
+    width: 180px;
   }
 }

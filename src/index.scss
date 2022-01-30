@@ -84,15 +84,15 @@ body {
   height: 100%;
   width: 100%;
 }
+
 .site-link {
-  margin-left: 1.25em;
+  margin-left: 2em;
   font-size: 0.8em;
   color: #ffffff;
   &.active {
     color: var(--theme-color-1);
   }
 }
-
 .external-link {
   float: left;
   margin-top: 0.7em;
@@ -103,6 +103,29 @@ body {
   width: 75px;
   margin-top: 0.15em;
   margin-left: 0;
+}
+
+.banner {
+  color: #ffffff;
+  padding: 2em;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 0, 65, 1) 0%,
+    rgba(204, 229, 255, 1) 50%,
+    rgba(24, 144, 255, 0.8636498544730392) 100%
+  );
+  .title {
+    font-size: 5em;
+    padding-left: 1em;
+  }
+  .description {
+    font-size: 1.5em;
+    padding-left: 3.5em;
+    margin-top: -0.75em;
+  }
 }
 
 .box-shadow {
@@ -128,7 +151,7 @@ body {
 
 .clickable:hover {
   cursor: pointer;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .light-text {
@@ -215,14 +238,28 @@ body {
   text-align: center;
 }
 
+@media only screen and (max-width: 1680px) {
+  body {
+    font-size: 11px;
+  }
+}
+
 @media only screen and (max-width: 1440px) {
   body {
     font-size: 10px;
   }
 }
 
-@media only screen and (max-width: 1680px) {
+@media only screen and (max-width: 1024px) {
   body {
-    font-size: 11px;
+    font-size: 10px;
+  }
+  .site-link {
+    margin-left: 1.5em;
+    font-size: 0.7em;
+    color: #ffffff;
+    &.active {
+      color: var(--theme-color-1);
+    }
   }
 }
