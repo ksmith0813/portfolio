@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Drawer } from 'antd'
 import { InsertRowRightOutlined } from '@ant-design/icons'
-import { useGridContext } from '../context/gridContext'
 import { ColumnSelection } from 'components/_siteWide/fastGrid/columnSelection/columnSelection'
+import { getState } from 'store/slices/gridSlice'
 
 export const GridControls = () => {
+  const state = useSelector(getState)
   const [showingSelection, setShowingSelection] = useState(false)
-  const { state, setState, getColummSelectionList } = useGridContext()
-
-  if (!state.OriginalData.length) return null
 
   return (
     <div className='grid-controls'>
@@ -22,11 +21,9 @@ export const GridControls = () => {
         >
           <ColumnSelection
             state={state}
-            setState={setState}
+            storeKey={state.ColumnKey}
             defaultColumns={state.DefaultColumns}
-            columnList={getColummSelectionList()}
             setShowingSelection={setShowingSelection}
-            storeKey='grid-columns'
           />
         </Drawer>
       </>

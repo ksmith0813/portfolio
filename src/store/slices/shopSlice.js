@@ -25,7 +25,9 @@ export const slice = createSlice({
       state.selectedCategory = action.payload
     },
     updateCart: (state, action) => {
-      state.cartItems.push(action.payload)
+      const match = [...state.cartItems].filter((c) => c.id === action.payload.id)[0]
+      if (match) match.qty += action.payload.qty
+      else state.cartItems.push(action.payload)
     },
     removeProduct: (state, action) => {
       state.cartItems = state.cartItems.filter((c) => c.id !== action.payload.id)
@@ -39,16 +41,8 @@ export const slice = createSlice({
   },
 })
 
-export const {
-  loading,
-  setCategories,
-  setProducts,
-  changeCategory,
-  updateCart,
-  removeProduct,
-  openModal,
-  closeModal,
-} = slice.actions
+export const { loading, setCategories, setProducts, changeCategory, updateCart, removeProduct, openModal, closeModal } =
+  slice.actions
 
 export const getState = (state) => state.shop
 

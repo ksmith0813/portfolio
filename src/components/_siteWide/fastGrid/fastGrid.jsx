@@ -1,98 +1,45 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import { AutoComplete, Input, Row, Col, Select, Table, DatePicker, Space, Button, Tag } from 'antd'
 import { CalendarOutlined, CloseOutlined, SearchOutlined } from '@ant-design/icons'
 import { hasProperties, spacesToProperty, getDateRanges, showMessage } from 'utils/general'
+import { filterData, onSelectAll, onSelectionChange, removeFilter, setPaging, setSorting } from 'store/slices/gridSlice'
 import moment from 'moment'
 import './fastGrid.scss'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
-const store = window.localStorage
 
 export const FastGrid = ({
   state,
-  setState,
-  defaultSearch = {},
   loading,
   columns,
   getData,
   setDetail,
-  rowKey,
-  storageKey,
-  tableClass,
   selections,
   setDays,
   rightControls,
+  defaultSearch,
   noFilter,
 }) => {
+  const dispatch = useDispatch()
+
   const [search, setSearch] = useState(defaultSearch)
   const [openDate, setOpenDate] = useState(true)
   const searchInput = useRef(null)
 
   useEffect(() => {
-    getData()
+    if (!state.InitialLoad) dispatch(getData())
     // eslint-disable-next-line
   }, [state.Key])
 
-  const updateSorting = (column, direction) => {
-    const copy = { ...state }
-    copy.Key = ++copy.Key
-    copy.Filters.SortColumn = column
-    copy.Filters.SortDirection = direction
-    setState(copy)
-  }
+  const updateSorting = (column, direction) => dispatch(setSorting({ column, direction }))
 
-  const updatePaging = (currentPage, pageSize) => {
-    const copy = { ...state }
-    copy.Key = ++copy.Key
-    copy.Filters.CurrentPage = currentPage
-    copy.Filters.PageSize = pageSize
-    setState(copy)
-  }
+  const updatePaging = (currentPage, pageSize) => dispatch(setPaging({ currentPage, pageSize }))
 
-  const filterTable = (property, value) => {
-    const copy = { ...state }
-    copy.Key = ++copy.Key
-    copy.Filters.CurrentPage = 1
-    copy.Filters.Config[property] = value
-    store.setItem(storageKey, JSON.stringify(copy.Filters.Config))
-    setState(copy)
-  }
+  const filterTable = (property, value) => dispatch(filterData({ property, value }))
 
-  const removeFilter = (property) => {
-    const copy = { ...state }
-    copy.Key = ++copy.Key
-    delete copy.Filters.Config[property]
-    store.setItem(storageKey, JSON.stringify(copy.Filters.Config))
-    setState(copy)
-  }
-
-  const removeTag = (property) => {
-    const copy = { ...search }
-    copy[property] = ''
-    setSearch(copy)
-    removeFilter(property)
-  }
-
-  const onSelectChange = (keys) => {
-    const selectAll = store.getItem('grid-filter-select-all')
-    const copy = { ...state }
-    copy.SelectAll = selectAll === 'true'
-    copy.SelectedGridKeys = keys
-
-    if (selectAll) {
-      const unselected = copy.Data.filter((d) => !keys.includes(d[rowKey]))
-      if (unselected.length) {
-        const unselectedIds = unselected.map((u) => {
-          return u[rowKey]
-        })
-        const unique = Array.from(new Set(unselectedIds))
-        copy.SelectedIds.push(...unique)
-      }
-    } else copy.SelectedIds = keys
-
-    setState(copy)
-  }
+  const removeTag = (property, value) => dispatch(removeFilter({ property, value }))
 
   const getSearchColumn = (property, type, options, filter, noFilter) => {
     return columnSearch(
@@ -114,14 +61,8 @@ export const FastGrid = ({
 
   const rowSelection = selections && {
     selectedRowKeys: state.SelectedGridKeys,
-    onChange: onSelectChange,
-    onSelectAll: (selected) => {
-      const copy = { ...state }
-      copy.SelectAll = selected
-      setState(copy)
-      if (selected) store.setItem('grid-filter-select-all', selected.toString())
-      else store.removeItem('grid-filter-select-all')
-    },
+    onChange: onSelectionChange,
+    onSelectAll: (selected) => dispatch(onSelectAll(selected)),
     selections: selections.map((s) => {
       return {
         key: s.key,
@@ -133,6 +74,7 @@ export const FastGrid = ({
 
   const filterColumns = []
   columns.map((c) => {
+    if (!c) return c
     return filterColumns.push({
       ...c,
       title: (
@@ -173,8 +115,8 @@ export const FastGrid = ({
         </Row>
       )}
       <Table
-        className={`${tableClass} mt-150`}
-        rowKey={rowKey}
+        className={`${state.TableClass} mt-150`}
+        rowKey={state.RowKey}
         loading={loading}
         rowSelection={rowSelection}
         columns={filterColumns}
@@ -219,6 +161,7 @@ const FilterTags = ({ entries, removeTag }) => {
 }
 
 const SortHeader = ({ property, filter, update, title, noSort }) => {
+  const dispatch = useDispatch()
   const defaultProperty = property
   const display = title || spacesToProperty(property)
 
@@ -236,7 +179,7 @@ const SortHeader = ({ property, filter, update, title, noSort }) => {
   }
 
   return (
-    <div onClick={() => update(defaultProperty, nextSort)}>
+    <div onClick={() => dispatch(update({ column: defaultProperty, direction: nextSort }))}>
       <AntdSortingControls title={display} direction={activeSort} />
     </div>
   )

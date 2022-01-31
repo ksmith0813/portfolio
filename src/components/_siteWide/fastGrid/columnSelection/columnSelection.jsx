@@ -1,14 +1,34 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { SortableContainer, SortableHandle, SortableElement } from 'react-sortable-hoc'
 import { Row, Col, Switch, Button } from 'antd'
 import { MenuOutlined } from '@ant-design/icons'
+import { updateDefaultColumns } from 'store/slices/gridSlice'
 import { arrayMove, spacesToProperty } from 'utils/general'
-import { SortableContainer, SortableHandle, SortableElement } from 'react-sortable-hoc'
 import './columnSelection.scss'
 
 const store = window.localStorage
 
-export const ColumnSelection = ({ state, setState, defaultColumns, columnList, setShowingSelection, storeKey }) => {
-  const [items, setItems] = useState([])
+export const ColumnSelection = ({ state, storeKey, defaultColumns, setShowingSelection }) => {
+  const getColumnList = () => {
+    let columnList = []
+    Object.keys(state.OriginalData[0]).map((p, i) => {
+      if (state.IgnoreColumns.includes(p)) return p
+      columnList.push({
+        id: i,
+        property: p,
+        show: state.VisibleColumns.includes(p),
+      })
+      return p
+    })
+
+    return columnList
+  }
+
+  const columnList = getColumnList()
+
+  const [items, setItems] = useState(columnList.sort((a, b) => b.show - a.show))
+  const dispatch = useDispatch()
 
   const resetIds = (options) => {
     let counter = 0
@@ -26,20 +46,22 @@ export const ColumnSelection = ({ state, setState, defaultColumns, columnList, s
     if (storedColumnList) {
       storedColumnList.map((s) => {
         const match = columnList.filter((c) => c.property === s)[0]
-        orderedColumns.push({ ...match, show: true })
+        if (match) orderedColumns.push({ ...match, show: true })
         return s
       })
 
       if (orderedColumns.length < columnList.length) {
-        for (let i = orderedColumns.length; i < columnList.length; i++) {
-          orderedColumns.push({ ...columnList[i], show: false })
-        }
+        columnList.map((c) => {
+          const match = orderedColumns.filter((f) => f.property === c.property)[0]
+          if (!match) orderedColumns.push(c)
+          return c
+        })
       }
     } else {
-      orderedColumns = columnList.sort((a, b) => b.show - a.show)
+      orderedColumns = columnList
     }
 
-    setItems(resetIds(orderedColumns))
+    setItems(resetIds(orderedColumns.sort((a, b) => b.show - a.show)))
     // eslint-disable-next-line
   }, [state.Key])
 
@@ -66,8 +88,9 @@ export const ColumnSelection = ({ state, setState, defaultColumns, columnList, s
 
     resetIds(columnList)
     setItems(columnList)
-    updateDefaultColumns(defaultColumns)
+    dispatch(updateDefaultColumns(defaultColumns))
     store.removeItem(storeKey)
+    setShowingSelection(false)
   }
 
   const apply = () => {
@@ -76,16 +99,8 @@ export const ColumnSelection = ({ state, setState, defaultColumns, columnList, s
       return c.show && values.push(c.property)
     })
 
-    updateDefaultColumns(values)
-  }
-
-  const updateDefaultColumns = (columns) => {
-    let copy = { ...state }
-    copy.Key = ++copy.Key
-    copy.VisibleColumns = columns
-    setState(copy)
+    dispatch(updateDefaultColumns(values))
     setShowingSelection(false)
-    store.setItem(storeKey, JSON.stringify(columns))
   }
 
   const DragHandle = SortableHandle(() => <MenuOutlined className='column-menu-grab' />)

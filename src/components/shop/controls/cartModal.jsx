@@ -8,7 +8,7 @@ export const CartModal = () => {
   const state = useSelector(getState)
   const dispatch = useDispatch()
   const items = state.cartItems
-  const hasItems = items.length
+  const hasItems = items.length > 0
   const totalAmount = hasItems && items.reduce((a, n) => a + n.price * n.qty, 0)
 
   return (
