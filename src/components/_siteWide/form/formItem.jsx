@@ -9,9 +9,7 @@ export const FormItem =
     if (!initialValues) {
       if (validator) error = validator(defaultValue)
       if (required) {
-        if ((Array.isArray(defaultValue) && !defaultValue.length) || !defaultValue) {
-          error = 'Required'
-        }
+        if ((Array.isArray(defaultValue) && !defaultValue.length) || !defaultValue) error = 'Required'
       }
     }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Form, Tag, Card } from 'antd'
 import { UserOutlined, VideoCameraOutlined, AudioOutlined, CarOutlined } from '@ant-design/icons'
-import { DataItem } from 'components/_siteWide/layout/dataItem'
+import { DataItem } from 'components/_siteWide/layout/layout'
 import { getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
