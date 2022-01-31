@@ -8,7 +8,7 @@ export const FormItem =
     let error
     if (!initialValues) {
       if (validator) error = validator(defaultValue)
-      else if (required) {
+      if (required) {
         if ((Array.isArray(defaultValue) && !defaultValue.length) || !defaultValue) {
           error = 'Required'
         }

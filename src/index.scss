@@ -111,12 +111,7 @@ body {
   height: 200px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(
-    90deg,
-    rgba(4, 0, 65, 1) 0%,
-    rgba(204, 229, 255, 1) 50%,
-    rgba(24, 144, 255, 0.8636498544730392) 100%
-  );
+  background-color: var(--gray-900);
   .title {
     font-size: 5em;
     padding-left: 1em;

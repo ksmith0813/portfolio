@@ -51,9 +51,9 @@
   right: 0em;
   padding-top: 0.5em;
   height: 50px;
-  color: var(--gray-700);
+  color: var(--gray-500);
   :hover {
-    color: var(--theme-color-1);
+    color: var(--theme-color-1) !important;
   }
   .cart-icon {
     font-size: 3em;
