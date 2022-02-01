@@ -1,14 +1,20 @@
 import React from 'react'
 import { Card, Col, Timeline } from 'antd'
-import moon from 'assets/moon.ico'
+import shuttle from 'assets/shuttle.svg'
+import astronaut from 'assets/astronaut.svg'
 
 export const ApolloMissions = () => (
   <Col span={6} className='pl-200'>
     <Card title={<span className='fs-125'>Apollo Space Timeline</span>}>
       <div className='card-display apollo'>
         <Timeline mode='left'>
-          {data.map((d, i) => (
-            <Timeline.Item label='01-27-1967' dot={<img src={moon} className='moon' alt='' />}>
+          {data.map((d) => (
+            <Timeline.Item
+              key={d.name}
+              className={d.name === 'Apollo 11' ? 'landing' : ''}
+              label='01-27-1967'
+              dot={<img src={d.name === 'Apollo 11' ? astronaut : shuttle} className='moon' alt='' />}
+            >
               <b>{d.name}</b>
               <p className='pt-050'>{d.description}</p>
             </Timeline.Item>
