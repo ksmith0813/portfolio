@@ -1,4 +1,4 @@
-import { spacesToProperty } from 'utils/general'
+import { isArray, spacesToProperty } from 'utils/general'
 
 export const getError = (property, element) => {
   if (!element) return null
@@ -6,7 +6,7 @@ export const getError = (property, element) => {
 
   let error
   let propertyName = property
-  if (Array.isArray(property)) {
+  if (isArray(property)) {
     const index = property[0]
     propertyName = property[1]
     error = element.errors.filter((e) => e.property === propertyName && e.index === index)[0]
@@ -21,7 +21,7 @@ export const validateRequiredFields = (form, optionalFields = []) => {
   Object.keys(form).forEach((k) => {
     if (optionalFields.includes(k) || k === 'errors') return
     const value = form[k]
-    if ((Array.isArray(value) && !value.length) || !value) {
+    if ((isArray(value) && !value.length) || !value) {
       form.errors.push({ property: k, message: getRequiredMessage(k) })
     }
   })

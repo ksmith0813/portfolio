@@ -1,3 +1,4 @@
+import { isArray } from 'utils/general'
 import { getRequiredMessage } from '../util'
 
 export const validateProperty = (
@@ -11,7 +12,7 @@ export const validateProperty = (
   let value
   let propertyName = property
 
-  if (Array.isArray(property)) {
+  if (isArray(property)) {
     propertyName = property[1]
     value = form[nestedProperty][property[0]][propertyName]
   } else {

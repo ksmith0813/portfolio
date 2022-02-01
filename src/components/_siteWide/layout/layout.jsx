@@ -1,9 +1,10 @@
 import React from 'react'
 import { Row, Spin, Tag } from 'antd'
+import { isArray } from 'utils/general'
 import './layout.scss'
 
 export const DataItem = ({ label, children }) => {
-  if ((Array.isArray(children) && !children.length) || !children) children = 'N/A'
+  if ((isArray(children) && !children.length) || !children) children = 'N/A'
   return (
     <>
       <Row>

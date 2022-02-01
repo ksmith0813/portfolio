@@ -1,5 +1,5 @@
 import { Form } from 'antd'
-import { spacesToProperty } from 'utils/general'
+import { isArray, spacesToProperty } from 'utils/general'
 import { FormFloatLabel } from './formFloatLabel'
 
 export const FormItem =
@@ -9,7 +9,7 @@ export const FormItem =
     if (!initialValues) {
       if (validator) error = validator(defaultValue)
       if (required) {
-        if ((Array.isArray(defaultValue) && !defaultValue.length) || !defaultValue) error = 'Required'
+        if ((isArray(defaultValue) && !defaultValue.length) || !defaultValue) error = 'Required'
       }
     }
 

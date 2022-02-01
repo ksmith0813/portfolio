@@ -25,6 +25,8 @@ export const arrayMove = (array, from, to) => {
   return array
 }
 
+export const isArray = (value) => value && Array.isArray(value)
+
 export const getAbbreviation = (value, length = 20) => {
   return `${value.substring(0, length)}${value.length > length ? "..." : ""}`
 }
@@ -54,7 +56,7 @@ export const addCommasToNumber = (value) => {
 
 export const spacesToProperty = (property) => {
   let propertyName = property
-  if (Array.isArray(property)) propertyName = property[1]
+  if (isArray(property)) propertyName = property[1]
   if (property.includes("_")) propertyName = propertyName.replace("_", " ")
   return propertyName.replace(/([a-z])([A-Z])/g, '$1 $2')
 }
