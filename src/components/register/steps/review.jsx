@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Form, Tag, Card } from 'antd'
-import { UserOutlined, VideoCameraOutlined, AudioOutlined, CarOutlined } from '@ant-design/icons'
 import { DataItem } from 'components/_siteWide/layout/layout'
 import { getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
@@ -33,15 +32,7 @@ const ContactContent = () => {
   const state = useSelector(getState)
   const contact = state.contact
   return (
-    <Card
-      title={
-        <>
-          <UserOutlined className='card-title-icon' color='blue'></UserOutlined>
-          <span className='pl-150'>Contact</span>
-        </>
-      }
-      className='section'
-    >
+    <Card title='Contact' className='section'>
       <Row>
         <Col className='p-100'>
           <DataItem label='First Name' children={contact.FirstName} />
@@ -87,15 +78,7 @@ const MovieContent = () => {
   const state = useSelector(getState)
   const movie = state.movie
   return (
-    <Card
-      title={
-        <>
-          <VideoCameraOutlined className='card-title-icon' color='blue'></VideoCameraOutlined>
-          <span className='pl-150'>Movies</span>
-        </>
-      }
-      className='section'
-    >
+    <Card title='Movies' className='section'>
       <Row>
         <Col className='p-100'>
           <DataItem label='Favorite Movie' children={movie.FavoriteMovie} />
@@ -121,15 +104,7 @@ const MusicContent = () => {
   const state = useSelector(getState)
   const music = state.music
   return (
-    <Card
-      title={
-        <>
-          <AudioOutlined className='card-title-icon' color='blue'></AudioOutlined>
-          <span className='pl-150'>Music</span>
-        </>
-      }
-      className='section'
-    >
+    <Card title='Music' className='section'>
       <Row>
         <Col className='p-100'>
           <DataItem label='Favorite Band' children={music.FavoriteBand} />
@@ -163,15 +138,7 @@ const TravelContent = () => {
   const state = useSelector(getState)
   const travel = state.travel
   return (
-    <Card
-      title={
-        <>
-          <CarOutlined className='card-title-icon' color='blue'></CarOutlined>
-          <span className='pl-150'>Travel</span>
-        </>
-      }
-      className='section'
-    >
+    <Card title='Travel' className='section'>
       <Row>
         <Col className='p-100'>
           <DataItem
