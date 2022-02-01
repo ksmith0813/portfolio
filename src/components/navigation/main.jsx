@@ -9,7 +9,7 @@ import { Grid } from 'components/grid/grid'
 import { List } from 'components/list/list'
 import { Shop } from 'components/shop/shop'
 import { Visuals } from 'components/visuals/visuals'
-import { About } from 'components/about/about'
+import { Bio } from 'components/bio/bio'
 
 export const Main = () => (
   <BrowserRouter>
@@ -22,7 +22,7 @@ export const Main = () => (
         <Route path='list' element={<List />} />
         <Route path='shop' element={<Shop />} />
         <Route path='visuals' element={<Visuals />} />
-        <Route path='about' element={<About />} />
+        <Route path='bio' element={<Bio />} />
         <Route
           path='*'
           element={

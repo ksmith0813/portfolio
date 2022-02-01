@@ -1,16 +1,16 @@
 import React from 'react'
 import kevin from 'assets/kevin.jpg'
 import signature from 'assets/signature.png'
-import './about.scss'
+import './bio.scss'
 
-export const About = () => (
-  <div className='about'>
+export const Bio = () => (
+  <div className='bio'>
     <div className='banner'>
       <div className='title'>Bio.</div>
       <div className='description'>Software Developer, musician, and world traveler.</div>
     </div>
     <div className='bio-container'>
-      <div className='description'>
+      <div className='description box-shadow'>
         <span className='fs-125'>
           <b>Hello!</b>
         </span>
@@ -23,7 +23,7 @@ export const About = () => (
           <img className='signature' src={signature} alt='' />
         </div>
       </div>
-      <img className='me-image' src={kevin} alt='' />
+      <img className='me-image box-shadow' src={kevin} alt='' />
     </div>
   </div>
 )
