@@ -179,7 +179,7 @@ const updateData = (state) => {
         const end = dates[1]
         data = data.filter((d) => moment(d.RegisterDate) >= moment(start) && moment(d.RegisterDate) <= moment(end))
       } else {
-        data = data.filter((d) => d[property].toLowerCase().trim().includes(value.toLowerCase().trim()))
+        data = data.filter((d) => d[property] && d[property].toString().toLowerCase().trim().includes(value?.toLowerCase().trim()))
       }
       return p
     })

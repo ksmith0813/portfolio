@@ -110,8 +110,12 @@ export const FastGrid = ({
       {!noFilter && (
         <Row className='filter-tags-container'>
           <Col flex={1}>
+            {!loading && (
+              <span className='fs-125 pr-100'>
+                Viewing {state.Data.length} Record{state.Data.length > 1 || state.Data.length === 0 ? 's' : ''}
+              </span>
+            )}
             {properties && filtersTags}
-            {!loading && !properties && <span className='fs-125'>Viewing All Records</span>}
           </Col>
           {rightControls && <Col>{rightControls}</Col>}
         </Row>
