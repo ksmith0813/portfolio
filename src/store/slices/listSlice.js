@@ -17,6 +17,7 @@ export const slice = createSlice({
       state.todos = action.payload
     },
     setOriginalTodos: (state, action) => {
+      state.todos = action.payload
       state.originalTodos = action.payload
       state.counter = state.originalTodos.length
     },

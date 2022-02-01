@@ -28,7 +28,6 @@ export const List = () => {
   useEffect(() => {
     if (originalTodos.length) return
     api.getTodos().then(({ data }) => {
-      dispatch(setTodos(data))
       dispatch(setOriginalTodos(data))
       dispatch(setLoading(false))
     })
@@ -38,7 +37,7 @@ export const List = () => {
   return (
     <div className='page-center'>
       <Col span={13}>
-        <Row justify='center' className='fs-150 text-center'>
+        <Row justify='center' className='fs-175 text-center'>
           Things you need to do...
         </Row>
         <Row justify='center' className='m-200'>
