@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
-import { Avatar } from 'antd'
+import { Avatar, Tooltip } from 'antd'
 import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
 import kevin from 'assets/kevin.jpg'
 import soundCloud from 'assets/sound-cloud.png'
@@ -23,24 +23,32 @@ export const Navigation = () => {
 
   const externalLinks = (
     <div>
-      <LinkedinFilled
-        className='external-link clickable'
-        onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
-      />
-      <GithubFilled
-        className='external-link clickable'
-        onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
-      />
-      <FacebookFilled
-        className='external-link clickable'
-        onClick={() => window.open('https://www.facebook.com/profile.php?id=20614115', '_blank')}
-      />
-      <img
-        alt=''
-        src={soundCloud}
-        className='sound-cloud clickable'
-        onClick={() => window.open('https://soundcloud.com/kevbot0813', '_blank')}
-      />
+      <Tooltip title='LinkedIn' mouseEnterDelay={0.5}>
+        <LinkedinFilled
+          className='external-link clickable'
+          onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
+        />
+      </Tooltip>
+      <Tooltip title='Github' mouseEnterDelay={0.5}>
+        <GithubFilled
+          className='external-link clickable'
+          onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
+        />
+      </Tooltip>
+      <Tooltip title='Facebook' mouseEnterDelay={0.5}>
+        <FacebookFilled
+          className='external-link clickable'
+          onClick={() => window.open('https://www.facebook.com/profile.php?id=20614115', '_blank')}
+        />
+      </Tooltip>
+      <Tooltip title='SoundCloud' mouseEnterDelay={0.5}>
+        <img
+          alt=''
+          src={soundCloud}
+          className='sound-cloud clickable'
+          onClick={() => window.open('https://soundcloud.com/kevbot0813', '_blank')}
+        />
+      </Tooltip>
     </div>
   )
 
