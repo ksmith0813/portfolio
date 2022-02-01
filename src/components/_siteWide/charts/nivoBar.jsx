@@ -1,9 +1,13 @@
 import React from 'react'
 import { ResponsiveBar } from '@nivo/bar'
 
-export const NivoBar = ({ margin = { top: 150, right: 150, bottom: 150, left: 150 }, translateY = -80 }) => (
+export const NivoBar = ({
+  customData,
+  margin = { top: 150, right: 150, bottom: 150, left: 150 },
+  translateY = -80,
+}) => (
   <ResponsiveBar
-    data={data}
+    data={customData || data}
     keys={['Burger', 'Sandwich', 'Fries', 'Hot Dog', 'Donut']}
     indexBy='country'
     margin={margin}
