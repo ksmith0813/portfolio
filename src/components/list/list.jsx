@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Input, Row, Col, Select, Switch, Spin } from 'antd'
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import { NoData } from 'components/_siteWide/layout/layout'
 import { userNames } from 'constants/users'
 import {
   getState,
@@ -14,7 +15,6 @@ import {
 } from 'store/slices/listSlice'
 import api from 'utils/api'
 import './list.scss'
-import { NoData } from 'components/_siteWide/layout/layout'
 
 const { Option } = Select
 
