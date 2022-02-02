@@ -20,7 +20,7 @@ This site includes:
 
 Component Examples
 
-- Dashboard
+- Dashboard containing several widgets using google react maps, a filterable brewery grid, several charts, and a timeline of all the NASA Apollo missions. 
 
 - Form Registration with multiple steps and validation
 
