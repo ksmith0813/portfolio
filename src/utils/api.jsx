@@ -23,6 +23,9 @@ const getUrl = (api) => {
     case 'beer':
       config.url = 'https://api.openbrewerydb.org/'
       break
+    case 'movie':
+      config.url = 'https://www.omdbapi.com/'
+      break
     default:
       config.url = 'https://jsonplaceholder.typicode.com/'
       break
@@ -54,6 +57,8 @@ axios.interceptors.response.use(
   }
 )
 
+const movieApiKey = '5263fce'
+
 const q = {
   // Product API
   getProductCategories: () => get('products/categories', 'product'),
@@ -69,6 +74,10 @@ const q = {
 
   // Breweries API
   getBreweries: () => get('breweries?per_page=100', 'beer'),
+
+  // IMDB API:
+  getMovies: (search) => get('', 'movie', { s: search, apiKey: movieApiKey }),
+  getMovie: (title) => get('', 'movie', { t: title, apiKey: movieApiKey }),
 }
 
 export default q

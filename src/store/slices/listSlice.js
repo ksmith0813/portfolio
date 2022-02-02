@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { arrayRemove, showMessage } from 'utils/general'
+import { arrayRemove } from 'utils/general'
 
 export const slice = createSlice({
   name: 'list',
@@ -50,11 +50,10 @@ export const slice = createSlice({
       findMatch([...state.todos])
       findMatch([...state.originalTodos])
     },
-    submit: () => showMessage('Successfully updated your todo list!', 'success'),
   },
 })
 
-export const { setLoading, setTodos, setOriginalTodos, addTodo, removeTodo, updateTodo, submit } = slice.actions
+export const { setLoading, setTodos, setOriginalTodos, addTodo, removeTodo, updateTodo } = slice.actions
 
 export const getState = (state) => state.list
 

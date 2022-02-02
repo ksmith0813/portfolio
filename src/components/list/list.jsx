@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Input, Row, Col, Select, Switch, Spin } from 'antd'
+import { Input, Row, Col, Select, Switch, Spin } from 'antd'
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { userNames } from 'constants/users'
 import {
@@ -11,10 +11,10 @@ import {
   addTodo,
   removeTodo,
   updateTodo,
-  submit,
 } from 'store/slices/listSlice'
 import api from 'utils/api'
 import './list.scss'
+import { NoData } from 'components/_siteWide/layout/layout'
 
 const { Option } = Select
 
@@ -31,8 +31,7 @@ export const List = () => {
       dispatch(setOriginalTodos(data))
       dispatch(setLoading(false))
     })
-    // eslint-disable-next-line
-  }, [])
+  }, [originalTodos.length, dispatch])
 
   return (
     <div className='page-center'>
@@ -49,11 +48,7 @@ export const List = () => {
               <Spin />
             </div>
           )}
-          {!loading && !todos.length && (
-            <div className='fs-150 content-center'>
-              <div>Sorry, no results found my friend.</div>
-            </div>
-          )}
+          {!loading && !todos.length && <NoData />}
           {!loading && todos.length > 0 && (
             <>
               <TodoHeader />
@@ -65,11 +60,6 @@ export const List = () => {
             </>
           )}
         </div>
-        <Row justify='center'>
-          <Button type='primary' size='large' disabled={loading} onClick={() => dispatch(submit())}>
-            Submit
-          </Button>
-        </Row>
       </Col>
     </div>
   )
@@ -94,8 +84,7 @@ const Search = ({ todos, setTodos }) => {
       }
     }, 1000)
     return () => clearTimeout(timeoutId)
-    // eslint-disable-next-line
-  }, [search, searchChanged])
+  }, [search, searchChanged, todos, setTodos, dispatch])
 
   const onSearchChange = (e) => {
     setSearchChanged(true)
@@ -133,8 +122,7 @@ const TodoRow = ({ index, todo }) => {
   useEffect(() => {
     setCurrentTodo(todo)
     setTitle(todo.title)
-    // eslint-disable-next-line
-  }, [])
+  }, [todo])
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -150,8 +138,7 @@ const TodoRow = ({ index, todo }) => {
       }
     }, 1000)
     return () => clearTimeout(timeoutId)
-    // eslint-disable-next-line
-  }, [title])
+  }, [title, currentTodo, dispatch, titleChanged, todo])
 
   const onTitleChange = (e) => {
     setTitleChanged(true)

@@ -57,6 +57,9 @@ body {
 }
 .page {
   height: calc(100vh - 50px);
+  overflow-y: auto;
+  display: flex;
+  width: 100%;
   padding: 2em;
 }
 .page-header {
@@ -149,6 +152,11 @@ body {
   opacity: 0.7;
 }
 
+.clickable-rows:hover {
+  cursor: pointer;
+  background-color: var(--gray-200) !important;
+}
+
 .light-text {
   color: var(--gray-500);
 }
@@ -172,6 +180,18 @@ body {
   font-size: 2em;
   padding-right: 0.5em;
   color: var(--theme-color-1);
+}
+
+.header-row .ant-col::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 1.6em;
+  background-color: rgba(0, 0, 0, 0.06);
+  transform: translateY(-50%);
+  transition: background-color 0.3s;
+  content: '';
 }
 
 .flex {

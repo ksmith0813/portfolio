@@ -1,10 +1,11 @@
-.todo-list-container {
+.movie-list-container {
   padding: 3em;
   margin: 2em;
   background-color: white;
   border: 1px solid var(--gray-300);
   border-radius: var(--container-border-radius);
-  .todo-list-items {
+  .movie-list-items {
+    overflow-y: auto;
     .ant-row {
       padding: 1em;
       &:nth-child(odd) {
@@ -12,18 +13,11 @@
       }
     }
   }
-  .user-select {
-    width: 100%;
-  }
 }
 
 @media only screen and (max-width: 1920px) {
-  .todo-list-container {
-    height: 500px;
-    .todo-list-items {
-      height: 375px;
-      overflow-y: auto;
-    }
+  .movie-poster {
+    height: 470px;
   }
   .ant-col-13 {
     flex: 0 0 80% !important;
@@ -31,7 +25,31 @@
   }
 }
 
+@media only screen and (max-width: 1680px) {
+  .movie-poster {
+    height: 450px;
+  }
+  .ant-col-13 {
+    flex: 0 0 90% !important;
+    max-width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .movie-poster {
+    height: 370px;
+  }
+  .ant-col-13 {
+    flex: 0 0 90% !important;
+    max-width: 90% !important;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
+  .movie-poster {
+    height: 250px;
+    width: 180px;
+  }
   .ant-col-13 {
     flex: 0 0 90% !important;
     max-width: 90% !important;
