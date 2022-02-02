@@ -1,6 +1,6 @@
 # My Personal Portfolio App
 
-Welcome! This is my portfolio applicatoin that contains some cool stuff using the React framework.
+Welcome! This is my portfolio application that contains some cool stuff using the React framework.
 
 This site includes:
 
@@ -22,13 +22,13 @@ Component Examples:
 
 - Dashboard containing several widgets with different types of data structures 
 
-- Form Registration with multiple steps and validation
+- Form Registration with multiple steps and validation logic
 
-- Grid view with filtering, sorting, column hiding/reordering. Uses data from the randomuser API
+- Grid view with filtering, sorting, custom column hiding/reordering. Uses data from the randomuser API
 
 - List view with an editable todo list. Uses data from an EP
 
-- Movie search page that hits the open movie database EP and allows the user to drill into movie details
+- Movie search page that hits the open movie database EP and allows the user to drill into the movie's details
 
 - Shopping page that allows the user to filter by category, and add items to a cart
 
