@@ -75,7 +75,7 @@ export const Grid = () => {
 
   return (
     <>
-      <div className='page'>
+      <div className='p-200'>
         <FastGrid
           state={state}
           loading={state.Loading}

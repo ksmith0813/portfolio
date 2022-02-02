@@ -4,7 +4,10 @@
   background-color: white;
   border: 1px solid var(--gray-300);
   border-radius: var(--container-border-radius);
+  height: 1000px;
   .todo-list-items {
+    height: 880px;
+    overflow-y: auto;
     .ant-row {
       padding: 1em;
       &:nth-child(odd) {
@@ -19,10 +22,9 @@
 
 @media only screen and (max-width: 1920px) {
   .todo-list-container {
-    height: 500px;
+    height: 700px;
     .todo-list-items {
-      height: 375px;
-      overflow-y: auto;
+      height: 580px;
     }
   }
   .ant-col-13 {
@@ -31,7 +33,26 @@
   }
 }
 
+@media only screen and (max-width: 1440px) {
+  .todo-list-container {
+    height: 530px;
+    .todo-list-items {
+      height: 410px;
+    }
+  }
+  .ant-col-13 {
+    flex: 0 0 90% !important;
+    max-width: 90% !important;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
+  .todo-list-container {
+    height: 500px;
+    .todo-list-items {
+      height: 380px;
+    }
+  }
   .ant-col-13 {
     flex: 0 0 90% !important;
     max-width: 90% !important;

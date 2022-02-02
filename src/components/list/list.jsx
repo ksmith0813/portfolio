@@ -34,7 +34,7 @@ export const List = () => {
   }, [originalTodos.length, dispatch])
 
   return (
-    <div className='page-center'>
+    <div className='page justify-center'>
       <Col span={13}>
         <Row justify='center' className='fs-175 text-center'>
           Things you need to do...
