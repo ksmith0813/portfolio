@@ -18,7 +18,7 @@ This site includes:
 
 - Nivo
 
-Component Examples
+Component Examples:
 
 - Dashboard containing several widgets with different types of data structures 
 
