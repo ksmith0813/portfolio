@@ -28,7 +28,7 @@ export const arrayMove = (array, from, to) => {
 export const isArray = (value) => value && Array.isArray(value)
 
 export const getAbbreviation = (value, length = 20) => {
-  return `${value.substring(0, length)}${value.length > length ? "..." : ""}`
+  return `${value.substring(0, length)}${value.length > length ? '...' : ''}`
 }
 
 export const hasProperties = (obj) => {
@@ -51,37 +51,37 @@ export const sortAlphebetically = (a, b, property) => {
 }
 
 export const addCommasToNumber = (value) => {
-  return value && value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  return value && value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
 export const spacesToProperty = (property) => {
   let propertyName = property
   if (isArray(property)) propertyName = property[1]
-  if (property.includes("_")) propertyName = propertyName.replace("_", " ")
+  if (property.includes('_')) propertyName = propertyName.replace('_', ' ')
   return propertyName.replace(/([a-z])([A-Z])/g, '$1 $2')
 }
 
 export const getDateRanges = () => {
   return {
     Today: [moment(), moment()],
-    "7 Days": [moment().subtract(7, "d"), moment()],
-    "15 Days": [moment().subtract(15, "d"), moment()],
-    "30 Days": [moment().subtract(30, "d"), moment()],
-    "60 Days": [moment().subtract(60, "d"), moment()],
-    "90 Days": [moment().subtract(90, "d"), moment()],
+    '7 Days': [moment().subtract(7, 'd'), moment()],
+    '15 Days': [moment().subtract(15, 'd'), moment()],
+    '30 Days': [moment().subtract(30, 'd'), moment()],
+    '60 Days': [moment().subtract(60, 'd'), moment()],
+    '90 Days': [moment().subtract(90, 'd'), moment()],
   }
 }
 
-export const showMessage = (description, type = "error") => {
+export const showMessage = (description, type = 'error') => {
   message.destroy()
   switch (type) {
-    case "success":
+    case 'success':
       message.success(description)
       break
-    case "info":
+    case 'info':
       message.info(description)
       break
-    case "warning":
+    case 'warning':
       message.warning(description)
       break
     default:

@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { Button } from 'antd'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
 import { updateCart } from 'store/slices/shopSlice'
-import { showMessage } from 'utils/general'
 
 export const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
@@ -11,9 +10,6 @@ export const ProductCard = ({ product }) => {
   const image = product.image
   const title = product.title
   const price = parseFloat(product.price).toFixed(2)
-  const quantityDisplay = `${quantity} item${quantity > 1 ? 's' : ''} ${
-    quantity > 1 ? 'have' : 'has'
-  } been added to your cart`
 
   const subtractQty = () => quantity > 1 && setQuantity(quantity - 1)
 
@@ -38,7 +34,6 @@ export const ProductCard = ({ product }) => {
           className='dark ml-300'
           onClick={() => {
             setQuantity(1)
-            showMessage(quantityDisplay, 'success')
             dispatch(updateCart({ ...product, qty: quantity }))
           }}
         >

@@ -1,10 +1,10 @@
 # My Personal Portfolio App
 
-I have recently updated my react portfolio app to reflect things I have learned in the last several years.
+Welcome! This is my portfolio applicatoin that contains some cool stuff using the React framework.
 
-This site uses:
+This site includes:
 
-- React Functional Components
+- ReactJS Functional Components
 
 - Redux/Redux Toolkit/Redux Form
 
@@ -13,3 +13,25 @@ This site uses:
 - Axios
 
 - SCSS
+
+- Google React Maps
+
+- Nivo
+
+Component Examples
+
+- Dashboard
+
+- Form Registration with multiple steps and validation
+
+- Grid view with filtering, sorting, column hiding/reordering. Uses data from the randomuser API
+
+- List view with and editable todo list. Uses data from an EP
+
+- Movie search page that hits the open movie database EP and allows the user to drill into movie details
+
+- Shopping page that allows the user to filter by category, and add items to a cart
+
+- Data visualizations using the nivo.rocks framework
+
+- Bio page so you can see my skills and a picture of me.

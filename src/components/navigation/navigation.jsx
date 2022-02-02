@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
-import { Avatar, Tooltip } from 'antd'
-import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
+import { Avatar } from 'antd'
+import { ExternalLinks } from 'components/_siteWide/layout/layout'
 import kevin from 'assets/kevin.jpg'
-import soundCloud from 'assets/sound-cloud.png'
 
 export const Navigation = () => {
   const [activePage, setActivePage] = useState('home')
@@ -19,37 +18,6 @@ export const Navigation = () => {
     <Link to={`/${page}`} className={`site-link ${activePage === page ? 'active' : ''}`}>
       {title}
     </Link>
-  )
-
-  const externalLinks = (
-    <div>
-      <Tooltip title='LinkedIn' mouseEnterDelay={0.5}>
-        <LinkedinFilled
-          className='external-link clickable'
-          onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
-        />
-      </Tooltip>
-      <Tooltip title='Github' mouseEnterDelay={0.5}>
-        <GithubFilled
-          className='external-link clickable'
-          onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
-        />
-      </Tooltip>
-      <Tooltip title='Facebook' mouseEnterDelay={0.5}>
-        <FacebookFilled
-          className='external-link clickable'
-          onClick={() => window.open('https://www.facebook.com/profile.php?id=20614115', '_blank')}
-        />
-      </Tooltip>
-      <Tooltip title='SoundCloud' mouseEnterDelay={0.5}>
-        <img
-          alt=''
-          src={soundCloud}
-          className='sound-cloud clickable'
-          onClick={() => window.open('https://soundcloud.com/kevbot0813', '_blank')}
-        />
-      </Tooltip>
-    </div>
   )
 
   return (
@@ -70,7 +38,7 @@ export const Navigation = () => {
           <SiteLink page='visuals' title='Visuals' />
           <SiteLink page='bio' title='Bio' />
         </div>
-        {externalLinks}
+        <div><ExternalLinks /></div>
       </div>
       <Outlet />
     </>
