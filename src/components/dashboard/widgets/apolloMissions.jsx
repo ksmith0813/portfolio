@@ -5,7 +5,7 @@ import astronaut from 'assets/astronaut.svg'
 
 export const ApolloMissions = () => (
   <Col span={6} className='pl-200'>
-    <Card title={<span className='fs-125'>Apollo Space Timeline</span>}>
+    <Card className='box-shadow' title={<span className='fs-125'>Apollo Space Timeline</span>}>
       <div className='card-display apollo'>
         <Timeline mode='left'>
           {data.map((d) => (

@@ -73,6 +73,7 @@ export const Breweries = () => {
   return (
     <Col span={12} className='pl-200'>
       <Card
+        className='box-shadow'
         title={<span className='fs-125'>Breweries</span>}
         extra={
           <>
