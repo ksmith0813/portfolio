@@ -74,7 +74,7 @@ export const Search = () => {
     <div className='page justify-center'>
       <Col span={13}>
         <Row justify='center' className='fs-200 text-center'>
-          Movie Search
+          Search for Movies and TV Shows
         </Row>
         <Row justify='center' className='m-200'>
           <Col span={10}>
@@ -133,9 +133,12 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
   return (
     <>
       <div className='movie-detail'>
-        <Row className='p-100'>
+        <Row className='pl-050 pb-025 fs-150 border-bottom-light'>Movie Details</Row>
+        <Row className='p-100 pt-150'>
           <Col span={6}>
-            {selectedMovie.Poster !== 'N/A' && <img src={selectedMovie.Poster} className='movie-poster' alt='' />}
+            {selectedMovie.Poster !== 'N/A' && (
+              <img src={selectedMovie.Poster} className='movie-poster box-shadow' alt='' />
+            )}
             {selectedMovie.Poster === 'N/A' && <NoData message='Poster not available' />}
           </Col>
           <Col span={10} className='pl-200'>

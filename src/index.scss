@@ -130,6 +130,10 @@ body {
   box-shadow: var(--box-shadow);
 }
 
+.border-radius {
+  border-radius: var(--container-border-radius);
+}
+
 .border-bottom-light {
   border-bottom: 1px solid var(--gray-300);
 }
