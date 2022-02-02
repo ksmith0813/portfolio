@@ -12,6 +12,17 @@
         background-color: var(--gray-100);
       }
     }
+    .movie-type-icon {
+      height: 25px;
+    }
+    .movie-type-text {
+      padding-left: 0.75em;
+      position: absolute;
+      top: 0.3em;
+      &.tv {
+        padding-left: 1em;
+      }
+    }
   }
 }
 

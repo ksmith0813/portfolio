@@ -6,7 +6,7 @@ export const slice = createSlice({
     loading: false,
     search: '',
     movies: [],
-    selectedTitle: '',
+    selectedId: '',
     selectedMovie: null,
   },
   reducers: {
@@ -19,8 +19,8 @@ export const slice = createSlice({
     setMovies: (state, action) => {
       state.movies = action.payload
     },
-    setSelectedTitle: (state, action) => {
-      state.selectedTitle = action.payload
+    setSelectedId: (state, action) => {
+      state.selectedId = action.payload
     },
     setSelectedMovie: (state, action) => {
       state.selectedMovie = action.payload
@@ -28,7 +28,7 @@ export const slice = createSlice({
   },
 })
 
-export const { setLoading, setSearch, setMovies, setSelectedTitle, setSelectedMovie } = slice.actions
+export const { setLoading, setSearch, setMovies, setSelectedId, setSelectedMovie } = slice.actions
 
 export const getState = (state) => state.search
 

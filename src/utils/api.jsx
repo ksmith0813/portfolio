@@ -77,7 +77,7 @@ const q = {
 
   // IMDB API:
   getMovies: (search) => get('', 'movie', { s: search, apiKey: movieApiKey }),
-  getMovie: (title) => get('', 'movie', { t: title, apiKey: movieApiKey }),
+  getMovie: (id) => get('', 'movie', { i: id, apiKey: movieApiKey }),
 }
 
 export default q

@@ -43,7 +43,7 @@ export const TagRender = (props) => {
   )
 }
 
-export const NoData = () => (
+export const NoData = ({ message = 'No Data' }) => (
   <div className='content-center no-data-container'>
     <div className='ant-empty ant-empty-normal'>
       <div className='ant-empty-image'>
@@ -66,7 +66,7 @@ export const NoData = () => (
           </g>
         </svg>
       </div>
-      <div className='ant-empty-description'>No Data</div>
+      <div className='ant-empty-description'>{message}</div>
     </div>
   </div>
 )

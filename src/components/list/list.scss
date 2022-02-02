@@ -10,9 +10,7 @@
     overflow-y: auto;
     .ant-row {
       padding: 1em;
-      &:nth-child(odd) {
-        background-color: var(--gray-100);
-      }
+      border-bottom: 1px solid var(--gray-300);
     }
   }
   .user-select {

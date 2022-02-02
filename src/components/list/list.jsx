@@ -36,13 +36,13 @@ export const List = () => {
   return (
     <div className='page justify-center'>
       <Col span={13}>
-        <Row justify='center' className='fs-175 text-center'>
+        <Row justify='center' className='fs-200 text-center'>
           Things you need to do...
         </Row>
         <Row justify='center' className='m-200'>
           <Search todos={originalTodos} setTodos={setTodos} setLoading={setLoading} />
         </Row>
-        <div className='todo-list-container'>
+        <div className='todo-list-container box-shadow'>
           {loading && (
             <div className='content-center'>
               <Spin />
