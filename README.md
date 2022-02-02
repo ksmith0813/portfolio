@@ -20,13 +20,13 @@ This site includes:
 
 Component Examples
 
-- Dashboard containing several widgets using google react maps, a filterable brewery grid, several charts, and a timeline of all the NASA Apollo missions. 
+- Dashboard containing several widgets with different types of data structures 
 
 - Form Registration with multiple steps and validation
 
 - Grid view with filtering, sorting, column hiding/reordering. Uses data from the randomuser API
 
-- List view with and editable todo list. Uses data from an EP
+- List view with an editable todo list. Uses data from an EP
 
 - Movie search page that hits the open movie database EP and allows the user to drill into movie details
 
