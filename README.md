@@ -26,9 +26,11 @@ Component Examples:
 
 - Grid view with filtering, sorting, custom column hiding/reordering. Uses data from the randomuser API
 
-- List view with an editable todo list. Uses data from an EP
+- List view with an editable todo list. Uses API data
 
 - Movie search page that hits the open movie database EP and allows the user to drill into the movie's details
+
+- Search for a location's weather conditions, uses the open source Weather API
 
 - Shopping page that allows the user to filter by category, and add items to a cart
 
