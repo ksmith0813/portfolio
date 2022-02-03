@@ -33,7 +33,7 @@ export const Navigation = () => {
           <SiteLink page='register' title='Register' />
           <SiteLink page='grid' title='Grid' />
           <SiteLink page='list' title='List' />
-          <SiteLink page='search' title='Search' />
+          <SiteLink page='search' title='Movies' />
           <SiteLink page='weather' title='Weather' />
           <SiteLink page='shop' title='Shop' />
           <SiteLink page='visuals' title='Visuals' />

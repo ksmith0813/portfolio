@@ -17,6 +17,7 @@ export const Search = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
+      if (state.movies || state.selectedMovie) return
       if (state.search) {
         dispatch(setLoading(true))
         api.getMovies(state.search).then(({ data }) => {
@@ -35,7 +36,7 @@ export const Search = () => {
       }
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [state.search, dispatch])
+  }, [state.search, state.movies, state.selectedMovie, dispatch])
 
   useEffect(() => {
     if (!state.selectedId) return
@@ -53,7 +54,10 @@ export const Search = () => {
 
   const getMovie = (id) => dispatch(setSelectedId(id))
 
-  const backToAll = () => dispatch(setSelectedMovie(null))
+  const backToAll = () => {
+    dispatch(setSelectedId(null))
+    dispatch(setSelectedMovie(null))
+  }
 
   const getRating = (rating) => {
     let value
@@ -137,10 +141,12 @@ const MovieList = ({ movies, getMovie }) => (
 const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
   const hasRatings = selectedMovie.Ratings.length > 0
 
+  console.log(selectedMovie)
+
   return (
     <div>
       <Row className='movie-detail'>
-        <Col flex={1}>Movie Details</Col>
+        <Col flex={1}>{selectedMovie.Title}</Col>
         <Col>
           <Button type='primary' onClick={() => backToAll()}>
             Back to All
@@ -155,8 +161,7 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
           {selectedMovie.Poster === 'N/A' && <NoData message='Poster not available' />}
         </Col>
         <Col span={9}>
-          <DataItem label='Title' children={selectedMovie.Title} childrenClasses='fs-150 bold' />
-          <DataItem label='Plot' children={selectedMovie.Plot} labelClasses='pt-100' />
+          <DataItem label='Plot' children={selectedMovie.Plot} />
           <DataItem
             label='Release Year'
             children={moment(selectedMovie.Released).format('MM/DD/YYYY')}
@@ -164,6 +169,7 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
           />
           <DataItem label='Director' children={selectedMovie.Director} labelClasses='pt-100' />
           <DataItem label='Actors' children={selectedMovie.Actors} labelClasses='pt-100' />
+          <DataItem label='Writers' children={selectedMovie.Writer} labelClasses='pt-100' />
           <DataItem label='Genre' children={selectedMovie.Genre} labelClasses='pt-100' />
           <DataItem label='Rated' children={selectedMovie.Rated} labelClasses='pt-100' />
         </Col>
@@ -187,6 +193,8 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
             labelClasses={hasRatings ? 'pt-200' : ''}
             childrenClasses='fs-150'
           />
+          <DataItem label='Awards' children={selectedMovie.Awards} labelClasses='pt-100' />
+          <DataItem label='Runtime' children={selectedMovie.Runtime} labelClasses='pt-100' />
         </Col>
       </Row>
     </div>
