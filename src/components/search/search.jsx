@@ -36,7 +36,7 @@ export const Search = () => {
       }
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [state.search, state.movies.length, state.selectedMovie, dispatch])
+  }, [state.search, state.selectedMovie, dispatch])
 
   useEffect(() => {
     if (!state.selectedId) return
