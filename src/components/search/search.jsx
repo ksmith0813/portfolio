@@ -17,7 +17,7 @@ export const Search = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (state.movies || state.selectedMovie) return
+      if (state.selectedMovie) return
       if (state.search) {
         dispatch(setLoading(true))
         api.getMovies(state.search).then(({ data }) => {
@@ -36,7 +36,7 @@ export const Search = () => {
       }
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [state.search, state.movies, state.selectedMovie, dispatch])
+  }, [state.search, state.movies.length, state.selectedMovie, dispatch])
 
   useEffect(() => {
     if (!state.selectedId) return
