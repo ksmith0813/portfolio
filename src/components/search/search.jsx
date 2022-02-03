@@ -58,7 +58,7 @@ export const Search = () => {
   const getRating = (rating) => {
     let value
     if (rating.includes('/')) {
-      value = parseFloat(rating.split('/')[0])
+      value = parseFloat(rating.split('/')[0])*10
     } else if (rating.includes('%')) {
       value = parseFloat(rating.split('&')[0])
     }
@@ -165,10 +165,6 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
                     children={
                       <Progress
                         percent={getRating(r.Value)}
-                        strokeColor={{
-                          '0%': '#1890ff',
-                          '100%': '#64d28d',
-                        }}
                       />
                     }
                     labelClasses='pt-150 light-text'
