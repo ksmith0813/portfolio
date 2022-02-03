@@ -36,7 +36,7 @@ export const Home = () => {
         </div>
         <div className='tile-container'>
           <Row justify='center' className='tile-header'>
-            Please check out some of these cool examples below.
+            Check out some of these cool examples below.
           </Row>
           <Row justify='center'>
             <Tile page='dashboard' title='Dashboard' image={dashboard} className='dashboard' />
