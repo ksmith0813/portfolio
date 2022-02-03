@@ -20,9 +20,22 @@
 
 @media only screen and (max-width: 1920px) {
   .todo-list-container {
-    height: 700px;
+    height: 600px;
     .todo-list-items {
-      height: 580px;
+      height: 470px;
+    }
+  }
+  .ant-col-13 {
+    flex: 0 0 80% !important;
+    max-width: 80% !important;
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .todo-list-container {
+    height: 470px;
+    .todo-list-items {
+      height: 350px;
     }
   }
   .ant-col-13 {
@@ -33,9 +46,9 @@
 
 @media only screen and (max-width: 1440px) {
   .todo-list-container {
-    height: 530px;
+    height: 470px;
     .todo-list-items {
-      height: 410px;
+      height: 350px;
     }
   }
   .ant-col-13 {

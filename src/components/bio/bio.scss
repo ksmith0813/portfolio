@@ -49,13 +49,13 @@
 @media only screen and (max-width: 1920px) {
   .bio-container {
     .description {
-      font-size: 1.65em;
-      height: 500px;
+      font-size: 1.5em;
+      height: 450px;
       .external-links {
-        margin-top: 3.25em;
+        margin-top: 2.5em;
       }
       .signature {
-        margin-top: 1.75em;
+        margin-top: 2em;
         margin-right: -1em;
       }
     }
@@ -63,9 +63,23 @@
 }
 
 @media only screen and (max-width: 1680px) {
-  .bio-container .description {
-    font-size: 1.52em;
-    height: 500px;
+  .bio-container {
+    .description {
+      font-size: 1.3em;
+      height: 400px;
+      .external-links {
+        margin-top: 2.5em;
+      }
+      .signature {
+        margin-top: 1.5em;
+        margin-right: -1em;
+        width: 180px;
+      }
+    }
+    .me-image {
+      height: 300px;
+      width: 300px;
+    }
   }
 }
 

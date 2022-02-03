@@ -73,3 +73,44 @@
     }
   }
 }
+
+@media only screen and (max-width: 1920px) {
+  .home {
+    .tile-container {
+      .tile {
+        height: 200px;
+        width: 200px;
+        .tile-icon {
+          &.dashboard {
+            padding: 1.25em 0 0 .25em;
+            width: 110px;
+          }
+          &.register {
+            padding: 1em 0 0 2em;
+            width: 130px;
+          }
+          &.grid {
+            padding: 1.5em 0 0 0;
+            width: 90px;
+          }
+          &.list {
+            padding: 1.25em 0 0 .25em;
+            width: 100px;
+          }
+          &.search {
+            padding: 1.5em 0 0 .5em;
+            width: 100px;
+          }
+          &.shop {
+            padding: 2em 0 0 .25em;
+            width: 90px;
+          }
+          &.visuals {
+            padding: 0;
+            width: 140px;
+          }
+        }
+      }
+    }
+  }
+}

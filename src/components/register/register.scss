@@ -35,8 +35,19 @@
 
 @media only screen and (max-width: 1920px) {
   .ant-col-11 {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
+    flex: 0 0 60% !important;
+    max-width: 60% !important;
+  }
+  .ant-col-14 {
+    flex: 0 0 60% !important;
+    max-width: 60% !important;
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .ant-col-11 {
+    flex: 0 0 80% !important;
+    max-width: 80% !important;
   }
   .ant-col-14 {
     flex: 0 0 80% !important;

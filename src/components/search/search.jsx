@@ -132,16 +132,23 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
 
   return (
     <>
-      <div className='movie-detail'>
-        <Row className='pl-050 pb-025 fs-150 border-bottom-light'>Movie Details</Row>
-        <Row className='p-100 pt-150'>
-          <Col span={6}>
+      <div>
+        <Row className='pl-050 pb-100 fs-150 border-bottom-light'>
+          <Col flex={1}>Movie Details</Col>
+          <Col>
+            <Button type='primary' onClick={() => backToAll()}>
+              Back to All
+            </Button>
+          </Col>
+        </Row>
+        <Row className='pt-100 pt-150'>
+          <Col span={7}>
             {selectedMovie.Poster !== 'N/A' && (
               <img src={selectedMovie.Poster} className='movie-poster box-shadow' alt='' />
             )}
             {selectedMovie.Poster === 'N/A' && <NoData message='Poster not available' />}
           </Col>
-          <Col span={10} className='pl-200'>
+          <Col span={9} className='pl-100'>
             <DataItem label='Title' children={selectedMovie.Title} childrenClasses='fs-150 bold' />
             <DataItem label='Plot' children={selectedMovie.Plot} labelClasses='pt-100' />
             <DataItem
@@ -162,11 +169,7 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
                   <DataItem
                     key={r.Source}
                     label={r.Source === 'Internet Movie Database' ? 'IMDB' : r.Source}
-                    children={
-                      <Progress
-                        percent={getRating(r.Value)}
-                      />
-                    }
+                    children={<Progress percent={getRating(r.Value)} />}
                     labelClasses='pt-150 light-text'
                   />
                 ))}
@@ -181,11 +184,6 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
           </Col>
         </Row>
       </div>
-      <Row justify='center' className='pt-400'>
-        <Button type='primary' onClick={() => backToAll()}>
-          Back to All
-        </Button>
-      </Row>
     </>
   )
 }

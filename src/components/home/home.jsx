@@ -19,9 +19,9 @@ export const Home = () => {
     setTimeout(() => navigate(`../${page}`), 1000)
   }
 
-  const Tile = ({ title, image, className }) => (
-    <div className='tile clickable' onClick={() => goToPage(title.toLowerCase())}>
-      <div className='tile-title'>{activePage === title.toLowerCase() ? <Spin /> : title}</div>
+  const Tile = ({ page, title, image, className }) => (
+    <div className='tile clickable' onClick={() => goToPage(page)}>
+      <div className='tile-title'>{activePage === page ? <Spin /> : title}</div>
       <img src={image} className={`tile-icon ${className}`} alt='' />
     </div>
   )
@@ -38,13 +38,13 @@ export const Home = () => {
             Please check out some of these cool examples below.
           </Row>
           <Row justify='center'>
-            <Tile title='Dashboard' image={dashboard} className='dashboard' />
-            <Tile title='Register' image={register} className='register' />
-            <Tile title='Grid' image={grid} className='grid' />
-            <Tile title='List' image={list} className='list' />
-            <Tile title='Search' image={movie} className='search' />
-            <Tile title='Shop' image={shop} className='shop' />
-            <Tile title='Visuals' image={visuals} className='visuals' />
+            <Tile page='dashboard' title='Dashboard' image={dashboard} className='dashboard' />
+            <Tile page='register' title='Register' image={register} className='register' />
+            <Tile page='grid' title='User Grid' image={grid} className='grid' />
+            <Tile page='list' title='TODO List' image={list} className='list' />
+            <Tile page='search' title='Movie Search' image={movie} className='search' />
+            <Tile page='shop' title='Shop' image={shop} className='shop' />
+            <Tile page='visuals' title='Visuals' image={visuals} className='visuals' />
           </Row>
         </div>
       </div>
