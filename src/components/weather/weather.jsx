@@ -17,15 +17,21 @@ export const Weather = () => {
     const timeoutId = setTimeout(() => {
       if (state.search) {
         dispatch(setLoading(true))
-        api.getWeather(state.search).then(({ data }) => {
-          if (data.location) {
-            dispatch(setWeather(data))
-          } else {
-            dispatch(setWeather(null))
-          }
+        api
+          .getWeather(state.search)
+          .then(({ data }) => {
+            if (data.location) {
+              dispatch(setWeather(data))
+            } else {
+              dispatch(setWeather(null))
+            }
 
-          dispatch(setLoading(false))
-        })
+            dispatch(setLoading(false))
+          })
+          .catch(() => {
+            dispatch(setLoading(false))
+            dispatch(setWeather(null))
+          })
       } else {
         dispatch(setWeather(null))
       }
