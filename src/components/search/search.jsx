@@ -58,9 +58,11 @@ export const Search = () => {
   const getRating = (rating) => {
     let value
     if (rating.includes('/')) {
-      value = parseFloat(rating.split('/')[0]) * 10
+      const values = rating.split('/')
+      const scale = parseInt(values[1])
+      value = parseFloat(values[0]) * (scale === 10 ? 10 : 1)
     } else if (rating.includes('%')) {
-      value = parseFloat(rating.split('&')[0])
+      value = parseFloat(rating.split('%')[0])
     }
 
     return value
@@ -131,60 +133,58 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
   const hasRatings = selectedMovie.Ratings.length > 0
 
   return (
-    <>
-      <div>
-        <Row className='pl-050 pb-100 fs-150 border-bottom-light'>
-          <Col flex={1}>Movie Details</Col>
-          <Col>
-            <Button type='primary' onClick={() => backToAll()}>
-              Back to All
-            </Button>
-          </Col>
-        </Row>
-        <Row className='pt-100 pt-150'>
-          <Col span={7}>
-            {selectedMovie.Poster !== 'N/A' && (
-              <img src={selectedMovie.Poster} className='movie-poster box-shadow' alt='' />
-            )}
-            {selectedMovie.Poster === 'N/A' && <NoData message='Poster not available' />}
-          </Col>
-          <Col span={9} className='pl-100'>
-            <DataItem label='Title' children={selectedMovie.Title} childrenClasses='fs-150 bold' />
-            <DataItem label='Plot' children={selectedMovie.Plot} labelClasses='pt-100' />
-            <DataItem
-              label='Release Year'
-              children={moment(selectedMovie.Released).format('MM/DD/YYYY')}
-              labelClasses='pt-100'
-            />
-            <DataItem label='Director' children={selectedMovie.Director} labelClasses='pt-100' />
-            <DataItem label='Actors' children={selectedMovie.Actors} labelClasses='pt-100' />
-            <DataItem label='Genre' children={selectedMovie.Genre} labelClasses='pt-100' />
-            <DataItem label='Rated' children={selectedMovie.Rated} labelClasses='pt-100' />
-          </Col>
-          <Col span={8} className='pl-200'>
-            {hasRatings && (
-              <>
-                <b>Ratings</b>
-                {selectedMovie.Ratings.map((r) => (
-                  <DataItem
-                    key={r.Source}
-                    label={r.Source === 'Internet Movie Database' ? 'IMDB' : r.Source}
-                    children={<Progress percent={getRating(r.Value)} />}
-                    labelClasses='pt-150 light-text'
-                  />
-                ))}
-              </>
-            )}
-            <DataItem
-              label='Box Office'
-              children={selectedMovie.BoxOffice}
-              labelClasses={hasRatings ? 'pt-200' : ''}
-              childrenClasses='fs-150'
-            />
-          </Col>
-        </Row>
-      </div>
-    </>
+    <div>
+      <Row className='pl-050 pb-100 fs-150 border-bottom-light'>
+        <Col flex={1}>Movie Details</Col>
+        <Col>
+          <Button type='primary' onClick={() => backToAll()}>
+            Back to All
+          </Button>
+        </Col>
+      </Row>
+      <Row className='pt-200'>
+        <Col span={7}>
+          {selectedMovie.Poster !== 'N/A' && (
+            <img src={selectedMovie.Poster} className='movie-poster box-shadow' alt='' />
+          )}
+          {selectedMovie.Poster === 'N/A' && <NoData message='Poster not available' />}
+        </Col>
+        <Col span={9}>
+          <DataItem label='Title' children={selectedMovie.Title} childrenClasses='fs-150 bold' />
+          <DataItem label='Plot' children={selectedMovie.Plot} labelClasses='pt-100' />
+          <DataItem
+            label='Release Year'
+            children={moment(selectedMovie.Released).format('MM/DD/YYYY')}
+            labelClasses='pt-100'
+          />
+          <DataItem label='Director' children={selectedMovie.Director} labelClasses='pt-100' />
+          <DataItem label='Actors' children={selectedMovie.Actors} labelClasses='pt-100' />
+          <DataItem label='Genre' children={selectedMovie.Genre} labelClasses='pt-100' />
+          <DataItem label='Rated' children={selectedMovie.Rated} labelClasses='pt-100' />
+        </Col>
+        <Col span={8} className='pl-200'>
+          {hasRatings && (
+            <>
+              <b>Ratings</b>
+              {selectedMovie.Ratings.map((r) => (
+                <DataItem
+                  key={r.Source}
+                  label={r.Source === 'Internet Movie Database' ? 'IMDB' : r.Source}
+                  children={<Progress percent={getRating(r.Value)} />}
+                  labelClasses='pt-150 light-text'
+                />
+              ))}
+            </>
+          )}
+          <DataItem
+            label='Box Office'
+            children={selectedMovie.BoxOffice}
+            labelClasses={hasRatings ? 'pt-200' : ''}
+            childrenClasses='fs-150'
+          />
+        </Col>
+      </Row>
+    </div>
   )
 }
 
