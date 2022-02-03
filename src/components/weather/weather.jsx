@@ -15,7 +15,6 @@ export const Weather = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (state.weather) return
       if (state.search) {
         dispatch(setLoading(true))
         api
@@ -38,7 +37,7 @@ export const Weather = () => {
       }
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [state.search, state.weather, dispatch])
+  }, [state.search, dispatch])
 
   const onSearchChange = (e) => {
     dispatch(setSearch(e.target.value || ''))
