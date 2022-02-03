@@ -7,13 +7,16 @@
   }
   .tile-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
     justify-content: center;
     height: calc(100vh - 250px);
     overflow: auto;
     padding-top: 3em;
     .tile-header {
       font-size: 2em;
+      padding-top: 3em;
       padding-bottom: 2em;
     }
     .tile {

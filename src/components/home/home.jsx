@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Spin } from 'antd'
+import { Row, Spin } from 'antd'
 import dashboard from 'assets/dashboard.svg'
 import register from 'assets/register.svg'
 import grid from 'assets/grid.svg'
@@ -34,8 +34,10 @@ export const Home = () => {
           <div className='description'>Welcome to my React portfolio app.</div>
         </div>
         <div className='tile-container'>
-          <div className='tile-header'>Please check out some of these cool examples below.</div>
-          <div className='flex flex-wrap'>
+          <Row justify='center' className='tile-header'>
+            Please check out some of these cool examples below.
+          </Row>
+          <Row justify='center'>
             <Tile title='Dashboard' image={dashboard} className='dashboard' />
             <Tile title='Register' image={register} className='register' />
             <Tile title='Grid' image={grid} className='grid' />
@@ -43,7 +45,7 @@ export const Home = () => {
             <Tile title='Search' image={movie} className='search' />
             <Tile title='Shop' image={shop} className='shop' />
             <Tile title='Visuals' image={visuals} className='visuals' />
-          </div>
+          </Row>
         </div>
       </div>
     </>

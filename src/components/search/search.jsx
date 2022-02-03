@@ -201,7 +201,7 @@ const MovieType = ({ type }) => {
       icon = (
         <>
           <img src={game} className='movie-type-icon' alt='' />
-          <span className='movie-type-text'>Game</span>
+          <span className='movie-type-text game'>Game</span>
         </>
       )
       break
@@ -217,7 +217,7 @@ const MovieType = ({ type }) => {
       icon = (
         <>
           <img src={movie} className='movie-type-icon' alt='' />
-          <span className='movie-type-text'>Movie</span>
+          <span className='movie-type-text movie'>Movie</span>
         </>
       )
       break

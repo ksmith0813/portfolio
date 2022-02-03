@@ -7,7 +7,7 @@ export const MyLocation = () => (
     <Card className='box-shadow' title={<span className='fs-125'>My Location - Fayetteville, AR</span>}>
       <div className='card-display'>
         <MapComponent
-          googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
+          googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyAr1X-cqxTn14H7HI_DQYm56fCi41dwXoU&v=3.exp&libraries=geometry,drawing,places'
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `100%`, width: '100%' }} />}
           mapElement={<div style={{ height: `100%` }} />}
