@@ -58,7 +58,7 @@ export const Weather = () => {
         </Row>
         <Row justify='center' className='p-200'>
           <Col span={10}>
-            <Input onChange={onSearchChange} value={state.search} placeholder='Search for movies' />
+            <Input onChange={onSearchChange} value={state.search} placeholder='Search for a location' />
           </Col>
         </Row>
         <div
