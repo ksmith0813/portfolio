@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Spin, Tag, Tooltip } from 'antd'
 import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
+import { GoogleMap, Marker } from 'react-google-maps'
 import { isArray } from 'utils/general'
 import soundCloud from 'assets/sound-cloud.png'
 import './layout.scss'
@@ -45,8 +46,19 @@ export const TagRender = (props) => {
   )
 }
 
-export const NoData = ({ message = 'No Data' }) => (
-  <div className='content-center no-data-container'>
+export const MapLocation = ({ lat, lon }) => (
+  <GoogleMap defaultZoom={14} defaultCenter={{ lat: lat, lng: lon }}>
+    <Marker
+      position={{
+        lat: lat,
+        lng: lon,
+      }}
+    />
+  </GoogleMap>
+)
+
+export const NoData = ({ message = 'No Data', extraClasses = '' }) => (
+  <div className={`content-center no-data-container ${extraClasses}`}>
     <div className='ant-empty ant-empty-normal'>
       <div className='ant-empty-image'>
         <svg

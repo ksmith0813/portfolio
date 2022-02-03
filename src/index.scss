@@ -84,8 +84,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
 }
 
 .site-link {
@@ -221,9 +219,6 @@ body {
 }
 .items-start {
   align-items: flex-start;
-}
-.content-center {
-  align-content: center;
 }
 .justify-center {
   justify-content: center;

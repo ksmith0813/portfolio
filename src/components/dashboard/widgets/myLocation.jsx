@@ -1,13 +1,15 @@
 import React from 'react'
 import { Card, Col } from 'antd'
-import { withGoogleMap, withScriptjs, GoogleMap, Marker } from 'react-google-maps'
+import { withGoogleMap, withScriptjs } from 'react-google-maps'
+import { MapLocation } from 'components/_siteWide/layout/layout'
+import { GoogleMap } from 'constants/googleMap'
 
 export const MyLocation = () => (
   <Col span={6}>
     <Card className='box-shadow' title={<span className='fs-125'>My Location - Fayetteville, AR</span>}>
       <div className='card-display'>
         <MapComponent
-          googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
+          googleMapURL={GoogleMap.url}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `100%`, width: '100%' }} />}
           mapElement={<div style={{ height: `100%` }} />}
@@ -17,15 +19,6 @@ export const MyLocation = () => (
   </Col>
 )
 
-const Map = () => (
-  <GoogleMap defaultZoom={14} defaultCenter={{ lat: 36.06258, lng: -94.15743 }}>
-    <Marker
-      position={{
-        lat: 36.06258,
-        lng: -94.15743,
-      }}
-    />
-  </GoogleMap>
-)
+const Map = () => <MapLocation lat={36.06} lon={-94.16} />
 
 const MapComponent = withScriptjs(withGoogleMap(Map))

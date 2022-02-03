@@ -7,6 +7,7 @@ import grid from 'assets/grid.svg'
 import list from 'assets/list.svg'
 import movie from 'assets/movie-tile.svg'
 import shop from 'assets/shop.svg'
+import umbrella from 'assets/umbrella.svg'
 import visuals from 'assets/chart.svg'
 import './home.scss'
 
@@ -42,7 +43,10 @@ export const Home = () => {
             <Tile page='register' title='Register' image={register} className='register' />
             <Tile page='grid' title='User Grid' image={grid} className='grid' />
             <Tile page='list' title='TODO List' image={list} className='list' />
+          </Row>
+          <Row justify='center'>
             <Tile page='search' title='Movie Search' image={movie} className='search' />
+            <Tile page='weather' title='Weather' image={umbrella} className='search' />
             <Tile page='shop' title='Shop' image={shop} className='shop' />
             <Tile page='visuals' title='Visuals' image={visuals} className='visuals' />
           </Row>

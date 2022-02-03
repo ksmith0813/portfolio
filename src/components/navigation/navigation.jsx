@@ -34,11 +34,14 @@ export const Navigation = () => {
           <SiteLink page='grid' title='Grid' />
           <SiteLink page='list' title='List' />
           <SiteLink page='search' title='Search' />
+          <SiteLink page='weather' title='Weather' />
           <SiteLink page='shop' title='Shop' />
           <SiteLink page='visuals' title='Visuals' />
           <SiteLink page='bio' title='Bio' />
         </div>
-        <div><ExternalLinks /></div>
+        <div>
+          <ExternalLinks />
+        </div>
       </div>
       <Outlet />
     </>

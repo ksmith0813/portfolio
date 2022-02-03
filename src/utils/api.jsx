@@ -26,6 +26,9 @@ const getUrl = (api) => {
     case 'movie':
       config.url = 'https://www.omdbapi.com/'
       break
+    case 'weather':
+      config.url = 'https://api.weatherapi.com/v1/'
+      break
     default:
       config.url = 'https://jsonplaceholder.typicode.com/'
       break
@@ -59,6 +62,8 @@ axios.interceptors.response.use(
 
 const movieApiKey = '5263fce'
 
+const weatherKey = 'e2c2951ed12e4f79b7624806210108'
+
 const q = {
   // Product API
   getProductCategories: () => get('products/categories', 'product'),
@@ -75,9 +80,12 @@ const q = {
   // Breweries API
   getBreweries: () => get('breweries?per_page=100', 'beer'),
 
-  // IMDB API:
+  // OMDB API
   getMovies: (search) => get('', 'movie', { s: search, apiKey: movieApiKey }),
   getMovie: (id) => get('', 'movie', { i: id, apiKey: movieApiKey }),
+
+  // Weather API
+  getWeather: (search) => get('current.json', 'weather', { q: search, key: weatherKey, aqi: 'no'}),
 }
 
 export default q

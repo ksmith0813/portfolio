@@ -83,7 +83,7 @@ export const Search = () => {
             <Input onChange={onSearchChange} value={state.search} placeholder='Search for movies' allowClear />
           </Col>
         </Row>
-        <div className='movie-list-container box-shadow'>
+        <div className={`movie-list-container box-shadow ${loading || !movies.length ? 'content-center' : ''}`}>
           {loading && (
             <div className='content-center'>
               <Spin />

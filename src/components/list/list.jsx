@@ -42,12 +42,8 @@ export const List = () => {
         <Row justify='center' className='m-200'>
           <Search todos={originalTodos} setTodos={setTodos} setLoading={setLoading} />
         </Row>
-        <div className='todo-list-container box-shadow'>
-          {loading && (
-            <div className='content-center'>
-              <Spin />
-            </div>
-          )}
+        <div className={`todo-list-container box-shadow ${loading || !todos.length ? 'content-center' : ''}`}>
+          {loading && <Spin />}
           {!loading && !todos.length && <NoData />}
           {!loading && todos.length > 0 && (
             <>
