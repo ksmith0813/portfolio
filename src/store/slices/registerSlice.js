@@ -85,13 +85,10 @@ export const slice = createSlice({
       state.clean = true
     },
     nextStep: (state, action) => {
-      if (!handleFormUpdate(state, action.payload)) {
-        showMessage('Please fix all form errors.')
-        return
+      if (handleFormUpdate(state, action.payload)) {
+        state.step = state.step + 1
+        state.clean = true
       }
-
-      state.step = state.step + 1
-      state.clean = true
     },
     complete: () => showMessage('Your information has been successfully submitted!', 'success'),
   },
