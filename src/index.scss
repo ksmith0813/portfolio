@@ -91,7 +91,7 @@ body {
 .site-link {
   font-size: 0.8em;
   color: white;
-  &:nth-child(n+2) {
+  &:nth-child(n + 2) {
     margin-left: 2em;
   }
   &.active {
@@ -269,7 +269,7 @@ body {
   }
   .site-link {
     margin-left: 1.5em;
-    font-size: 0.7em;
+    font-size: 0.6em;
     color: white;
     &.active {
       color: var(--theme-color-1);
