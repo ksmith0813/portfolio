@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Input, Spin, Col, Row, Progress, Button, Tag } from 'antd'
+import { Input, Spin, Col, Row, Progress, Button } from 'antd'
 import { NoData } from 'components/_siteWide/layout/layout'
 import { getState, setLoading, setSearch, setMovies, setSelectedId, setSelectedMovie } from 'store/slices/searchSlice'
 import api from 'utils/api'
@@ -58,7 +58,7 @@ export const Search = () => {
   const getRating = (rating) => {
     let value
     if (rating.includes('/')) {
-      value = parseFloat(rating.split('/')[0])*10
+      value = parseFloat(rating.split('/')[0]) * 10
     } else if (rating.includes('%')) {
       value = parseFloat(rating.split('&')[0])
     }
@@ -116,7 +116,7 @@ const MovieList = ({ movies, getMovie }) => (
         <Row key={i} className='p-100 clickable-rows' onClick={() => getMovie(t.imdbID)}>
           <Col span={16}>{t.Title}</Col>
           <Col span={4} className='pl-050'>
-            <Tag color='blue'>{t.Year}</Tag>
+            {t.Year}
           </Col>
           <Col span={4} className='pl-050 capitalize'>
             <MovieType type={t.Type} />
