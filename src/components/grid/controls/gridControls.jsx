@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { CSVLink } from 'react-csv'
 import { Drawer } from 'antd'
-import { InsertRowRightOutlined } from '@ant-design/icons'
+import { DownloadOutlined, InsertRowRightOutlined } from '@ant-design/icons'
 import { ColumnSelection } from 'components/_siteWide/fastGrid/columnSelection/columnSelection'
 import { getState } from 'store/slices/gridSlice'
 
@@ -12,6 +13,9 @@ export const GridControls = () => {
   return (
     <div className='grid-controls'>
       <>
+        <CSVLink data={state.Data} filename='user-data'>
+          <DownloadOutlined className='pr-050' />
+        </CSVLink>
         <InsertRowRightOutlined onClick={() => setShowingSelection(true)} />
         <Drawer
           title='Show | Reorder Columns'

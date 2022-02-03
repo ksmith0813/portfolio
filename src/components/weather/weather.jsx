@@ -50,28 +50,22 @@ export const Weather = () => {
 
   const loading = state.loading
   const weather = state.weather
-  const tip = `You can search by US zip code, UK post code, Canada postal code, IP Address, Latitude/Longitude 
-  (decimal degree) or city name.`
 
   return (
     <div className='page justify-center'>
       <Col span={13}>
         <Row justify='center' className='text-center fs-200'>
-          Search for Weather conditions
+          Search for Weather
         </Row>
-        <Row justify='center' className='pt-200 text-center light-text'>
-          <Col span={10}>{tip}</Col>
+        <Row justify='center' className='pt-125 text-center light-text'>
+          <Col span={10}>You can search by zip code, latitude/longitude, or city/state.</Col>
         </Row>
         <Row justify='center' className='p-200'>
           <Col span={10}>
-            <Input onChange={onSearchChange} value={state.search} placeholder='Search for a location' />
+            <Input onChange={onSearchChange} value={state.search} placeholder='Search' />
           </Col>
         </Row>
-        <div
-          className={`weather-container box-shadow border-radius ${
-            loading || (!loading && !weather) ? 'content-center' : ''
-          }`}
-        >
+        <div className={`weather-container ${loading || (!loading && !weather) ? 'content-center' : ''}`}>
           {loading && <Spin />}
           {!loading && !weather && <NoData />}
           {!loading && weather && <WeatherContent weather={weather} clear={clear} />}

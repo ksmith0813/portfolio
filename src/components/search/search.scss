@@ -1,9 +1,6 @@
 .movie-list-container {
   padding: 3em;
   margin: 2em;
-  background-color: white;
-  border: 1px solid var(--gray-300);
-  border-radius: var(--container-border-radius);
   .movie-list-items {
     overflow-y: auto;
     .ant-row {
@@ -23,6 +20,12 @@
         padding-left: 1em;
       }
     }
+  }
+  .movie-detail {
+    padding-left: 0.5em;
+    padding-bottom: 1em;
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--gray-300);
   }
 }
 

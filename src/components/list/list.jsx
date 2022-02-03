@@ -42,7 +42,7 @@ export const List = () => {
         <Row justify='center' className='m-200'>
           <Search todos={originalTodos} setTodos={setTodos} setLoading={setLoading} />
         </Row>
-        <div className={`todo-list-container box-shadow ${loading || !todos.length ? 'content-center' : ''}`}>
+        <div className={`todo-list-container ${loading || !todos.length ? 'content-center' : ''}`}>
           {loading && <Spin />}
           {!loading && !todos.length && <NoData />}
           {!loading && todos.length > 0 && (
@@ -89,21 +89,23 @@ const Search = ({ todos, setTodos }) => {
 
   return (
     <Col span={10}>
-      <Input onChange={onSearchChange} value={search} placeholder='Search for things to do' allowClear />
+      <Input onChange={onSearchChange} value={search} placeholder='Search' allowClear />
     </Col>
   )
 }
 
 const TodoHeader = () => (
-  <Row className='bold border-bottom-light pb-100'>
-    <Col span={1}>Action</Col>
-    <Col span={5} className='pl-150'>
+  <Row className='todo-header'>
+    <Col span={1} className='pl-100'>
+      Action
+    </Col>
+    <Col span={5} className='pl-250'>
       User
     </Col>
-    <Col span={15} className='pl-100'>
+    <Col span={15} className='pl-175'>
       Description
     </Col>
-    <Col span={3} className='pl-050'>
+    <Col span={3}>
       Completed
     </Col>
   </Row>
@@ -168,7 +170,7 @@ const TodoRow = ({ index, todo }) => {
       <Col span={15} className='pl-150'>
         <Input value={title} onChange={onTitleChange} />
       </Col>
-      <Col span={3} className='pl-150 pt-025'>
+      <Col span={3} className='pl-175 pt-025'>
         <Switch
           checked={todo.completed}
           checkedChildren='Yes'

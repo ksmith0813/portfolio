@@ -1,12 +1,17 @@
 .todo-list-container {
-  padding: 3em;
-  margin: 2em;
-  background-color: white;
+  padding-top: 1em;
+  padding-bottom: 0;
+  height: 1000px;
   border: 1px solid var(--gray-300);
   border-radius: var(--container-border-radius);
-  height: 1000px;
+  box-shadow: var(--box-shadow);
+  .todo-header {
+    font-weight: bold;
+    border-bottom: 1px solid var(--gray-300);
+    padding-bottom: 1em;
+  }
   .todo-list-items {
-    height: 880px;
+    height: 940px;
     overflow-y: auto;
     .ant-row {
       padding: 1em;

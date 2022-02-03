@@ -16,6 +16,7 @@
     "nivo": "^0.31.0",
     "node-sass": "^7.0.1",
     "react": "^16.14.0",
+    "react-csv": "^2.2.2",
     "react-dom": "^16.14.0",
     "react-google-maps": "^9.4.5",
     "react-redux": "^7.2.6",

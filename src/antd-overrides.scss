@@ -45,6 +45,9 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+.ant-btn {
+  border-radius: var(--button-border-radius) !important;
+}
 
 .ant-btn.anchor-button {
   color: var(--theme-color-1);
