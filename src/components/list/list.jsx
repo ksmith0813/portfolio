@@ -45,8 +45,8 @@ export const List = () => {
         <div className='todo-list-container'>
           {loading && (
             <div className='p-500'>
-              <Skeleton active />
-              <Skeleton active />
+              <Skeleton avatar active />
+              <Skeleton className='pt-200' avatar active />
             </div>
           )}
           {!loading && !todos.length && <NoData />}
