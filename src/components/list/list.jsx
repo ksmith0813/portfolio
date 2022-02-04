@@ -37,7 +37,7 @@ export const List = () => {
     <div className='page justify-center'>
       <Col span={13}>
         <Row justify='center' className='fs-200 text-center'>
-          Things you need to do...
+          Things you need to do
         </Row>
         <Row justify='center' className='m-200'>
           <Search todos={originalTodos} setTodos={setTodos} setLoading={setLoading} />
@@ -106,9 +106,7 @@ const TodoHeader = () => (
     <Col span={15} className='pl-175'>
       Description
     </Col>
-    <Col span={3}>
-      Completed
-    </Col>
+    <Col span={3}>Completed</Col>
   </Row>
 )
 

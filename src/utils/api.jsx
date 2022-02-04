@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { keys } from 'keys'
 import { showMessage } from 'utils/general'
 
 const post = (endpoint, api, data) => {
@@ -60,10 +61,6 @@ axios.interceptors.response.use(
   }
 )
 
-const movieApiKey = '5263fce'
-
-const weatherKey = 'e2c2951ed12e4f79b7624806210108'
-
 const q = {
   // Product API
   getProductCategories: () => get('products/categories', 'product'),
@@ -81,11 +78,11 @@ const q = {
   getBreweries: () => get('breweries?per_page=100', 'beer'),
 
   // OMDB API
-  getMovies: (search) => get('', 'movie', { s: search, apiKey: movieApiKey }),
-  getMovie: (id) => get('', 'movie', { i: id, apiKey: movieApiKey }),
+  getMovies: (search) => get('', 'movie', { s: search, apiKey: keys.movieApi }),
+  getMovie: (id) => get('', 'movie', { i: id, apiKey: keys.movieApi }),
 
   // Weather API
-  getWeather: (search) => get('current.json', 'weather', { q: search, key: weatherKey, aqi: 'no'}),
+  getWeather: (search) => get('current.json', 'weather', { q: search, key: keys.weatherApi, aqi: 'no' }),
 }
 
 export default q

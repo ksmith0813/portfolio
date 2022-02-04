@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { withScriptjs, withGoogleMap } from 'react-google-maps'
 import { Input, Spin, Col, Row, Progress, Button } from 'antd'
 import { DataItem, NoData, MapLocation } from 'components/_siteWide/layout/layout'
-import { GoogleMap } from 'constants/googleMap'
 import { getState, setLoading, setSearch, setWeather } from 'store/slices/weatherSlice'
 import api from 'utils/api'
+import { keys } from 'keys'
 import moment from 'moment'
 import './weather.scss'
 
@@ -92,7 +92,7 @@ const WeatherContent = ({ weather, clear }) => {
         <Col span={8}>
           <div className='map-container'>
             <MapComponent
-              googleMapURL={GoogleMap.url}
+              googleMapURL={keys.mapUrl}
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `100%`, width: '100%' }} />}
               mapElement={<div style={{ height: `100%` }} />}
