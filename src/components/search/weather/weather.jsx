@@ -64,7 +64,7 @@ export const Weather = () => {
           />
         </Row>
         <div className={`weather-container ${loading || (!loading && !weather) ? 'content-center' : ''}`}>
-          {loading && <Spin />}
+          {loading && <Spin className='pt-200' />}
           {!loading && !weather && <NoData />}
           {!loading && weather && <WeatherContent weather={weather} clear={clear} />}
         </div>

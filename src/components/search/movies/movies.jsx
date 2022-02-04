@@ -89,11 +89,7 @@ export const Movies = () => {
           />
         </Row>
         <div className={`movie-list-container ${loading || !movies.length ? 'content-center' : ''}`}>
-          {loading && (
-            <div className='content-center'>
-              <Spin />
-            </div>
-          )}
+          {loading && <Spin className='pt-200' />}
           {!loading && !movies.length && !selectedMovie && <NoData />}
           {!loading && movies.length > 0 && !selectedMovie && <MovieList movies={movies} getMovie={getMovie} />}
           {!loading && selectedMovie && (
