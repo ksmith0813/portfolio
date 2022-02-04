@@ -74,17 +74,15 @@ export const Grid = () => {
   }
 
   return (
-    <>
-      <div className='p-200'>
-        <FastGrid
-          state={state}
-          loading={state.Loading}
-          getData={setData}
-          columns={columns}
-          rightControls={<GridControls />}
-          defaultSearch={state.Search}
-        />
-      </div>
-    </>
+    <div className='p-200'>
+      <FastGrid
+        state={state}
+        loading={state.Loading}
+        getData={setData}
+        columns={columns}
+        rightControls={<GridControls />}
+        defaultSearch={state.Search}
+      />
+    </div>
   )
 }
