@@ -9,9 +9,9 @@ import moment from 'moment'
 import movie from 'assets/movie-active.svg'
 import tv from 'assets/tv.svg'
 import game from 'assets/game.svg'
-import './search.scss'
+import './movies.scss'
 
-export const Search = () => {
+export const Movies = () => {
   const state = useSelector(getState)
   const dispatch = useDispatch()
 

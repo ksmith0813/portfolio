@@ -7,7 +7,7 @@ import { Dashboard } from 'components/dashboard/dashboard'
 import { Register } from 'components/register/register'
 import { Grid } from 'components/grid/grid'
 import { List } from 'components/list/list'
-import { Search } from 'components/search/search'
+import { Movies } from 'components/movies/movies'
 import { Shop } from 'components/shop/shop'
 import { Weather } from 'components/weather/weather'
 import { Visuals } from 'components/visuals/visuals'
@@ -22,7 +22,7 @@ export const Main = () => (
         <Route path='register' element={<Register />} />
         <Route path='grid' element={<Grid />} />
         <Route path='list' element={<List />} />
-        <Route path='search' element={<Search />} />
+        <Route path='movies' element={<Movies />} />
         <Route path='weather' element={<Weather />} />
         <Route path='shop' element={<Shop />} />
         <Route path='visuals' element={<Visuals />} />
