@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const slice = createSlice({
-  name: 'search',
+  name: 'movie',
   initialState: {
     loading: false,
     search: '',
@@ -30,6 +30,6 @@ export const slice = createSlice({
 
 export const { setLoading, setSearch, setMovies, setSelectedId, setSelectedMovie } = slice.actions
 
-export const getState = (state) => state.search
+export const getState = (state) => state.movie
 
 export default slice.reducer

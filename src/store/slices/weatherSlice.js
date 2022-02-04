@@ -4,7 +4,7 @@ export const slice = createSlice({
   name: 'weather',
   initialState: {
     loading: false,
-    search: '',
+    search: '72704',
     weather: null,
   },
   reducers: {

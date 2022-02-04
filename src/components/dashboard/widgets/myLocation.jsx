@@ -6,7 +6,7 @@ import { GoogleMap } from 'constants/googleMap'
 
 export const MyLocation = () => (
   <Col span={6}>
-    <Card className='box-shadow' title={<span className='fs-125'>My Location - Fayetteville, AR</span>}>
+    <Card className='box-shadow' title={<span className='fs-125'>My Location</span>}>
       <div className='card-display'>
         <MapComponent
           googleMapURL={GoogleMap.url}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Input, Row, Col, Select, Switch, Spin } from 'antd'
+import { Input, Row, Col, Select, Switch, Skeleton } from 'antd'
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { NoData } from 'components/_siteWide/layout/layout'
 import { userNames } from 'constants/users'
@@ -42,8 +42,13 @@ export const List = () => {
         <Row justify='center' className='m-200'>
           <Search todos={originalTodos} setTodos={setTodos} setLoading={setLoading} />
         </Row>
-        <div className={`todo-list-container ${loading || !todos.length ? 'content-center' : ''}`}>
-          {loading && <Spin />}
+        <div className='todo-list-container'>
+          {loading && (
+            <div className='p-500'>
+              <Skeleton active />
+              <Skeleton active />
+            </div>
+          )}
           {!loading && !todos.length && <NoData />}
           {!loading && todos.length > 0 && (
             <>
@@ -63,27 +68,23 @@ export const List = () => {
 
 const Search = ({ todos, setTodos }) => {
   const [search, setSearch] = useState('')
-  const [searchChanged, setSearchChanged] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (searchChanged) {
-        if (search) {
-          const matches = todos.filter(
-            (c) => c.userId && c.title.toLowerCase().trim().includes(search.toLowerCase().trim())
-          )
-          dispatch(setTodos(matches))
-        } else {
-          dispatch(setTodos(todos))
-        }
+      if (search) {
+        const matches = todos.filter(
+          (c) => c.userId && c.title.toLowerCase().trim().includes(search.toLowerCase().trim())
+        )
+        dispatch(setTodos(matches))
+      } else {
+        dispatch(setTodos(todos))
       }
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [search, searchChanged, todos, setTodos, dispatch])
+  }, [search, todos, setTodos, dispatch])
 
   const onSearchChange = (e) => {
-    setSearchChanged(true)
     setSearch(e.target.value || '')
   }
 
@@ -96,7 +97,7 @@ const Search = ({ todos, setTodos }) => {
 
 const TodoHeader = () => (
   <Row className='todo-header'>
-    <Col span={1} className='pl-100'>
+    <Col span={1} className='pl-150'>
       Action
     </Col>
     <Col span={5} className='pl-250'>
@@ -145,7 +146,7 @@ const TodoRow = ({ index, todo }) => {
 
   return (
     <Row className='pt-200'>
-      <Col span={1} className='fs-150'>
+      <Col span={1} className='fs-150 pl-025'>
         {index === 0 && <PlusCircleOutlined onClick={() => dispatch(addTodo())} className='clickable add-item' />}
         {index > 0 && (
           <MinusCircleOutlined

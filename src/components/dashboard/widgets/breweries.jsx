@@ -66,22 +66,14 @@ export const Breweries = () => {
       onChange={onCityChange}
       onSearch={(value) => onAutoCompleteSearch(value, allCities, setCities)}
       style={{ width: '170px' }}
+      placeholder='Search City'
       allowClear
     />
   )
 
   return (
     <Col span={12} className='pl-200'>
-      <Card
-        className='box-shadow'
-        title={<span className='fs-125'>Breweries</span>}
-        extra={
-          <>
-            <span className='pr-100'>City</span>
-            <span>{cityAutoComplete}</span>
-          </>
-        }
-      >
+      <Card className='box-shadow' title={<span className='fs-125'>Breweries</span>} extra={cityAutoComplete}>
         <div className='card-display'>
           <Table
             rowKey='id'
