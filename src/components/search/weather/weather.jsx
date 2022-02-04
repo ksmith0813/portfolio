@@ -54,8 +54,7 @@ export const Weather = () => {
   return (
     <div className='page justify-center'>
       <Col span={24}>
-        <Row className='fs-125'>Weather Finder</Row>
-        <Row className='pt-200'>
+        <Row>
           <Input
             onChange={onSearchChange}
             value={state.search}

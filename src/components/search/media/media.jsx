@@ -79,8 +79,7 @@ export const Media = () => {
   return (
     <div className='page justify-center'>
       <Col span={24}>
-        <Row className='fs-125'>Media Search</Row>
-        <Row className='pt-200'>
+        <Row>
           <Input
             onChange={onSearchChange}
             value={state.search}
