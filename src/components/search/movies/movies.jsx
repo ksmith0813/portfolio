@@ -78,19 +78,15 @@ export const Movies = () => {
 
   return (
     <div className='page justify-center'>
-      <Col span={13}>
-        <Row justify='center' className='fs-200 text-center'>
-          Search for Entertainment
-        </Row>
-        <Row justify='center' className='pt-125 text-center light-text'>
-          <Col span={10}>
-            You can search for your favorite movie, TV show, or video game you really enjoyed playing.
-          </Col>
-        </Row>
-        <Row justify='center' className='m-200'>
-          <Col span={10}>
-            <Input onChange={onSearchChange} value={state.search} placeholder='Search' allowClear />
-          </Col>
+      <Col span={24}>
+        <Row className='fs-125'>Media Search</Row>
+        <Row className='pt-200'>
+          <Input
+            onChange={onSearchChange}
+            value={state.search}
+            placeholder='You can search for your favorite movie, TV show, or video game you really enjoyed playing.'
+            allowClear
+          />
         </Row>
         <div className={`movie-list-container ${loading || !movies.length ? 'content-center' : ''}`}>
           {loading && (
@@ -98,7 +94,7 @@ export const Movies = () => {
               <Spin />
             </div>
           )}
-          {!loading && !movies.length && <NoData />}
+          {!loading && !movies.length && !selectedMovie && <NoData />}
           {!loading && movies.length > 0 && !selectedMovie && <MovieList movies={movies} getMovie={getMovie} />}
           {!loading && selectedMovie && (
             <MovieDetail selectedMovie={selectedMovie} getRating={getRating} backToAll={backToAll} />
@@ -140,8 +136,6 @@ const MovieList = ({ movies, getMovie }) => (
 
 const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
   const hasRatings = selectedMovie.Ratings.length > 0
-
-  console.log(selectedMovie)
 
   return (
     <div>

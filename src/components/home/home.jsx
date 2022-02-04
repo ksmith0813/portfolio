@@ -21,10 +21,10 @@ export const Home = () => {
     setTimeout(() => navigate(`../${page}`), 1000)
   }
 
-  const Tile = ({ page, title, image, className }) => (
+  const Tile = ({ page, title, image, className = '' }) => (
     <div className='tile clickable' onClick={() => goToPage(page)}>
       <div className='tile-title'>{activePage === page ? <LoadingOutlined /> : title}</div>
-      <img src={image} className={`tile-icon ${page}`} alt='' />
+      <img src={image} className={`tile-icon ${className || page}`} alt='' />
     </div>
   )
 
@@ -46,8 +46,8 @@ export const Home = () => {
             <Tile page='list' title='TODO List' image={list} />
           </Row>
           <Row justify='center'>
-            <Tile page='movies' title='Movie Search' image={movie} />
-            <Tile page='weather' title='Weather' image={umbrella} />
+            <Tile page='search/movies' title='Media Search' image={movie} className='movies' />
+            <Tile page='search/weather' title='Weather Finder' image={umbrella} className='weather' />
             <Tile page='shop' title='Shop' image={shop} />
             <Tile page='visuals' title='Visuals' image={visuals} />
           </Row>

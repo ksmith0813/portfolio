@@ -53,17 +53,15 @@ export const Weather = () => {
 
   return (
     <div className='page justify-center'>
-      <Col span={13}>
-        <Row justify='center' className='text-center fs-200'>
-          Search for Weather
-        </Row>
-        <Row justify='center' className='pt-125 text-center light-text'>
-          <Col span={10}>You can search by zip code, latitude/longitude, or city/state.</Col>
-        </Row>
-        <Row justify='center' className='p-200'>
-          <Col span={10}>
-            <Input onChange={onSearchChange} value={state.search} placeholder='Search' />
-          </Col>
+      <Col span={24}>
+        <Row className='fs-125'>Weather Finder</Row>
+        <Row className='pt-200'>
+          <Input
+            onChange={onSearchChange}
+            value={state.search}
+            placeholder='You can search by zip code, latitude/longitude, or city/state.'
+            allowClear
+          />
         </Row>
         <div className={`weather-container ${loading || (!loading && !weather) ? 'content-center' : ''}`}>
           {loading && <Spin />}

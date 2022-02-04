@@ -1,6 +1,5 @@
 .movie-list-container {
-  padding: 3em;
-  margin: 2em;
+  padding-top: 2em;
   .movie-list-items {
     overflow-y: auto;
     .ant-row {
@@ -22,7 +21,7 @@
     }
   }
   .movie-detail {
-    padding-left: 0.5em;
+    padding-top: 1em;
     padding-bottom: 1em;
     font-size: 1.5em;
     border-bottom: 1px solid var(--gray-300);
