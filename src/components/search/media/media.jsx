@@ -2,61 +2,61 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Input, Spin, Col, Row, Progress, Button } from 'antd'
 import { NoData } from 'components/_siteWide/layout/layout'
-import { getState, setLoading, setSearch, setMovies, setSelectedId, setSelectedMovie } from 'store/slices/movieSlice'
+import { getState, setLoading, setSearch, setData, setSelectedId, setSelectedMedia } from 'store/slices/mediaSlice'
 import api from 'utils/api'
 import { DataItem } from 'components/_siteWide/layout/layout'
 import moment from 'moment'
 import movie from 'assets/movie-active.svg'
 import tv from 'assets/tv.svg'
 import game from 'assets/game.svg'
-import './movies.scss'
+import './media.scss'
 
-export const Movies = () => {
+export const Media = () => {
   const state = useSelector(getState)
   const dispatch = useDispatch()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (state.selectedMovie) return
+      if (state.selectedMedia) return
       if (state.search) {
         dispatch(setLoading(true))
         api.getMovies(state.search).then(({ data }) => {
           if (data.Search) {
-            dispatch(setMovies([...new Set(data.Search)]))
+            dispatch(setData([...new Set(data.Search)]))
           } else {
-            dispatch(setMovies([]))
-            dispatch(setSelectedMovie(null))
+            dispatch(setData([]))
+            dispatch(setSelectedMedia(null))
           }
 
           dispatch(setLoading(false))
         })
       } else {
-        dispatch(setMovies([]))
-        dispatch(setSelectedMovie(null))
+        dispatch(setData([]))
+        dispatch(setSelectedMedia(null))
       }
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [state.search, state.selectedMovie, dispatch])
+  }, [state.search, state.selectedMedia, dispatch])
 
   useEffect(() => {
     if (!state.selectedId) return
     api.getMovie(state.selectedId).then(({ data }) => {
       dispatch(setLoading(true))
-      dispatch(setSelectedMovie(data))
+      dispatch(setSelectedMedia(data))
       dispatch(setLoading(false))
     })
   }, [state.selectedId, dispatch])
 
   const onSearchChange = (e) => {
     dispatch(setSearch(e.target.value || ''))
-    dispatch(setSelectedMovie(null))
+    dispatch(setSelectedMedia(null))
   }
 
-  const getMovie = (id) => dispatch(setSelectedId(id))
+  const getMedia = (id) => dispatch(setSelectedId(id))
 
   const backToAll = () => {
     dispatch(setSelectedId(null))
-    dispatch(setSelectedMovie(null))
+    dispatch(setSelectedMedia(null))
   }
 
   const getRating = (rating) => {
@@ -73,8 +73,8 @@ export const Movies = () => {
   }
 
   const loading = state.loading
-  const movies = state.movies
-  const selectedMovie = state.selectedMovie
+  const data = state.data
+  const selectedMedia = state.selectedMedia
 
   return (
     <div className='page justify-center'>
@@ -88,12 +88,12 @@ export const Movies = () => {
             allowClear
           />
         </Row>
-        <div className={`movie-list-container ${loading || !movies.length ? 'content-center' : ''}`}>
+        <div className={`media-list-container ${loading || !data.length ? 'content-center' : ''}`}>
           {loading && <Spin className='pt-200' />}
-          {!loading && !movies.length && !selectedMovie && <NoData />}
-          {!loading && movies.length > 0 && !selectedMovie && <MovieList movies={movies} getMovie={getMovie} />}
-          {!loading && selectedMovie && (
-            <MovieDetail selectedMovie={selectedMovie} getRating={getRating} backToAll={backToAll} />
+          {!loading && !data.length && !selectedMedia && <NoData />}
+          {!loading && data.length > 0 && !selectedMedia && <MediaList data={data} getMedia={getMedia} />}
+          {!loading && selectedMedia && (
+            <MediaDetail selectedMedia={selectedMedia} getRating={getRating} backToAll={backToAll} />
           )}
         </div>
       </Col>
@@ -101,9 +101,9 @@ export const Movies = () => {
   )
 }
 
-const MovieList = ({ movies, getMovie }) => (
+const MediaList = ({ data, getMedia }) => (
   <>
-    <div className='movie-list-items'>
+    <div className='media-list-items'>
       <Row className='p-100 header-row'>
         <Col span={16}>
           <b>Title</b>
@@ -115,14 +115,14 @@ const MovieList = ({ movies, getMovie }) => (
           <b>Type</b>
         </Col>
       </Row>
-      {movies.map((t, i) => (
-        <Row key={i} className='p-100 clickable-rows' onClick={() => getMovie(t.imdbID)}>
+      {data.map((t, i) => (
+        <Row key={i} className='p-100 clickable-rows' onClick={() => getMedia(t.imdbID)}>
           <Col span={16}>{t.Title}</Col>
           <Col span={4} className='pl-050'>
             {t.Year}
           </Col>
           <Col span={4} className='pl-050 capitalize'>
-            <MovieType type={t.Type} />
+            <MediaType type={t.Type} />
           </Col>
         </Row>
       ))}
@@ -130,13 +130,13 @@ const MovieList = ({ movies, getMovie }) => (
   </>
 )
 
-const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
-  const hasRatings = selectedMovie.Ratings.length > 0
+const MediaDetail = ({ selectedMedia, getRating, backToAll }) => {
+  const hasRatings = selectedMedia.Ratings.length > 0
 
   return (
     <div>
-      <Row className='movie-detail'>
-        <Col flex={1}>{selectedMovie.Title}</Col>
+      <Row className='media-detail'>
+        <Col flex={1}>{selectedMedia.Title}</Col>
         <Col>
           <Button type='primary' onClick={() => backToAll()}>
             Back to All
@@ -145,29 +145,29 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
       </Row>
       <Row className='pt-200'>
         <Col span={7}>
-          {selectedMovie.Poster !== 'N/A' && (
-            <img src={selectedMovie.Poster} className='movie-poster box-shadow' alt='' />
+          {selectedMedia.Poster !== 'N/A' && (
+            <img src={selectedMedia.Poster} className='media-poster box-shadow' alt='' />
           )}
-          {selectedMovie.Poster === 'N/A' && <NoData message='Poster not available' />}
+          {selectedMedia.Poster === 'N/A' && <NoData message='Poster not available' />}
         </Col>
         <Col span={9}>
-          <DataItem label='Plot' children={selectedMovie.Plot} />
+          <DataItem label='Plot' children={selectedMedia.Plot} />
           <DataItem
             label='Release Year'
-            children={moment(selectedMovie.Released).format('MM/DD/YYYY')}
+            children={moment(selectedMedia.Released).format('MM/DD/YYYY')}
             labelClasses='pt-100'
           />
-          <DataItem label='Director' children={selectedMovie.Director} labelClasses='pt-100' />
-          <DataItem label='Actors' children={selectedMovie.Actors} labelClasses='pt-100' />
-          <DataItem label='Writers' children={selectedMovie.Writer} labelClasses='pt-100' />
-          <DataItem label='Genre' children={selectedMovie.Genre} labelClasses='pt-100' />
-          <DataItem label='Rated' children={selectedMovie.Rated} labelClasses='pt-100' />
+          <DataItem label='Director' children={selectedMedia.Director} labelClasses='pt-100' />
+          <DataItem label='Actors' children={selectedMedia.Actors} labelClasses='pt-100' />
+          <DataItem label='Writers' children={selectedMedia.Writer} labelClasses='pt-100' />
+          <DataItem label='Genre' children={selectedMedia.Genre} labelClasses='pt-100' />
+          <DataItem label='Rated' children={selectedMedia.Rated} labelClasses='pt-100' />
         </Col>
         <Col span={8} className='pl-200'>
           {hasRatings && (
             <>
               <b>Ratings</b>
-              {selectedMovie.Ratings.map((r) => (
+              {selectedMedia.Ratings.map((r) => (
                 <DataItem
                   key={r.Source}
                   label={r.Source === 'Internet Movie Database' ? 'IMDB' : r.Source}
@@ -179,42 +179,42 @@ const MovieDetail = ({ selectedMovie, getRating, backToAll }) => {
           )}
           <DataItem
             label='Box Office'
-            children={selectedMovie.BoxOffice}
+            children={selectedMedia.BoxOffice}
             labelClasses={hasRatings ? 'pt-200' : ''}
             childrenClasses='fs-150'
           />
-          <DataItem label='Awards' children={selectedMovie.Awards} labelClasses='pt-100' />
-          <DataItem label='Runtime' children={selectedMovie.Runtime} labelClasses='pt-100' />
+          <DataItem label='Awards' children={selectedMedia.Awards} labelClasses='pt-100' />
+          <DataItem label='Runtime' children={selectedMedia.Runtime} labelClasses='pt-100' />
         </Col>
       </Row>
     </div>
   )
 }
 
-const MovieType = ({ type }) => {
+const MediaType = ({ type }) => {
   let icon
   switch (type) {
     case 'game':
       icon = (
         <>
-          <img src={game} className='movie-type-icon' alt='' />
-          <span className='movie-type-text game'>Game</span>
+          <img src={game} className='media-type-icon' alt='' />
+          <span className='media-type-text game'>Game</span>
         </>
       )
       break
     case 'series':
       icon = (
         <>
-          <img src={tv} className='movie-type-icon' alt='' />
-          <span className='movie-type-text tv'>TV</span>
+          <img src={tv} className='media-type-icon' alt='' />
+          <span className='media-type-text tv'>TV</span>
         </>
       )
       break
     default:
       icon = (
         <>
-          <img src={movie} className='movie-type-icon' alt='' />
-          <span className='movie-type-text movie'>Movie</span>
+          <img src={movie} className='media-type-icon' alt='' />
+          <span className='media-type-text movie'>Movie</span>
         </>
       )
       break

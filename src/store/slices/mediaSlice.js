@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const slice = createSlice({
-  name: 'movie',
+  name: 'media',
   initialState: {
     loading: false,
     search: '',
-    movies: [],
+    data: [],
     selectedId: '',
-    selectedMovie: null,
+    selectedMedia: null,
   },
   reducers: {
     setLoading: (state, action) => {
@@ -16,20 +16,20 @@ export const slice = createSlice({
     setSearch: (state, action) => {
       state.search = action.payload
     },
-    setMovies: (state, action) => {
-      state.movies = action.payload
+    setData: (state, action) => {
+      state.data = action.payload
     },
     setSelectedId: (state, action) => {
       state.selectedId = action.payload
     },
-    setSelectedMovie: (state, action) => {
-      state.selectedMovie = action.payload
+    setSelectedMedia: (state, action) => {
+      state.selectedMedia = action.payload
     },
   },
 })
 
-export const { setLoading, setSearch, setMovies, setSelectedId, setSelectedMovie } = slice.actions
+export const { setLoading, setSearch, setData, setSelectedId, setSelectedMedia} = slice.actions
 
-export const getState = (state) => state.movie
+export const getState = (state) => state.media
 
 export default slice.reducer

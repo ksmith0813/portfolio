@@ -28,7 +28,7 @@ Component Examples:
 
 - List view with an editable todo list. Uses API data
 
-- Movie search page that hits the open movie database EP and allows the user to drill into the movie's details
+- Media search page that hits the open movie database EP and allows the user to drill into the media's details
 
 - Search for a location's weather conditions, uses the open source Weather API
 

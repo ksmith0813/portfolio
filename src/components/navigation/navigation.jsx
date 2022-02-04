@@ -11,14 +11,17 @@ export const Navigation = () => {
 
   useEffect(() => {
     if (location.pathname === '/') navigate('../home')
+    if (location.pathname === '/search') navigate('../search/media')
     setActivePage(location.pathname.substring(1))
   }, [location.pathname, navigate])
 
-  const SiteLink = ({ page, title }) => (
-    <Link to={`/${page}`} className={`site-link ${activePage === page ? 'active' : ''}`}>
-      {title}
-    </Link>
-  )
+  const SiteLink = ({ page, title }) => {
+    return (
+      <Link to={`/${page}`} className={`site-link ${activePage.includes(page) ? 'active' : ''}`}>
+        {title}
+      </Link>
+    )
+  }
 
   return (
     <>
@@ -33,7 +36,7 @@ export const Navigation = () => {
           <SiteLink page='register' title='Register' />
           <SiteLink page='grid' title='Grid' />
           <SiteLink page='list' title='List' />
-          <SiteLink page='search/movies' title='Search' />
+          <SiteLink page='search' title='Search' />
           <SiteLink page='shop' title='Shop' />
           <SiteLink page='visuals' title='Visuals' />
           <SiteLink page='bio' title='Bio' />

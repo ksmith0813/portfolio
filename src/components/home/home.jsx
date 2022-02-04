@@ -46,7 +46,7 @@ export const Home = () => {
             <Tile page='list' title='TODO List' image={list} />
           </Row>
           <Row justify='center'>
-            <Tile page='search/movies' title='Media Search' image={movie} className='movies' />
+            <Tile page='search/media' title='Media Search' image={movie} className='media' />
             <Tile page='search/weather' title='Weather Finder' image={umbrella} className='weather' />
             <Tile page='shop' title='Shop' image={shop} />
             <Tile page='visuals' title='Visuals' image={visuals} />

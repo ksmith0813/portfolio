@@ -1,6 +1,6 @@
-.movie-list-container {
+.media-list-container {
   padding-top: 2em;
-  .movie-list-items {
+  .media-list-items {
     overflow-y: auto;
     .ant-row {
       padding: 1em;
@@ -8,10 +8,10 @@
         background-color: var(--gray-100);
       }
     }
-    .movie-type-icon {
+    .media-type-icon {
       height: 25px;
     }
-    .movie-type-text {
+    .media-type-text {
       padding-left: 0.75em;
       position: absolute;
       top: 0.3em;
@@ -20,7 +20,7 @@
       }
     }
   }
-  .movie-detail {
+  .media-detail {
     padding-top: 1em;
     padding-bottom: 1em;
     font-size: 1.5em;
@@ -29,7 +29,7 @@
 }
 
 @media only screen and (max-width: 1920px) {
-  .movie-poster {
+  .media-poster {
     height: 470px;
   }
   .ant-col-13 {
@@ -39,7 +39,7 @@
 }
 
 @media only screen and (max-width: 1680px) {
-  .movie-poster {
+  .media-poster {
     height: 450px;
   }
   .ant-col-13 {
@@ -49,7 +49,7 @@
 }
 
 @media only screen and (max-width: 1440px) {
-  .movie-poster {
+  .media-poster {
     height: 370px;
   }
   .ant-col-13 {
@@ -59,7 +59,7 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .movie-poster {
+  .media-poster {
     height: 250px;
     width: 180px;
   }

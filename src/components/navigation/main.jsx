@@ -8,7 +8,7 @@ import { Register } from 'components/register/register'
 import { Grid } from 'components/grid/grid'
 import { List } from 'components/list/list'
 import { Search } from 'components/search/search'
-import { Movies } from 'components/search/movies/movies'
+import { Media } from 'components/search/media/media'
 import { Shop } from 'components/shop/shop'
 import { Weather } from 'components/search/weather/weather'
 import { Visuals } from 'components/visuals/visuals'
@@ -24,7 +24,7 @@ export const Main = () => (
         <Route path='grid' element={<Grid />} />
         <Route path='list' element={<List />} />
         <Route path='search' element={<Search />}>
-          <Route path=':page' element={<Movies />} />
+          <Route path=':page' element={<Media />} />
           <Route path=':page' element={<Weather />} />
         </Route>
         <Route path='shop' element={<Shop />} />
