@@ -135,7 +135,7 @@ export const ColumnSelection = ({ state, storeKey, defaultColumns, setShowingSel
           <Col flex={1} className='pl-100'>
             Column
           </Col>
-          <Col className='pl-100'>Show</Col>
+          <Col className='pr-100'>Show</Col>
         </Row>
         {items.map(({ id, property, show }) => (
           <SortableItem key={id} index={id} property={property} show={show} />
