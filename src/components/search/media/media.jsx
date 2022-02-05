@@ -2,7 +2,15 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Input, Spin, Col, Row, Progress, Button } from 'antd'
 import { NoData } from 'components/_siteWide/layout/layout'
-import { getState, setLoading, setSearch, setData, setSelectedId, setSelectedMedia } from 'store/slices/mediaSlice'
+import {
+  getState,
+  setLoading,
+  setClean,
+  setSearch,
+  setData,
+  setSelectedId,
+  setSelectedMedia,
+} from 'store/slices/mediaSlice'
 import api from 'utils/api'
 import { DataItem } from 'components/_siteWide/layout/layout'
 import moment from 'moment'
@@ -17,7 +25,7 @@ export const Media = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (state.selectedMedia) return
+      if (state.selectedMedia || state.clean) return
       if (state.search) {
         dispatch(setLoading(true))
         api.getMovies(state.search).then(({ data }) => {
@@ -34,9 +42,11 @@ export const Media = () => {
         dispatch(setData([]))
         dispatch(setSelectedMedia(null))
       }
+
+      dispatch(setClean(true))
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [state.search, state.selectedMedia, dispatch])
+  }, [state.search, state.selectedMedia, state.clean, dispatch])
 
   useEffect(() => {
     if (!state.selectedId) return
@@ -49,6 +59,7 @@ export const Media = () => {
 
   const onSearchChange = (e) => {
     dispatch(setSearch(e.target.value || ''))
+    dispatch(setClean(false))
     dispatch(setSelectedMedia(null))
   }
 
@@ -124,6 +135,9 @@ const MediaList = ({ data, getMedia }) => (
         </Row>
       ))}
     </div>
+    <Row justify='center' className='pt-150 fs-150 medium-text'>
+      {data.length} Result{data.length > 0 ? 's' : ''} Found
+    </Row>
   </>
 )
 

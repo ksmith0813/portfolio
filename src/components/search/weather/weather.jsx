@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { withScriptjs, withGoogleMap } from 'react-google-maps'
 import { Input, Spin, Col, Row, Progress, Button } from 'antd'
 import { DataItem, NoData, MapLocation } from 'components/_siteWide/layout/layout'
-import { getState, setLoading, setSearch, setWeather } from 'store/slices/weatherSlice'
+import { getState, setLoading, setClean, setSearch, setWeather } from 'store/slices/weatherSlice'
 import api from 'utils/api'
 import { keys } from 'keys'
 import moment from 'moment'
@@ -15,7 +15,7 @@ export const Weather = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (state.search) {
+      if (state.search || state.clean) {
         dispatch(setLoading(true))
         api
           .getWeather(state.search)
@@ -35,12 +35,15 @@ export const Weather = () => {
       } else {
         dispatch(setWeather(null))
       }
+
+      dispatch(setClean(true))
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [state.search, dispatch])
+  }, [state.search, state.clean, dispatch])
 
   const onSearchChange = (e) => {
     dispatch(setSearch(e.target.value || ''))
+    dispatch(setClean(false))
   }
 
   const clear = () => {

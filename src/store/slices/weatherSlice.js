@@ -4,12 +4,16 @@ export const slice = createSlice({
   name: 'weather',
   initialState: {
     loading: false,
+    celan: true,
     search: '',
     weather: null,
   },
   reducers: {
     setLoading: (state, action) => {
       state.loading = action.payload
+    },
+    setClean: (state, action) => {
+      state.clean = action.payload
     },
     setSearch: (state, action) => {
       state.search = action.payload
@@ -20,7 +24,7 @@ export const slice = createSlice({
   },
 })
 
-export const { setLoading, setSearch, setWeather } = slice.actions
+export const { setLoading, setClean, setSearch, setWeather } = slice.actions
 
 export const getState = (state) => state.weather
 

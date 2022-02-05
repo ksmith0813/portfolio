@@ -4,6 +4,7 @@ export const slice = createSlice({
   name: 'media',
   initialState: {
     loading: false,
+    clean: true,
     search: '',
     data: [],
     selectedId: '',
@@ -12,6 +13,9 @@ export const slice = createSlice({
   reducers: {
     setLoading: (state, action) => {
       state.loading = action.payload
+    },
+    setClean: (state, action) => {
+      state.clean = action.payload
     },
     setSearch: (state, action) => {
       state.search = action.payload
@@ -28,7 +32,7 @@ export const slice = createSlice({
   },
 })
 
-export const { setLoading, setSearch, setData, setSelectedId, setSelectedMedia} = slice.actions
+export const { setLoading, setClean, setSearch, setData, setSelectedId, setSelectedMedia } = slice.actions
 
 export const getState = (state) => state.media
 
