@@ -236,7 +236,7 @@ const MoonPhaseImg = ({ phase }) => {
     case 'Waxing Gibbous':
       img = <img src={waxingGibbous} className='moon-phase-icon' alt='' />
       break
-    case 'Full':
+    case 'Full Moon':
       img = <img src={fullMoon} className='moon-phase-icon' alt='' />
       break
     case 'Waning Gibbous':
