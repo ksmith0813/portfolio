@@ -81,10 +81,10 @@ export const Media = () => {
       <Col span={24}>
         <Row>
           <Input
+            size='large'
             onChange={onSearchChange}
             value={state.search}
             placeholder='You can search for your favorite movie, TV show, or video game you really enjoyed playing.'
-            allowClear
           />
         </Row>
         <div className={`media-list-container ${loading || !data.length ? 'content-center' : ''}`}>

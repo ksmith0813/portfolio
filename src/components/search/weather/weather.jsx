@@ -56,10 +56,10 @@ export const Weather = () => {
       <Col span={24}>
         <Row>
           <Input
+            size='large'
             onChange={onSearchChange}
             value={state.search}
             placeholder='You can search by zip code, latitude/longitude, or city/state.'
-            allowClear
           />
         </Row>
         <div className={`weather-container ${loading || (!loading && !weather) ? 'content-center' : ''}`}>
