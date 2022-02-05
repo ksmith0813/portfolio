@@ -82,7 +82,7 @@ const q = {
   getMovie: (id) => get('', 'movie', { i: id, apiKey: keys.movieApi }),
 
   // Weather API
-  getWeather: (search) => get('current.json', 'weather', { q: search, key: keys.weatherApi }),
+  getWeather: (search) => get('forecast.json', 'weather', { q: search, key: keys.weatherApi }),
 }
 
 export default q

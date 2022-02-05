@@ -77,6 +77,8 @@ export const Weather = () => {
 const WeatherContent = ({ weather, clear }) => {
   const location = weather.location
   const current = weather.current
+  const Map = () => <MapLocation lat={location.lat} lon={location.lon} />
+  const MapComponent = withScriptjs(withGoogleMap(Map))
   return (
     <>
       <Row className='pb-100 fs-150 border-bottom-light'>
@@ -100,10 +102,47 @@ const WeatherContent = ({ weather, clear }) => {
             />
           </div>
         </Col>
-        <Col span={8} className='pl-200'>
-          <DataItem label='Location' children={location.name} childrenClasses='fs-150 bold' />
-          <DataItem label='Country' children={location.region} labelClasses='pt-150' />
-          <DataItem label='Latitude' children={location.lat} labelClasses='pt-150' />
+        <Col span={8} className='pl-300'>
+          <Row>
+            <Col span={12}>
+              <DataItem
+                label='Current Temp'
+                children={`${current.temp_f}° F | ${current.temp_c}° C`}
+                childrenClasses='fs-150'
+              />
+            </Col>
+            <Col span={12}>
+              <DataItem
+                label='Feels Like'
+                children={`${current.feelslike_f}° F | ${current.feelslike_c}° C`}
+                childrenClasses='fs-150'
+              />
+            </Col>
+          </Row>
+          {current.condition && (
+            <Row className='pt-150'>
+              <Col span={12}>
+                <DataItem label='Condition' children={current.condition.text} childrenClasses='fs-150' />
+              </Col>
+              <Col span={12}>
+                <img src={current.condition.icon} alt='' />
+              </Col>
+            </Row>
+          )}
+
+          <DataItem label='Humidity' children={<Progress percent={current.humidity} />} labelClasses='pt-150' />
+          <DataItem label='Cloud Cover' children={<Progress percent={current.cloud} />} labelClasses='pt-150' />
+          <Row className='pt-100'>
+            <Col span={12}>
+              <DataItem label='Wind' children={`${current.wind_mph} MPH`} labelClasses='pt-150' />
+            </Col>
+            <Col span={12}>
+              <DataItem label='Wind Direction' children={current.wind_dir} labelClasses='pt-150' />
+            </Col>
+          </Row>
+        </Col>
+        <Col span={8} className='pl-300'>
+          <DataItem label='Latitude' children={location.lat} />
           <DataItem label='Longitude' children={location.lon} labelClasses='pt-150' />
           <DataItem label='Timezone' children={location.tz_id} labelClasses='pt-150' />
           <DataItem
@@ -112,23 +151,7 @@ const WeatherContent = ({ weather, clear }) => {
             labelClasses='pt-150'
           />
         </Col>
-        <Col span={8} className='pl-200'>
-          <DataItem label='Current Temp' children={`${current.temp_f} F`} childrenClasses='fs-150' />
-          <DataItem label='Humidity' children={<Progress percent={current.humidity} />} labelClasses='pt-150' />
-          <DataItem label='Wind Speed' children={`${current.wind_mph} MPH`} labelClasses='pt-150' />
-          <DataItem label='Wind Direction' children={current.wind_dir} labelClasses='pt-150' />
-          <DataItem label='Cloud Cover' children={<Progress percent={current.cloud} />} labelClasses='pt-150' />
-          <DataItem
-            label='Last Updated'
-            children={moment(location.last_updated).format('MM/DD/YYYY h:mm A')}
-            labelClasses='pt-150'
-          />
-        </Col>
       </Row>
     </>
   )
 }
-
-const Map = () => <MapLocation lat={36.06} lon={-94.16} />
-
-const MapComponent = withScriptjs(withGoogleMap(Map))
