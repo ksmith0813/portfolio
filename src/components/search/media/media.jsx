@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Input, Spin, Col, Row, Progress, Button } from 'antd'
+import { Input, Spin, Col, Row, Progress, Button, Tag } from 'antd'
 import { NoData } from 'components/_siteWide/layout/layout'
 import {
   getState,
@@ -156,13 +156,13 @@ const MediaDetail = ({ selectedMedia, getRating, backToAll }) => {
         </Col>
       </Row>
       <Row className='pt-200'>
-        <Col span={7}>
+        <Col>
           {selectedMedia.Poster !== 'N/A' && (
             <img src={selectedMedia.Poster} className='media-poster box-shadow' alt='' />
           )}
           {selectedMedia.Poster === 'N/A' && <NoData message='Poster not available' />}
         </Col>
-        <Col span={9}>
+        <Col span={9} className='pl-200'>
           <DataItem label='Plot' children={selectedMedia.Plot} />
           <DataItem
             label='Release Year'
@@ -172,7 +172,13 @@ const MediaDetail = ({ selectedMedia, getRating, backToAll }) => {
           <DataItem label='Director' children={selectedMedia.Director} labelClasses='pt-100' />
           <DataItem label='Actors' children={selectedMedia.Actors} labelClasses='pt-100' />
           <DataItem label='Writers' children={selectedMedia.Writer} labelClasses='pt-100' />
-          <DataItem label='Genre' children={selectedMedia.Genre} labelClasses='pt-100' />
+          <DataItem
+            label='Genre'
+            children={selectedMedia.Genre.split(',').map((g) => (
+              <Tag key={g} color='blue'>{g}</Tag>
+            ))}
+            labelClasses='pt-100'
+          />
           <DataItem label='Rated' children={selectedMedia.Rated} labelClasses='pt-100' />
         </Col>
         <Col span={8} className='pl-200'>

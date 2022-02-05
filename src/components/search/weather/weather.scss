@@ -6,4 +6,15 @@
   &.content-center {
     height: 200px;
   }
+  .forecast-item {
+    margin: 1.25em;
+    padding-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .moon-phase-icon {
+    height: 50px;
+  }
 }
