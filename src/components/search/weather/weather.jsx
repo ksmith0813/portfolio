@@ -15,7 +15,8 @@ export const Weather = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (state.search || state.clean) {
+      if (state.clean) return
+      if (state.search) {
         dispatch(setLoading(true))
         api
           .getWeather(state.search)

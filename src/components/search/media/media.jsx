@@ -29,6 +29,7 @@ export const Media = () => {
       if (state.search) {
         dispatch(setLoading(true))
         api.getMovies(state.search).then(({ data }) => {
+          debugger
           if (data.Search) {
             dispatch(setData([...new Set(data.Search)]))
           } else {
