@@ -77,26 +77,24 @@ export const Media = () => {
   const selectedMedia = state.selectedMedia
 
   return (
-    <div className='page justify-center'>
-      <Col span={24}>
-        <Row>
-          <Input
-            size='large'
-            onChange={onSearchChange}
-            value={state.search}
-            placeholder='You can search for your favorite movie, TV show, or video game you really enjoyed playing.'
-          />
-        </Row>
-        <div className={`media-list-container ${loading || !data.length ? 'content-center' : ''}`}>
-          {loading && <Spin className='pt-200' />}
-          {!loading && !data.length && !selectedMedia && <NoData />}
-          {!loading && data.length > 0 && !selectedMedia && <MediaList data={data} getMedia={getMedia} />}
-          {!loading && selectedMedia && (
-            <MediaDetail selectedMedia={selectedMedia} getRating={getRating} backToAll={backToAll} />
-          )}
-        </div>
-      </Col>
-    </div>
+    <Col span={24}>
+      <Row>
+        <Input
+          size='large'
+          onChange={onSearchChange}
+          value={state.search}
+          placeholder='You can search for your favorite movie, TV show, or video game you really enjoyed playing.'
+        />
+      </Row>
+      <div className={`media-list-container ${loading || !data.length ? 'content-center' : ''}`}>
+        {loading && <Spin className='pt-200' />}
+        {!loading && !data.length && !selectedMedia && <NoData />}
+        {!loading && data.length > 0 && !selectedMedia && <MediaList data={data} getMedia={getMedia} />}
+        {!loading && selectedMedia && (
+          <MediaDetail selectedMedia={selectedMedia} getRating={getRating} backToAll={backToAll} />
+        )}
+      </div>
+    </Col>
   )
 }
 

@@ -52,23 +52,21 @@ export const Weather = () => {
   const weather = state.weather
 
   return (
-    <div className='page justify-center'>
-      <Col span={24}>
-        <Row>
-          <Input
-            size='large'
-            onChange={onSearchChange}
-            value={state.search}
-            placeholder='You can search by zip code, latitude/longitude, or city/state.'
-          />
-        </Row>
-        <div className={`weather-container ${loading || (!loading && !weather) ? 'content-center' : ''}`}>
-          {loading && <Spin className='pt-200' />}
-          {!loading && !weather && <NoData />}
-          {!loading && weather && <WeatherContent weather={weather} clear={clear} />}
-        </div>
-      </Col>
-    </div>
+    <Col span={24}>
+      <Row>
+        <Input
+          size='large'
+          onChange={onSearchChange}
+          value={state.search}
+          placeholder='You can search by zip code, latitude/longitude, or city/state.'
+        />
+      </Row>
+      <div className={`weather-container ${loading || (!loading && !weather) ? 'content-center' : ''}`}>
+        {loading && <Spin className='pt-200' />}
+        {!loading && !weather && <NoData />}
+        {!loading && weather && <WeatherContent weather={weather} clear={clear} />}
+      </div>
+    </Col>
   )
 }
 

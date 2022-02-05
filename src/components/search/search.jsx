@@ -13,23 +13,23 @@ export const Search = () => {
   const onCategoryChange = (category) => navigate(`../search/${category}`)
 
   return (
-    <div className=''>
+    <>
       <div className='category-container'>
         <Categories items={['media', 'weather']} selected={page || 'media'} onClick={onCategoryChange} />
       </div>
       <div className='search-container'>
         <Row justify='center'>
-          <Col span={13} className='pt-200'>
+          <Col span={13} className='pt-300'>
             <Row justify='center' className='fs-200 text-center'>
-              Search for things
+              Search for {page}
             </Row>
-            <div className='pt-200'>
+            <div className='pt-300'>
               {page === 'media' && <Media />}
               {page === 'weather' && <Weather />}
             </div>
           </Col>
         </Row>
       </div>
-    </div>
+    </>
   )
 }
