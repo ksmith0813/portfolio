@@ -5,12 +5,11 @@
   padding-top: 3em;
   background-color: var(--gray-100);
   .register-icon {
-    height: 1.5em;
+    height: 2em;
   }
 }
 
 .steps-content {
-  min-height: 800px;
   margin-top: 2em;
   padding: 2em;
   padding-bottom: 3em;
@@ -23,8 +22,7 @@
   .section {
     border: 1px solid var(--gray-300);
     border-radius: var(--container-border-radius);
-    box-shadow: var(--box-shadow);
-    margin-top: 2em;
+    margin-top: 3em;
   }
 }
 

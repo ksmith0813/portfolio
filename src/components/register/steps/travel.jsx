@@ -49,7 +49,7 @@ const Travel = () => {
                 ))}
               </Field>
             </Col>
-            <Col span={24} className='pt-200'>
+            <Col span={24} className='pt-050'>
               <Field
                 name='FavoriteCity'
                 defaultValue={travel.FavoriteCity}

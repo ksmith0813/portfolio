@@ -42,7 +42,7 @@ const Music = () => {
                 hasFeedback
               />
             </Col>
-            <Col span={24} className='pt-200'>
+            <Col span={24} className='pt-050'>
               <Field
                 name='FavoriteSong'
                 defaultValue={music.FavoriteSong}
@@ -70,7 +70,7 @@ const Music = () => {
                 ))}
               </Field>
             </Col>
-            <Col span={24} className='pt-200'>
+            <Col span={24} className='pt-050'>
               <Field
                 name='SoundCloud'
                 defaultValue={music.SoundCloud}
