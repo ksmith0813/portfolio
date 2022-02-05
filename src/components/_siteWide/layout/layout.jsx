@@ -4,6 +4,7 @@ import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
 import { GoogleMap, Marker } from 'react-google-maps'
 import { isArray } from 'utils/general'
 import soundCloud from 'assets/sound-cloud.png'
+import soundCloudDark from 'assets/sound-cloud-dark.png'
 import './layout.scss'
 
 export const DataItem = ({ label, children, labelClasses = '', childrenClasses = '' }) => {
@@ -85,31 +86,31 @@ export const NoData = ({ message = 'No Data', extraClasses = '' }) => (
   </div>
 )
 
-export const ExternalLinks = ({ extraClasses = '' }) => (
+export const ExternalLinks = ({ extraClasses = '', theme = 'light' }) => (
   <div className={extraClasses}>
     <Tooltip title='LinkedIn' mouseEnterDelay={0.5}>
       <LinkedinFilled
-        className='external-link'
+        className={`external-link ${theme}`}
         onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
       />
     </Tooltip>
     <Tooltip title='Github' mouseEnterDelay={0.5}>
       <GithubFilled
-        className='external-link'
+        className={`external-link ${theme}`}
         onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
       />
     </Tooltip>
     <Tooltip title='Facebook' mouseEnterDelay={0.5}>
       <FacebookFilled
-        className='external-link'
+        className={`external-link ${theme}`}
         onClick={() => window.open('https://www.facebook.com/profile.php?id=20614115', '_blank')}
       />
     </Tooltip>
     <Tooltip title='SoundCloud' mouseEnterDelay={0.5}>
       <img
         alt=''
-        src={soundCloud}
-        className='sound-cloud'
+        src={theme === 'light' ? soundCloud : soundCloudDark}
+        className={`sound-cloud ${theme}`}
         onClick={() => window.open('https://soundcloud.com/kevbot0813', '_blank')}
       />
     </Tooltip>

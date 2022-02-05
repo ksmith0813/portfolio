@@ -29,6 +29,9 @@
     .todo-list-items {
       height: 540px;
     }
+    .skeletons div:nth-child(n + 4) {
+      display: none;
+    }
   }
   .ant-col-13 {
     flex: 0 0 80% !important;
@@ -41,6 +44,9 @@
     height: 460px;
     .todo-list-items {
       height: 400px;
+    }
+    .skeletons div:nth-child(n + 3) {
+      display: none;
     }
   }
   .ant-col-13 {

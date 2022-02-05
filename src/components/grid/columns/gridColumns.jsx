@@ -30,14 +30,6 @@ export const getColumns = () => {
       sorter: (a, b) => sortAlphebetically(a, b, 'UserName'),
     },
     {
-      title: 'Gender',
-      dataIndex: 'Gender',
-      type: 'select',
-      width: 100,
-      options: [{ value: 'male' }, { value: 'female' }],
-      sorter: (a, b) => sortAlphebetically(a, b, 'Gender'),
-    },
-    {
       title: 'Country',
       dataIndex: 'Country',
       type: 'autoComplete',

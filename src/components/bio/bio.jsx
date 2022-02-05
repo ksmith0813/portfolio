@@ -24,7 +24,7 @@ export const Bio = () => {
             canyons. Traveling the world and going on endless adventures will always keep me moving forward. Aside from
             building software applications, I have a passion for making music in my home studio. Let's crank some code
             and rock out!
-            <ExternalLinks extraClasses='external-links' />
+            <ExternalLinks extraClasses='external-links' theme='dark' />
             <img className='signature' src={signature} alt='' />
           </div>
         </div>

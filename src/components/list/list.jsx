@@ -44,8 +44,12 @@ export const List = () => {
         </Row>
         <div className='todo-list-container'>
           {loading && (
-            <div className='p-500'>
+            <div className='p-500 skeletons'>
               <Skeleton avatar active />
+              <Skeleton className='pt-200' avatar active />
+              <Skeleton className='pt-200' avatar active />
+              <Skeleton className='pt-200' avatar active />
+              <Skeleton className='pt-200' avatar active />
               <Skeleton className='pt-200' avatar active />
             </div>
           )}

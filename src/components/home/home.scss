@@ -69,9 +69,10 @@
         }
       }
       &:hover {
-        opacity: 0.7;
+        background-color: var(--gray-200);
         .tile-title {
           color: var(--theme-color-1);
+          background-color: var(--gray-100);
         }
       }
     }

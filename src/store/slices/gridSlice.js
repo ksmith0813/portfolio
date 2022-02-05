@@ -61,7 +61,6 @@ export const slice = createSlice({
             Picture: d.picture.thumbnail,
             Name: `${d.name.first} ${d.name.last}`,
             UserName: d.login.username,
-            Gender: d.gender,
             Country: location.country,
             State: location.state,
             City: location.city,
@@ -179,7 +178,9 @@ const updateData = (state) => {
         const end = dates[1]
         data = data.filter((d) => moment(d.RegisterDate) >= moment(start) && moment(d.RegisterDate) <= moment(end))
       } else {
-        data = data.filter((d) => d[property] && d[property].toString().toLowerCase().trim().includes(value?.toLowerCase().trim()))
+        data = data.filter(
+          (d) => d[property] && d[property].toString().toLowerCase().trim().includes(value?.toLowerCase().trim())
+        )
       }
       return p
     })
