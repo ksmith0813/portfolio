@@ -21,7 +21,7 @@ export const ProductCard = ({ product }) => {
         <b>{title}</b>
       </div>
       <div className='pt-025'>
-        <b className='fs-150'>${price}</b>
+        <span className='fs-150 light-text'>${price}</span>
       </div>
       <img src={image} alt='' />
       <div className='add-to-cart'>

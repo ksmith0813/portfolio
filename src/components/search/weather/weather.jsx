@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { withScriptjs, withGoogleMap } from 'react-google-maps'
-import { Input, Spin, Col, Row, Progress, Button, Tag } from 'antd'
+import { Input, Spin, Col, Row, Progress, Tag, Switch } from 'antd'
 import { DataItem, NoData, MapLocation } from 'components/_siteWide/layout/layout'
 import { getState, setLoading, setClean, setSearch, setWeather } from 'store/slices/weatherSlice'
 import api from 'utils/api'
@@ -55,11 +55,6 @@ export const Weather = () => {
     dispatch(setClean(false))
   }
 
-  const clear = () => {
-    dispatch(setSearch(''))
-    dispatch(setWeather(null))
-  }
-
   const loading = state.loading
   const weather = state.weather
 
@@ -71,18 +66,20 @@ export const Weather = () => {
           onChange={onSearchChange}
           value={state.search}
           placeholder='You can search by zip code, latitude/longitude, or city/state.'
+          allowClear
         />
       </Row>
       <div className={`weather-container ${loading || (!loading && !weather) ? 'content-center' : ''}`}>
         {loading && <Spin className='pt-200' />}
         {!loading && !weather && <NoData />}
-        {!loading && weather && <WeatherContent weather={weather} clear={clear} />}
+        {!loading && weather && <WeatherContent weather={weather} />}
       </div>
     </Col>
   )
 }
 
-const WeatherContent = ({ weather, clear }) => {
+const WeatherContent = ({ weather }) => {
+  const [type, setType] = useState('F')
   const location = weather.location
   const current = weather.current
   const forecastDay = weather.forecast?.forecastday[0]
@@ -92,15 +89,19 @@ const WeatherContent = ({ weather, clear }) => {
   const MapComponent = withScriptjs(withGoogleMap(Map))
 
   return (
-    <>
+    <div className='weather-detail'>
       <Row className='pb-100 fs-150 border-bottom-light'>
         <Col flex={1}>
           {location.name}, {location.region}
         </Col>
         <Col>
-          <Button type='primary' onClick={() => clear()}>
-            Clear
-          </Button>
+          <span className='mr-050'>Temp</span>
+          <Switch
+            checked={type === 'F'}
+            unCheckedChildren='C'
+            checkedChildren='F'
+            onChange={(checked) => setType(checked ? 'F' : 'C')}
+          />
         </Col>
       </Row>
       <Row className='pt-200'>
@@ -119,14 +120,14 @@ const WeatherContent = ({ weather, clear }) => {
             <Col span={12}>
               <DataItem
                 label='Current Temp'
-                children={`${current.temp_f}° F | ${current.temp_c}° C`}
+                children={`${type === 'F' ? current.temp_f : current.temp_c}° ${type}`}
                 childrenClasses='fs-150'
               />
             </Col>
             <Col span={12}>
               <DataItem
                 label='Feels Like'
-                children={`${current.feelslike_f}° F | ${current.feelslike_c}° C`}
+                children={`${type === 'F' ? current.feelslike_f : current.feelslike_c}° ${type}`}
                 childrenClasses='fs-150'
               />
             </Col>
@@ -212,14 +213,14 @@ const WeatherContent = ({ weather, clear }) => {
                 <div className='pt-050'>
                   <img src={f.condition?.icon} alt='' />
                 </div>
-                <div className='pt-050 medium-text'>{`${current.temp_f}° F | ${current.temp_c}° C`}</div>
+                <div className='pt-050 medium-text'>{`${type === 'F' ? f.temp_f : f.temp_c}° ${type}`}</div>
                 <div className='pt-050 light-text'>{f.condition?.text}</div>
               </div>
             ))}
           </Row>
         </>
       )}
-    </>
+    </div>
   )
 }
 

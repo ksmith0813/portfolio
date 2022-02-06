@@ -1,10 +1,14 @@
 .weather-container {
-  padding-top: 2em;
+  padding-top: 1em;
+  .weather-detail {
+    background-color: white;
+    padding: 2em;
+  }
   .map-container {
     height: 400px;
   }
   &.content-center {
-    height: 200px;
+    height: 150px;
   }
   .forecast-item {
     margin: 1.25em;
@@ -16,5 +20,19 @@
   }
   .moon-phase-icon {
     height: 40px;
+  }
+  .ant-switch {
+    padding: 4px 15px;
+    height: 33px;
+  }
+  .ant-switch-handle {
+    width: 28px;
+    height: 28px;
+    &:before {
+      border-radius: 17px;
+    }
+  }
+  .ant-switch-checked .ant-switch-handle {
+    left: calc(100% - 30px);
   }
 }

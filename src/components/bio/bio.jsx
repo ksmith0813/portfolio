@@ -8,12 +8,8 @@ import './bio.scss'
 export const Bio = () => {
   return (
     <div className='bio'>
-      <div className='banner'>
-        <div className='title'>Bio.</div>
-        <div className='description'>Software Developer, musician, and world traveler.</div>
-      </div>
       <div className='bio-container'>
-        <div className='description box-shadow'>
+        <div className='description'>
           <div className='fs-125'>
             <b>Hello!</b>
           </div>
@@ -28,7 +24,7 @@ export const Bio = () => {
             <img className='signature' src={signature} alt='' />
           </div>
         </div>
-        <Avatar className='me-image box-shadow' src={kevin} alt='' />
+        <Avatar className='me-image' src={kevin} alt='' />
       </div>
     </div>
   )

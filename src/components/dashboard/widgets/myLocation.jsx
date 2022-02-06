@@ -6,7 +6,7 @@ import { keys } from 'keys'
 
 export const MyLocation = () => (
   <Col span={6}>
-    <Card className='box-shadow' title={<span className='fs-125'>My Location</span>}>
+    <Card title={<span className='fs-125'>My Location</span>}>
       <div className='card-display'>
         <MapComponent
           googleMapURL={keys.mapUrl}

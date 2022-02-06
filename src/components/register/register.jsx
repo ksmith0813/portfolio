@@ -11,8 +11,8 @@ import contact from 'assets/contact.svg'
 import contactActive from 'assets/contact-active.svg'
 import movie from 'assets/movie.svg'
 import movieActive from 'assets/movie-active.svg'
-import boombox from 'assets/boombox.svg'
-import boomboxActive from 'assets/boombox-active.svg'
+import music from 'assets/music.svg'
+import musicActive from 'assets/music-active.svg'
 import beach from 'assets/beach.svg'
 import beachActive from 'assets/beach-active.svg'
 import information from 'assets/information.svg'
@@ -38,7 +38,7 @@ export const Register = () => {
     {
       title: 'Music',
       content: <Music />,
-      icon: <img src={step >= 2 ? boomboxActive : boombox} className='register-icon' alt='' />,
+      icon: <img src={step >= 2 ? musicActive : music} className='register-icon' alt='' />,
     },
     {
       title: 'Travel',

@@ -1,17 +1,19 @@
+.list-page-container {
+  background-color: var(--gray-100);
+}
 .todo-list-container {
   padding-top: 1em;
   padding-bottom: 0;
   height: 1000px;
   border: 1px solid var(--gray-300);
-  border-radius: var(--container-border-radius);
-  box-shadow: var(--box-shadow);
+  background-color: white;
   .todo-header {
     font-weight: bold;
     border-bottom: 1px solid var(--gray-300);
     padding-bottom: 1em;
   }
   .todo-list-items {
-    height: 940px;
+    height: 947px;
     overflow-y: auto;
     .ant-row {
       padding: 1em;
@@ -27,7 +29,7 @@
   .todo-list-container {
     height: 600px;
     .todo-list-items {
-      height: 540px;
+      height: 547px;
     }
     .skeletons div:nth-child(n + 4) {
       display: none;
@@ -43,7 +45,7 @@
   .todo-list-container {
     height: 460px;
     .todo-list-items {
-      height: 400px;
+      height: 407px;
     }
     .skeletons div:nth-child(n + 3) {
       display: none;
@@ -59,7 +61,7 @@
   .todo-list-container {
     height: 470px;
     .todo-list-items {
-      height: 410px;
+      height: 417px;
     }
   }
   .ant-col-13 {
@@ -72,7 +74,7 @@
   .todo-list-container {
     height: 500px;
     .todo-list-items {
-      height: 440px;
+      height: 447px;
     }
   }
   .ant-col-13 {

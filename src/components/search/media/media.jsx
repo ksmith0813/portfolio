@@ -29,7 +29,6 @@ export const Media = () => {
       if (state.search) {
         dispatch(setLoading(true))
         api.getMovies(state.search).then(({ data }) => {
-          debugger
           if (data.Search) {
             dispatch(setData([...new Set(data.Search)]))
           } else {
@@ -95,7 +94,8 @@ export const Media = () => {
           size='large'
           onChange={onSearchChange}
           value={state.search}
-          placeholder='You can search for your favorite movie, TV show, or video game you really enjoyed playing.'
+          placeholder='You can search for your favorite movie, TV show, or video game.'
+          allowClear
         />
       </Row>
       <div className={`media-list-container ${loading || !data.length ? 'content-center' : ''}`}>
@@ -146,9 +146,9 @@ const MediaDetail = ({ selectedMedia, getRating, backToAll }) => {
   const hasRatings = selectedMedia.Ratings.length > 0
 
   return (
-    <div>
-      <Row className='media-detail'>
-        <Col flex={1}>{selectedMedia.Title}</Col>
+    <div className='media-detail'>
+      <Row className='border-bottom-light pb-150'>
+        <Col className='fs-150' flex={1}>{selectedMedia.Title}</Col>
         <Col>
           <Button type='primary' onClick={() => backToAll()}>
             Back to All
@@ -158,7 +158,7 @@ const MediaDetail = ({ selectedMedia, getRating, backToAll }) => {
       <Row className='pt-200'>
         <Col>
           {selectedMedia.Poster !== 'N/A' && (
-            <img src={selectedMedia.Poster} className='media-poster box-shadow' alt='' />
+            <img src={selectedMedia.Poster} className='media-poster' alt='' />
           )}
           {selectedMedia.Poster === 'N/A' && <NoData message='Poster not available' />}
         </Col>

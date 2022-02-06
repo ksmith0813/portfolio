@@ -2,15 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2em;
-  height: calc(100vh - 250px);
+  height: calc(100vh - 50px);
   position: relative;
   .description {
     width: 40%;
     height: 560px;
     font-size: 1.95em;
-    background-color: #85c8ff;
-    border-radius: var(--button-border-radius);
+    background-color: #e6f7ff;
+    border: 1px solid #91d5ff;
     text-align: justify;
     padding: 1.5em;
     margin-right: 3em;

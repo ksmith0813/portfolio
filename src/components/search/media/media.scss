@@ -1,9 +1,11 @@
 .media-list-container {
-  padding-top: 2em;
+  padding-top: 1em;
   .media-list-items {
     overflow-y: auto;
+    background-color: white;
     .ant-row {
       padding: 1em;
+      border-bottom: 1px solid var(--gray-300);
       &:nth-child(odd) {
         background-color: var(--gray-100);
       }
@@ -21,13 +23,11 @@
     }
   }
   &.content-center {
-    height: 200px;
+    height: 150px;
   }
   .media-detail {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    font-size: 1.5em;
-    border-bottom: 1px solid var(--gray-300);
+    background-color: white;
+    padding: 2em;
   }
 }
 

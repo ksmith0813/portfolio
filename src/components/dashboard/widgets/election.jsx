@@ -58,7 +58,6 @@ export const Election = () => {
   return (
     <Col span={6} className='pt-200 pl-200'>
       <Card
-        className='box-shadow'
         title={<span className='fs-125'>2020 Election</span>}
         extra={
           <>

@@ -8,6 +8,12 @@
   min-height: 55px !important;
 }
 
+.ant-form .ant-select-multiple .ant-select-selection-item {
+  color: #096dd9;
+  background: #e6f7ff;
+  border-color: #91d5ff;
+}
+
 .ant-form .ant-select.ant-select-multiple .ant-select-selection-item {
   margin-top: 6px;
 }
@@ -45,8 +51,9 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+
 .ant-btn {
-  border-radius: var(--button-border-radius) !important;
+  border-radius: 0 !important;
 }
 
 .ant-btn.anchor-button {
@@ -87,10 +94,6 @@
 
 .ant-steps-item-icon .ant-steps-icon {
   top: -2.5px !important;
-}
-
-.ant-card {
-  border-radius: var(--container-border-radius) !important;
 }
 
 .ant-card-head {

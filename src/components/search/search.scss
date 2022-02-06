@@ -1,4 +1,5 @@
 .search-container {
-    height: calc(100vh - 130px);
+    height: calc(100vh - 100px);
+    background-color: var(--gray-200);
     overflow: auto;
 }

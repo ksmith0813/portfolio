@@ -40,9 +40,9 @@ export const Shop = () => {
       {!state.loadingProducts && <CartModal />}
       <div className='category-container'>
         <Categories items={state.categories} selected={state.selectedCategory} onClick={onCategoryChange} />
-        <div className='cart-container'>
+        <div className='cart-container flex items-center'>
+          <span className='fs-125 pr-025'>{totalItems}</span>
           <ShoppingCartOutlined className='cart-icon' onClick={() => dispatch(openModal())} />
-          <span className='cart-count'>{totalItems}</span>
         </div>
       </div>
       <div className='product-container'>

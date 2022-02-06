@@ -2,34 +2,37 @@
   background-color: white;
   height: calc(100vh - 50px);
   overflow-y: auto;
-  .anticon {
-    color: var(--theme-color-1);
+  .hello {
+    display: flex;
+    align-items: center;
+    font-size: 5em;
+    background-color: var(--theme-color-1);
+    color: white;
+    height: 200px;
+  }
+  .home-description {
+    display: flex;
+    align-items: center;
+    font-size: 1.6em;
+    color: var(--gray-500);
+    background-color: var(--gray-900);
+    text-align: center;
+    height: 220px;
   }
   .tile-container {
     flex-direction: column;
     width: 100%;
     text-align: center;
     justify-content: center;
-    height: calc(100vh - 250px);
-    overflow: auto;
-    padding-bottom: 2em;
-    .tile-header {
-      font-size: 2em;
-      padding-top: 2em;
-      padding-bottom: 2em;
-    }
+    padding: 2em;
     .tile {
       margin: 2em;
       height: 280px;
       width: 280px;
       text-align: center;
-      border-radius: var(--container-border-radius);
       background-color: var(--gray-300);
-      box-shadow: var(--box-shadow);
       .tile-title {
         color: var(--gray-700);
-        border-top-left-radius: var(--container-border-radius);
-        border-top-right-radius: var(--container-border-radius);
         background-color: var(--gray-200);
         font-weight: bold;
         font-size: 1.75em;
@@ -69,10 +72,8 @@
         }
       }
       &:hover {
-        background-color: var(--gray-200);
         .tile-title {
           color: var(--theme-color-1);
-          background-color: var(--gray-100);
         }
       }
     }
@@ -81,6 +82,9 @@
 
 @media only screen and (max-width: 1920px) {
   .home {
+    .home-description {
+      font-size: 1.35em;
+    }
     .tile-container {
       .tile {
         height: 200px;

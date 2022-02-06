@@ -22,7 +22,7 @@ export const FoodByCountry = () => {
   const data = selected === '2019' ? threeYearData : selected === '2020' ? twoYearData : oneYearData
   return (
     <Col span={12} className='pt-200'>
-      <Card className='box-shadow' title={<span className='fs-125'>Food By Country</span>} extra={dataButtons}>
+      <Card title={<span className='fs-125'>Food By Country</span>} extra={dataButtons}>
         <div className='card-display'>
           <NivoBar customData={data} margin={{ top: 80, right: 80, bottom: 80, left: 80 }} translateY={-60} />
         </div>
