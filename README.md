@@ -8,6 +8,10 @@ This site includes:
 
 - Redux/Redux Toolkit/Redux Form
 
+- Webpack 5
+
+- react-router-dom 6
+
 - ANT Design
 
 - Axios
