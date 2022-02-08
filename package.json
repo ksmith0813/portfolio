@@ -14,6 +14,8 @@
     "antd": "^4.18.3",
     "axios": "^0.24.0",
     "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "mini-dynamic-antd-theme": "^0.5.5",
     "nivo": "^0.31.0",
     "node-sass": "^7.0.1",
     "react": "^16.14.0",

@@ -8,12 +8,6 @@
   min-height: 55px !important;
 }
 
-.ant-form .ant-select-multiple .ant-select-selection-item {
-  color: #096dd9;
-  background: #e6f7ff;
-  border-color: #91d5ff;
-}
-
 .ant-form .ant-select.ant-select-multiple .ant-select-selection-item {
   margin-top: 6px;
 }
@@ -44,12 +38,19 @@
   right: 2em;
 }
 
-.ant-menu-item {
-  color: white !important;
-  height: 50px !important;
-  line-height: 50px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active:after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open:after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected:after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover:after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active:after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open:after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected:after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover:after {
+  border-bottom: none;
+}
+
+.ant-menu-horizontal {
+    border-bottom: none;
 }
 
 .ant-btn {
@@ -57,15 +58,10 @@
 }
 
 .ant-btn.anchor-button {
-  color: var(--theme-color-1);
   border: none;
   padding: 0;
   margin: 0;
   height: 0;
-}
-
-.ant-btn.anchor-button:hover {
-  color: var(--theme-color-1-hover);
 }
 
 .ant-btn.dark,
@@ -105,7 +101,6 @@
 }
 
 .add-item.anticon:hover {
-  color: var(--theme-color-1);
   cursor: pointer;
 }
 
@@ -115,11 +110,6 @@
     color: var(--theme-error);
     cursor: pointer;
   }
-}
-
-.icon-blue,
-.icon-blue.anticon {
-  color: var(--theme-color-1);
 }
 
 .icon-red,

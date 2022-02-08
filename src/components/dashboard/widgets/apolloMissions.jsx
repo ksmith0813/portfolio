@@ -1,29 +1,43 @@
 import React from 'react'
 import { Card, Col, Timeline } from 'antd'
 import shuttle from 'assets/shuttle.svg'
-import astronaut from 'assets/astronaut.svg'
+import { useSelector } from 'react-redux'
+import { getState } from 'store/slices/themeSlice'
 
-export const ApolloMissions = () => (
-  <Col span={6} className='pl-200'>
-    <Card title={<span className='fs-125'>Apollo Space Timeline</span>}>
-      <div className='card-display apollo'>
-        <Timeline mode='left'>
-          {data.map((d) => (
-            <Timeline.Item
-              key={d.name}
-              className={d.name === 'Apollo 11' ? 'landing' : ''}
-              label='01-27-1967'
-              dot={<img src={d.name === 'Apollo 11' ? astronaut : shuttle} className='moon' alt='' />}
-            >
-              <b>{d.name}</b>
-              <p className='pt-050'>{d.description}</p>
-            </Timeline.Item>
-          ))}
-        </Timeline>
-      </div>
-    </Card>
-  </Col>
-)
+export const ApolloMissions = () => {
+  const state = useSelector(getState)
+  return (
+    <Col span={6} className='pl-200'>
+      <Card title={<span className='fs-125'>Apollo Space Timeline</span>}>
+        <div className='card-display apollo'>
+          <Timeline mode='left'>
+            {data.map((d) => (
+              <Timeline.Item
+                key={d.name}
+                className={d.name === 'Apollo 11' ? 'landing' : ''}
+                label='01-27-1967'
+                dot={
+                  <img
+                    src={
+                      d.name === 'Apollo 11'
+                        ? `assets/theme/${state.selectedTheme}/astronaut-${state.selectedTheme}.svg`
+                        : shuttle
+                    }
+                    className='moon'
+                    alt=''
+                  />
+                }
+              >
+                <b>{d.name}</b>
+                <p className='pt-050'>{d.description}</p>
+              </Timeline.Item>
+            ))}
+          </Timeline>
+        </div>
+      </Card>
+    </Col>
+  )
+}
 
 // eslint-disable-next-line
 const data = [

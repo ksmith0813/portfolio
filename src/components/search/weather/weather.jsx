@@ -150,11 +150,7 @@ const WeatherContent = ({ weather }) => {
               <DataItem label='Wind' children={`${current.wind_mph} MPH`} labelClasses='pt-150' />
             </Col>
             <Col span={12}>
-              <DataItem
-                label='Wind Direction'
-                children={<Tag color='blue'>{current.wind_dir}</Tag>}
-                labelClasses='pt-150'
-              />
+              <DataItem label='Wind Direction' children={<Tag>{current.wind_dir}</Tag>} labelClasses='pt-150' />
             </Col>
           </Row>
         </Col>

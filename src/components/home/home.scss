@@ -6,16 +6,15 @@
     display: flex;
     align-items: center;
     font-size: 5em;
-    background-color: var(--theme-color-1);
-    color: white;
+    color: var(--gray-700);
     height: 200px;
+    background-color: var(--gray-300);
   }
   .home-description {
     display: flex;
     align-items: center;
     font-size: 1.6em;
-    color: var(--gray-500);
-    background-color: var(--gray-900);
+    color: white;
     text-align: center;
     height: 220px;
   }
@@ -69,11 +68,6 @@
         &.visuals {
           padding: 0;
           width: 225px;
-        }
-      }
-      &:hover {
-        .tile-title {
-          color: var(--theme-color-1);
         }
       }
     }

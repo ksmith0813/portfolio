@@ -3,13 +3,22 @@ import { useSelector, useDispatch } from 'react-redux'
 import { ShoppingCartOutlined } from '@ant-design/icons'
 import { Loader, Categories } from 'components/_siteWide/layout/layout'
 import { CartModal } from './controls/cartModal'
-import { loading, getState, setCategories, setProducts, changeCategory, openModal } from 'store/slices/shopSlice'
+import {
+  loading,
+  getState as getShopState,
+  setCategories,
+  setProducts,
+  changeCategory,
+  openModal,
+} from 'store/slices/shopSlice'
+import { getState as getThemeState } from 'store/slices/themeSlice'
 import api from 'utils/api'
 import { ProductCard } from './controls/productCard'
 import './shop.scss'
 
 export const Shop = () => {
-  const state = useSelector(getState)
+  const state = useSelector(getShopState)
+  const themeState = useSelector(getThemeState)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -38,7 +47,7 @@ export const Shop = () => {
   return (
     <>
       {!state.loadingProducts && <CartModal />}
-      <div className='category-container'>
+      <div className={`category-container ${themeState.selectedTheme}`}>
         <Categories items={state.categories} selected={state.selectedCategory} onClick={onCategoryChange} />
         <div className='cart-container flex items-center'>
           <span className='fs-125 pr-025'>{totalItems}</span>

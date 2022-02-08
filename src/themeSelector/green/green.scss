@@ -1,0 +1,75 @@
+.ant-btn.anchor-button {
+  color: var(--theme-color-2);
+}
+
+.ant-btn.anchor-button:hover {
+  color: var(--theme-color-2-hover);
+}
+
+.site-link {
+  &.active {
+    color: var(--theme-color-2);
+  }
+  &:hover {
+    color: var(--theme-color-2-hover);
+  }
+}
+
+.grid-controls .anticon:hover {
+  color: var(--theme-color-2);
+}
+
+.category-container.green {
+  > span {
+    &.selected {
+      color: var(--theme-color-2);
+    }
+    &:hover {
+      color: var(--theme-color-2-hover);
+    }
+  }
+}
+
+.home.green {
+  .home-description {
+    background-color: var(--theme-color-2);
+  }
+  .tile-container {
+    .tile {
+      &:hover {
+        .tile-title {
+          color: var(--theme-color-2);
+        }
+      }
+    }
+  }
+}
+
+.bio-container.green {
+  .description {
+    background-color: #dcfde0;
+    border: 1px solid #b7eb8f;
+  }
+}
+
+.cart-container {
+  :hover {
+    color: var(--theme-color-2) !important;
+  }
+}
+
+.page-header {
+  &.green.ant-menu-horizontal > .ant-menu-item-selected a,
+  &.green.ant-menu-horizontal > .ant-menu-item a:hover,
+  &.green.ant-menu-horizontal > .ant-menu-item a:focus,
+  &.green.ant-menu-horizontal > .ant-menu-item a:active {
+    color: var(--theme-color-2) !important;
+  }
+  &.green.ant-menu-light .ant-menu-item-active,
+  &.green.ant-menu-light .ant-menu-item:hover,
+  &.green.ant-menu-light .ant-menu-submenu-active,
+  &.green.ant-menu-light .ant-menu-submenu-title:hover,
+  &.green.ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open {
+    color: var(--theme-color-2) !important;
+  }
+}

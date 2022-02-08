@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import themeReducer from './slices/themeSlice'
 import registerReducer from './slices/registerSlice'
 import gridReducer from './slices/gridSlice'
 import listReducer from './slices/listSlice'
@@ -8,6 +9,7 @@ import shopReducer from './slices/shopSlice'
 
 export default configureStore({
   reducer: {
+    theme: themeReducer,
     register: registerReducer,
     grid: gridReducer,
     list: listReducer,

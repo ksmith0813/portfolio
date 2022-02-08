@@ -1,0 +1,56 @@
+.ant-btn.anchor-button {
+  color: var(--theme-color-1);
+}
+
+.ant-btn.anchor-button:hover {
+  color: var(--theme-color-1);
+}
+
+.add-item.anticon:hover {
+  color: var(--theme-color-1);
+}
+
+.site-link {
+  &.active {
+    color: var(--theme-color-1);
+  }
+  &:hover {
+    color: var(--theme-color-1-hover);
+  }
+}
+
+.grid-controls .anticon:hover {
+  color: var(--theme-color-1);
+}
+
+.category-container.default {
+  > span {
+    &.selected {
+      color: var(--theme-color-1);
+    }
+    &:hover {
+      color: var(--theme-color-1-hover);
+    }
+  }
+}
+
+.home {
+  .home-description {
+    background-color: var(--theme-color-1);
+  }
+  .tile-container {
+    .tile {
+      &:hover {
+        .tile-title {
+          color: var(--theme-color-1);
+        }
+      }
+    }
+  }
+}
+
+.cart-container {
+  :hover {
+    color: var(--theme-color-1) !important;
+  }
+}

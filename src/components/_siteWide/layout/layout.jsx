@@ -41,7 +41,7 @@ export const TagRender = (props) => {
   }
 
   return (
-    <Tag color='blue' onMouseDown={onPreventMouseDown} closable={closable} onClose={onClose} className='mr-050'>
+    <Tag onMouseDown={onPreventMouseDown} closable={closable} onClose={onClose} className='mr-050'>
       {label}
     </Tag>
   )

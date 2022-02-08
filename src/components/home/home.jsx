@@ -2,19 +2,15 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Row, Col } from 'antd'
 import { LoadingOutlined } from '@ant-design/icons'
-import dashboard from 'assets/dashboard.svg'
-import register from 'assets/register.svg'
-import grid from 'assets/grid.svg'
-import list from 'assets/list.svg'
-import movie from 'assets/movie-tile.svg'
-import shop from 'assets/shop.svg'
-import umbrella from 'assets/umbrella.svg'
-import visuals from 'assets/chart.svg'
+import { useSelector } from 'react-redux'
+import { getState } from 'store/slices/themeSlice'
 import './home.scss'
 
 export const Home = () => {
   const [activePage, setActivePage] = useState()
   const navigate = useNavigate()
+  const state = useSelector(getState)
+  const theme = state.selectedTheme
 
   const goToPage = (page) => {
     setActivePage(page)
@@ -30,7 +26,7 @@ export const Home = () => {
 
   return (
     <>
-      <div className='home'>
+      <div className={`home ${theme}`}>
         <Row justify='center' className='hello'>
           Hello.
         </Row>
@@ -44,16 +40,30 @@ export const Home = () => {
         </Row>
         <div className='tile-container'>
           <Row justify='center'>
-            <Tile page='dashboard' title='Dashboard' image={dashboard} />
-            <Tile page='register' title='Register' image={register} />
-            <Tile page='grid' title='User Grid' image={grid} />
-            <Tile page='list' title='TODO List' image={list} />
+            <Tile
+              page='dashboard'
+              title='Dashboard'
+              image={`theme/${theme}/dashboard-tile-${theme}.svg`}
+            />
+            <Tile page='register' title='Register' image={`theme/${theme}/register-tile-${theme}.svg`} />
+            <Tile page='grid' title='User Grid' image={`theme/${theme}/grid-tile-${theme}.svg`} />
+            <Tile page='list' title='TODO List' image={`theme/${theme}/list-tile-${theme}.svg`} />
           </Row>
           <Row justify='center'>
-            <Tile page='search/media' title='Media Search' image={movie} className='media' />
-            <Tile page='search/weather' title='Weather Finder' image={umbrella} className='weather' />
-            <Tile page='shop' title='Shop' image={shop} />
-            <Tile page='visuals' title='Visuals' image={visuals} />
+            <Tile
+              page='search/media'
+              title='Media Search'
+              image={`theme/${theme}/movie-tile-${theme}.svg`}
+              className='media'
+            />
+            <Tile
+              page='search/weather'
+              title='Weather Finder'
+              image={`theme/${theme}/umbrella-tile-${theme}.svg`}
+              className='weather'
+            />
+            <Tile page='shop' title='Shop' image={`theme/${theme}/shop-tile-${theme}.svg`} />
+            <Tile page='visuals' title='Visuals' image={`theme/${theme}/chart-tile-${theme}.svg`} />
           </Row>
         </div>
       </div>

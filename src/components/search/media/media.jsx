@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Input, Spin, Col, Row, Progress, Button, Tag } from 'antd'
 import { NoData } from 'components/_siteWide/layout/layout'
 import {
-  getState,
+  getState as getMediaState,
   setLoading,
   setClean,
   setSearch,
@@ -11,16 +11,16 @@ import {
   setSelectedId,
   setSelectedMedia,
 } from 'store/slices/mediaSlice'
+import { getState as getThemeState } from 'store/slices/themeSlice'
 import api from 'utils/api'
 import { DataItem } from 'components/_siteWide/layout/layout'
 import moment from 'moment'
-import movie from 'assets/movie-active.svg'
-import tv from 'assets/tv.svg'
-import game from 'assets/game.svg'
 import './media.scss'
 
 export const Media = () => {
-  const state = useSelector(getState)
+  const state = useSelector(getMediaState)
+  const themeState = useSelector(getThemeState)
+  const theme = themeState.selectedTheme
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -101,7 +101,7 @@ export const Media = () => {
       <div className={`media-list-container ${loading || !data.length ? 'content-center' : ''}`}>
         {loading && <Spin className='pt-200' />}
         {!loading && !data.length && !selectedMedia && <NoData />}
-        {!loading && data.length > 0 && !selectedMedia && <MediaList data={data} getMedia={getMedia} />}
+        {!loading && data.length > 0 && !selectedMedia && <MediaList data={data} getMedia={getMedia} theme={theme} />}
         {!loading && selectedMedia && (
           <MediaDetail selectedMedia={selectedMedia} getRating={getRating} backToAll={backToAll} />
         )}
@@ -110,7 +110,7 @@ export const Media = () => {
   )
 }
 
-const MediaList = ({ data, getMedia }) => (
+const MediaList = ({ data, getMedia, theme }) => (
   <>
     <div className='media-list-items'>
       <Row className='p-100 header-row'>
@@ -131,7 +131,7 @@ const MediaList = ({ data, getMedia }) => (
             {t.Year}
           </Col>
           <Col span={4} className='pl-050 capitalize'>
-            <MediaType type={t.Type} />
+            <MediaType type={t.Type} theme={theme} />
           </Col>
         </Row>
       ))}
@@ -148,7 +148,9 @@ const MediaDetail = ({ selectedMedia, getRating, backToAll }) => {
   return (
     <div className='media-detail'>
       <Row className='border-bottom-light pb-150'>
-        <Col className='fs-150' flex={1}>{selectedMedia.Title}</Col>
+        <Col className='fs-150' flex={1}>
+          {selectedMedia.Title}
+        </Col>
         <Col>
           <Button type='primary' onClick={() => backToAll()}>
             Back to All
@@ -157,9 +159,7 @@ const MediaDetail = ({ selectedMedia, getRating, backToAll }) => {
       </Row>
       <Row className='pt-200'>
         <Col>
-          {selectedMedia.Poster !== 'N/A' && (
-            <img src={selectedMedia.Poster} className='media-poster' alt='' />
-          )}
+          {selectedMedia.Poster !== 'N/A' && <img src={selectedMedia.Poster} className='media-poster' alt='' />}
           {selectedMedia.Poster === 'N/A' && <NoData message='Poster not available' />}
         </Col>
         <Col span={9} className='pl-200'>
@@ -175,7 +175,7 @@ const MediaDetail = ({ selectedMedia, getRating, backToAll }) => {
           <DataItem
             label='Genre'
             children={selectedMedia.Genre.split(',').map((g) => (
-              <Tag key={g} color='blue'>{g}</Tag>
+              <Tag key={g}>{g}</Tag>
             ))}
             labelClasses='pt-100'
           />
@@ -209,13 +209,13 @@ const MediaDetail = ({ selectedMedia, getRating, backToAll }) => {
   )
 }
 
-const MediaType = ({ type }) => {
+const MediaType = ({ type, theme }) => {
   let icon
   switch (type) {
     case 'game':
       icon = (
         <>
-          <img src={game} className='media-type-icon' alt='' />
+          <img src={`/theme/${theme}/game-${theme}.svg`} className='media-type-icon' alt='' />
           <span className='media-type-text game'>Game</span>
         </>
       )
@@ -223,7 +223,7 @@ const MediaType = ({ type }) => {
     case 'series':
       icon = (
         <>
-          <img src={tv} className='media-type-icon' alt='' />
+          <img src={`/theme/${theme}/tv-${theme}.svg`} className='media-type-icon' alt='' />
           <span className='media-type-text tv'>TV</span>
         </>
       )
@@ -231,7 +231,7 @@ const MediaType = ({ type }) => {
     default:
       icon = (
         <>
-          <img src={movie} className='media-type-icon' alt='' />
+          <img src={`/theme/${theme}/movie-${theme}.svg`} className='media-type-icon' alt='' />
           <span className='media-type-text movie'>Movie</span>
         </>
       )

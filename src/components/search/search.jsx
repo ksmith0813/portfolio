@@ -1,7 +1,9 @@
 import React from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { Col, Row } from 'antd'
 import { Categories } from 'components/_siteWide/layout/layout'
-import { useNavigate, useParams } from 'react-router-dom'
+import { getState } from 'store/slices/themeSlice'
 import { Media } from './media/media'
 import { Weather } from './weather/weather'
 import './search.scss'
@@ -9,12 +11,13 @@ import './search.scss'
 export const Search = () => {
   let { page } = useParams()
   const navigate = useNavigate()
+  const state = useSelector(getState)
 
   const onCategoryChange = (category) => navigate(`../search/${category}`)
 
   return (
     <>
-      <div className='category-container'>
+      <div className={`category-container ${state.selectedTheme}`}>
         <Categories items={['media', 'weather']} selected={page || 'media'} onClick={onCategoryChange} />
       </div>
       <div className='search-container'>

@@ -1,0 +1,52 @@
+.ant-btn.theme-button {
+  background-color: white;
+  width: 200px;
+  height: 100px;
+  padding: 1em 0.5em;
+  font-size: 2em;
+  margin: 0;
+  &.blue,
+  &.green:hover {
+    background-color: white;
+    color: var(--theme-color-1);
+    border: 1px solid var(--theme-color-1);
+    &.selected {
+      color: white;
+      background-color: var(--theme-color-1);
+      border: none;
+      &:hover,
+      &:focus,
+      &:active {
+        color: white;
+      }
+    }
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--theme-color-1-hover);
+      border: 1px solid var(--theme-color-1-hover);
+    }
+  }
+  &.green,
+  &.green:hover {
+    background-color: white;
+    color: var(--theme-color-2);
+    border: 1px solid var(--theme-color-2);
+    &.selected {
+      color: white;
+      background-color: var(--theme-color-2);
+      border: none;
+      &:hover,
+      &:focus,
+      &:active {
+        color: white;
+      }
+    }
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--theme-color-2-hover);
+      border: 1px solid var(--theme-color-2-hover);
+    }
+  }
+}
