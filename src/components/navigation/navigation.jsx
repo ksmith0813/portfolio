@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Menu } from 'antd'
-import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
 import { getState, setSelectedTheme } from 'store/slices/themeSlice'
 
 const { SubMenu } = Menu
@@ -55,29 +54,6 @@ export const Navigation = () => {
         <Menu.Item key='bio'>
           <SiteLink page='bio' title='Bio' />
         </Menu.Item>
-        <SubMenu key='SubMenu' title='Links'>
-          <Menu.Item
-            key='LinkedIn'
-            icon={<LinkedinFilled />}
-            onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
-          >
-            LinkedIn
-          </Menu.Item>
-          <Menu.Item
-            key='Github'
-            icon={<GithubFilled />}
-            onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
-          >
-            Github
-          </Menu.Item>
-          <Menu.Item
-            key='Facebook'
-            icon={<FacebookFilled />}
-            onClick={() => window.open('https://www.facebook.com/profile.php?id=20614115', '_blank')}
-          >
-            Facebook
-          </Menu.Item>
-        </SubMenu>
         <SubMenu key='theme' title='Theme'>
           <Menu.Item key='blue' onClick={() => dispatch(setSelectedTheme('default'))}>
             Blue
