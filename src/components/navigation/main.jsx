@@ -11,7 +11,6 @@ import { Search } from 'components/search/search'
 import { Media } from 'components/search/media/media'
 import { Weather } from 'components/search/weather/weather'
 import { Shop } from 'components/shop/shop'
-import { Theme } from 'components/theme/theme'
 import { Visuals } from 'components/visuals/visuals'
 import { Bio } from 'components/bio/bio'
 
@@ -29,7 +28,6 @@ export const Main = () => (
             <Route path=':page' element={<Weather />} />
           </Route>
           <Route path='shop' element={<Shop />} />
-          <Route path='theme' element={<Theme />} />
           <Route path='visuals' element={<Visuals />} />
           <Route path='bio' element={<Bio />} />
           <Route
