@@ -62,9 +62,7 @@
   &.green.ant-menu-horizontal > .ant-menu-item-selected a,
   &.green.ant-menu-horizontal > .ant-menu-item a:hover,
   &.green.ant-menu-horizontal > .ant-menu-item a:focus,
-  &.green.ant-menu-horizontal > .ant-menu-item a:active {
-    color: var(--theme-color-2) !important;
-  }
+  &.green.ant-menu-horizontal > .ant-menu-item a:active,
   &.green.ant-menu-light .ant-menu-item-active,
   &.green.ant-menu-light .ant-menu-item:hover,
   &.green.ant-menu-light .ant-menu-submenu-active,
