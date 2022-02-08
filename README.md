@@ -14,6 +14,8 @@ This site includes:
 
 - ANT Design
 
+- Theming
+
 - Axios
 
 - SCSS
