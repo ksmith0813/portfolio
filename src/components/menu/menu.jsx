@@ -72,7 +72,7 @@ const SelectedMenuItem = ({ item }) => (
     </div>
     <div className='pl-200'>
       <b>Name</b>
-      <div className='fs-175 pb-100'>{item.name}</div>
+      <div className='fs-175 pb-100 medium-text'>{item.name}</div>
       <b>Description</b>
       <div className='pb-200 light-text'>{item.description}</div>
       <div className='flex flex-row'>
