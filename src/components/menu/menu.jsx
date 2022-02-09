@@ -66,6 +66,7 @@ const SelectedMenuItem = ({ item }) => (
     <div>
       <video key={item.id} className={`${item.video?.is_flipped ? 'flipped' : ''}`} autoPlay>
         <source src={item.video?.url} />
+        Your browser does not support the video tag.
       </video>
       <audio src={item.audio?.url} controls autoPlay />
     </div>
