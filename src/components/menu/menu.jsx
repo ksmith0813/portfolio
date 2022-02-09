@@ -33,7 +33,7 @@ export const Menu = () => {
         <MenuList data={state.data} selectedItem={selectedItem} hasCategories={hasCategories} dispatch={dispatch} />
       </div>
       {selectedItem && <SelectedMenuItem item={selectedItem} />}
-      {!selectedItem && <NoData message='Please select a menu item to see details' />}
+      {!selectedItem && <NoData />}
     </div>
   )
 }
@@ -112,4 +112,4 @@ const GroupTags = ({ values }) => {
   )
 }
 
-const NoData = ({ message }) => <div className='page-center fs-200'>{message}</div>
+const NoData = () => <div className='page-center fs-200'>Select an exercise for workout details</div>
