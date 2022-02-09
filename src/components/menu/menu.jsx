@@ -64,10 +64,10 @@ const MenuList = ({ data, selectedItem, hasCategories, dispatch }) => (
 const SelectedMenuItem = ({ item }) => (
   <div className='selected-item-container'>
     <div>
-      <video key={item.id} controls autoPlay>
-        <source src={item.video?.url} className={`${item.video?.is_flipped ? 'flipped' : ''}`} />
-        <audio src={item.audio?.url} autoPlay />
+      <video key={item.id} className={`${item.video?.is_flipped ? 'flipped' : ''}`} autoPlay>
+        <source src={item.video?.url} />
       </video>
+      <audio src={item.audio?.url} controls autoPlay />
     </div>
     <div className='pl-200'>
       <b>Name</b>

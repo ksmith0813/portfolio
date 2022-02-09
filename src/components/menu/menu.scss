@@ -54,11 +54,19 @@
         box-shadow: var(--box-shadow);
         width: 800px;
         min-height: 800px;
-        .flipped {
+        &.flipped {
           transform: rotateY(180deg);
           -webkit-transform: rotateY(180deg);
           -moz-transform: rotateY(180deg);
+          audio {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg) !important;
+            -moz-transform: rotateY(180deg);
+          }
         }
+      }
+      audio {
+        width: 100%;
       }
     }
     .detail-item {
