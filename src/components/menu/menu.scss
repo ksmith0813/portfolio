@@ -44,6 +44,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    .item-description {
+      width: 75%;
+      color: var(--gray-500);
+      padding-bottom: 2em;
+    }
     b {
       font-size: 1.25em;
     }
@@ -105,6 +110,9 @@
 @media only screen and (max-width: 1680px) {
   .menu-container {
     .selected-item-container {
+      .item-description {
+        width: 100%;
+      }
       > div {
         width: 500px;
         min-height: 500px;
@@ -120,6 +128,9 @@
 @media only screen and (max-width: 1440px) {
   .menu-container {
     .selected-item-container {
+      .item-description {
+        width: 100%;
+      }
       > div {
         width: 500px;
         min-height: 500px;
@@ -144,6 +155,9 @@
     }
     .selected-item-container {
       align-items: flex-start;
+      .item-description {
+        width: 100%;
+      }
       > div {
         width: 330px;
         min-height: 330px;

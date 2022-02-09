@@ -74,7 +74,7 @@ const SelectedMenuItem = ({ item }) => (
       <b>Name</b>
       <div className='fs-175 pb-100 medium-text'>{item.name}</div>
       <b>Description</b>
-      <div className='pb-200 light-text'>{item.description}</div>
+      <div className='item-description'>{item.description}</div>
       <div className='flex flex-row'>
         <DetailItem title='Muscle Groups' value={<GroupTags values={item.muscle_groups} />} />
         <DetailItem title='Equipment Req.' value={<GroupTags values={item.equipment_required} />} />
