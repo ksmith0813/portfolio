@@ -27,7 +27,7 @@ export const Menu = () => {
     <div className='menu-container'>
       <div className='menu'>
         <div className='menu-search'>
-          <input value={state.search} onChange={onChange} placeholder='Search for Exercises' />
+          <input value={state.search} onChange={onChange} placeholder='Search' />
         </div>
         {hasCategories && <SearchCategories categories={state.searchCategories} />}
         <MenuList data={state.data} selectedItem={selectedItem} hasCategories={hasCategories} dispatch={dispatch} />
