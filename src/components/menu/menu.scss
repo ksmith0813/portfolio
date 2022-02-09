@@ -54,7 +54,7 @@
         box-shadow: var(--box-shadow);
         width: 800px;
         min-height: 800px;
-        &.flipped {
+        .flipped {
           transform: rotateY(180deg);
           -webkit-transform: rotateY(180deg);
           -moz-transform: rotateY(180deg);
