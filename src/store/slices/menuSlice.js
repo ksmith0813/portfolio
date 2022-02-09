@@ -23,14 +23,14 @@ export const slice = createSlice({
         const movementMatches = getMatchesByProperty(state, 'movement_patterns', action.payload)
         const searchCategories = []
 
-        if (muscleGroupMatches.length) searchCategories.push('Muscle Groups')
+        if (muscleGroupMatches.length) searchCategories.push('Muscle')
         if (equipmentMatches.length) searchCategories.push('Equipment')
         if (movementMatches.length) searchCategories.push('Movement')
 
         state.searchCategories = searchCategories.length ? searchCategories : []
-        state.data = Array.from(
-          new Set(nameMatches.concat(muscleGroupMatches).concat(equipmentMatches).concat(movementMatches))
-        )
+        state.data = [
+          ...new Set(nameMatches.concat(muscleGroupMatches).concat(equipmentMatches).concat(movementMatches)),
+        ]
       } else {
         state.data = exercises
         state.originalData = exercises
