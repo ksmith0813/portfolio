@@ -4,7 +4,6 @@ import { exercises } from 'constants/exercises'
 export const slice = createSlice({
   name: 'menu',
   initialState: {
-    loading: false,
     search: '',
     searchCategories: [],
     data: [],
@@ -13,9 +12,6 @@ export const slice = createSlice({
     selectedItem: null,
   },
   reducers: {
-    setLoading: (state, action) => {
-      state.loading = action.payload
-    },
     setSearch: (state, action) => {
       state.search = action.payload
     },
@@ -26,7 +22,7 @@ export const slice = createSlice({
         const equipmentMatches = getMatchesByProperty(state, 'equipment_required', action.payload)
         const movementMatches = getMatchesByProperty(state, 'movement_patterns', action.payload)
         const searchCategories = []
-        
+
         if (muscleGroupMatches.length) searchCategories.push('Muscle Groups')
         if (equipmentMatches.length) searchCategories.push('Equipment')
         if (movementMatches.length) searchCategories.push('Movement')
@@ -49,7 +45,7 @@ export const slice = createSlice({
   },
 })
 
-export const { setLoading, setSearch, setData, setSelectedId, setSelectedItem, setSelectedItemByName } = slice.actions
+export const { setSearch, setData, setSelectedId, setSelectedItem, setSelectedItemByName } = slice.actions
 
 export const getState = (state) => state.menu
 

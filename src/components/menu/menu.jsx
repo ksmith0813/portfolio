@@ -33,7 +33,7 @@ export const Menu = () => {
         <MenuList data={state.data} selectedItem={selectedItem} hasCategories={hasCategories} dispatch={dispatch} />
       </div>
       {selectedItem && <SelectedMenuItem item={selectedItem} />}
-      {!selectedItem && <NoData message='Please select a menu item to see details' extraClasses='fs-125' />}
+      {!selectedItem && <NoData message='Please select a menu item to see details' />}
     </div>
   )
 }
