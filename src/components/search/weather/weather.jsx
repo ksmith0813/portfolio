@@ -204,7 +204,7 @@ const WeatherContent = ({ weather }) => {
             {forecastHourly.map((f) => (
               <div key={f.time_epoch} className='forecast-item'>
                 <div>
-                  <b>{moment(f.time).format('h:mm A')}</b>
+                  <b>{moment(f.time).format('hA')}</b>
                 </div>
                 <div className='pt-050'>
                   <img src={f.condition?.icon} alt='' />

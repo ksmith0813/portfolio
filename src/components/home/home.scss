@@ -76,8 +76,13 @@
 
 @media only screen and (max-width: 1920px) {
   .home {
+    .hello {
+      height: 100px;
+      font-size: 4em;
+    }
     .home-description {
-      font-size: 1.35em;
+      font-size: 1.2em;
+      height: 170px;
     }
     .tile-container {
       .tile {
@@ -118,6 +123,19 @@
           }
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .home {
+    .hello {
+      height: 100px;
+      font-size: 4em;
+    }
+    .home-description {
+      font-size: 1em;
+      height: 170px;
     }
   }
 }

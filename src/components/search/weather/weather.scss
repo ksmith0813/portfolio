@@ -26,13 +26,13 @@
     height: 33px;
   }
   .ant-switch-handle {
-    width: 28px;
-    height: 28px;
+    width: 29px;
+    height: 29px;
     &:before {
-      border-radius: 17px;
+      border-radius: 15px;
     }
   }
   .ant-switch-checked .ant-switch-handle {
-    left: calc(100% - 30px);
+    left: calc(100% - 31px);
   }
 }
