@@ -6,7 +6,6 @@ import { Home } from 'components/home/home'
 import { Dashboard } from 'components/dashboard/dashboard'
 import { Register } from 'components/register/register'
 import { Grid } from 'components/grid/grid'
-import { Menu } from 'components/menu/menu'
 import { List } from 'components/list/list'
 import { Search } from 'components/search/search'
 import { Media } from 'components/search/media/media'
@@ -23,7 +22,6 @@ export const Main = () => (
         <Route path='dashboard' element={<Dashboard />} />
         <Route path='register' element={<Register />} />
         <Route path='grid' element={<Grid />} />
-        <Route path='menu' element={<Menu />} />
         <Route path='list' element={<List />} />
         <Route path='search' element={<Search />}>
           <Route path=':page' element={<Media />} />
