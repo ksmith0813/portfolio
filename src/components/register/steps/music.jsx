@@ -38,6 +38,7 @@ const Music = () => {
                 component={inputField}
                 onChange={(e) => dispatch(setMusic({ ...music, FavoriteBand: e.target.value }))}
                 initialValues={clean}
+                autoFocus
                 required
                 hasFeedback
               />

@@ -42,6 +42,7 @@ const Contact = () => {
                 component={inputField}
                 onChange={(e) => dispatch(setContact({ ...contact, FirstName: e.target.value }))}
                 initialValues={clean}
+                autoFocus
                 required
                 hasFeedback
               />

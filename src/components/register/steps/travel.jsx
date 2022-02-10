@@ -38,6 +38,7 @@ const Travel = () => {
                 component={selectField}
                 onChange={(value) => dispatch(setTravel({ ...travel, FavoriteCountries: value }))}
                 initialValues={clean}
+                autoFocus
                 mode='multiple'
                 required
                 hasFeedback

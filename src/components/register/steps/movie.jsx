@@ -39,6 +39,7 @@ const Movie = () => {
                 component={inputField}
                 onChange={(e) => dispatch(setMovie({ ...movie, FavoriteMovie: e.target.value }))}
                 initialValues={clean}
+                autoFocus
                 required
                 hasFeedback
               />
