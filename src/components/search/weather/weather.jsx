@@ -200,7 +200,7 @@ const WeatherContent = ({ weather }) => {
       {forecastHourly && forecastHourly.length && (
         <>
           <Row className='pt-300 pb-100 fs-150 border-bottom-light'>Hourly Weather</Row>
-          <Row justify='space-around pt-100'>
+          <Row className='hourly-forecast'>
             {forecastHourly.map((f) => (
               <div key={f.time_epoch} className='forecast-item'>
                 <div>
