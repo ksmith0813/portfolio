@@ -7,7 +7,7 @@ import { getState } from 'store/slices/themeSlice'
 export const ApolloMissions = () => {
   const state = useSelector(getState)
   return (
-    <Col span={6} className='pl-200'>
+    <Col span={6} className='pt-200 pl-200'>
       <Card title={<span className='fs-125'>Apollo Space Timeline</span>}>
         <div className='card-display apollo'>
           <Timeline mode='left'>
@@ -20,7 +20,7 @@ export const ApolloMissions = () => {
                   <img
                     src={
                       d.name === 'Apollo 11'
-                        ? `assets/theme/${state.selectedTheme}/astronaut-${state.selectedTheme}.svg`
+                        ? `theme/${state.selectedTheme}/astronaut-${state.selectedTheme}.svg`
                         : shuttle
                     }
                     className='moon'

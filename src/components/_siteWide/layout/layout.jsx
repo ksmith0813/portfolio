@@ -1,8 +1,9 @@
 import React from 'react'
-import { Row, Spin, Tag, Tooltip } from 'antd'
+import { Row, Spin, Tooltip } from 'antd'
 import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
-import { GoogleMap, Marker } from 'react-google-maps'
+import { GoogleMap, Marker, withScriptjs, withGoogleMap } from 'react-google-maps'
 import { isArray } from 'utils/general'
+import { keys } from 'keys'
 import soundCloud from 'assets/sound-cloud.png'
 import soundCloudDark from 'assets/sound-cloud-dark.png'
 import './layout.scss'
@@ -33,21 +34,23 @@ export const Loader = () => (
   </div>
 )
 
-export const TagRender = (props) => {
-  const { label, closable, onClose } = props
-  const onPreventMouseDown = (event) => {
-    event.preventDefault()
-    event.stopPropagation()
-  }
+export const MapLocation = ({ location, containerClass }) => {
+  const Map = () => <MapMarker lat={location.lat} lon={location.lon} />
+  const MapComponent = withScriptjs(withGoogleMap(Map))
 
   return (
-    <Tag onMouseDown={onPreventMouseDown} closable={closable} onClose={onClose} className='mr-050'>
-      {label}
-    </Tag>
+    <div className={containerClass}>
+      <MapComponent
+        googleMapURL={keys.mapUrl}
+        loadingElement={<div style={{ height: '100%', width: '100%' }} />}
+        containerElement={<div style={{ height: '100%', width: '100%' }} />}
+        mapElement={<div style={{ height: '100%', width: '100%' }} />}
+      />
+    </div>
   )
 }
 
-export const MapLocation = ({ lat, lon }) => (
+const MapMarker = ({ lat, lon }) => (
   <GoogleMap defaultZoom={14} defaultCenter={{ lat: lat, lng: lon }}>
     <Marker
       position={{

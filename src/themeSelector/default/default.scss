@@ -23,17 +23,6 @@
   color: var(--theme-color-1);
 }
 
-.category-container.default {
-  > span {
-    &.selected {
-      color: var(--theme-color-1);
-    }
-    &:hover {
-      color: var(--theme-color-1-hover);
-    }
-  }
-}
-
 .home {
   .home-description {
     background-color: var(--theme-color-1);

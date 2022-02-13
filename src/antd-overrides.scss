@@ -21,7 +21,11 @@
   min-height: 55px !important;
 }
 
-.ant-table-body tr:nth-child(odd) td {
+.ant-table-thead > tr > th {
+  background: white;
+}
+
+.ant-table-body tr:nth-child(even) td {
   background-color: var(--gray-100);
 }
 
@@ -50,7 +54,7 @@
 }
 
 .ant-menu-horizontal {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .ant-btn {
@@ -115,4 +119,11 @@
 .icon-red,
 .icon-red.anticon {
   color: var(--theme-error);
+}
+
+.ant-progress-status-success .ant-progress-bg {
+  background-color: #08b474 !important;
+}
+.ant-progress-status-success .ant-progress-text {
+  color: #08b474 !important;
 }

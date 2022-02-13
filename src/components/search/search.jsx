@@ -28,7 +28,7 @@ export const Search = () => {
             </Row>
             <div className='pt-300'>
               {page === 'media' && <Media />}
-              {page === 'weather' && <Weather />}
+              {page === 'weather' && <Weather showDetails />}
             </div>
           </Col>
         </Row>

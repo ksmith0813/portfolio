@@ -19,17 +19,6 @@
   color: var(--theme-color-2);
 }
 
-.category-container.green {
-  > span {
-    &.selected {
-      color: var(--theme-color-2);
-    }
-    &:hover {
-      color: var(--theme-color-2-hover);
-    }
-  }
-}
-
 .home.green {
   .home-description {
     background-color: var(--theme-color-2);

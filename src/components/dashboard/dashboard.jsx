@@ -11,10 +11,10 @@ export const Dashboard = () => {
   return (
     <div className='dashboard-container'>
       <MyLocation />
-      <ApolloMissions />
+      <Election />
       <Breweries />
       <FoodByCountry />
-      <Election />
+      <ApolloMissions />
       <AnimalCategories />
     </div>
   )

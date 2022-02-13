@@ -15,7 +15,7 @@
     overflow-x: auto;
     align-items: flex-start;
     .forecast-item {
-      margin: 1em;
+      margin: 1.75em 1em 1.5em 1em;
       padding: 1em;
       display: flex;
       flex-direction: column;
@@ -25,19 +25,22 @@
       background-color: var(--gray-100);
     }
   }
-
   .moon-phase-icon {
     height: 40px;
   }
   .ant-switch {
     padding: 4px 15px;
     height: 33px;
-  }
-  .ant-switch-handle {
-    width: 29px;
-    height: 29px;
-    &:before {
-      border-radius: 15px;
+    font-size: 1.5em !important;
+    .ant-switch-handle {
+      width: 29px;
+      height: 29px;
+      &:before {
+        border-radius: 15px;
+      }
+    }
+    .ant-switch-inner {
+      font-size: 16px;
     }
   }
   .ant-switch-checked .ant-switch-handle {
