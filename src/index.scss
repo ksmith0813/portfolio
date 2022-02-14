@@ -58,20 +58,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--gray-100);
 }
-input {
-  border: 1px solid var(--gray-400);
-  padding: 7px 14px;
-  width: 100%;
-  &::placeholder {
-    color: var(--gray-500);
-  }
-  &:-ms-input-placeholder {
-    color: var(--gray-500);
-  }
-  &::-ms-input-placeholder {
-    color: var(--gray-500);
-  }
-}
 .page {
   height: calc(100vh - 50px);
   overflow-y: auto;

@@ -40,22 +40,18 @@ export const Home = () => {
         </Row>
         <div className='tile-container'>
           <Row justify='center'>
-            <Tile
-              page='dashboard'
-              title='Dashboard'
-              image={`theme/${theme}/dashboard-tile-${theme}.svg`}
-            />
+            <Tile page='dashboard' title='Dashboard' image={`theme/${theme}/dashboard-tile-${theme}.svg`} />
             <Tile page='register' title='Register' image={`theme/${theme}/register-tile-${theme}.svg`} />
             <Tile page='grid' title='User Grid' image={`theme/${theme}/grid-tile-${theme}.svg`} />
-            <Tile page='list' title='TODO List' image={`theme/${theme}/list-tile-${theme}.svg`} />
-          </Row>
-          <Row justify='center'>
             <Tile
-              page='search/media'
-              title='Media Search'
+              page='video'
+              title='Videos'
               image={`theme/${theme}/movie-tile-${theme}.svg`}
               className='media'
             />
+          </Row>
+          <Row justify='center'>
+            <Tile page='list' title='TODO List' image={`theme/${theme}/list-tile-${theme}.svg`} />
             <Tile
               page='search/weather'
               title='Weather Finder'

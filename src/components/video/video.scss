@@ -1,0 +1,203 @@
+.video-container {
+  display: flex;
+  .video-menu {
+    width: 14%;
+    background-color: var(--gray-200);
+    .video-search {
+      background-color: var(--gray-500);
+      padding: 1em;
+    }
+    .search-categories {
+      background-color: var(--gray-000);
+      padding: 1em;
+      border-right: 1px solid var(--gray-300);
+      height: 85px;
+    }
+    .video-list {
+      border-top: 1px solid var(--gray-300);
+      height: calc(100vh - 105px);
+      overflow-y: auto;
+      div {
+        padding: 1em;
+        &:hover {
+          cursor: pointer;
+          background-color: var(--gray-300);
+        }
+        &.selected {
+          background-color: var(--gray-400);
+          font-weight: bold;
+        }
+      }
+      &.categories {
+        height: calc(100vh - 190px);
+      }
+    }
+  }
+  .selected-video-container {
+    flex: 1;
+    padding: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    .video-description {
+      width: 75%;
+      color: var(--gray-500);
+      padding-bottom: 2em;
+    }
+    b {
+      font-size: 1.25em;
+    }
+    > div {
+      width: 800px;
+      min-height: 800px;
+      video {
+        box-shadow: var(--box-shadow);
+        width: 800px;
+        min-height: 800px;
+        &.flipped {
+          transform: rotateY(180deg);
+          -webkit-transform: rotateY(180deg);
+          -moz-transform: rotateY(180deg);
+        }
+      }
+      audio {
+        width: 100%;
+      }
+    }
+    .detail-item {
+      width: 50%;
+      height: 100px;
+      div {
+        padding-top: 0.25em;
+        padding-bottom: 2em;
+        color: var(--gray-500);
+      }
+    }
+  }
+  .group-tag-container {
+    .group-tag {
+      font-size: 0.9em;
+      float: left;
+      margin-right: 1em;
+      margin-bottom: 0.25em;
+      padding: 0.25em 0.7em;
+      background-color: var(--gray-200);
+      border-radius: var(--button-border-radius);
+      color: var(--gray-500);
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1920px) {
+  .video-container {
+    .video-menu {
+      width: 18%;
+    }
+    .selected-video-container {
+      > div {
+        width: 600px;
+        min-height: 600px;
+        video {
+          width: 600px;
+          min-height: 600px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .video-container {
+    .video-menu {
+      width: 22%;
+    }
+    .selected-video-container {
+      .video-description {
+        width: 100%;
+      }
+      > div {
+        width: 500px;
+        min-height: 500px;
+        video {
+          width: 500px;
+          min-height: 500px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  body {
+    font-size: 0.9em;
+  }
+  .video-container {
+    .video-menu {
+      width: 28%;
+      max-width: 28%;
+      .video-list {
+        height: calc(100vh - 113px);
+        &.categories {
+          height: calc(100vh - 202px);
+        }
+      }
+    }
+    .selected-video-container {
+      .video-description {
+        width: 100%;
+      }
+      > div {
+        width: 500px;
+        min-height: 500px;
+        video {
+          width: 500px;
+          min-height: 500px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  body {
+    font-size: 0.8em;
+  }
+  .video-container {
+    .video-menu {
+      width: 38%;
+      .video-search {
+        input {
+          width: 87%;
+        }
+      }
+      .search-categories {
+        height: 60px;
+      }
+      .video-list {
+        height: calc(100vh - 111px);
+        &.categories {
+          height: calc(100vh - 184px);
+        }
+      }
+    }
+    .selected-video-container {
+      align-items: flex-start;
+      .video-description {
+        width: 100%;
+      }
+      > div {
+        width: 320px;
+        min-height: 320px;
+        video {
+          width: 320px;
+          min-height: 320px;
+        }
+      }
+    }
+  }
+}

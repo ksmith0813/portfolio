@@ -36,6 +36,9 @@ export const Navigation = () => {
         <Menu.Item key='grid'>
           <SiteLink page='grid' title='Grid' />
         </Menu.Item>
+        <Menu.Item key='video'>
+          <SiteLink page='video' title='Video' />
+        </Menu.Item>
         <Menu.Item key='list'>
           <SiteLink page='list' title='List' />
         </Menu.Item>
