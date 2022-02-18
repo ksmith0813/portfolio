@@ -18,6 +18,31 @@
       float: right;
     }
   }
+  .external-links {
+    position: absolute;
+    margin-top: 3.5em;
+  }
+  .external-link {
+    &.light {
+      color: white !important;
+    }
+    &:nth-child(n + 2) {
+      padding-left: 0.75em;
+    }
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+  .sound-cloud {
+    height: 48px;
+    width: 75px;
+    margin-left: 0;
+  }
+  .sound-cloud:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
   .me-image {
     height: 450px;
     width: 450px;

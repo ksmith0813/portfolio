@@ -13,46 +13,23 @@
     font-size: 1.25em;
     text-align: center;
     text-transform: capitalize;
-     &.selected {
+    &.selected {
       color: var(--gray-900);
     }
     &:hover {
       color: var(--gray-600);
     }
-    &:nth-child(n+2) {
+    &:nth-child(n + 2) {
       padding-left: 1.25em;
     }
   }
 }
 
-.external-links {
-  position: absolute;
-  margin-top: 3.5em;
-}
-.external-link {
-  &.light {
-    color: white !important;
-  }
-  &:nth-child(n + 2) {
-    padding-left: 0.75em;
-  }
-  &:hover {
-    cursor: pointer;
-    opacity: 0.7;
-  }
-}
-.sound-cloud {
-  height: 48px;
-  width: 75px;
-  margin-left: 0;
-}
-.sound-cloud:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.no-data-container {
-  width: 100%;
+.no-data-message {
+  text-align: center;
+  padding-top: 0.5em;
+  color: #cbcbcb;
+  font-weight: 100;
 }
 
 @media only screen and (max-width: 1024px) {

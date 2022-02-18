@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Avatar } from 'antd'
-import { ExternalLinks } from 'components/_siteWide/layout/layout'
+import { Avatar, Tooltip } from 'antd'
+import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
 import { getState } from 'store/slices/themeSlice'
 import signature from 'assets/signature.png'
 import kevin from 'assets/kevin.jpg'
+import soundCloud from 'assets/sound-cloud.png'
 import './bio.scss'
 
 export const Bio = () => {
@@ -21,7 +22,7 @@ export const Bio = () => {
           C#, .NET, SQL Server. I love hanging out on the beach and getting lost in the woods and canyons. Traveling the
           world and going on endless adventures will always keep me moving forward. Aside from building software
           applications, I have a passion for making music in my home studio. Let's crank some code and rock out!
-          <ExternalLinks extraClasses='external-links' theme='dark' />
+          <ExternalLinks extraClasses='external-links' />
           <img className='signature' src={signature} alt='' />
         </div>
       </div>
@@ -29,3 +30,34 @@ export const Bio = () => {
     </div>
   )
 }
+
+const ExternalLinks = () => (
+  <div className='external-links'>
+    <Tooltip title='LinkedIn' mouseEnterDelay={0.5}>
+      <LinkedinFilled
+        className={`external-link`}
+        onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
+      />
+    </Tooltip>
+    <Tooltip title='Github' mouseEnterDelay={0.5}>
+      <GithubFilled
+        className={`external-link`}
+        onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
+      />
+    </Tooltip>
+    <Tooltip title='Facebook' mouseEnterDelay={0.5}>
+      <FacebookFilled
+        className={`external-link`}
+        onClick={() => window.open('https://www.facebook.com/profile.php?id=20614115', '_blank')}
+      />
+    </Tooltip>
+    <Tooltip title='SoundCloud' mouseEnterDelay={0.5}>
+      <img
+        alt=''
+        src={soundCloud}
+        className={`sound-cloud`}
+        onClick={() => window.open('https://soundcloud.com/kevbot0813', '_blank')}
+      />
+    </Tooltip>
+  </div>
+)
