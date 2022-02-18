@@ -36,38 +36,42 @@
         font-size: 1.75em;
         padding: 0.5em;
       }
-      .tile-icon {
-        padding: 2em 0 0 0;
-        &.dashboard {
-          width: 170px;
-        }
-        &.register {
-          padding: 1.5em 0 0 2.25em;
-          width: 200px;
-        }
-        &.grid {
-          padding: 3em 0 0 0;
-          width: 140px;
-        }
-        &.list {
-          padding: 2em;
-          width: 215px;
-        }
-        &.media {
-          width: 160px;
-        }
-        &.weather {
-          padding-top: 2.5em;
-          width: 150px;
-        }
-        &.shop {
-          padding: 2.5em 0 0 0;
-          width: 150px;
-        }
-        &.visuals {
-          padding: 0;
-          width: 225px;
-        }
+      .dashboard {
+        width: 220px;
+        margin-left: 2em;
+      }
+      .register {
+        width: 210px;
+        margin-left: 3.25em;
+      }
+      .grid {
+        width: 180px;
+        margin-left: 3.5em;
+        margin-top: 1em;
+      }
+      .video {
+        width: 200px;
+        margin-left: 2.75em;
+        margin-top: .5em;
+      }
+      .list {
+        width: 200px;
+        margin-left: 2.5em;
+      }
+      .search {
+        width: 180px;
+        margin-left: 3.5em;
+        margin-top: 1.5em;
+      }
+      .shop {
+        width: 180px;
+        margin-left: 3.75em;
+        margin-top: 1.5em;
+      }
+      .visuals {
+        width: 300px;
+        margin-left: -1.5em;
+        margin-top: -4.5em;
       }
     }
   }
@@ -87,39 +91,61 @@
       .tile {
         height: 200px;
         width: 200px;
-        .tile-icon {
-          &.dashboard {
-            padding: 1.25em 0 0 0.25em;
-            width: 110px;
-          }
-          &.register {
-            padding: 1em 0 0 2em;
-            width: 130px;
-          }
-          &.grid {
-            padding: 1.5em 0 0 0;
-            width: 90px;
-          }
-          &.list {
-            padding: 1.25em 0 0 0.25em;
-            width: 100px;
-          }
-          &.media {
-            padding: 1.5em 0 0 0.5em;
-            width: 100px;
-          }
-          &.weather {
-            padding: 1.5em 0 0 0.5em;
-            width: 100px;
-          }
-          &.shop {
-            padding: 2em 0 0 0.25em;
-            width: 90px;
-          }
-          &.visuals {
-            padding: 0;
-            width: 140px;
-          }
+        .dashboard {
+          width: 140px;
+          margin-left: 2.25em;
+        }
+        .register {
+          width: 130px;
+          margin-left: 3em;
+        }
+        .grid {
+          width: 110px;
+          margin-left: 3.2em;
+          margin-top: 1em;
+        }
+        .video {
+          width: 130px;
+          margin-left: 2.7em;
+          margin-top: .25em;
+        }
+        .list {
+          width: 130px;
+          margin-left: 2.5em;
+        }
+        .search {
+          width: 110px;
+          margin-left: 3.5em;
+          margin-top: 1.5em;
+        }
+        .shop {
+          width: 110px;
+          margin-left: 3.25em;
+          margin-top: 1.25em;
+        }
+        .visuals {
+          width: 170px;
+          margin-top: -2.25em;
+          margin-left: .5em;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .home {
+    .tile-container {
+      .tile {
+        height: 200px;
+        width: 200px;
+        .search {
+          width: 110px;
+          margin-left: 3.25em;
+          margin-top: .75em;
+        }
+        .shop {
+          margin-top: 1em;
         }
       }
     }
