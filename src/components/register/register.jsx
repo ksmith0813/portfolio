@@ -8,10 +8,20 @@ import Movie from './steps/movie'
 import Music from './steps/music'
 import Travel from './steps/travel'
 import { Review } from './steps/review'
+import contactBlue from 'assets/default/contact-default.svg'
+import contactGreen from 'assets/green/contact-green.svg'
 import movie from 'assets/movie.svg'
+import movieBlue from 'assets/default/movie-default.svg'
+import movieGreen from 'assets/green/movie-green.svg'
 import music from 'assets/music.svg'
+import musicBlue from 'assets/default/music-default.svg'
+import musicGreen from 'assets/green/music-green.svg'
 import beach from 'assets/beach.svg'
-import information from 'assets/information.svg'
+import beachBlue from 'assets/default/beach-default.svg'
+import beachGreen from 'assets/green/beach-green.svg'
+import info from 'assets/info.svg'
+import infoBlue from 'assets/default/info-default.svg'
+import infoGreen from 'assets/green/info-green.svg'
 import './register.scss'
 
 const { Step } = Steps
@@ -25,33 +35,33 @@ export const Register = () => {
     {
       title: 'Contact',
       content: <Contact />,
-      icon: <img src={`theme/${theme}/contact-${theme}.svg`} className='register-icon' alt='' />,
+      icon: <img src={theme === 'default' ? contactBlue : contactGreen} className='register-icon' alt='' />,
     },
     {
       title: 'Movies',
       content: <Movie />,
-      icon: <img src={step >= 1 ? `theme/${theme}/movie-${theme}.svg` : movie} className='register-icon' alt='' />,
+      icon: (
+        <img src={step < 1 ? movie : theme === 'default' ? movieBlue : movieGreen} className='register-icon' alt='' />
+      ),
     },
     {
       title: 'Music',
       content: <Music />,
-      icon: <img src={step >= 2 ? `theme/${theme}/music-${theme}.svg` : music} className='register-icon' alt='' />,
+      icon: (
+        <img src={step < 2 ? music : theme === 'default' ? musicBlue : musicGreen} className='register-icon' alt='' />
+      ),
     },
     {
       title: 'Travel',
       content: <Travel />,
-      icon: <img src={step >= 3 ? `theme/${theme}/beach-${theme}.svg` : beach} className='register-icon' alt='' />,
+      icon: (
+        <img src={step < 3 ? beach : theme === 'default' ? beachBlue : beachGreen} className='register-icon' alt='' />
+      ),
     },
     {
       title: 'Review',
       content: <Review />,
-      icon: (
-        <img
-          src={step === 4 ? `theme/${theme}/information-${theme}.svg` : information}
-          className='register-icon'
-          alt=''
-        />
-      ),
+      icon: <img src={step < 4 ? info : theme === 'default' ? infoBlue : infoGreen} className='register-icon' alt='' />,
     },
   ]
 

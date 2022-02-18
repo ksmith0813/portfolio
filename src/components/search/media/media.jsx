@@ -14,6 +14,12 @@ import {
 import { getState as getThemeState } from 'store/slices/themeSlice'
 import api from 'utils/api'
 import { DataItem } from 'components/_siteWide/layout/layout'
+import movieBlue from 'assets/default/movie-default.svg'
+import movieGreen from 'assets/green/movie-green.svg'
+import tvBlue from 'assets/default/tv-default.svg'
+import tvGreen from 'assets/green/tv-green.svg'
+import gameBlue from 'assets/default/game-default.svg'
+import gameGreen from 'assets/green/game-green.svg'
 import moment from 'moment'
 import './media.scss'
 
@@ -215,7 +221,7 @@ const MediaType = ({ type, theme }) => {
     case 'game':
       icon = (
         <>
-          <img src={`/theme/${theme}/game-${theme}.svg`} className='media-type-icon' alt='' />
+          <img src={theme === 'default' ? gameBlue : gameGreen} className='media-type-icon' alt='' />
           <span className='media-type-text game'>Game</span>
         </>
       )
@@ -223,7 +229,7 @@ const MediaType = ({ type, theme }) => {
     case 'series':
       icon = (
         <>
-          <img src={`/theme/${theme}/tv-${theme}.svg`} className='media-type-icon' alt='' />
+          <img src={theme === 'default' ? tvBlue : tvGreen} className='media-type-icon' alt='' />
           <span className='media-type-text tv'>TV</span>
         </>
       )
@@ -231,7 +237,7 @@ const MediaType = ({ type, theme }) => {
     default:
       icon = (
         <>
-          <img src={`/theme/${theme}/movie-${theme}.svg`} className='media-type-icon' alt='' />
+          <img src={theme === 'default' ? movieBlue : movieGreen} className='media-type-icon' alt='' />
           <span className='media-type-text movie'>Movie</span>
         </>
       )
