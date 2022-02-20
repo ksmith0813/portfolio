@@ -31,7 +31,8 @@ export const ProductCard = ({ product }) => {
           <PlusOutlined className='ml-100' onClick={addQty} />
         </div>
         <Button
-          className='dark ml-300'
+          type='primary'
+          className='ml-300'
           onClick={() => {
             setQuantity(1)
             dispatch(updateCart({ ...product, qty: quantity }))

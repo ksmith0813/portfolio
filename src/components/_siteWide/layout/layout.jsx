@@ -1,8 +1,10 @@
 import React from 'react'
-import { Row, Spin } from 'antd'
+import { Row } from 'antd'
 import { GoogleMap, Marker, withScriptjs, withGoogleMap } from 'react-google-maps'
 import { isArray } from 'utils/general'
 import { keys } from 'keys'
+import { LottieFile } from '../animation/lottieFile'
+import loader from 'assets/loader.json'
 import './layout.scss'
 
 export const DataItem = ({ label, children, labelClasses = '', childrenClasses = '' }) => {
@@ -27,7 +29,12 @@ export const Categories = ({ items, selected, onClick }) => {
 
 export const Loader = () => (
   <div className='pt-500'>
-    <Spin size='large' />
+    <LottieFile
+      animationData={loader}
+      autoplay={true}
+      height={200}
+      width={200}
+    />
   </div>
 )
 

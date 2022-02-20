@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Row, Col } from 'antd'
 import { useSelector } from 'react-redux'
 import { getState } from 'store/slices/themeSlice'
+
 // Default Theme images
 import dashboardData from 'assets/default/dashboard-tile-default.json'
 import registerData from 'assets/default/register-tile-default.json'
