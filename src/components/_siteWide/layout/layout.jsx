@@ -1,10 +1,14 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Row } from 'antd'
 import { GoogleMap, Marker, withScriptjs, withGoogleMap } from 'react-google-maps'
+import { getState } from 'store/slices/themeSlice'
 import { isArray } from 'utils/general'
 import { keys } from 'keys'
 import { LottieFile } from '../animation/lottieFile'
-import loader from 'assets/loader.json'
+import loaderBlue from 'assets/default/loader-default.json'
+import loaderGreen from 'assets/green/loader-green.json'
+import loaderPurple from 'assets/purple/loader-purple.json'
 import './layout.scss'
 
 export const DataItem = ({ label, children, labelClasses = '', childrenClasses = '' }) => {
@@ -27,16 +31,16 @@ export const Categories = ({ items, selected, onClick }) => {
   ))
 }
 
-export const Loader = () => (
-  <div className='pt-500'>
-    <LottieFile
-      animationData={loader}
-      autoplay={true}
-      height={200}
-      width={200}
-    />
-  </div>
-)
+export const Loader = () => {
+  const state = useSelector(getState)
+  const theme = state.selectedTheme
+  const loader = theme === 'default' ? loaderBlue : theme === 'green' ? loaderGreen : loaderPurple
+  return (
+    <div className='pt-500'>
+      <LottieFile animationData={loader} autoplay={true} height={200} width={200} />
+    </div>
+  )
+}
 
 export const MapLocation = ({ location, containerClass }) => {
   const Map = () => <MapMarker lat={location.lat} lon={location.lon} />

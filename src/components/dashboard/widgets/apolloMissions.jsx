@@ -1,11 +1,15 @@
 import React from 'react'
 import { Card, Col, Timeline } from 'antd'
 import shuttle from 'assets/shuttle.svg'
+import defaultAstronaut from 'assets/default/astronaut-default.svg'
+import greenAstronaut from 'assets/green/astronaut-green.svg'
+import purpleAstronaut from 'assets/purple/astronaut-purple.svg'
 import { useSelector } from 'react-redux'
 import { getState } from 'store/slices/themeSlice'
 
 export const ApolloMissions = () => {
   const state = useSelector(getState)
+  const theme = state.selectedTheme
   return (
     <Col span={6} className='pt-200 pl-200'>
       <Card title={<span className='fs-125'>Apollo Space Timeline</span>}>
@@ -20,7 +24,11 @@ export const ApolloMissions = () => {
                   <img
                     src={
                       d.name === 'Apollo 11'
-                        ? `theme/${state.selectedTheme}/astronaut-${state.selectedTheme}.svg`
+                        ? theme === 'default'
+                          ? defaultAstronaut
+                          : theme === 'green'
+                          ? greenAstronaut
+                          : purpleAstronaut
                         : shuttle
                     }
                     className='moon'

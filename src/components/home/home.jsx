@@ -23,7 +23,19 @@ import listGreenData from 'assets/green/list-tile-green.json'
 import weatherGreenData from 'assets/green/weather-tile-green.json'
 import shopGreenData from 'assets/green/shop-tile-green.json'
 import chartGreenData from 'assets/green/chart-tile-green.json'
+
+// Purple Theme Images
+import dashboardPurpleData from 'assets/purple/dashboard-tile-purple.json'
+import registerPurpleData from 'assets/purple/register-tile-purple.json'
+import gridPurpleData from 'assets/purple/grid-tile-purple.json'
+import moviePurpleData from 'assets/purple/movie-tile-purple.json'
+import listPurpleData from 'assets/purple/list-tile-purple.json'
+import weatherPurpleData from 'assets/purple/weather-tile-purple.json'
+import shopPurpleData from 'assets/purple/shop-tile-purple.json'
+import chartPurpleData from 'assets/purple/chart-tile-purple.json'
+
 import { LottieFile } from 'components/_siteWide/animation/lottieFile'
+
 import './home.scss'
 
 export const Home = () => {
@@ -43,33 +55,33 @@ export const Home = () => {
     let data = { containerClass: page }
     switch (page) {
       case 'dashboard':
-        data.file = theme === 'default' ? dashboardData : dashboardGreenData
+        data.file = theme === 'default' ? dashboardData : theme === 'green' ? dashboardGreenData : dashboardPurpleData
         break
       case 'register':
-        data.file = theme === 'default' ? registerData : registerGreenData
+        data.file = theme === 'default' ? registerData : theme === 'green' ? registerGreenData : registerPurpleData
         break
       case 'grid':
-        data.file = theme === 'default' ? gridData : gridGreenData
+        data.file = theme === 'default' ? gridData : theme === 'green' ? gridGreenData : gridPurpleData
         break
       case 'video':
-        data.file = theme === 'default' ? movieData : movieGreenData
+        data.file = theme === 'default' ? movieData : theme === 'green' ? movieGreenData : moviePurpleData
         break
       case 'list':
-        data.file = theme === 'default' ? listData : listGreenData
+        data.file = theme === 'default' ? listData : theme === 'green' ? listGreenData : listPurpleData
         break
       case 'search/weather':
-        data.file = theme === 'default' ? weatherData : weatherGreenData
+        data.file = theme === 'default' ? weatherData : theme === 'green' ? weatherGreenData : weatherPurpleData
         data.containerClass = 'search'
         break
       case 'shop':
-        data.file = theme === 'default' ? shopData : shopGreenData
+        data.file = theme === 'default' ? shopData : theme === 'green' ? shopGreenData : shopPurpleData
         break
       default:
-        data.file = theme === 'default' ? chartData : chartGreenData
+        data.file = theme === 'default' ? chartData : theme === 'green' ? chartGreenData : chartPurpleData
         data.containerClass = 'visuals'
         break
     }
-  
+
     return data
   }
 
@@ -88,7 +100,7 @@ export const Home = () => {
       </div>
     )
   }
-  
+
   return (
     <>
       <div className={`home ${theme}`}>

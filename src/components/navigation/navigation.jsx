@@ -64,6 +64,9 @@ export const Navigation = () => {
           <Menu.Item key='green' onClick={() => dispatch(setSelectedTheme('green'))}>
             Green
           </Menu.Item>
+          <Menu.Item key='purple' onClick={() => dispatch(setSelectedTheme('purple'))}>
+            Purple
+          </Menu.Item>
         </SubMenu>
       </Menu>
       <Outlet />

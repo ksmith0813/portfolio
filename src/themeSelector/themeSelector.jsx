@@ -8,14 +8,19 @@ export const ThemeSelector = ({ children }) => {
   const state = useSelector(getState)
   const DefaultTheme = lazy(() => import('./default/DefaultTheme'))
   const GreenTheme = lazy(() => import('./green/GreenTheme'))
+  const PurpleTheme = lazy(() => import('./purple/PurpleTheme'))
 
-  changeAntdTheme(state.selectedTheme === 'default' ? '#1890ff' : '#13dd9d', '../../../antd-overrides.scss')
+  const themeColor =
+    state.selectedTheme === 'default' ? '#1890ff' : state.selectedTheme === 'green' ? '#13dd9d' : '#9400d3'
+
+  changeAntdTheme(themeColor, '../../../antd-overrides.scss')
 
   return (
     <>
       <Suspense fallback={<></>}>
         {state.selectedTheme === 'default' && <DefaultTheme />}
         {state.selectedTheme === 'green' && <GreenTheme />}
+        {state.selectedTheme === 'purple' && <PurpleTheme />}
       </Suspense>
       {children}
     </>

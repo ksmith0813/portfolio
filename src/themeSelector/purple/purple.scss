@@ -1,0 +1,62 @@
+.ant-btn.anchor-button {
+  color: var(--theme-color-3);
+}
+
+.ant-btn.anchor-button:hover {
+  color: var(--theme-color-3-hover);
+}
+
+.site-link {
+  &.active {
+    color: var(--theme-color-3);
+  }
+  &:hover {
+    color: var(--theme-color-3-hover);
+  }
+}
+
+.grid-controls .anticon:hover {
+  color: var(--theme-color-3);
+}
+
+.home.purple {
+  .home-description {
+    background-color: var(--theme-color-3);
+  }
+  .tile-container {
+    .tile {
+      &:hover {
+        .tile-title {
+          color: var(--theme-color-3);
+        }
+      }
+    }
+  }
+}
+
+.bio-container.purple {
+  .description {
+    background-color: #f9f0ff;
+    border: 1px solid #d3adf7;
+  }
+}
+
+.cart-container {
+  :hover {
+    color: var(--theme-color-3) !important;
+  }
+}
+
+.page-header {
+  &.purple.ant-menu-horizontal > .ant-menu-item-selected a,
+  &.purple.ant-menu-horizontal > .ant-menu-item a:hover,
+  &.purple.ant-menu-horizontal > .ant-menu-item a:focus,
+  &.purple.ant-menu-horizontal > .ant-menu-item a:active,
+  &.purple.ant-menu-light .ant-menu-item-active,
+  &.purple.ant-menu-light .ant-menu-item:hover,
+  &.purple.ant-menu-light .ant-menu-submenu-active,
+  &.purple.ant-menu-light .ant-menu-submenu-title:hover,
+  &.purple.ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open {
+    color: var(--theme-color-3) !important;
+  }
+}
