@@ -53,7 +53,6 @@
       width: 800px;
       min-height: 800px;
       video {
-        box-shadow: var(--box-shadow);
         width: 800px;
         min-height: 800px;
         &.flipped {
@@ -84,7 +83,6 @@
       margin-bottom: 0.25em;
       padding: 0.25em 0.7em;
       background-color: var(--gray-200);
-      border-radius: var(--button-border-radius);
       color: var(--gray-500);
     }
     &:last-child {

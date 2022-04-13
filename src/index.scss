@@ -47,11 +47,6 @@
   --theme-error: #f22939;
   --theme-success: #64d28d;
   --theme-warning: #f26e29;
-  --theme-info: #cce5ff;
-  --theme-option: #8dabc4;
-  --container-border-radius: 10px;
-  --button-border-radius: 30px;
-  --box-shadow: 3px 3px 6px #cecece;
 }
 body {
   margin: 0;
@@ -85,14 +80,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.box-shadow {
-  box-shadow: var(--box-shadow);
-}
-
-.border-radius {
-  border-radius: var(--container-border-radius);
 }
 
 .border-bottom-light {
@@ -195,12 +182,6 @@ body {
   justify-content: space-around;
 }
 
-.text-left {
-  text-align: left;
-}
-.text-right {
-  text-align: right;
-}
 .text-center {
   text-align: center;
 }
