@@ -7,48 +7,48 @@ const store = window.localStorage
 export const slice = createSlice({
   name: 'grid',
   initialState: {
-    Key: 0,
-    RowKey: '',
-    ColumnKey: '',
-    FilterKey: '',
-    SelectAllKey: '',
-    InitialLoad: true,
-    Loading: true,
-    OriginalData: [],
-    Data: [],
-    Total: 0,
-    Filters: {
-      CurrentPage: 1,
-      PageSize: 50,
-      SortColumn: '',
-      SortDirection: '',
-      Config: {},
-      Options: {},
+    initialLoad: true,
+    loading: true,
+    key: 0,
+    rowKey: '',
+    columnKey: '',
+    filterKey: '',
+    selectAllKey: '',
+    selectAll: false,
+    selectedIds: [],
+    selectedGridKeys: [],
+    originalData: [],
+    data: [],
+    total: 0,
+    filters: {
+      currentPage: 1,
+      pageSize: 50,
+      sortColumn: '',
+      sortDirection: '',
+      config: {},
+      options: {},
     },
-    Search: {},
-    SelectAll: false,
-    SelectedIds: [],
-    SelectedGridKeys: [],
-    DefaultColumns: [],
-    VisibleColumns: [],
-    IgnoreColumns: ['Id'],
+    search: {},
+    defaultColumns: [],
+    visibleColumns: [],
+    ignoreColumns: ['Id'],
   },
   reducers: {
     setInitialLoad: (state) => {
-      state.InitialLoad = false
+      state.initialLoad = false
     },
     setInitialData: (state, action) => {
       const payload = action.payload
       const defaults = payload.defaults
-      state.RowKey = defaults.RowKey
-      state.ColumnKey = defaults.ColumnKey
-      state.FilterKey = defaults.FilterKey
-      state.SelectAllKey = defaults.SelectAllKey
-      state.TableClass = defaults.TableClass
-      state.DefaultColumns = defaults.DefaultColumns
-      state.VisibleColumns = defaults.VisibleColumns
-      state.IgnoreColumns = defaults.IgnoreColumns
-      state.Filters.Config = defaults.DefaultFilters
+      state.rowKey = defaults.rowKey
+      state.columnKey = defaults.columnKey
+      state.filterKey = defaults.filterKey
+      state.selectAllKey = defaults.selectAllKey
+      state.tableClass = defaults.tableClass
+      state.defaultColumns = defaults.defaultColumns
+      state.visibleColumns = defaults.visibleColumns
+      state.ignoreColumns = defaults.ignoreColumns
+      state.filters.config = defaults.defaultFilters
 
       let data = []
       let originalData = []
@@ -57,30 +57,30 @@ export const slice = createSlice({
         const location = d.location
         const add = () => {
           return {
-            Id: i,
-            Picture: d.picture.thumbnail,
-            Name: `${d.name.first} ${d.name.last}`,
-            UserName: d.login.username,
-            Country: location.country,
-            State: location.state,
-            City: location.city,
-            PostalCode: location.postcode,
-            Latitude: location.coordinates.latitude,
-            Longitude: location.coordinates.longitude,
-            Phone: d.phone,
-            RegisterDate: d.registered?.date,
-            DateOfBirth: d.dob.date,
-            Age: d.dob.age,
+            id: i,
+            picture: d.picture.thumbnail,
+            name: `${d.name.first} ${d.name.last}`,
+            userName: d.login.username,
+            country: location.country,
+            state: location.state,
+            city: location.city,
+            postalCode: location.postcode,
+            latitude: location.coordinates.latitude,
+            longitude: location.coordinates.longitude,
+            phone: d.phone,
+            registerDate: d.registered?.date,
+            dateOfBirth: d.dob.date,
+            age: d.dob.age,
           }
         }
         data.push(add())
         originalData.push(add())
-        state.Loading = false
+        state.loading = false
         return d
       })
 
-      state.Data = data
-      state.OriginalData = originalData
+      state.data = data
+      state.originalData = originalData
       updateData(state)
     },
     setData: (state) => {
@@ -88,40 +88,40 @@ export const slice = createSlice({
     },
     updateDefaultColumns: (state, action) => {
       const columns = action.payload
-      state.Key = ++state.Key
-      state.VisibleColumns = columns
-      store.setItem(state.ColumnKey, JSON.stringify(columns))
+      state.key = ++state.key
+      state.visibleColumns = columns
+      store.setItem(state.columnKey, JSON.stringify(columns))
     },
     setSorting: (state, action) => {
-      state.Key = ++state.Key
-      state.Filters.SortColumn = action.payload.column
-      state.Filters.SortDirection = action.payload.direction
+      state.key = ++state.key
+      state.filters.sortColumn = action.payload.column
+      state.filters.sortDirection = action.payload.direction
     },
     setPaging: (state, action) => {
-      state.Key = ++state.Key
-      state.Filters.CurrentPage = action.payload.currentPage
-      state.Filters.PageSize = action.payload.pageSize
+      state.key = ++state.key
+      state.filters.currentPage = action.payload.currentPage
+      state.filters.pageSize = action.payload.pageSize
     },
     filterData: (state, action) => {
-      state.Key = ++state.Key
-      state.Filters.CurrentPage = 1
-      state.Filters.Config[action.payload.property] = action.payload.value
-      store.setItem(state.FilterKey, JSON.stringify(state.Filters.Config))
+      state.key = ++state.key
+      state.filters.currentPage = 1
+      state.filters.config[action.payload.property] = action.payload.value
+      store.setItem(state.filterKey, JSON.stringify(state.filters.config))
     },
     removeFilter: (state, action) => {
       const property = action.payload.property
-      const config = state.Filters.Config
-      state.Key = ++state.Key
-      state.Search[property] = ''
+      const config = state.filters.config
+      state.key = ++state.key
+      state.search[property] = ''
       delete config[property]
-      store.setItem(state.FilterKey, JSON.stringify(config))
+      store.setItem(state.filterKey, JSON.stringify(config))
     },
     onSelectionChange: (state, action) => {
       const keys = action.payload.keys
-      const rowKey = state.RowKey
-      const selectAll = store.getItem(state.SelectAllKey)
-      state.SelectAll = selectAll === 'true'
-      state.SelectedGridKeys = keys
+      const rowKey = state.rowKey
+      const selectAll = store.getItem(state.selectAllKey)
+      state.selectAll = selectAll === 'true'
+      state.selectedGridKeys = keys
 
       if (selectAll) {
         const unselected = state.Data.filter((d) => !keys.includes(d[rowKey]))
@@ -130,15 +130,15 @@ export const slice = createSlice({
             return u[rowKey]
           })
           const unique = Array.from(new Set(unselectedIds))
-          state.SelectedIds.push(...unique)
+          state.selectedIds.push(...unique)
         }
-      } else state.SelectedIds = keys
+      } else state.selectedIds = keys
     },
     onSelectAll: (state, action) => {
       const selected = action.payload
-      state.SelectAll = selected
-      if (selected) store.setItem(state.SelectAllKey, selected.toString())
-      else store.removeItem(state.SelectAllKey)
+      state.selectAll = selected
+      if (selected) store.setItem(state.selectAllKey, selected.toString())
+      else store.removeItem(state.selectAllKey)
     },
   },
 })
@@ -163,20 +163,20 @@ export const getState = (state) => state.grid
 export default slice.reducer
 
 const updateData = (state) => {
-  const config = state.Filters.Config
+  const config = state.filters.config
 
   if (hasProperties(config)) {
-    let data = [...state.OriginalData]
+    let data = [...state.originalData]
     Object.entries(config).map((p) => {
       const property = p[0]
       const value = p[1]
       if (property === 'Gender') {
         data = data.filter((d) => d[property].toLowerCase().trim() === value.toLowerCase().trim())
-      } else if (property === 'RegisterDate') {
+      } else if (property === 'registerDate') {
         const dates = value.split(',')
         const start = dates[0]
         const end = dates[1]
-        data = data.filter((d) => moment(d.RegisterDate) >= moment(start) && moment(d.RegisterDate) <= moment(end))
+        data = data.filter((d) => moment(d.registerDate) >= moment(start) && moment(d.registerDate) <= moment(end))
       } else {
         data = data.filter(
           (d) => d[property] && d[property].toString().toLowerCase().trim().includes(value?.toLowerCase().trim())
@@ -185,10 +185,10 @@ const updateData = (state) => {
       return p
     })
 
-    state.Data = data
-    state.Total = data.length
+    state.data = data
+    state.total = data.length
   } else {
-    state.Data = state.OriginalData
-    state.Total = state.OriginalData.length
+    state.data = state.originalData
+    state.total = state.originalData.length
   }
 }

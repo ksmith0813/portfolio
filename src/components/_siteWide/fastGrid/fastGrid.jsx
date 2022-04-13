@@ -31,9 +31,9 @@ export const FastGrid = ({
   const searchInput = useRef(null)
 
   useEffect(() => {
-    if (!state.InitialLoad) dispatch(getData())
+    if (!state.initialLoad) dispatch(getData())
     // eslint-disable-next-line
-  }, [state.Key])
+  }, [state.key])
 
   const updateSorting = (column, direction) => dispatch(setSorting({ column, direction }))
 
@@ -62,7 +62,7 @@ export const FastGrid = ({
   }
 
   const rowSelection = selections && {
-    selectedRowKeys: state.SelectedGridKeys,
+    selectedRowKeys: state.selectedGridKeys,
     onChange: onSelectionChange,
     onSelectAll: (selected) => dispatch(onSelectAll(selected)),
     selections: selections.map((s) => {
@@ -82,7 +82,7 @@ export const FastGrid = ({
       title: (
         <SortHeader
           property={c.dataIndex}
-          filter={state.Filters}
+          filter={state.filters}
           update={updateSorting}
           title={c.title}
           noSort={c.noSort}
@@ -92,15 +92,15 @@ export const FastGrid = ({
     })
   })
 
-  const gridFilters = state.Filters
-  const properties = hasProperties(gridFilters.Config)
-  const entries = Object.entries(gridFilters.Config)
+  const gridFilters = state.filters
+  const properties = hasProperties(gridFilters.config)
+  const entries = Object.entries(gridFilters.config)
   const filtersTags = entries && <FilterTags entries={entries} removeTag={removeTag} />
   const pagination = {
     showSizeChanger: true,
-    current: gridFilters.CurrentPage,
-    pageSize: gridFilters.PageSize,
-    total: state.Total,
+    current: gridFilters.currentPage,
+    pageSize: gridFilters.pageSize,
+    total: state.total,
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
     onChange: (page, size) => updatePaging(page, size),
   }
@@ -112,7 +112,7 @@ export const FastGrid = ({
           <Col flex={1}>
             {!loading && (
               <span className='fs-125 pr-100'>
-                Viewing {state.Data.length} Record{state.Data.length > 1 || state.Data.length === 0 ? 's' : ''}
+                Viewing {state.data.length} Record{state.data.length > 1 || state.data.length === 0 ? 's' : ''}
               </span>
             )}
             {properties && filtersTags}
@@ -121,12 +121,12 @@ export const FastGrid = ({
         </Row>
       )}
       <Table
-        className={`${state.TableClass} mt-150`}
-        rowKey={state.RowKey}
+        className={`${state.tableClass} mt-150`}
+        rowKey={state.rowKey}
         loading={loading}
         rowSelection={rowSelection}
         columns={filterColumns}
-        dataSource={state.Data}
+        dataSource={state.data}
         scroll={{ y: 1010 }}
         pagination={pagination}
         onRow={(row) => {
@@ -157,7 +157,7 @@ const FilterTags = ({ entries, removeTag }) => {
               removeTag(property)
             }}
           >
-            {`${spacesToProperty(property)}: ${display}`}
+            {`${spacesToProperty(property.toUpperCase())}: ${display.toUpperCase()}`}
           </Tag>
         )
       })}
@@ -172,8 +172,8 @@ const SortHeader = ({ property, filter, update, title, noSort }) => {
 
   if (noSort) return display
 
-  const column = filter.SortColumn
-  const direction = filter.SortDirection
+  const column = filter.sortColumn
+  const direction = filter.sortDirection
   let nextSort = 'asc'
   let activeSort = ''
 

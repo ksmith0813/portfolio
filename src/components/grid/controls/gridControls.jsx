@@ -13,7 +13,7 @@ export const GridControls = () => {
   return (
     <div className='grid-controls'>
       <>
-        <CSVLink data={state.Data} filename='user-data'>
+        <CSVLink data={state.data} filename='user-data'>
           <DownloadOutlined className='pr-050' />
         </CSVLink>
         <InsertRowRightOutlined onClick={() => setShowingSelection(true)} />
@@ -25,8 +25,8 @@ export const GridControls = () => {
         >
           <ColumnSelection
             state={state}
-            storeKey={state.ColumnKey}
-            defaultColumns={state.DefaultColumns}
+            storeKey={state.columnKey}
+            defaultColumns={state.defaultColumns}
             setShowingSelection={setShowingSelection}
           />
         </Drawer>

@@ -4,7 +4,6 @@ export const slice = createSlice({
   name: 'weather',
   initialState: {
     loading: false,
-    celan: true,
     search: '',
     weather: null,
   },

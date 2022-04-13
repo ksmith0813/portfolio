@@ -12,12 +12,12 @@ const store = window.localStorage
 export const ColumnSelection = ({ state, storeKey, defaultColumns, setShowingSelection }) => {
   const getColumnList = () => {
     let columnList = []
-    Object.keys(state.OriginalData[0]).map((p, i) => {
-      if (state.IgnoreColumns.includes(p)) return p
+    Object.keys(state.originalData[0]).map((p, i) => {
+      if (state.ignoreColumns.includes(p)) return p
       columnList.push({
         id: i,
         property: p,
-        show: state.VisibleColumns.includes(p),
+        show: state.visibleColumns.includes(p),
       })
       return p
     })
@@ -112,7 +112,7 @@ export const ColumnSelection = ({ state, storeKey, defaultColumns, setShowingSel
         <Col span={3}>
           <DragHandle />
         </Col>
-        <Col flex={1} className='pl-100'>
+        <Col flex={1} className='pl-100 capitalize'>
           {spacesToProperty(display)}
         </Col>
         <Col className='pl-100'>

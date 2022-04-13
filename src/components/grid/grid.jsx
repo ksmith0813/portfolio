@@ -17,38 +17,38 @@ export const Grid = () => {
   const defaultFilters = JSON.parse(store.getItem('user-grid-filters')) || {}
   const storageColumns = JSON.parse(store.getItem('grid-columns'))
   const defaultColumns = [
-    'Picture',
-    'Name',
-    'Gender',
-    'Country',
-    'State',
-    'City',
-    'PostalCode',
-    'Phone',
-    'RegisterDate',
+    'picture',
+    'name',
+    'gender',
+    'country',
+    'state',
+    'city',
+    'postalCode',
+    'phone',
+    'registerDate',
   ]
 
   const defaults = {
-    RowKey: 'Id',
-    ColumnKey: 'user-grid-columns',
-    FilterKey: 'user-grid-filters',
-    SelectAllKey: 'user-grid-select-all',
-    TableClass: 'user-grid',
-    DefaultFilters: defaultFilters,
-    DefaultColumns: ['Picture', 'Name', 'Gender', 'Country', 'State', 'City', 'PostalCode', 'Phone', 'RegisterDate'],
-    VisibleColumns: storageColumns || defaultColumns,
-    IgnoreColumns: ['Id'],
+    rowKey: 'id',
+    columnKey: 'user-grid-columns',
+    filterKey: 'user-grid-filters',
+    selectAllKey: 'user-grid-select-all',
+    tableClass: 'user-grid',
+    defaultFilters: defaultFilters,
+    defaultColumns: defaultColumns,
+    visibleColumns: storageColumns || defaultColumns,
+    ignoreColumns: ['id'],
   }
 
   useEffect(() => {
     const params = qs.stringify({
       results: 200,
-      page: state.Filters.CurrentPage,
+      page: state.filters.currentPage,
     })
 
     const getInitialData = async () => {
       dispatch(setInitialLoad(false))
-      if (state.InitialLoad) {
+      if (state.initialLoad) {
         const { data } = await api.getUsers(params)
         dispatch(setInitialData({ data: data.results, defaults }))
       }
@@ -60,8 +60,8 @@ export const Grid = () => {
 
   let columns = []
   let allColumns = getColumns()
-  let visibleColumns = allColumns.filter((c) => state.VisibleColumns.includes(c.dataIndex))
-  const storedColumnList = JSON.parse(store.getItem(defaults.ColumnKey))
+  let visibleColumns = allColumns.filter((c) => state.visibleColumns.includes(c.dataIndex))
+  const storedColumnList = JSON.parse(store.getItem(defaults.columnKey))
 
   if (storedColumnList) {
     storedColumnList.map((s) => {
@@ -77,11 +77,11 @@ export const Grid = () => {
     <div className='p-200'>
       <FastGrid
         state={state}
-        loading={state.Loading}
+        loading={state.loading}
         getData={setData}
         columns={columns}
         rightControls={<GridControls />}
-        defaultSearch={state.Search}
+        defaultSearch={state.search}
       />
     </div>
   )
