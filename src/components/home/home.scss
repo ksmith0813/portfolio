@@ -42,17 +42,17 @@
       }
       .register {
         width: 210px;
-        margin-left: 3.25em;
+        margin-left: 2.5em;
       }
       .grid {
         width: 180px;
-        margin-left: 3.5em;
+        margin-left: 3.25em;
         margin-top: 1em;
       }
       .video {
         width: 200px;
         margin-left: 2.75em;
-        margin-top: .5em;
+        margin-top: 0.5em;
       }
       .list {
         width: 200px;
@@ -65,7 +65,7 @@
       }
       .shop {
         width: 180px;
-        margin-left: 3.75em;
+        margin-left: 3.5em;
         margin-top: 1.5em;
       }
       .visuals {
@@ -91,6 +91,9 @@
       .tile {
         height: 200px;
         width: 200px;
+        .tile-title {
+          font-size: 1.5em;
+        }
         .dashboard {
           width: 140px;
           margin-left: 2.25em;
@@ -107,7 +110,7 @@
         .video {
           width: 130px;
           margin-left: 2.7em;
-          margin-top: .25em;
+          margin-top: 0.25em;
         }
         .list {
           width: 130px;
@@ -126,7 +129,7 @@
         .visuals {
           width: 170px;
           margin-top: -2.25em;
-          margin-left: .5em;
+          margin-left: 0.5em;
         }
       }
     }
@@ -142,7 +145,7 @@
         .search {
           width: 110px;
           margin-left: 3.25em;
-          margin-top: .75em;
+          margin-top: 0.75em;
         }
         .shop {
           margin-top: 1em;

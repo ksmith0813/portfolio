@@ -102,39 +102,37 @@ export const Home = () => {
   }
 
   return (
-    <>
-      <div className={`home ${theme}`}>
-        <Row justify='center' className='hello'>
-          Hello.
+    <div className={`home ${theme}`}>
+      <Row justify='center' className='hello'>
+        Hello.
+      </Row>
+      <Row justify='center' className='home-description'>
+        <Col span={12}>
+          My name is Kevin, nice to meet you. Welcome to my React portfolio application. This site demonstrates my
+          ability as a lead frontend software engineer. The tech stack is ReactJS, Redux/Toolkit, Functional Components,
+          ANT Design, SCSS, and Axios for hitting API endpoints. Feel free to explore some of the examples below, I
+          definitely had some fun coding the pages in this demo application.
+        </Col>
+      </Row>
+      <div className='tile-container'>
+        <Row justify='center'>
+          <Tile page='dashboard' title='Dashboard' image={`theme/${theme}/dashboard-tile-${theme}.svg`} />
+          <Tile page='register' title='Register' image={`theme/${theme}/register-tile-${theme}.svg`} />
+          <Tile page='grid' title='User Grid' image={`theme/${theme}/grid-tile-${theme}.svg`} />
+          <Tile page='video' title='Videos' image={`theme/${theme}/movie-tile-${theme}.svg`} className='media' />
         </Row>
-        <Row justify='center' className='home-description'>
-          <Col span={12}>
-            My name is Kevin, nice to meet you. Welcome to my React portfolio application. This site demonstrates my
-            ability as a lead frontend software engineer. The tech stack is ReactJS, Redux/Toolkit, Functional
-            Components, ANT Design, SCSS, and Axios for hitting API endpoints. Feel free to explore some of the examples
-            below, I definitely had some fun coding the pages in this demo application.
-          </Col>
+        <Row justify='center'>
+          <Tile page='list' title='TODO List' image={`theme/${theme}/list-tile-${theme}.svg`} />
+          <Tile
+            page='search/weather'
+            title='Weather Finder'
+            image={`theme/${theme}/umbrella-tile-${theme}.svg`}
+            className='weather'
+          />
+          <Tile page='shop' title='Shop' image={`theme/${theme}/shop-tile-${theme}.svg`} />
+          <Tile page='visuals' title='Visuals' image={`theme/${theme}/chart-tile-${theme}.svg`} />
         </Row>
-        <div className='tile-container'>
-          <Row justify='center'>
-            <Tile page='dashboard' title='Dashboard' image={`theme/${theme}/dashboard-tile-${theme}.svg`} />
-            <Tile page='register' title='Register' image={`theme/${theme}/register-tile-${theme}.svg`} />
-            <Tile page='grid' title='User Grid' image={`theme/${theme}/grid-tile-${theme}.svg`} />
-            <Tile page='video' title='Videos' image={`theme/${theme}/movie-tile-${theme}.svg`} className='media' />
-          </Row>
-          <Row justify='center'>
-            <Tile page='list' title='TODO List' image={`theme/${theme}/list-tile-${theme}.svg`} />
-            <Tile
-              page='search/weather'
-              title='Weather Finder'
-              image={`theme/${theme}/umbrella-tile-${theme}.svg`}
-              className='weather'
-            />
-            <Tile page='shop' title='Shop' image={`theme/${theme}/shop-tile-${theme}.svg`} />
-            <Tile page='visuals' title='Visuals' image={`theme/${theme}/chart-tile-${theme}.svg`} />
-          </Row>
-        </div>
       </div>
-    </>
+    </div>
   )
 }
