@@ -11,7 +11,7 @@ export const ThemeSelector = ({ children }) => {
   const PurpleTheme = lazy(() => import('./purple/PurpleTheme'))
 
   const themeColor =
-    state.selectedTheme === 'default' ? '#1890ff' : state.selectedTheme === 'green' ? '#13dd9d' : '#9400d3'
+    state.selectedTheme === 'default' ? '#1890ff' : state.selectedTheme === 'green' ? '#13dd9d' : '#b038e3'
 
   changeAntdTheme(themeColor, '../../../antd-overrides.scss')
 
