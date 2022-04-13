@@ -1,5 +1,4 @@
-import { isArray } from 'utils/general'
-import { getRequiredMessage } from '../util'
+import { isArray, spacesToProperty } from 'utils/general'
 
 export const validateProperty = (
   validator,
@@ -40,12 +39,26 @@ export const validateProperty = (
   }
 }
 
-export const addError = (form, property, error, section = null, nestedProperty = null, index = null) => {
+export const validateRequiredFields = (form, optionalFields = []) => {
+  Object.keys(form).forEach((k) => {
+    if (optionalFields.includes(k) || k === 'errors') return
+    const value = form[k]
+    if ((isArray(value) && !value.length) || !value) {
+      form.errors.push({ property: k, message: getRequiredMessage(k) })
+    }
+  })
+
+  return form
+}
+
+const getRequiredMessage = (property) => `${spacesToProperty(property)} is required`
+
+const addError = (form, property, error, section = null, nestedProperty = null, index = null) => {
   form.errors.push({
     property: property,
     nestedProperty: nestedProperty,
     message: error,
     section: section,
-    index: index
+    index: index,
   })
 }

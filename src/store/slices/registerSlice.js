@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { validateRequiredFields } from 'components/_siteWide/form/util'
 import { validateEmail } from 'components/_siteWide/form/validators/validateEmail'
 import { validatePhone } from 'components/_siteWide/form/validators/validatePhone'
 import { validateZip } from 'components/_siteWide/form/validators/validateZip'
-import { validateProperty } from 'components/_siteWide/form/validators/_baseValidator'
+import { validateProperty, validateRequiredFields } from 'components/_siteWide/form/validators/_baseValidator'
 import { showMessage } from 'utils/general'
 
 const defaultContact = {
