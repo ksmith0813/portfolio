@@ -89,13 +89,3 @@ export const showMessage = (description, type = 'error') => {
       break
   }
 }
-
-export const onAutoCompleteSearch = (value, options, setOptions) => {
-  if (value) {
-    value = value.toLowerCase()
-    const filteredOptions = options.filter((o) => o.value.toLowerCase().includes(value))
-    setOptions(filteredOptions)
-  } else {
-    setOptions(options)
-  }
-}

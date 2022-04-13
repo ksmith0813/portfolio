@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { AutoComplete, Card, Col, Table } from 'antd'
 import api from 'utils/api'
-import { onAutoCompleteSearch } from 'utils/general'
 
 export const Breweries = () => {
   const [loading, setLoading] = useState(false)
@@ -30,6 +29,16 @@ export const Breweries = () => {
     if (value) copy = copy.filter((c) => c.city === value)
     setSelectedCity(value)
     setBreweries(copy)
+  }
+
+  const onCitySearch = (value, options, setOptions) => {
+    if (value) {
+      value = value.toLowerCase()
+      const filteredOptions = options.filter((o) => o.value.toLowerCase().includes(value))
+      setOptions(filteredOptions)
+    } else {
+      setOptions(options)
+    }
   }
 
   const columns = [
@@ -64,7 +73,7 @@ export const Breweries = () => {
       value={selectedCity}
       options={cities}
       onChange={onCityChange}
-      onSearch={(value) => onAutoCompleteSearch(value, allCities, setCities)}
+      onSearch={(value) => onCitySearch(value, allCities, setCities)}
       style={{ width: '170px' }}
       placeholder='Search City'
       allowClear
