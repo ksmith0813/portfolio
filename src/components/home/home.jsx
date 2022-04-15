@@ -108,10 +108,10 @@ export const Home = () => {
       </Row>
       <Row justify='center' className='home-description'>
         <Col span={12}>
-          Welcome to my React portfolio application. This site demonstrates my ability as a lead frontend 
-          software engineer. The tech stack is ReactJS, Redux/Toolkit, Functional Components, ANT Design, 
-          SCSS, and Axios for hitting API endpoints. Feel free to explore some of the examples below. I
-          definitely had some fun coding the pages in this demo application.
+          Welcome to my React portfolio application. This site demonstrates my frontend software engineering skills. 
+          The tech stack is ReactJS, Redux/Toolkit, Functional Components, ANT Design, SCSS, and Axios for hitting 
+          API endpoints. Feel free to explore some of the examples below. I definitely had fun coding the pages in 
+          this demo application.
         </Col>
       </Row>
       <div className='tile-container'>
