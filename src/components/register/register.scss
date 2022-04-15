@@ -1,6 +1,4 @@
 .register-container {
-  height: calc(100vh - 55px);
-  overflow: auto;
   padding: 2em;
   padding-top: 3em;
   .ant-steps-item-title {
@@ -11,8 +9,13 @@
   }
 }
 
+.steps-header {
+  background-color: white;
+  padding: 2em;
+  border-bottom: 1px solid var(--gray-300);
+}
+
 .steps-content {
-  margin-top: 2em;
   padding: 2em;
   padding-bottom: 3em;
   display: flex;

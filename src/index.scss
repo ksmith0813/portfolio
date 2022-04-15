@@ -40,14 +40,18 @@
   --gray-000: #fafafa;
   --theme-color-1: #1890ff;
   --theme-color-1-hover: #40a9ff;
+  --theme-color-1-light: #e6f7ff;
   --theme-color-2: #39c599;
   --theme-color-2-hover: #3fd1a4;
+  --theme-color-2-light: #d7fff2;
   --theme-color-3: #b038e3;
   --theme-color-3-hover: #a660c3;
+  --theme-color-3-light: #f2dcfb;
   --theme-error: #f22939;
   --theme-success: #64d28d;
   --theme-warning: #f26e29;
 }
+
 body {
   margin: 0;
   font-family: 'Source Sans Pro', sans-serif;
@@ -55,29 +59,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--gray-100);
 }
+
 .page {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 60px);
   overflow-y: auto;
   display: flex;
   width: 100%;
   padding: 2em;
 }
-.page-header {
-  border-bottom: 1px solid var(--gray-100);
-  display: flex;
-  justify-content: center;
-}
+
 .page-center {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 60px);
   overflow-y: auto;
 }
 
 .content-center {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -122,18 +125,6 @@ body {
 
 .capitalize {
   text-transform: capitalize;
-}
-
-.header-row .ant-col::before {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 1px;
-  height: 1.6em;
-  background-color: rgba(0, 0, 0, 0.06);
-  transform: translateY(-50%);
-  transition: background-color 0.3s;
-  content: '';
 }
 
 .flex {

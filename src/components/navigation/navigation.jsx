@@ -1,13 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createElement } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Menu } from 'antd'
+import { Avatar, Layout, Menu } from 'antd'
+import {
+  HomeOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  LayoutOutlined,
+  FormOutlined,
+  TableOutlined,
+  VideoCameraOutlined,
+  UnorderedListOutlined,
+  CustomerServiceOutlined,
+  RadarChartOutlined,
+  ShoppingOutlined,
+  BarChartOutlined,
+  BgColorsOutlined,
+  UserOutlined,
+} from '@ant-design/icons'
 import { getState, setSelectedTheme } from 'store/slices/themeSlice'
+import kevin from 'assets/kevin.jpg'
+import './navigation.scss'
 
+const { Header, Sider, Content } = Layout
 const { SubMenu } = Menu
 
 export const Navigation = () => {
   const [activePage, setActivePage] = useState('home')
+  const [collapsed, setCollapsed] = useState(true)
   const location = useLocation()
   const navigate = useNavigate()
   const state = useSelector(getState)
@@ -21,55 +41,72 @@ export const Navigation = () => {
 
   const SiteLink = ({ page, title }) => <Link to={`/${page}`}>{title}</Link>
 
+  const toggle = () => setCollapsed(!collapsed)
+
   return (
-    <>
-      <Menu mode='horizontal' selectedKeys={[activePage]} className={`page-header ${state.selectedTheme}`}>
-        <Menu.Item key='home'>
-          <SiteLink page='home' title='Home' />
-        </Menu.Item>
-        <Menu.Item key='dashboard'>
-          <SiteLink page='dashboard' title='Dashboard' />
-        </Menu.Item>
-        <Menu.Item key='register'>
-          <SiteLink page='register' title='Register' />
-        </Menu.Item>
-        <Menu.Item key='grid'>
-          <SiteLink page='grid' title='Grid' />
-        </Menu.Item>
-        <Menu.Item key='video'>
-          <SiteLink page='video' title='Video' />
-        </Menu.Item>
-        <Menu.Item key='list'>
-          <SiteLink page='list' title='List' />
-        </Menu.Item>
-        <Menu.Item key='search/media'>
-          <SiteLink page='search/media' title='Media' />
-        </Menu.Item>
-        <Menu.Item key='search/weather'>
-          <SiteLink page='search/weather' title='Weather' />
-        </Menu.Item>
-        <Menu.Item key='shop'>
-          <SiteLink page='shop' title='Shop' />
-        </Menu.Item>
-        <Menu.Item key='visuals'>
-          <SiteLink page='visuals' title='Visuals' />
-        </Menu.Item>
-        <Menu.Item key='bio'>
-          <SiteLink page='bio' title='Bio' />
-        </Menu.Item>
-        <SubMenu key='theme' title='Theme'>
-          <Menu.Item key='blue' onClick={() => dispatch(setSelectedTheme('default'))}>
-            Blue
+    <Layout style={{ height: '100vh' }}>
+      <Sider trigger={null} collapsible collapsed={collapsed} className='site-nav-container'>
+        <div className='logo'>
+          <Avatar src={kevin}></Avatar>
+        </div>
+        <Menu mode='inline' selectedKeys={[activePage]} className={`site-nav ${state.selectedTheme}`}>
+          <Menu.Item key='home' icon={<HomeOutlined />}>
+            <SiteLink page='home' title='Home' />
           </Menu.Item>
-          <Menu.Item key='green' onClick={() => dispatch(setSelectedTheme('green'))}>
-            Green
+          <Menu.Item key='dashboard' icon={<LayoutOutlined />}>
+            <SiteLink page='dashboard' title='Dashboard' />
           </Menu.Item>
-          <Menu.Item key='purple' onClick={() => dispatch(setSelectedTheme('purple'))}>
-            Purple
+          <Menu.Item key='register' icon={<FormOutlined />}>
+            <SiteLink page='register' title='Register' />
           </Menu.Item>
-        </SubMenu>
-      </Menu>
-      <Outlet />
-    </>
+          <Menu.Item key='grid' icon={<TableOutlined />}>
+            <SiteLink page='grid' title='Grid' />
+          </Menu.Item>
+          <Menu.Item key='video' icon={<VideoCameraOutlined />}>
+            <SiteLink page='video' title='Video' />
+          </Menu.Item>
+          <Menu.Item key='list' icon={<UnorderedListOutlined />}>
+            <SiteLink page='list' title='List' />
+          </Menu.Item>
+          <Menu.Item key='search/media' icon={<CustomerServiceOutlined />}>
+            <SiteLink page='search/media' title='Media' />
+          </Menu.Item>
+          <Menu.Item key='search/weather' icon={<RadarChartOutlined />}>
+            <SiteLink page='search/weather' title='Weather' />
+          </Menu.Item>
+          <Menu.Item key='shop' icon={<ShoppingOutlined />}>
+            <SiteLink page='shop' title='Shop' />
+          </Menu.Item>
+          <Menu.Item key='visuals' icon={<BarChartOutlined />}>
+            <SiteLink page='visuals' title='Visuals' />
+          </Menu.Item>
+          <Menu.Item key='bio' icon={<UserOutlined />}>
+            <SiteLink page='bio' title='Bio' />
+          </Menu.Item>
+          <SubMenu key='theme' title='Theme' icon={<BgColorsOutlined />}>
+            <Menu.Item key='blue' onClick={() => dispatch(setSelectedTheme('default'))}>
+              Blue
+            </Menu.Item>
+            <Menu.Item key='green' onClick={() => dispatch(setSelectedTheme('green'))}>
+              Green
+            </Menu.Item>
+            <Menu.Item key='purple' onClick={() => dispatch(setSelectedTheme('purple'))}>
+              Purple
+            </Menu.Item>
+          </SubMenu>
+        </Menu>
+      </Sider>
+      <Layout>
+        <Header className='site-header'>
+          {createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+            className: 'fs-125',
+            onClick: toggle,
+          })}
+        </Header>
+        <Content className='site-content'>
+          <Outlet />
+        </Content>
+      </Layout>
+    </Layout>
   )
 }

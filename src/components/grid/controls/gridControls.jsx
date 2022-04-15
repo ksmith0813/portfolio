@@ -5,13 +5,16 @@ import { Drawer } from 'antd'
 import { DownloadOutlined, InsertRowRightOutlined } from '@ant-design/icons'
 import { ColumnSelection } from 'components/_siteWide/fastGrid/columnSelection/columnSelection'
 import { getState } from 'store/slices/gridSlice'
+import { getState as getThemeState } from 'store/slices/themeSlice'
 
 export const GridControls = () => {
   const state = useSelector(getState)
+  const themeState = useSelector(getThemeState)
+  const theme = themeState.selectedTheme
   const [showingSelection, setShowingSelection] = useState(false)
 
   return (
-    <div className='grid-controls'>
+    <div className={`grid-controls ${theme}`}>
       <>
         <CSVLink data={state.data} filename='user-data'>
           <DownloadOutlined className='pr-050' />

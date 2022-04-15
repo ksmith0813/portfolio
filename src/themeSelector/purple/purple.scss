@@ -15,7 +15,7 @@
   }
 }
 
-.grid-controls .anticon:hover {
+.grid-controls.purple .anticon:hover {
   color: var(--theme-color-3);
 }
 
@@ -41,22 +41,21 @@
   }
 }
 
-.cart-container {
+.category-container.purple .cart-container {
   :hover {
     color: var(--theme-color-3) !important;
   }
 }
 
-.page-header {
-  &.purple.ant-menu-horizontal > .ant-menu-item-selected a,
-  &.purple.ant-menu-horizontal > .ant-menu-item a:hover,
-  &.purple.ant-menu-horizontal > .ant-menu-item a:focus,
-  &.purple.ant-menu-horizontal > .ant-menu-item a:active,
-  &.purple.ant-menu-light .ant-menu-item-active,
-  &.purple.ant-menu-light .ant-menu-item:hover,
-  &.purple.ant-menu-light .ant-menu-submenu-active,
-  &.purple.ant-menu-light .ant-menu-submenu-title:hover,
-  &.purple.ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open {
+.site-nav.purple {
+  .ant-menu-item-selected a {
     color: var(--theme-color-3) !important;
+  }
+  .ant-menu-item-selected,
+  .ant-menu-item-active,
+  .ant-menu-submenu-active,
+  .ant-menu-submenu-title:hover {
+    color: var(--theme-color-3) !important;
+    background-color: var(--theme-color-3-light) !important;
   }
 }

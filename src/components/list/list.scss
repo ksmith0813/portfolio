@@ -2,16 +2,17 @@
   padding-top: 1em;
   padding-bottom: 0;
   height: 1000px;
-  border: 1px solid var(--gray-300);
-  background-color: white;
   .todo-header {
     font-weight: bold;
     border-bottom: 1px solid var(--gray-300);
+    padding-top: 1em;
     padding-bottom: 1em;
+    background-color: white;
   }
   .todo-list-items {
     height: 947px;
     overflow-y: auto;
+    background-color: white;
     .ant-row {
       padding: 1em;
       border-bottom: 1px solid var(--gray-300);
@@ -19,6 +20,9 @@
   }
   .user-select {
     width: 100%;
+  }
+  &.no-data {
+    height: 150px;
   }
 }
 

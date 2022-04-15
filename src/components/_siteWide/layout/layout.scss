@@ -1,9 +1,9 @@
 .category-container {
   height: 50px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding: 1em;
+  padding-top: 2em;
   background-color: var(--gray-200);
   .anticon {
     color: var(--gray-500);
@@ -25,11 +25,8 @@
   }
 }
 
-.no-data-message {
-  text-align: center;
-  padding-top: 0.5em;
-  color: #cbcbcb;
-  font-weight: 100;
+.empty-img-default-path-1 {
+    fill: #aeb8c2;
 }
 
 @media only screen and (max-width: 1024px) {

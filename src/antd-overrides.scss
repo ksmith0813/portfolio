@@ -1,5 +1,6 @@
-.ant-input:focus, .ant-input-focused {
-    box-shadow: none !important;
+.ant-input:focus,
+.ant-input-focused {
+  box-shadow: none !important;
 }
 
 .ant-form .ant-input {
@@ -46,19 +47,13 @@
   right: 2em;
 }
 
-.ant-menu-horizontal > .ant-menu-item-active:after,
-.ant-menu-horizontal > .ant-menu-item-open:after,
-.ant-menu-horizontal > .ant-menu-item-selected:after,
-.ant-menu-horizontal > .ant-menu-item:hover:after,
-.ant-menu-horizontal > .ant-menu-submenu-active:after,
-.ant-menu-horizontal > .ant-menu-submenu-open:after,
-.ant-menu-horizontal > .ant-menu-submenu-selected:after,
-.ant-menu-horizontal > .ant-menu-submenu:hover:after {
-  border-bottom: none !important;
-}
-
-.ant-menu-horizontal {
-  border-bottom: none;
+.ant-layout-sider-collapsed {
+  .ant-menu-item .ant-menu-item-icon + span,
+  .ant-menu-item .anticon + span,
+  .ant-menu-submenu-title .ant-menu-item-icon + span,
+  .ant-menu-submenu-title .anticon + span {
+    margin-left: 0px;
+  }
 }
 
 .ant-btn {
@@ -97,6 +92,18 @@
 
 .ant-card-extra {
   padding: 0 !important;
+}
+
+.header-row .ant-col::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 1.6em;
+  background-color: rgba(0, 0, 0, 0.06);
+  transform: translateY(-50%);
+  transition: background-color 0.3s;
+  content: '';
 }
 
 .add-item.anticon:hover {

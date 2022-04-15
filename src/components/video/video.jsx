@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { Input } from 'antd'
 import { getState, setSearch, setData, setSelectedItem, setSelectedItemByName } from 'store/slices/videoSlice'
 import './video.scss'
+import { NoData } from 'components/_siteWide/layout/layout'
 
 export const Video = () => {
   const dispatch = useDispatch()
@@ -115,4 +116,8 @@ const GroupTags = ({ values }) => {
   )
 }
 
-const NoSelectedItem = () => <div className='flex-1 content-center fs-200'>Select an item for video details</div>
+const NoSelectedItem = () => (
+  <div className='flex-1 content-center fs-200'>
+    <NoData message='Select an item for video details' />
+  </div>
+)

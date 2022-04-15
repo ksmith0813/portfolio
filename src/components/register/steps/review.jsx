@@ -12,11 +12,9 @@ export const Review = () => {
   return (
     <Form form={form} onFinish={() => dispatch(nextStep())}>
       <div className='steps-content'>
-        <Col span={14}>
-          <Row>
-            <Col span={24} className='fs-200 text-center'>
-              Review Info
-            </Col>
+        <Col span={22}>
+          <Row align='center' className='fs-200 '>
+            Review Info
           </Row>
           <ContactContent />
           <MovieContent />

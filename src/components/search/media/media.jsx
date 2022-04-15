@@ -107,8 +107,8 @@ export const Media = () => {
           allowClear
         />
       </Row>
-      <div className={`media-list-container ${loading || !data.length ? 'content-center' : ''}`}>
-        {loading && <Spin className='pt-200' />}
+      <div className={`media-list-container ${loading || !data.length ? 'no-data' : ''}`}>
+        {loading && <Spin className='content-center pt-300' />}
         {!loading && !data.length && !selectedMedia && <NoData />}
         {!loading && data.length > 0 && !selectedMedia && <MediaList data={data} getMedia={getMedia} theme={theme} />}
         {!loading && selectedMedia && (

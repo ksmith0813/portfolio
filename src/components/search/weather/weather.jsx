@@ -62,8 +62,8 @@ export const Weather = ({ showDetails }) => {
           allowClear
         />
       </Row>
-      <div className={`weather-container ${loading || (!loading && !weather) ? 'content-center' : ''}`}>
-        {loading && <Spin className='pt-200' />}
+      <div className={`weather-container ${loading || (!loading && !weather) ? 'no-data' : ''}`}>
+        {loading && <Spin className='content-center pt-300' />}
         {!loading && !weather && <NoData />}
         {!loading && weather && <WeatherContent weather={weather} showDetails={showDetails} />}
       </div>

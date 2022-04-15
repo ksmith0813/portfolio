@@ -19,7 +19,7 @@
   }
 }
 
-.grid-controls .anticon:hover {
+.grid-controls.default .anticon:hover {
   color: var(--theme-color-1);
 }
 
@@ -38,8 +38,21 @@
   }
 }
 
-.cart-container {
+.category-container.default .cart-container {
   :hover {
     color: var(--theme-color-1) !important;
+  }
+}
+
+.site-nav.default {
+  .ant-menu-item-selected a {
+    color: var(--theme-color-1) !important;
+  }
+  .ant-menu-item-selected,
+  .ant-menu-item-active,
+  .ant-menu-submenu-active,
+  .ant-menu-submenu-title:hover {
+    color: var(--theme-color-1) !important;
+    background-color: var(--theme-color-1-light) !important;
   }
 }

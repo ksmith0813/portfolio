@@ -34,15 +34,15 @@ export const List = () => {
   }, [originalTodos.length, dispatch])
 
   return (
-    <div className='page justify-center list-page-container'>
+    <Row justify='center'>
       <Col span={13}>
-        <Row justify='center' className='fs-200 text-center'>
+        <Row justify='center' className='fs-200 pt-150'>
           Things you need to do
         </Row>
-        <Row justify='center' className='m-200'>
+        <Row justify='center' className='mt-300'>
           <Search todos={originalTodos} setTodos={setTodos} setLoading={setLoading} />
         </Row>
-        <div className='todo-list-container'>
+        <div className={`todo-list-container ${loading || !todos.length ? 'no-data' : ''}`}>
           {loading && (
             <div className='p-500 skeletons'>
               <Skeleton avatar active />
@@ -66,7 +66,7 @@ export const List = () => {
           )}
         </div>
       </Col>
-    </div>
+    </Row>
   )
 }
 
@@ -92,11 +92,7 @@ const Search = ({ todos, setTodos }) => {
     setSearch(e.target.value || '')
   }
 
-  return (
-    <Col span={10}>
-      <Input onChange={onSearchChange} value={search} placeholder='Search' allowClear />
-    </Col>
-  )
+  return <Input size='large' onChange={onSearchChange} value={search} placeholder='Search' allowClear />
 }
 
 const TodoHeader = () => (

@@ -15,7 +15,7 @@
   }
 }
 
-.grid-controls .anticon:hover {
+.grid-controls.green .anticon:hover {
   color: var(--theme-color-2);
 }
 
@@ -41,22 +41,21 @@
   }
 }
 
-.cart-container {
+.category-container.green .cart-container {
   :hover {
     color: var(--theme-color-2) !important;
   }
 }
 
-.page-header {
-  &.green.ant-menu-horizontal > .ant-menu-item-selected a,
-  &.green.ant-menu-horizontal > .ant-menu-item a:hover,
-  &.green.ant-menu-horizontal > .ant-menu-item a:focus,
-  &.green.ant-menu-horizontal > .ant-menu-item a:active,
-  &.green.ant-menu-light .ant-menu-item-active,
-  &.green.ant-menu-light .ant-menu-item:hover,
-  &.green.ant-menu-light .ant-menu-submenu-active,
-  &.green.ant-menu-light .ant-menu-submenu-title:hover,
-  &.green.ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open {
+.site-nav.green {
+  .ant-menu-item-selected a {
     color: var(--theme-color-2) !important;
+  }
+  .ant-menu-item-selected,
+  .ant-menu-item-active,
+  .ant-menu-submenu-active,
+  .ant-menu-submenu-title:hover {
+    color: var(--theme-color-2) !important;
+    background-color: var(--theme-color-2-light) !important;
   }
 }
