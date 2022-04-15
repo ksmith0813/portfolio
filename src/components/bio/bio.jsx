@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Avatar, Tooltip } from 'antd'
-import { FacebookFilled, GithubFilled, LinkedinFilled } from '@ant-design/icons'
+import { GithubFilled, LinkedinFilled } from '@ant-design/icons'
 import { getState } from 'store/slices/themeSlice'
 import signature from 'assets/signature.png'
 import kevin from 'assets/kevin.jpg'
@@ -43,12 +43,6 @@ const ExternalLinks = () => (
       <GithubFilled
         className={`external-link`}
         onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
-      />
-    </Tooltip>
-    <Tooltip title='Facebook' mouseEnterDelay={0.5}>
-      <FacebookFilled
-        className={`external-link`}
-        onClick={() => window.open('https://www.facebook.com/profile.php?id=20614115', '_blank')}
       />
     </Tooltip>
     <Tooltip title='SoundCloud' mouseEnterDelay={0.5}>
