@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Row, Col, Form, Tag, Card } from 'antd'
+import { Row, Col, Form, Tag, Divider } from 'antd'
+import { getState as getThemeState } from 'store/slices/themeSlice'
 import { DataItem } from 'components/_siteWide/layout/layout'
 import { getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
@@ -32,7 +33,8 @@ const ContactContent = () => {
   const state = useSelector(getState)
   const contact = state.contact
   return (
-    <Card title='Contact' className='section'>
+    <div className='mt-200'>
+      <Divider>Contact</Divider>
       <Row>
         <Col className='p-100'>
           <DataItem label='First Name' children={contact.FirstName} />
@@ -70,15 +72,18 @@ const ContactContent = () => {
           <DataItem label='Email' children={contact.Email} />
         </Col>
       </Row>
-    </Card>
+    </div>
   )
 }
 
 const MovieContent = () => {
   const state = useSelector(getState)
+  const themeState = useSelector(getThemeState)
+  const theme = themeState.selectedTheme
   const movie = state.movie
   return (
-    <Card title='Movies' className='section'>
+    <>
+      <Divider>Movies</Divider>
       <Row>
         <Col className='p-100'>
           <DataItem label='Favorite Movie' children={movie.FavoriteMovie} />
@@ -89,22 +94,25 @@ const MovieContent = () => {
           <DataItem
             label='Favorite Genres'
             children={movie.FavoriteGenres.map((g, i) => (
-              <Tag key={i} className='item-tag-list'>
+              <Tag key={i} color={theme === 'default' ? 'blue' : theme}>
                 {g}
               </Tag>
             ))}
           />
         </Col>
       </Row>
-    </Card>
+    </>
   )
 }
 
 const MusicContent = () => {
   const state = useSelector(getState)
+  const themeState = useSelector(getThemeState)
+  const theme = themeState.selectedTheme
   const music = state.music
   return (
-    <Card title='Music' className='section'>
+    <>
+      <Divider>Music</Divider>
       <Row>
         <Col className='p-100'>
           <DataItem label='Favorite Band' children={music.FavoriteBand} />
@@ -118,7 +126,7 @@ const MusicContent = () => {
           <DataItem
             label='Instruments'
             children={music.Instruments.map((g, i) => (
-              <Tag key={i} className='item-tag-list'>
+              <Tag key={i} color={theme === 'default' ? 'blue' : theme}>
                 {g}
               </Tag>
             ))}
@@ -130,21 +138,24 @@ const MusicContent = () => {
           <DataItem label='SoundCloud' children={music.SoundCloud} />
         </Col>
       </Row>
-    </Card>
+    </>
   )
 }
 
 const TravelContent = () => {
   const state = useSelector(getState)
+  const themeState = useSelector(getThemeState)
+  const theme = themeState.selectedTheme
   const travel = state.travel
   return (
-    <Card title='Travel' className='section'>
+    <>
+      <Divider>Travel</Divider>
       <Row>
         <Col className='p-100'>
           <DataItem
             label='Favorite Countries'
             children={travel.FavoriteCountries.map((g, i) => (
-              <Tag key={i} className='item-tag-list'>
+              <Tag key={i} color={theme === 'default' ? 'blue' : theme}>
                 {g}
               </Tag>
             ))}
@@ -159,13 +170,13 @@ const TravelContent = () => {
           <DataItem
             label='Places Visited'
             children={travel.PlacesVisited.map((g, i) => (
-              <Tag key={i} className='item-tag-list'>
+              <Tag key={i} color={theme === 'default' ? 'blue' : theme}>
                 {g}
               </Tag>
             ))}
           />
         </Col>
       </Row>
-    </Card>
+    </>
   )
 }
