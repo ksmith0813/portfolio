@@ -82,7 +82,7 @@ export const Breweries = () => {
 
   return (
     <Col span={12} className='pl-200'>
-      <Card title={<span className='fs-125'>Breweries</span>} extra={cityAutoComplete}>
+      <Card title='Breweries' extra={cityAutoComplete}>
         <div className='card-display'>
           <Table
             rowKey='id'

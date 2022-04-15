@@ -12,7 +12,7 @@ export const ApolloMissions = () => {
   const theme = state.selectedTheme
   return (
     <Col span={6} className='pt-200 pl-200'>
-      <Card title={<span className='fs-125'>Apollo Space Timeline</span>}>
+      <Card title='Apollo Space Timeline'>
         <div className='card-display apollo'>
           <Timeline mode='left'>
             {data.map((d) => (
