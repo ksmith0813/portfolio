@@ -1,24 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Row, Col } from 'antd'
 import { useSelector } from 'react-redux'
 import { getState } from 'store/slices/themeSlice'
 import { LottieFile } from 'components/_siteWide/animation/lottieFile'
-import './home.scss'
 import { data } from './data'
+import './home.scss'
 
 export const Home = () => {
-  const [loading, setLoading] = useState(false)
-  const [activePage, setActivePage] = useState()
   const navigate = useNavigate()
   const state = useSelector(getState)
   const theme = state.selectedTheme
 
-  const goToPage = (page) => {
-    setLoading(true)
-    setActivePage(page)
-    setTimeout(() => navigate(`../${page}`), 3000)
-  }
+  const goToPage = (page) => navigate(`../${page}`)
 
   const Tile = ({ page, title }) => {
     const lottie = data(page)
@@ -29,7 +23,6 @@ export const Home = () => {
         <LottieFile
           animationData={lottie.file[page][theme]}
           containerClass={containerClass}
-          autoplay={loading && page === activePage}
           height={lottie.height}
           width={lottie.width}
         />
@@ -44,10 +37,10 @@ export const Home = () => {
       </Row>
       <Row justify='center' className='home-description'>
         <Col span={12}>
-          Welcome to my React portfolio application. This site demonstrates my frontend software engineering skills. 
-          The tech stack is ReactJS, Redux/Toolkit, Functional Components, ANT Design, SCSS, and Axios for hitting 
-          API endpoints. Feel free to explore some of the examples below. I definitely had fun coding the pages in 
-          this demo application.
+          Welcome to my React portfolio application. This site demonstrates my frontend software engineering skills. The
+          tech stack is ReactJS, Redux/Toolkit, Functional Components, ANT Design, SCSS, and Axios for hitting API
+          endpoints. Feel free to explore some of the examples below. I definitely had fun coding the pages in this demo
+          application.
         </Col>
       </Row>
       <div className='tile-container'>
