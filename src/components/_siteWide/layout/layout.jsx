@@ -44,6 +44,17 @@ export const Loader = () => {
 }
 
 export const MapLocation = ({ location, containerClass }) => {
+  const MapMarker = ({ lat, lon }) => (
+    <GoogleMap defaultZoom={14} defaultCenter={{ lat: lat, lng: lon }}>
+      <Marker
+        position={{
+          lat: lat,
+          lng: lon,
+        }}
+      />
+    </GoogleMap>
+  )
+
   const Map = () => <MapMarker lat={location.lat} lon={location.lon} />
   const MapComponent = withScriptjs(withGoogleMap(Map))
 
@@ -58,17 +69,6 @@ export const MapLocation = ({ location, containerClass }) => {
     </div>
   )
 }
-
-const MapMarker = ({ lat, lon }) => (
-  <GoogleMap defaultZoom={14} defaultCenter={{ lat: lat, lng: lon }}>
-    <Marker
-      position={{
-        lat: lat,
-        lng: lon,
-      }}
-    />
-  </GoogleMap>
-)
 
 export const NoData = ({ message = 'No Data' }) => (
   <div className='content-center'>

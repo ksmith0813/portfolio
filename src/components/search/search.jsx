@@ -5,7 +5,7 @@ import { Media } from './media/media'
 import { Weather } from './weather/weather'
 
 export const Search = () => {
-  let { page } = useParams()
+  const { page } = useParams()
 
   return (
     <Row justify='center'>

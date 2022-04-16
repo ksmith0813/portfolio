@@ -10,6 +10,32 @@ import './bio.scss'
 
 export const Bio = () => {
   const state = useSelector(getState)
+
+  const ExternalLinks = () => (
+    <div className='external-links'>
+      <Tooltip title='LinkedIn' mouseEnterDelay={0.5}>
+        <LinkedinFilled
+          className={`external-link`}
+          onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
+        />
+      </Tooltip>
+      <Tooltip title='Github' mouseEnterDelay={0.5}>
+        <GithubFilled
+          className={`external-link`}
+          onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
+        />
+      </Tooltip>
+      <Tooltip title='SoundCloud' mouseEnterDelay={0.5}>
+        <img
+          alt=''
+          src={soundCloud}
+          className={`sound-cloud`}
+          onClick={() => window.open('https://soundcloud.com/kevbot0813', '_blank')}
+        />
+      </Tooltip>
+    </div>
+  )
+
   return (
     <div className={`bio-container ${state.selectedTheme}`}>
       <div className='description'>
@@ -30,28 +56,3 @@ export const Bio = () => {
     </div>
   )
 }
-
-const ExternalLinks = () => (
-  <div className='external-links'>
-    <Tooltip title='LinkedIn' mouseEnterDelay={0.5}>
-      <LinkedinFilled
-        className={`external-link`}
-        onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
-      />
-    </Tooltip>
-    <Tooltip title='Github' mouseEnterDelay={0.5}>
-      <GithubFilled
-        className={`external-link`}
-        onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
-      />
-    </Tooltip>
-    <Tooltip title='SoundCloud' mouseEnterDelay={0.5}>
-      <img
-        alt=''
-        src={soundCloud}
-        className={`sound-cloud`}
-        onClick={() => window.open('https://soundcloud.com/kevbot0813', '_blank')}
-      />
-    </Tooltip>
-  </div>
-)

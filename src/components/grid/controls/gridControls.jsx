@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { CSVLink } from 'react-csv'
 import { Drawer } from 'antd'
 import { DownloadOutlined, InsertRowRightOutlined } from '@ant-design/icons'
-import { ColumnSelection } from 'components/_siteWide/fastGrid/columnSelection/columnSelection'
+import { SortableList } from 'components/_siteWide/sortableList/sortableList'
 import { getState } from 'store/slices/gridSlice'
 import { getState as getThemeState } from 'store/slices/themeSlice'
 
@@ -26,7 +26,7 @@ export const GridControls = () => {
           onClose={() => setShowingSelection(false)}
           visible={showingSelection}
         >
-          <ColumnSelection
+          <SortableList
             state={state}
             storeKey={state.columnKey}
             defaultColumns={state.defaultColumns}

@@ -73,10 +73,15 @@ path:hover {
     .us-state-map {
       height: 300px;
     }
+    .ant-timeline.ant-timeline-label .ant-timeline-item-label {
+      width: 70px;
+      font-size: 0.9em;
+      margin-top: 0.1em;
+    }
     .ant-timeline-item-tail,
     .ant-timeline-item-head,
     .ant-timeline-item-content {
-      left: 39% !important;
+      left: 40% !important;
     }
     .ant-timeline-item-content {
       width: 60% !important;

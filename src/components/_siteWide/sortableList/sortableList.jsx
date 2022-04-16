@@ -5,11 +5,11 @@ import { Row, Col, Switch, Button } from 'antd'
 import { MenuOutlined } from '@ant-design/icons'
 import { updateDefaultColumns } from 'store/slices/gridSlice'
 import { arrayMove, spacesToProperty } from 'utils/general'
-import './columnSelection.scss'
+import './sortableList.scss'
 
 const store = window.localStorage
 
-export const ColumnSelection = ({ state, storeKey, defaultColumns, setShowingSelection }) => {
+export const SortableList = ({ state, storeKey, defaultColumns, setShowingSelection }) => {
   const getColumnList = () => {
     let columnList = []
     Object.keys(state.originalData[0]).map((p, i) => {
