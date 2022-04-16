@@ -1,12 +1,14 @@
-.site-nav {
-  height: 100%;
-  position: fixed;
-  width: 200px;
-  background-color: white;
+.app-layout {
+  height: 100vh;
 }
 
 .site-nav-container {
   background-color: white;
+}
+
+.site-nav {
+  height: 100%;
+  position: fixed;
 }
 
 .site-header {
@@ -29,7 +31,6 @@
 }
 
 .logo {
-  background-color: white;
   height: 60px;
   display: flex;
   justify-content: center;

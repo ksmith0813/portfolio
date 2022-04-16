@@ -1,7 +1,5 @@
 .home {
   background-color: white;
-  height: calc(100vh - 60px);
-  overflow-y: auto;
   .hello {
     display: flex;
     align-items: center;
@@ -80,12 +78,12 @@
 @media only screen and (max-width: 1920px) {
   .home {
     .hello {
-      height: 100px;
+      height: 140px;
       font-size: 4em;
     }
     .home-description {
-      font-size: 1.2em;
-      height: 170px;
+      font-size: 1.1em;
+      height: 140px;
     }
     .tile-container {
       .tile {
