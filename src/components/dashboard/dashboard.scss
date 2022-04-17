@@ -89,6 +89,10 @@ path:hover {
     .ant-table-body {
       max-height: 246px !important;
     }
+    .ant-table-body,
+    .ant-table-header {
+      font-size: 0.8em;
+    }
   }
 }
 
