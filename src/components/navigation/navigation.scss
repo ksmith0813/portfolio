@@ -16,7 +16,11 @@
   background-color: white;
   border-left: 1px solid var(--gray-400);
   border-bottom: 1px solid var(--gray-400);
-  padding-left: 1em;
+  padding-left: 0.5em;
+  img {
+    height: 50px;
+    margin-top: -0.5em;
+  }
 }
 
 .site-content {

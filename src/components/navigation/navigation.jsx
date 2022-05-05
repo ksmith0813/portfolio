@@ -18,6 +18,7 @@ import {
 } from '@ant-design/icons'
 import { getState, setSelectedTheme } from 'store/slices/themeSlice'
 import kevin from 'assets/kevin.jpg'
+import signature from 'assets/signature.png'
 import './navigation.scss'
 
 const { Header, Sider, Content } = Layout
@@ -97,7 +98,7 @@ export const Navigation = () => {
       </Sider>
       <Layout>
         <Header className='site-header'>
-          <div className='fs-125'>Kevin Smith</div>
+          <img src={signature} alt='' />
         </Header>
         <Content className='site-content'>
           <Outlet />
