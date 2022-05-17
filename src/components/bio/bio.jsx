@@ -1,9 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Avatar, Tooltip } from 'antd'
+import { Avatar, Row, Tooltip } from 'antd'
 import { GithubFilled, LinkedinFilled } from '@ant-design/icons'
 import { getState } from 'store/slices/themeSlice'
-import signature from 'assets/signature.png'
 import kevin from 'assets/Kevin.jpg'
 import soundCloud from 'assets/sound-cloud.png'
 import './bio.scss'
@@ -39,18 +38,19 @@ export const Bio = () => {
   return (
     <div className={`bio-container ${state.selectedTheme}`}>
       <div className='description'>
-        <div className='fs-125'>
+        <Row className='fs-125'>
           <b>Hello!</b>
-        </div>
-        <div>
+        </Row>
+        <Row>
           I am a passionate Software Developer with a demonstrated history of success in the computer software industry.
           Strong engineering professional skilled in React, React-Native, Redux, JavaScript, HTML, SCSS, Axios, Nivo,
           C#, .NET, SQL Server. I love hanging out on the beach and getting lost in the woods and canyons. Traveling the
           world and going on endless adventures will always keep me moving forward. Aside from building software
           applications, I have a passion for making music in my home studio. Let's crank some code and rock out!
+        </Row>
+        <Row align='end'>
           <ExternalLinks />
-          <img className='signature' src={signature} alt='' />
-        </div>
+        </Row>
       </div>
       <Avatar className='me-image' src={kevin} alt='' />
     </div>
