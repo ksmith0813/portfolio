@@ -17,7 +17,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import { getState, setSelectedTheme } from 'store/slices/themeSlice'
-import kevin from 'assets/kevin.jpg'
+import kevin from 'assets/Kevin.jpg'
 import signature from 'assets/signature.png'
 import './navigation.scss'
 

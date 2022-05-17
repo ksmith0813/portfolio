@@ -4,7 +4,7 @@ import { Avatar, Tooltip } from 'antd'
 import { GithubFilled, LinkedinFilled } from '@ant-design/icons'
 import { getState } from 'store/slices/themeSlice'
 import signature from 'assets/signature.png'
-import kevin from 'assets/kevin.jpg'
+import kevin from 'assets/Kevin.jpg'
 import soundCloud from 'assets/sound-cloud.png'
 import './bio.scss'
 
