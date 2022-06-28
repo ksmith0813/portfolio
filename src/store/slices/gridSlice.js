@@ -4,84 +4,43 @@ import moment from 'moment'
 
 const store = window.localStorage
 
+const initialState = {
+  initialLoad: true,
+  loading: true,
+  key: 0,
+  rowKey: '',
+  columnKey: '',
+  filterKey: '',
+  selectAllKey: '',
+  selectAll: false,
+  selectedIds: [],
+  selectedGridKeys: [],
+  originalData: [],
+  data: [],
+  total: 0,
+  filters: {
+    currentPage: 1,
+    pageSize: 50,
+    sortColumn: '',
+    sortDirection: '',
+    config: {},
+    options: {},
+  },
+  search: {},
+  defaultColumns: [],
+  visibleColumns: [],
+  ignoreColumns: ['Id'],
+}
+
 export const slice = createSlice({
   name: 'grid',
-  initialState: {
-    initialLoad: true,
-    loading: true,
-    key: 0,
-    rowKey: '',
-    columnKey: '',
-    filterKey: '',
-    selectAllKey: '',
-    selectAll: false,
-    selectedIds: [],
-    selectedGridKeys: [],
-    originalData: [],
-    data: [],
-    total: 0,
-    filters: {
-      currentPage: 1,
-      pageSize: 50,
-      sortColumn: '',
-      sortDirection: '',
-      config: {},
-      options: {},
-    },
-    search: {},
-    defaultColumns: [],
-    visibleColumns: [],
-    ignoreColumns: ['Id'],
-  },
+  initialState: initialState,
   reducers: {
     setInitialLoad: (state) => {
       state.initialLoad = false
     },
     setInitialData: (state, action) => {
-      const payload = action.payload
-      const defaults = payload.defaults
-      state.rowKey = defaults.rowKey
-      state.columnKey = defaults.columnKey
-      state.filterKey = defaults.filterKey
-      state.selectAllKey = defaults.selectAllKey
-      state.tableClass = defaults.tableClass
-      state.defaultColumns = defaults.defaultColumns
-      state.visibleColumns = defaults.visibleColumns
-      state.ignoreColumns = defaults.ignoreColumns
-      state.filters.config = defaults.defaultFilters
-
-      let data = []
-      let originalData = []
-
-      payload.data.map((d, i) => {
-        const location = d.location
-        const add = () => {
-          return {
-            id: i,
-            picture: d.picture.thumbnail,
-            name: `${d.name.first} ${d.name.last}`,
-            userName: d.login.username,
-            country: location.country,
-            state: location.state,
-            city: location.city,
-            postalCode: location.postcode,
-            latitude: location.coordinates.latitude,
-            longitude: location.coordinates.longitude,
-            phone: d.phone,
-            registerDate: d.registered?.date,
-            dateOfBirth: d.dob.date,
-            age: d.dob.age,
-          }
-        }
-        data.push(add())
-        originalData.push(add())
-        state.loading = false
-        return d
-      })
-
-      state.data = data
-      state.originalData = originalData
-      updateData(state)
+      initializeData(state, action)
     },
     setData: (state) => {
       updateData(state)
@@ -161,6 +120,53 @@ export const {
 export const getState = (state) => state.grid
 
 export default slice.reducer
+
+const initializeData = (state, action) => {
+  const payload = action.payload
+  const defaults = payload.defaults
+  state.rowKey = defaults.rowKey
+  state.columnKey = defaults.columnKey
+  state.filterKey = defaults.filterKey
+  state.selectAllKey = defaults.selectAllKey
+  state.tableClass = defaults.tableClass
+  state.defaultColumns = defaults.defaultColumns
+  state.visibleColumns = defaults.visibleColumns
+  state.ignoreColumns = defaults.ignoreColumns
+  state.filters.config = defaults.defaultFilters
+
+  let data = []
+  let originalData = []
+
+  payload.data.map((d, i) => {
+    const location = d.location
+    const add = () => {
+      return {
+        id: i,
+        picture: d.picture.thumbnail,
+        name: `${d.name.first} ${d.name.last}`,
+        userName: d.login.username,
+        country: location.country,
+        state: location.state,
+        city: location.city,
+        postalCode: location.postcode,
+        latitude: location.coordinates.latitude,
+        longitude: location.coordinates.longitude,
+        phone: d.phone,
+        registerDate: d.registered?.date,
+        dateOfBirth: d.dob.date,
+        age: d.dob.age,
+      }
+    }
+    data.push(add())
+    originalData.push(add())
+    state.loading = false
+    return d
+  })
+
+  state.data = data
+  state.originalData = originalData
+  updateData(state)
+}
 
 const updateData = (state) => {
   const config = state.filters.config
