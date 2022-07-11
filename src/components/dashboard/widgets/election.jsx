@@ -2,22 +2,7 @@ import React, { useState, useEffect } from 'react'
 import USAMap from 'react-usa-map'
 import { Col, Card } from 'antd'
 import { states } from 'constants/states'
-
-const randomPositives = [
-  'better',
-  'greater',
-  'superior',
-  'radical',
-  'bodatious',
-  'tubular',
-  'far out',
-  'cooler',
-  'cooler that you',
-  'wicked awesome',
-  'more desireable',
-  'prominent',
-  'awesome',
-]
+import { democrats, randomPositives, republicans } from 'constants/election'
 
 export const Election = () => {
   const [message, setMessage] = useState({})
@@ -73,62 +58,3 @@ export const Election = () => {
     </Col>
   )
 }
-
-const democrats = [
-  'AZ',
-  'NY',
-  'CT',
-  'MD',
-  'WA',
-  'OR',
-  'NV',
-  'NM',
-  'DC',
-  'DE',
-  'MA',
-  'MN',
-  'WI',
-  'IL',
-  'VT',
-  'RI',
-  'NJ',
-  'CO',
-  'CA',
-  'PA',
-  'VA',
-  'GA',
-  'ME',
-  'NH',
-  'HI',
-]
-const republicans = [
-  'ID',
-  'MT',
-  'IN',
-  'TE',
-  'AK',
-  'KY',
-  'NC',
-  'WV',
-  'WY',
-  'ND',
-  'SD',
-  'NE',
-  'UT',
-  'TN',
-  'KS',
-  'OK',
-  'TX',
-  'IO',
-  'MO',
-  'AR',
-  'AL',
-  'MS',
-  'LA',
-  'MI',
-  'LA',
-  'FL',
-  'SC',
-  'OH',
-  'IA',
-]
