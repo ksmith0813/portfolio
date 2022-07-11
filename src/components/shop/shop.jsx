@@ -50,8 +50,10 @@ export const Shop = () => {
       <div className={`category-container ${themeState.selectedTheme}`}>
         <Categories items={state.categories} selected={state.selectedCategory} onClick={onCategoryChange} />
         <div className='cart-container flex items-center'>
-          <span className='fs-125 pr-025'>{totalItems}</span>
-          <ShoppingCartOutlined className='cart-icon' onClick={() => dispatch(openModal())} />
+          <div className='cart-icon-container'>
+            <span className='cart-total-count fs-125 pr-025'>{totalItems}</span>
+            <ShoppingCartOutlined className='cart-icon' onClick={() => dispatch(openModal())} />
+          </div>
         </div>
       </div>
       <div className='product-container'>
