@@ -15,24 +15,7 @@ export const slice = createSlice({
       state.search = action.payload
     },
     setData: (state, action) => {
-      if (action.payload) {
-        const nameMatches = getMatchesByProperty(state, 'name', action.payload)
-        const muscleGroupMatches = getMatchesByProperty(state, 'muscle_groups', action.payload)
-        const equipmentMatches = getMatchesByProperty(state, 'equipment_required', action.payload)
-        const movementMatches = getMatchesByProperty(state, 'movement_patterns', action.payload)
-        const categories = []
-
-        if (muscleGroupMatches.length) categories.push('Muscle')
-        if (equipmentMatches.length) categories.push('Equipment')
-        if (movementMatches.length) categories.push('Movement')
-
-        state.categories = categories.length ? categories : []
-        state.data = [...new Set(nameMatches.concat(muscleGroupMatches, equipmentMatches, movementMatches))]
-      } else {
-        state.data = videos
-      }
-
-      if (!state.originalData.length) state.originalData = videos
+      updateData(state, action)
     },
     setSelectedItem: (state, action) => {
       state.selectedItem = action.payload
@@ -48,6 +31,27 @@ export const { setSearch, setData, setSelectedItem, setSelectedItemByName } = sl
 export const getState = (state) => state.video
 
 export default slice.reducer
+
+const updateData = (state, action) => {
+  if (action.payload) {
+    const nameMatches = getMatchesByProperty(state, 'name', action.payload)
+    const muscleGroupMatches = getMatchesByProperty(state, 'muscle_groups', action.payload)
+    const equipmentMatches = getMatchesByProperty(state, 'equipment_required', action.payload)
+    const movementMatches = getMatchesByProperty(state, 'movement_patterns', action.payload)
+    const categories = []
+
+    if (muscleGroupMatches.length) categories.push('Muscle')
+    if (equipmentMatches.length) categories.push('Equipment')
+    if (movementMatches.length) categories.push('Movement')
+
+    state.categories = categories.length ? categories : []
+    state.data = [...new Set(nameMatches.concat(muscleGroupMatches, equipmentMatches, movementMatches))]
+  } else {
+    state.data = videos
+  }
+
+  if (!state.originalData.length) state.originalData = videos
+}
 
 const getMatchesByProperty = (state, property, payload) => {
   return state.originalData.filter((d) => d[property]?.toLowerCase().includes(payload?.toLowerCase()))
