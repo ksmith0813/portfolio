@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { Input } from 'antd'
+import { NoData } from 'components/_siteWide/layout/layout'
 import { getState, setSearch, setData, setSelectedItem, setSelectedItemByName } from 'store/slices/videoSlice'
 import './video.scss'
-import { NoData } from 'components/_siteWide/layout/layout'
 
 export const Video = () => {
   const dispatch = useDispatch()
