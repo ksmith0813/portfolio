@@ -26,13 +26,15 @@ This site includes:
 
 Component Examples:
 
-- Dashboard containing several widgets with different types of data structures 
+- Dashboard containing several widgets with different types of data structures
 
 - Form Registration with multiple steps and validation logic
 
 - Grid view with filtering, sorting, custom column hiding/reordering. Uses data from the randomuser API
 
 - List view with an editable todo list. Uses API data
+
+- Searchable Tree view that highlights matched values
 
 - Media search page that hits the open movie database EP and allows the user to drill into the media's details
 

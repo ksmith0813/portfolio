@@ -15,6 +15,7 @@ import {
   BarChartOutlined,
   BgColorsOutlined,
   UserOutlined,
+  NodeExpandOutlined,
 } from '@ant-design/icons'
 import { getState, setSelectedTheme } from 'store/slices/themeSlice'
 import kevin from 'assets/Kevin.jpg'
@@ -58,6 +59,9 @@ export const Navigation = () => {
       </Menu.Item>
       <Menu.Item key='list' icon={<UnorderedListOutlined />}>
         <SiteLink page='list' title='List' />
+      </Menu.Item>
+      <Menu.Item key='tree' icon={<NodeExpandOutlined />}>
+        <SiteLink page='tree' title='Tree' />
       </Menu.Item>
       <Menu.Item key='search/media' icon={<CustomerServiceOutlined />}>
         <SiteLink page='search/media' title='Media' />

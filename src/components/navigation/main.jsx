@@ -8,6 +8,7 @@ import { Register } from 'components/register/register'
 import { Grid } from 'components/grid/grid'
 import { Video } from 'components/video/video'
 import { List } from 'components/list/list'
+import { Tree } from 'components/tree/tree'
 import { Search } from 'components/search/search'
 import { Media } from 'components/search/media/media'
 import { Weather } from 'components/search/weather/weather'
@@ -24,6 +25,7 @@ export const Main = () => (
         <Route path='register' element={<Register />} />
         <Route path='grid' element={<Grid />} />
         <Route path='video' element={<Video />} />
+        <Route path='tree' element={<Tree />} />
         <Route path='list' element={<List />} />
         <Route path='search' element={<Search />}>
           <Route path=':page' element={<Media />} />
