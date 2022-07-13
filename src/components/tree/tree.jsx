@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Col, Input, Row, Tree as TreeView } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
 import { treeData } from 'constants/tree'
 
 export const Tree = () => {
   const [search, setSearch] = useState('')
-  const [data, setData] = useState([])
-  const [allData, setAllData] = useState([])
-
-  useEffect(() => {
-    setData(treeData)
-    setAllData(treeData)
-  }, [])
+  const [data, setData] = useState([...treeData])
 
   const handleSearch = (e) => {
     const value = e.target.value
@@ -19,7 +13,7 @@ export const Tree = () => {
 
     if (value) {
       const newValues = []
-      for (const item of [...allData]) {
+      for (const item of [...treeData]) {
         let newValue = null
         if (item.title.toLowerCase().includes(value.toLowerCase())) {
           newValue = { ...item }
@@ -38,7 +32,7 @@ export const Tree = () => {
 
       setData(newValues)
     } else {
-      setData(allData)
+      setData(treeData)
     }
   }
 
@@ -83,7 +77,7 @@ export const Tree = () => {
       <TreeView
         key={index}
         treeData={[item]}
-        defaultExpandedKeys={[item.key]}
+        expandedKeys={[item.key]}
         switcherIcon={<DownOutlined />}
         className='p-100'
       />
