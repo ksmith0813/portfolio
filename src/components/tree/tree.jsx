@@ -84,7 +84,7 @@ export const Tree = () => {
     )
   })
 
-  const noMatchesText = (!data || !data.length) && <div className='mt-100'>No Matching items were found</div>
+  const noMatchesText = !data.length && <div className='mt-100'>No Matching items were found</div>
 
   return (
     <div className='p-200 pt-300'>
