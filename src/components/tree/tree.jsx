@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Col, Input, Row, Tree as TreeView } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
 import { treeData } from 'constants/tree'
+import { NoData } from 'components/_siteWide/layout/layout'
 
 export const Tree = () => {
   const [search, setSearch] = useState('')
@@ -84,7 +85,7 @@ export const Tree = () => {
     )
   })
 
-  const noMatchesText = !data.length && <div className='mt-100'>No Matching items were found</div>
+  const noMatchesText = !data.length && <NoData />
 
   return (
     <div className='p-200 pt-300'>
