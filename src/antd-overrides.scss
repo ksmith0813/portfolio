@@ -56,6 +56,18 @@
   }
 }
 
+.ant-menu-submenu .ant-menu-item:nth-child(1) .ant-menu-title-content:hover {
+  color: var(--theme-color-1);
+}
+
+.ant-menu-submenu .ant-menu-item:nth-child(2) .ant-menu-title-content:hover {
+  color: var(--theme-color-2);
+}
+
+.ant-menu-submenu .ant-menu-item:nth-child(3) .ant-menu-title-content:hover {
+  color: var(--theme-color-3);
+}
+
 .ant-btn {
   border-radius: 0 !important;
 }
