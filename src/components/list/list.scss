@@ -1,7 +1,7 @@
 .todo-list-container {
   padding-top: 1em;
   padding-bottom: 0;
-  height: 1000px;
+  max-height: 1000px;
   .todo-header {
     font-weight: bold;
     border-bottom: 1px solid var(--gray-300);
@@ -10,7 +10,7 @@
     background-color: white;
   }
   .todo-list-items {
-    height: 947px;
+    max-height: 947px;
     overflow-y: auto;
     background-color: white;
     .ant-row {
@@ -28,9 +28,9 @@
 
 @media only screen and (max-width: 1920px) {
   .todo-list-container {
-    height: 600px;
+    max-height: 600px;
     .todo-list-items {
-      height: 547px;
+      max-height: 547px;
     }
     .skeletons div:nth-child(n + 4) {
       display: none;
@@ -44,9 +44,9 @@
 
 @media only screen and (max-width: 1680px) {
   .todo-list-container {
-    height: 460px;
+    max-height: 460px;
     .todo-list-items {
-      height: 407px;
+      max-height: 407px;
     }
     .skeletons div:nth-child(n + 3) {
       display: none;
@@ -60,9 +60,9 @@
 
 @media only screen and (max-width: 1440px) {
   .todo-list-container {
-    height: 470px;
+    max-height: 470px;
     .todo-list-items {
-      height: 417px;
+      max-height: 417px;
     }
   }
   .ant-col-13 {
@@ -73,9 +73,9 @@
 
 @media only screen and (max-width: 1024px) {
   .todo-list-container {
-    height: 500px;
+    max-height: 500px;
     .todo-list-items {
-      height: 447px;
+      max-height: 447px;
     }
   }
   .ant-col-13 {
