@@ -1,9 +1,10 @@
 import React from 'react'
 import { ResponsiveWaffle } from '@nivo/waffle'
+import { waffleData } from 'data/charts/waffle'
 
 export const NivoWaffle = () => (
   <ResponsiveWaffle
-    data={data}
+    data={waffleData}
     total={100}
     rows={18}
     columns={14}
@@ -41,31 +42,3 @@ export const NivoWaffle = () => (
     ]}
   />
 )
-
-const data = [
-  {
-    id: 'Dogs',
-    label: 'Dogs',
-    value: 40,
-  },
-  {
-    id: 'Cats',
-    label: 'Cats',
-    value: 25,
-  },
-  {
-    id: 'Birds',
-    label: 'Birds',
-    value: 10,
-  },
-  {
-    id: 'Fish',
-    label: 'Fish',
-    value: 15,
-  },
-  {
-    id: 'Reptiles',
-    label: 'Reptiles',
-    value: 10,
-  },
-]

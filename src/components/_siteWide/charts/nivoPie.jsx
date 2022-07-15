@@ -1,5 +1,6 @@
 import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
+import { pieData } from 'data/charts/pie'
 
 export const NivoPie = ({ margin = { top: 150, right: 150, bottom: 150, left: 150 }, hideLegend = false }) => {
   let legends = !hideLegend
@@ -32,7 +33,7 @@ export const NivoPie = ({ margin = { top: 150, right: 150, bottom: 150, left: 15
 
   return (
     <ResponsivePie
-      data={data}
+      data={pieData}
       margin={margin}
       innerRadius={0.5}
       padAngle={0.7}
@@ -91,36 +92,3 @@ export const NivoPie = ({ margin = { top: 150, right: 150, bottom: 150, left: 15
     />
   )
 }
-
-const data = [
-  {
-    id: 'Dogs',
-    label: 'Dogs',
-    value: 591,
-    color: 'hsl(11, 70%, 50%)',
-  },
-  {
-    id: 'Cats',
-    label: 'Cats',
-    value: 504,
-    color: 'hsl(13, 70%, 50%)',
-  },
-  {
-    id: 'Birds',
-    label: 'Birds',
-    value: 127,
-    color: 'hsl(24, 70%, 50%)',
-  },
-  {
-    id: 'Fish',
-    label: 'Fish',
-    value: 304,
-    color: 'hsl(9, 70%, 50%)',
-  },
-  {
-    id: 'Reptiles',
-    label: 'Reptiles',
-    value: 156,
-    color: 'hsl(330, 70%, 50%)',
-  },
-]
