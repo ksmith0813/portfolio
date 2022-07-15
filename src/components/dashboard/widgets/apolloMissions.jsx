@@ -5,7 +5,7 @@ import shuttle from 'assets/shuttle.svg'
 import defaultAstronaut from 'assets/default/astronaut-default.svg'
 import greenAstronaut from 'assets/green/astronaut-green.svg'
 import purpleAstronaut from 'assets/purple/astronaut-purple.svg'
-import { apolloMissions } from 'constants/apolloMissions'
+import { apolloMissions } from 'data/apolloMissions'
 import { getState } from 'store/slices/themeSlice'
 
 export const ApolloMissions = () => {

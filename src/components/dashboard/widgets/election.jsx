@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import USAMap from 'react-usa-map'
 import { findWhere } from 'underscore'
 import { Col, Card } from 'antd'
-import { states } from 'constants/states'
-import { democrats, randomPositives, republicans } from 'constants/election'
+import { states } from 'data/states'
+import { democrats, randomPositives, republicans } from 'data/election'
 
 export const Election = () => {
   const [message, setMessage] = useState({})

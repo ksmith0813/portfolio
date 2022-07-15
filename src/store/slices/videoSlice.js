@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { findWhere } from 'underscore'
-import { videos } from 'constants/videos'
+import { videos } from 'data/videos'
 
 export const slice = createSlice({
   name: 'video',

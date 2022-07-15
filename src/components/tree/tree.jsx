@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Col, Input, Row, Tree as TreeView } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
-import { treeData } from 'constants/tree'
 import { NoData } from 'components/_siteWide/layout/layout'
+import { treeData } from 'data/tree'
 
 export const Tree = () => {
   const [search, setSearch] = useState('')

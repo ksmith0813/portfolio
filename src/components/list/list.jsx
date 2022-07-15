@@ -4,7 +4,7 @@ import { findWhere } from 'underscore'
 import { Input, Row, Col, Select, Switch, Skeleton } from 'antd'
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { NoData } from 'components/_siteWide/layout/layout'
-import { userNames } from 'constants/users'
+import { userNames } from 'data/users'
 import {
   getState,
   setLoading,
