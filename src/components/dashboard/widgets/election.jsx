@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import USAMap from 'react-usa-map'
 import { findWhere } from 'underscore'
 import { Col, Card } from 'antd'
-import { states } from 'data/states'
+import { states } from 'data/dropDowns/states'
 import { democrats, randomPositives, republicans } from 'data/election'
 
 export const Election = () => {

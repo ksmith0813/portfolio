@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { Avatar } from 'antd'
 import { sortAlphebetically } from 'utils/general'
-import { countries } from 'data/countries'
+import { countries } from 'data/dropDowns/countries'
 
 export const getColumns = () => {
   return [

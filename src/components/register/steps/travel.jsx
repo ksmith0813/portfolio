@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Form, Input, Select, Row, Col } from 'antd'
 import { FormItem } from 'components/_siteWide/form/formItem'
-import { countries } from 'data/countries'
+import { countries } from 'data/dropDowns/countries'
 import { setClean, setTravel, getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 

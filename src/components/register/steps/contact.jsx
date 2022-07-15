@@ -6,7 +6,7 @@ import { validateZip } from 'components/_siteWide/form/validators/validateZip'
 import { validatePhone } from 'components/_siteWide/form/validators/validatePhone'
 import { validateEmail } from 'components/_siteWide/form/validators/validateEmail'
 import { FormItem } from 'components/_siteWide/form/formItem'
-import { states } from 'data/states'
+import { states } from 'data/dropDowns/states'
 import { setClean, setContact, getState, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 

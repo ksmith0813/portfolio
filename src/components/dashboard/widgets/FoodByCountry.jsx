@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Col, Button } from 'antd'
 import { NivoBar } from 'components/_siteWide/charts/nivoBar'
-import { yearOneFood, yearThreeFood, yearTwoFood } from 'data/foodByYear'
+import { yearOneFood, yearThreeFood, yearTwoFood } from 'data/charts/foodByYear'
 
 export const FoodByCountry = () => {
   const [selected, setSelected] = useState('2019')
