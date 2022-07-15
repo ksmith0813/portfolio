@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { isArray } from 'underscore'
-import './form.scss'
+import './formFloatLabel.scss'
 
 export const FormFloatLabel = ({ children, label, inputValue }) => {
   const [focus, setFocus] = useState(false)
