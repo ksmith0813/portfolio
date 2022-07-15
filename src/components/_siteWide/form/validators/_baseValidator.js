@@ -1,4 +1,5 @@
-import { isArray, spacesToProperty } from 'utils/general'
+import { isArray } from 'underscore'
+import { spacesToProperty } from 'utils/general'
 
 export const validateProperty = (
   validator,

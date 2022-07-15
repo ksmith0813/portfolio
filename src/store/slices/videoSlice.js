@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { findWhere } from 'underscore'
 import { videos } from 'constants/videos'
 
 export const slice = createSlice({
@@ -21,7 +22,7 @@ export const slice = createSlice({
       state.selectedItem = action.payload
     },
     setSelectedItemByName: (state, action) => {
-      state.selectedItem = state.originalData.filter((d) => d.name?.toLowerCase() === action.payload?.toLowerCase())[0]
+      state.selectedItem = findWhere(state.originalData, { name: action.payload })
     },
   },
 })

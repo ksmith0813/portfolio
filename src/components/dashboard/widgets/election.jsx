@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import USAMap from 'react-usa-map'
+import { findWhere } from 'underscore'
 import { Col, Card } from 'antd'
 import { states } from 'constants/states'
 import { democrats, randomPositives, republicans } from 'constants/election'
@@ -20,7 +21,7 @@ export const Election = () => {
       config[state] = {}
       config[state].fill = '#9abeee'
       config[state].clickHandler = () => {
-        const display = states.filter((s) => s.code === state)[0].value
+        const display = findWhere(states, { code: state })?.value
         const random = randomPositives[Math.floor(Math.random() * randomPositives.length)]
         setMessage({ display: `${display} - Biden was ${random}` })
       }
@@ -30,7 +31,7 @@ export const Election = () => {
       config[state] = {}
       config[state].fill = '#ff7373'
       config[state].clickHandler = () => {
-        const display = states.filter((s) => s.code === state)[0].value
+        const display = findWhere(states, { code: state })?.value
         const random = randomPositives[Math.floor(Math.random() * randomPositives.length)]
         setMessage({ display: `${display} - Trump was ${random}` })
       }

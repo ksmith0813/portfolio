@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { findWhere } from 'underscore'
 import { FastGrid } from 'components/_siteWide/fastGrid/fastGrid'
 import { getState, setInitialLoad, setInitialData, setData } from 'store/slices/gridSlice'
 import api from 'utils/api'
@@ -65,7 +66,7 @@ export const Grid = () => {
 
   if (storedColumnList) {
     storedColumnList.map((s) => {
-      const match = allColumns.filter((c) => c.dataIndex === s)[0]
+      const match = findWhere(allColumns, { dataIndex: s })
       columns.push(match)
       return s
     })

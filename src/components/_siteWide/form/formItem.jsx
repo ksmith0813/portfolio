@@ -1,5 +1,6 @@
 import { Form } from 'antd'
-import { isArray, spacesToProperty } from 'utils/general'
+import { isArray } from 'underscore'
+import { spacesToProperty } from 'utils/general'
 import { FormFloatLabel } from './formFloatLabel'
 
 export const FormItem =

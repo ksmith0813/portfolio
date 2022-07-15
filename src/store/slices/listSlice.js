@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { findWhere } from 'underscore'
 import { arrayRemove } from 'utils/general'
 
 export const slice = createSlice({
@@ -39,7 +40,7 @@ export const slice = createSlice({
     updateTodo: (state, action) => {
       const todo = action.payload
       const findMatch = (todos) => {
-        const match = todos.filter((t) => t.id === todo.id)[0]
+        const match = findWhere(todos, { id: todo.id })
         if (match) {
           match.completed = todo.completed
           match.title = todo.title

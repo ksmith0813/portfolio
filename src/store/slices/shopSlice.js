@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { findWhere } from 'underscore'
 
 export const slice = createSlice({
   name: 'shop',
@@ -25,7 +26,7 @@ export const slice = createSlice({
       state.selectedCategory = action.payload
     },
     updateCart: (state, action) => {
-      const match = [...state.cartItems].filter((c) => c.id === action.payload.id)[0]
+      const match = findWhere([...state.cartItems], { id: action.payload.id })
       if (match) match.qty += action.payload.qty
       else state.cartItems.push(action.payload)
     },

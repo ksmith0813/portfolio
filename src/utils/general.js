@@ -1,4 +1,5 @@
 import moment from 'moment'
+import { isArray } from 'underscore'
 import { message } from 'antd'
 
 export const arrayRemove = (array, property, value) => {
@@ -24,8 +25,6 @@ export const arrayMove = (array, from, to) => {
 
   return array
 }
-
-export const isArray = (value) => value && Array.isArray(value)
 
 export const getAbbreviation = (value, length = 20) => {
   return `${value.substring(0, length)}${value.length > length ? '...' : ''}`

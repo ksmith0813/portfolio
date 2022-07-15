@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { findWhere } from 'underscore'
 import { SortableContainer, SortableHandle, SortableElement } from 'react-sortable-hoc'
 import { Row, Col, Switch, Button } from 'antd'
 import { MenuOutlined } from '@ant-design/icons'
@@ -45,14 +46,14 @@ export const SortableList = ({ state, storeKey, defaultColumns, setShowingSelect
 
     if (storedColumnList) {
       storedColumnList.map((s) => {
-        const match = columnList.filter((c) => c.property === s)[0]
+        const match = findWhere(columnList, { property: s })
         if (match) orderedColumns.push({ ...match, show: true })
         return s
       })
 
       if (orderedColumns.length < columnList.length) {
         columnList.map((c) => {
-          const match = orderedColumns.filter((f) => f.property === c.property)[0]
+          const match = findWhere(orderedColumns, { property: c.property })
           if (!match) orderedColumns.push(c)
           return c
         })
@@ -67,7 +68,7 @@ export const SortableList = ({ state, storeKey, defaultColumns, setShowingSelect
 
   const onChange = (property, show) => {
     let copy = [...items]
-    const match = copy.filter((c) => c.property === property)[0]
+    const match = findWhere(copy, { property: property })
     if (match) match.show = !show
     setItems(copy)
   }

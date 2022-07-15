@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { isArray } from 'utils/general'
+import { isArray } from 'underscore'
 import './form.scss'
 
 export const FormFloatLabel = ({ children, label, inputValue }) => {

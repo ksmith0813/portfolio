@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { findWhere } from 'underscore'
 import { Input, Row, Col, Select, Switch, Skeleton } from 'antd'
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { NoData } from 'components/_siteWide/layout/layout'
@@ -155,7 +156,7 @@ const TodoRow = ({ index, todo }) => {
       </Col>
       <Col span={5} className='pl-150'>
         <Select
-          value={userNames.filter((n) => n.id === todo.userId)[0]?.value}
+          value={findWhere(userNames, { id: todo.userId })?.value}
           className='user-select'
           onChange={(value) => dispatch(updateTodo({ ...todo, userId: value }))}
         >
