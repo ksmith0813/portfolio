@@ -83,8 +83,8 @@
       font-size: 4em;
     }
     .home-description {
-      font-size: 1.1em;
-      height: 140px;
+      font-size: 1.2em;
+      height: 150px;
     }
     .tile-container {
       .tile {
@@ -151,6 +151,9 @@
           margin-top: 1em;
         }
       }
+    }
+    .home-description {
+      height: 200px;
     }
   }
 }

@@ -12,13 +12,11 @@ export const Home = () => {
   const state = useSelector(getState)
   const theme = state.selectedTheme
 
-  const goToPage = (page) => navigate(`../${page}`)
-
   const Tile = ({ page, title }) => {
     const lottie = data(page)
     const containerClass = page === 'search/weather' ? 'search' : lottie.containerClass
     return (
-      <div className='tile clickable' onClick={() => goToPage(page)}>
+      <div className='tile clickable' onClick={() => navigate(`../${page}`)}>
         <div className='tile-title'>{title}</div>
         <LottieFile
           animationData={lottie.file[page][theme]}
@@ -46,21 +44,16 @@ export const Home = () => {
       </Row>
       <div className='tile-container'>
         <Row justify='center'>
-          <Tile page='dashboard' title='Dashboard' image={`theme/${theme}/dashboard-tile-${theme}.svg`} />
-          <Tile page='register' title='Register' image={`theme/${theme}/register-tile-${theme}.svg`} />
-          <Tile page='grid' title='User Grid' image={`theme/${theme}/grid-tile-${theme}.svg`} />
-          <Tile page='video' title='Videos' image={`theme/${theme}/movie-tile-${theme}.svg`} className='media' />
+          <Tile page='dashboard' title='Dashboard' />
+          <Tile page='register' title='Register' />
+          <Tile page='grid' title='User Grid' />
+          <Tile page='video' title='Videos' />
         </Row>
         <Row justify='center'>
-          <Tile page='list' title='TODO List' image={`theme/${theme}/list-tile-${theme}.svg`} />
-          <Tile
-            page='search/weather'
-            title='Weather Finder'
-            image={`theme/${theme}/umbrella-tile-${theme}.svg`}
-            className='weather'
-          />
-          <Tile page='shop' title='Shop' image={`theme/${theme}/shop-tile-${theme}.svg`} />
-          <Tile page='visuals' title='Visuals' image={`theme/${theme}/chart-tile-${theme}.svg`} />
+          <Tile page='list' title='TODO List' />
+          <Tile page='search/weather' title='Weather Finder' />
+          <Tile page='shop' title='Shop' />
+          <Tile page='visuals' title='Visuals' />
         </Row>
       </div>
     </div>
