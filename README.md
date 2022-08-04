@@ -4,9 +4,11 @@ Welcome! This is my portfolio application that contains some cool stuff using th
 
 This site includes:
 
+- Latest version of React/React DOM 18
+
 - ReactJS Functional Components
 
-- Redux/Redux Toolkit/Redux Form
+- Redux Toolkit, Redux Forms
 
 - Webpack 5
 
