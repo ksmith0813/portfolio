@@ -53,12 +53,12 @@ export const Navigation = () => {
     {
       key: 'register',
       icon: <FormOutlined />,
-      label: <SiteLink page='register' title='register' />,
+      label: <SiteLink page='register' title='Register' />,
     },
     {
       key: 'grid',
       icon: <TableOutlined />,
-      label: <SiteLink page='grid' title='grid' />,
+      label: <SiteLink page='grid' title='Grid' />,
     },
     {
       key: 'video',
@@ -125,17 +125,12 @@ export const Navigation = () => {
   ]
 
   return (
-    <Layout className='app-layout'>
+    <Layout className={`app-layout ${state.selectedTheme}`}>
       <Sider trigger={null} collapsible collapsed={true} className='site-nav-container'>
         <div className='logo'>
           <Avatar src={kevin}></Avatar>
         </div>
-        <Menu
-          mode='inline'
-          selectedKeys={[activePage]}
-          className={`site-nav ${state.selectedTheme}`}
-          items={menuItems}
-        />
+        <Menu mode='inline' selectedKeys={[activePage]} className='site-nav' items={menuItems} />
       </Sider>
       <Layout>
         <Header className='site-header'>
