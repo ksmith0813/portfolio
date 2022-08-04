@@ -56,16 +56,19 @@
   }
 }
 
-.ant-menu-submenu .ant-menu-item:nth-child(1) .ant-menu-title-content:hover {
+.ant-menu-submenu .ant-menu-item:nth-child(1):hover {
   color: var(--theme-color-1);
+  background-color: var(--theme-color-1-light);
 }
 
-.ant-menu-submenu .ant-menu-item:nth-child(2) .ant-menu-title-content:hover {
+.ant-menu-submenu .ant-menu-item:nth-child(2):hover {
   color: var(--theme-color-2);
+  background-color: var(--theme-color-2-light);
 }
 
-.ant-menu-submenu .ant-menu-item:nth-child(3) .ant-menu-title-content:hover {
+.ant-menu-submenu .ant-menu-item:nth-child(3):hover {
   color: var(--theme-color-3);
+  background-color: var(--theme-color-3-light);
 }
 
 .ant-btn {
