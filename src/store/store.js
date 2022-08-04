@@ -4,6 +4,7 @@ import registerReducer from './slices/registerSlice'
 import gridReducer from './slices/gridSlice'
 import videoReducer from './slices/videoSlice'
 import listReducer from './slices/listSlice'
+import treeReducer from './slices/treeSlice'
 import mediaReducer from './slices/mediaSlice'
 import weatherReducer from './slices/weatherSlice'
 import shopReducer from './slices/shopSlice'
@@ -15,6 +16,7 @@ export default configureStore({
     grid: gridReducer,
     video: videoReducer,
     list: listReducer,
+    tree: treeReducer,
     media: mediaReducer,
     weather: weatherReducer,
     shop: shopReducer,

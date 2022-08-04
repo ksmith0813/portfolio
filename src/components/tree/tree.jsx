@@ -1,41 +1,53 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Col, Input, Row, Tree as TreeView } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
 import { NoData } from 'components/_siteWide/layout/layout'
 import { treeData } from 'data/tree'
+import { getState, setSearch } from 'store/slices/treeSlice'
+import { useEffect } from 'react'
+import { useCallback } from 'react'
 
 export const Tree = () => {
-  const [search, setSearch] = useState('')
   const [data, setData] = useState([...treeData])
+  const state = useSelector(getState)
+  const search = state.search
+  const dispatch = useDispatch()
 
-  const handleSearch = (e) => {
-    const value = e.target.value
-    setSearch(value)
+  const handleSearch = useCallback(
+    (value) => {
+      dispatch(setSearch(value))
 
-    if (value) {
-      const newValues = []
-      for (const item of [...treeData]) {
-        let newValue = null
-        if (item.title.toLowerCase().includes(value.toLowerCase())) {
-          newValue = { ...item }
-          newValue.children = []
-        }
-
-        for (const child of [...item.children]) {
-          if (child.title.toLowerCase().includes(value.toLowerCase())) {
-            if (!newValue) newValue = { key: item.key, title: item.title, children: [] }
-            newValue.children.push(child)
+      if (value) {
+        const newValues = []
+        for (const item of [...treeData]) {
+          let newValue = null
+          if (item.title.toLowerCase().includes(value.toLowerCase())) {
+            newValue = { ...item }
+            newValue.children = []
           }
+
+          for (const child of [...item.children]) {
+            if (child.title.toLowerCase().includes(value.toLowerCase())) {
+              if (!newValue) newValue = { key: item.key, title: item.title, children: [] }
+              newValue.children.push(child)
+            }
+          }
+
+          if (newValue) newValues.push(newValue)
         }
 
-        if (newValue) newValues.push(newValue)
+        setData(newValues)
+      } else {
+        setData(treeData)
       }
+    },
+    [dispatch]
+  )
 
-      setData(newValues)
-    } else {
-      setData(treeData)
-    }
-  }
+  useEffect(() => {
+    if (search) handleSearch(search)
+  }, [search, handleSearch])
 
   const matchParamsForSearch = (title) => {
     const index = title.toLowerCase().indexOf(search.toLowerCase())
@@ -96,7 +108,13 @@ export const Tree = () => {
           </Row>
           <Row>
             <Col span={24}>
-              <Input value={search} placeholder='Search' onChange={handleSearch} autoFocus size='large' />
+              <Input
+                value={search}
+                placeholder='Search'
+                onChange={(e) => handleSearch(e.target.value)}
+                autoFocus
+                size='large'
+              />
             </Col>
           </Row>
           <Row>
