@@ -10,7 +10,7 @@ export const Search = () => {
   return (
     <Row justify='center'>
       <Col span={13} className='pt-300'>
-        <Row justify='center' className='fs-200 text-center'>
+        <Row justify='center' className='fs-200 text-center capitalize'>
           Search for {page}
         </Row>
         <div className='pt-300'>

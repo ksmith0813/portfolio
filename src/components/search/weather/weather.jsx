@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Input, Spin, Col, Row, Progress, Tag, Switch } from 'antd'
 import { DataItem, NoData, MapLocation } from 'components/_siteWide/layout/layout'
-import { getState, setLoading, setClean, setSearch, setWeather } from 'store/slices/weatherSlice'
+import { getState, setLoading, setSearch, setWeather } from 'store/slices/weatherSlice'
 import api from 'utils/api'
 import moment from 'moment'
 import newMoon from 'assets/moon/moon-new.svg'
@@ -21,7 +21,6 @@ export const Weather = ({ showDetails }) => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (state.clean) return
       if (state.search) {
         dispatch(setLoading(true))
         api
@@ -38,15 +37,11 @@ export const Weather = ({ showDetails }) => {
       } else {
         dispatch(setWeather(null))
       }
-      dispatch(setClean(true))
     }, 1000)
     return () => clearTimeout(timeoutId)
-  }, [state.search, state.clean, dispatch])
+  }, [state.search, dispatch])
 
-  const onSearchChange = (e) => {
-    dispatch(setSearch(e.target.value || ''))
-    dispatch(setClean(false))
-  }
+  const onSearchChange = (e) => dispatch(setSearch(e.target.value || ''))
 
   const loading = state.loading
   const weather = state.weather

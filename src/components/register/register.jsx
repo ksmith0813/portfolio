@@ -17,7 +17,7 @@ export const Register = () => {
       <Row justify='center'>
         <Col span={11}>
           <Row justify='center' className='fs-175 pb-200'>
-            Please complete the registration form below.
+            Please complete the registration form below
           </Row>
           <Row className='steps-header'>
             <Steps current={step}>
