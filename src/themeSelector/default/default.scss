@@ -1,62 +1,55 @@
-.ant-btn.anchor-button {
-  color: var(--theme-color-1);
-}
-
-.ant-btn.anchor-button:hover {
-  color: var(--theme-color-1);
-}
-
-.add-item.anticon:hover {
-  color: var(--theme-color-1);
-}
-
-.site-link {
-  &.active {
+.default {
+  .site-nav {
+    .ant-menu-item-selected a {
+      color: var(--theme-color-1) !important;
+    }
+    .ant-menu-item-selected,
+    .ant-menu-item-active,
+    .ant-menu-submenu-active,
+    .ant-menu-submenu-title:hover {
+      color: var(--theme-color-1) !important;
+      background-color: var(--theme-color-1-light) !important;
+    }
+  }
+  .ant-steps-item:nth-child(1) .ant-steps-item-title {
+    color: var(--theme-color-1) !important;
+  }
+  .ant-steps-item-active .ant-steps-item-title,
+  .ant-steps-item-finish .ant-steps-item-title {
+    color: var(--theme-color-1) !important;
+  }
+  .ant-btn.anchor-button {
     color: var(--theme-color-1);
   }
-  &:hover {
-    color: var(--theme-color-1-hover);
+  .ant-btn.anchor-button:hover {
+    color: var(--theme-color-1);
   }
-}
-
-.grid-controls.default .anticon:hover {
-  color: var(--theme-color-1);
-}
-
-.home {
-  .home-description {
-    background-color: var(--theme-color-1);
+  .add-item.anticon:hover {
+    color: var(--theme-color-1);
   }
-  .tile-container {
-    .tile {
-      &:hover {
-        .tile-title {
-          color: var(--theme-color-1);
+  .grid-controls.default .anticon:hover {
+    color: var(--theme-color-1);
+  }
+  .treeSearch {
+    color: var(--theme-color-1);
+  }
+  .category-container.default .cart-container .cart-icon {
+    :hover {
+      color: var(--theme-color-1) !important;
+    }
+  }
+  .home {
+    .home-description {
+      background-color: var(--theme-color-1);
+    }
+    .tile-container {
+      .tile {
+        &:hover {
+          .tile-title {
+            color: var(--theme-color-1);
+          }
         }
       }
     }
-  }
-}
-
-.treeSearch {
-  color: var(--theme-color-1);
-}
-
-.category-container.default .cart-container .cart-icon {
-  :hover {
-    color: var(--theme-color-1) !important;
-  }
-}
-
-.default .site-nav {
-  .ant-menu-item-selected a {
-    color: var(--theme-color-1) !important;
-  }
-  .ant-menu-item-selected,
-  .ant-menu-item-active,
-  .ant-menu-submenu-active,
-  .ant-menu-submenu-title:hover {
-    color: var(--theme-color-1) !important;
-    background-color: var(--theme-color-1-light) !important;
   }
 }

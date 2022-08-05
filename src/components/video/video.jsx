@@ -55,7 +55,7 @@ export const Video = () => {
   const DetailItem = ({ title, value }) => (
     <div className='detail-item'>
       <b>{title}</b>
-      <div>{value || 'N/A'}</div>
+      <div className='light-text'>{value || 'N/A'}</div>
     </div>
   )
 
@@ -72,7 +72,7 @@ export const Video = () => {
         <b>Name</b>
         <div className='fs-200 pb-100 medium-text'>{selectedItem.name}</div>
         <b>Description</b>
-        <div className='video-description'>{selectedItem.description}</div>
+        <div className='video-description light-text'>{selectedItem.description}</div>
         <div className='flex flex-row'>
           <DetailItem title='Muscle Groups' value={<GroupTags values={selectedItem.muscle_groups} />} />
           <DetailItem title='Equipment Req.' value={<GroupTags values={selectedItem.equipment_required} />} />

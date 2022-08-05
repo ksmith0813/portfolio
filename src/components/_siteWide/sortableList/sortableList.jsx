@@ -131,12 +131,16 @@ export const SortableList = ({ state, storeKey, defaultColumns, setShowingSelect
   const SortableListContainer = SortableContainer(() => (
     <>
       <div className='border-bottom-light pb-100'>
-        <Row className='bold pb-100 border-bottom-light'>
-          <Col span={3}>Order</Col>
-          <Col flex={1} className='pl-100'>
-            Column
+        <Row className='pb-100 border-bottom-light'>
+          <Col span={3}>
+            <b>Order</b>
           </Col>
-          <Col className='pr-100'>Show</Col>
+          <Col flex={1} className='pl-100'>
+            <b>Column</b>
+          </Col>
+          <Col className='pr-100'>
+            <b>Show</b>
+          </Col>
         </Row>
         {items.map(({ id, property, show }) => (
           <SortableItem key={id} index={id} property={property} show={show} />
