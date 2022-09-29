@@ -5,6 +5,7 @@
   pointer-events: none;
   left: 16px;
   transition: 0.2s ease all;
+  z-index: 1;
   &.default {
     top: 16px;
   }
