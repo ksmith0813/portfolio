@@ -23,13 +23,6 @@
   .external-links {
     width: 120px;
     margin-top: 0.25em;
-    &.light {
-      color: white !important;
-    }
-    &:hover {
-      cursor: pointer;
-      opacity: 0.7;
-    }
   }
 }
 

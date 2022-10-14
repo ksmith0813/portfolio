@@ -27,13 +27,13 @@ export const Navigation = () => {
     <div className='external-links'>
       <Tooltip title='LinkedIn' mouseEnterDelay={0.5}>
         <LinkedinFilled
-          className='fs-175 mr-025'
+          className='fs-175 mr-025 clickable'
           onClick={() => window.open('https://www.linkedin.com/in/kevin-smith-26339411a/', '_blank')}
         />
       </Tooltip>
       <Tooltip title='Github' mouseEnterDelay={0.5}>
         <GithubFilled
-          className='fs-175 ml-050'
+          className='fs-175 ml-050 clickable'
           onClick={() => window.open('https://github.com/ksmith0813/portfolio', '_blank')}
         />
       </Tooltip>
