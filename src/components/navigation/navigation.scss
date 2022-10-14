@@ -14,12 +14,22 @@
   float: left;
   width: 100%;
   background-color: white;
-  border-left: 1px solid var(--gray-400);
   border-bottom: 1px solid var(--gray-400);
   padding-left: 0.5em;
-  img {
+  .signature {
     height: 50px;
     margin-top: -0.8em;
+  }
+  .external-links {
+    width: 120px;
+    margin-top: 0.25em;
+    &.light {
+      color: white !important;
+    }
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
   }
 }
 

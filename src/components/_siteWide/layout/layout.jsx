@@ -7,9 +7,9 @@ import { getState } from 'store/slices/themeSlice'
 import { keys } from 'keys'
 import { LottieFile } from '../animation/lottieFile'
 import noData from 'assets/no-data.svg'
-import loaderBlue from 'assets/default/loader-default.json'
-import loaderGreen from 'assets/green/loader-green.json'
-import loaderPurple from 'assets/purple/loader-purple.json'
+import loaderBlue from 'assets/default/json/loader-default.json'
+import loaderGreen from 'assets/green/json/loader-green.json'
+import loaderPurple from 'assets/purple/json/loader-purple.json'
 import './layout.scss'
 
 export const DataItem = ({ label, children, labelClasses = '', childrenClasses = '' }) => {

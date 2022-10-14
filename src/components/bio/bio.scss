@@ -2,127 +2,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 60px);
-  position: relative;
+  height: 100%;
   .description {
     width: 40%;
-    height: 560px;
-    font-size: 1.95em;
+    font-size: 1.75em;
     background-color: #e6f7ff;
     border: 1px solid #91d5ff;
     text-align: justify;
     padding: 1.5em;
     margin-right: 3em;
-    .signature {
-      position: relative;
-      float: right;
-    }
-  }
-  .external-links {
-    position: absolute;
-    margin-top: 3.5em;
-  }
-  .external-link {
-    &.light {
-      color: white !important;
-    }
-    &:nth-child(n + 2) {
-      padding-left: 0.75em;
-    }
-    &:hover {
-      cursor: pointer;
-      opacity: 0.7;
-    }
-  }
-  .sound-cloud {
-    height: 48px;
-    width: 75px;
-    margin-left: 0;
-  }
-  .sound-cloud:hover {
-    cursor: pointer;
-    opacity: 0.7;
   }
   .me-image {
-    height: 450px;
-    width: 450px;
-  }
-}
-
-@media only screen and (max-width: 2560px) {
-  .bio-container {
-    .description {
-      font-size: 1.9em;
-      height: 500px;
-      .external-links {
-        margin-top: 1.5em;
-      }
-      .signature {
-        margin-top: 2em;
-        margin-right: -1em;
-      }
-    }
-    .me-image {
-      height: 400px;
-      width: 400px;
-    }
-  }
-}
-
-@media only screen and (max-width: 1920px) {
-  .bio-container {
-    .description {
-      font-size: 1.5em;
-      height: 450px;
-      .external-links {
-        margin-top: 2.5em;
-      }
-      .signature {
-        margin-top: 2.5em;
-        margin-right: -1em;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 1680px) {
-  .bio-container {
-    .description {
-      font-size: 1.3em;
-      height: 400px;
-      .external-links {
-        margin-top: 1.25em;
-      }
-      .signature {
-        margin-top: 2em;
-        margin-right: -1em;
-        width: 180px;
-      }
-    }
-    .me-image {
-      height: 300px;
-      width: 300px;
-    }
+    height: 400px;
+    width: 400px;
   }
 }
 
 @media only screen and (max-width: 1440px) {
   .bio-container {
     .description {
-      font-size: 1.25em;
-      height: 425px;
-      .external-links {
-        margin-top: 1.5em;
-      }
-      .signature {
-        width: 200px;
-        margin-top: .5em;
-        margin-right: -1em;
-      }
-    }
-    .me-image {
-      height: 340px;
-      width: 340px;
+      font-size: 1.5em;
     }
   }
 }
@@ -130,16 +29,7 @@
 @media only screen and (max-width: 1024px) {
   .bio-container {
     .description {
-      font-size: 1.1em;
-      height: 420px;
-      .signature {
-        margin-top: 2em;
-        width: 180px;
-      }
-    }
-    .me-image {
-      height: 340px;
-      width: 340px;
+      font-size: 1.25em;
     }
   }
 }
