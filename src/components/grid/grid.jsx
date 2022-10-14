@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { findWhere } from 'underscore'
-import { FastGrid } from 'components/_siteWide/fastGrid/fastGrid'
+import { DataTable } from 'components/_siteWide/dataTable/dataTable'
 import { getState, setInitialLoad, setInitialData, setData } from 'store/slices/gridSlice'
 import api from 'utils/api'
 import { getColumns } from './columns/gridColumns'
@@ -76,7 +76,7 @@ export const Grid = () => {
 
   return (
     <div className='p-200'>
-      <FastGrid
+      <DataTable
         state={state}
         loading={state.loading}
         getData={setData}

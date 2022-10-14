@@ -6,9 +6,9 @@ import { hasProperties, spacesToProperty } from 'utils/general'
 import { columnSearch } from './controls/columnSearch'
 import { FilterTags } from './controls/filterTags'
 import { SortHeader } from './controls/sortHeader'
-import './fastGrid.scss'
+import './dataTable.scss'
 
-export const FastGrid = ({
+export const DataTable = ({
   state,
   loading,
   columns,
