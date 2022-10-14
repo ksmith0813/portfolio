@@ -6,7 +6,6 @@ import { LinkedinFilled, GithubFilled } from '@ant-design/icons'
 import { getState } from 'store/slices/themeSlice'
 import kevin from 'assets/Kevin.jpg'
 import signature from 'assets/signature.png'
-import soundCloud from 'assets/sound-cloud.png'
 import { MenuItems } from './menuItems'
 import './navigation.scss'
 
