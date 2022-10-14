@@ -61,7 +61,7 @@ export const Tree = () => {
     return index > -1 ? (
       <span>
         {before}
-        <span className='treeSearch'>{match}</span>
+        <b className='treeSearch'>{match}</b>
         {after}
       </span>
     ) : (
