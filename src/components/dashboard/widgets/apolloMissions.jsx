@@ -16,31 +16,29 @@ export const ApolloMissions = () => {
       <Card title='Apollo Space Timeline'>
         <div className='card-display apollo'>
           <Timeline mode='left'>
-            {apolloMissions.map((d) => (
-              <Timeline.Item
-                key={d.name}
-                className={d.name === 'Apollo 11' ? 'landing' : ''}
-                label='01-27-1967'
-                dot={
-                  <img
-                    src={
-                      d.name === 'Apollo 11'
-                        ? theme === 'default'
-                          ? defaultAstronaut
-                          : theme === 'green'
-                          ? greenAstronaut
-                          : purpleAstronaut
-                        : shuttle
-                    }
-                    className='moon'
-                    alt=''
-                  />
-                }
-              >
-                <b>{d.name}</b>
-                <p className='pt-050'>{d.description}</p>
-              </Timeline.Item>
-            ))}
+            {apolloMissions.map((d) => {
+              const name = d.name
+              const isLanding = name === 'Apollo 11'
+              const image = isLanding
+                ? theme === 'default'
+                  ? defaultAstronaut
+                  : theme === 'green'
+                  ? greenAstronaut
+                  : purpleAstronaut
+                : shuttle
+
+              return (
+                <Timeline.Item
+                  key={name}
+                  className={isLanding ? 'landing' : ''}
+                  label='01-27-1967'
+                  dot={<img src={image} className='moon' alt='' />}
+                >
+                  <b>{name}</b>
+                  <p className='pt-050'>{d.description}</p>
+                </Timeline.Item>
+              )
+            })}
           </Timeline>
         </div>
       </Card>
