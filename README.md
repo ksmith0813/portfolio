@@ -12,9 +12,9 @@ Clone:
 
 `https://github.com/ksmith0813/portfolio.git`
 
-Installation:
+Installation (have to include --legacy-peer-deps for nivo module, for now):
 
-`npm install`
+`npm install --legacy-peer-deps`
 
 To build app:
 
