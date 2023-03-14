@@ -24,9 +24,9 @@ To start app:
 
 `npm run start`
 
-Welcome! This is my portfolio application that contains some cool stuff using the React framework.
+Welcome! This is my portfolio application that contains some cool stuff using the ReactJS Library.
 
-This site includes:
+Techstack:
 
 - Latest version of React/React DOM 18
 
@@ -46,28 +46,32 @@ This site includes:
 
 - SCSS
 
-- Google React Maps
-
 - Nivo
 
-Component Examples:
+Page Examples:
+
+- A home page with an introduction about me and tile links to some of the pages
 
 - Dashboard containing several widgets with different types of data structures
 
 - Form Registration with multiple steps and validation logic
 
-- Grid view with filtering, sorting, custom column hiding/reordering. Uses data from the randomuser API
+- Grid view with filtering, sorting, custom column hiding/reordering
 
-- List view with an editable todo list. Uses API data
+- Video viewer with a searchable list of video titles and videos with audio
+
+- List view with an editable todo list.
 
 - Searchable Tree view that highlights matched values
 
-- Media search page that hits the open movie database EP and allows the user to drill into the media's details
+- Media page with search functionality on movies, shows and games. Allows the user to drill into media details
 
-- Search for a location's weather conditions, uses the open source Weather API
+- Weather page with search functionality for a location's weather conditions.
 
-- Shopping page that allows the user to filter by category, and add items to a cart
+- Shopping page that allows the user to filter by category and add items to a cart
 
-- Data visualizations using the nivo.rocks framework
+- Data visualizations using the nivo.rocks framework (might replace with something that works nicer with React 18)
 
 - Bio page so you can see my skills and a picture of me.
+
+- Theming menu option to change the theme color throughout the application.
