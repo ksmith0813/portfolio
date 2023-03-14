@@ -1,4 +1,28 @@
-# My Personal Portfolio App
+# Portfolio App
+
+![image](https://github.com/ksmith0813/portfolio/blob/main/public/screenshot.png)
+
+## Installation and Setup Instructions
+
+#### Initial Setup:
+
+You will need `node` and `npm` installed globally on your machine.
+
+Clone:
+
+`https://github.com/ksmith0813/portfolio.git`
+
+Installation:
+
+`npm install`
+
+To build app:
+
+`npm run build`
+
+To start app:
+
+`npm run start`
 
 Welcome! This is my portfolio application that contains some cool stuff using the React framework.
 
