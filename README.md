@@ -50,27 +50,27 @@ Techstack:
 
 Page Examples:
 
-- A home page with an introduction about me and tile links to some of the pages
+- Home page with an introduction about me and tile links to some of the pages.
 
-- Dashboard containing several widgets with different types of data structures
+- Dashboard containing several widgets with different types of data structures.
 
-- Form Registration with multiple steps and validation logic
+- Form Registration with multiple steps and validation logic.
 
-- Grid view with filtering, sorting, custom column hiding/reordering
+- Grid view with filtering, sorting, custom column hiding/reordering.
 
-- Video viewer with a searchable list of video titles and videos with audio
+- Video viewer with a filterable list of titles. Select a title to watch a video with audio.
 
 - List view with an editable todo list.
 
-- Searchable Tree view that highlights matched values
+- Searchable Tree view that highlights matched values.
 
-- Media page with search functionality on movies, shows and games. Allows the user to drill into media details
+- Media page with search functionality on movies, shows and games. Allows the user to drill into media details.
 
-- Weather page with search functionality for a location's weather conditions.
+- Weather page with search functionality for a location's current weather conditions and forecast.
 
-- Shopping page that allows the user to filter by category and add items to a cart
+- Shopping page that allows the user to filter by category and add items to a cart.
 
-- Data visualizations using the nivo.rocks framework (might replace with something that works nicer with React 18)
+- Data visualizations using the nivo.rocks framework (might replace with something that works nicer with React 18).
 
 - Bio page so you can see my skills and a picture of me.
 
