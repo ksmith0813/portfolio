@@ -45,6 +45,4 @@ export const slice = createSlice({
 export const { loading, setCategories, setProducts, changeCategory, updateCart, removeProduct, openModal, closeModal } =
   slice.actions
 
-export const getState = (state) => state.shop
-
 export default slice.reducer

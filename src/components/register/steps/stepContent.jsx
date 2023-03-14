@@ -1,6 +1,4 @@
 import { useSelector } from 'react-redux'
-import { getState as getRegisterState } from 'store/slices/registerSlice'
-import { getState as getThemeState } from 'store/slices/themeSlice'
 import Contact from './contact'
 import Movie from './movie'
 import Music from './music'
@@ -27,18 +25,19 @@ import infoGreen from 'assets/green/info-green.svg'
 import infoPurple from 'assets/purple/info-purple.svg'
 
 export const StepContent = () => {
-  const state = useSelector(getRegisterState)
-  const themeState = useSelector(getThemeState)
-  const step = state.step
-  const theme = themeState.selectedTheme
+  const step = useSelector((state) => state.register.step)
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
+  const isDefaultTheme = selectedTheme === 'default'
+  const isGreenTheme = selectedTheme === 'green'
+  const registerIconClass = 'register-icon'
   return [
     {
       title: 'Contact',
       content: <Contact />,
       icon: (
         <img
-          src={theme === 'default' ? contactBlue : theme === 'green' ? contactGreen : contactPurple}
-          className='register-icon'
+          src={isDefaultTheme ? contactBlue : isGreenTheme ? contactGreen : contactPurple}
+          className={registerIconClass}
           alt=''
         />
       ),
@@ -48,8 +47,8 @@ export const StepContent = () => {
       content: <Movie />,
       icon: (
         <img
-          src={step < 1 ? movie : theme === 'default' ? movieBlue : theme === 'green' ? movieGreen : moviePurple}
-          className='register-icon'
+          src={step < 1 ? movie : isDefaultTheme ? movieBlue : isGreenTheme ? movieGreen : moviePurple}
+          className={registerIconClass}
           alt=''
         />
       ),
@@ -59,8 +58,8 @@ export const StepContent = () => {
       content: <Music />,
       icon: (
         <img
-          src={step < 2 ? music : theme === 'default' ? musicBlue : theme === 'green' ? musicGreen : musicPurple}
-          className='register-icon'
+          src={step < 2 ? music : isDefaultTheme ? musicBlue : isGreenTheme ? musicGreen : musicPurple}
+          className={registerIconClass}
           alt=''
         />
       ),
@@ -70,8 +69,8 @@ export const StepContent = () => {
       content: <Travel />,
       icon: (
         <img
-          src={step < 3 ? beach : theme === 'default' ? beachBlue : theme === 'green' ? beachGreen : beachPurple}
-          className='register-icon'
+          src={step < 3 ? beach : isDefaultTheme ? beachBlue : isGreenTheme ? beachGreen : beachPurple}
+          className={registerIconClass}
           alt=''
         />
       ),
@@ -81,8 +80,8 @@ export const StepContent = () => {
       content: <Review />,
       icon: (
         <img
-          src={step < 4 ? info : theme === 'default' ? infoBlue : theme === 'green' ? infoGreen : infoPurple}
-          className='register-icon'
+          src={step < 4 ? info : isDefaultTheme ? infoBlue : isGreenTheme ? infoGreen : infoPurple}
+          className={registerIconClass}
           alt=''
         />
       ),

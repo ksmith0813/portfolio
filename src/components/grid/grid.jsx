@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { findWhere } from 'underscore'
 import { DataTable } from 'components/_siteWide/dataTable/dataTable'
-import { getState, setInitialLoad, setInitialData, setData } from 'store/slices/gridSlice'
+import { setInitialLoad, setInitialData, setData } from 'store/slices/gridSlice'
 import api from 'utils/api'
 import { getColumns } from './columns/gridColumns'
 import { GridControls } from './controls/gridControls'
@@ -12,7 +12,7 @@ import './grid.scss'
 const store = window.localStorage
 
 export const Grid = () => {
-  const state = useSelector(getState)
+  const state = useSelector((state) => state.grid)
   const dispatch = useDispatch()
 
   const defaultFilters = JSON.parse(store.getItem('user-grid-filters')) || {}

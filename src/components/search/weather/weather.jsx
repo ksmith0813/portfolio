@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Input, Spin, Col, Row, Progress, Tag, Switch } from 'antd'
 import { DataItem, NoData, MapLocation } from 'components/_siteWide/layout/layout'
-import { getState, setLoading, setSearch, setWeather } from 'store/slices/weatherSlice'
+import { setLoading, setSearch, setWeather } from 'store/slices/weatherSlice'
 import api from 'utils/api'
 import moment from 'moment'
 import newMoon from 'assets/moon/moon-new.svg'
@@ -16,7 +16,7 @@ import waningCrescent from 'assets/moon/moon-waning-crescent.svg'
 import './weather.scss'
 
 export const Weather = ({ showDetails }) => {
-  const state = useSelector(getState)
+  const state = useSelector((state) => state.weather)
   const dispatch = useDispatch()
 
   useEffect(() => {

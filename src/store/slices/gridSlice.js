@@ -117,8 +117,6 @@ export const {
   onSelectAll,
 } = slice.actions
 
-export const getState = (state) => state.grid
-
 export default slice.reducer
 
 const initializeData = (state, action) => {

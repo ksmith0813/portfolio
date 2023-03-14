@@ -4,19 +4,16 @@ import { CSVLink } from 'react-csv'
 import { Drawer } from 'antd'
 import { DownloadOutlined, InsertRowRightOutlined } from '@ant-design/icons'
 import { SortableList } from 'components/_siteWide/sortableList/sortableList'
-import { getState } from 'store/slices/gridSlice'
-import { getState as getThemeState } from 'store/slices/themeSlice'
 
 export const GridControls = () => {
-  const state = useSelector(getState)
-  const themeState = useSelector(getThemeState)
-  const theme = themeState.selectedTheme
+  const grid = useSelector((state) => state.grid)
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
   const [showingSelection, setShowingSelection] = useState(false)
 
   return (
-    <div className={`grid-controls ${theme}`}>
+    <div className={`grid-controls ${selectedTheme}`}>
       <>
-        <CSVLink data={state.data} filename='user-data'>
+        <CSVLink data={grid.data} filename='user-data'>
           <DownloadOutlined className='pr-050' />
         </CSVLink>
         <InsertRowRightOutlined onClick={() => setShowingSelection(true)} />
@@ -24,12 +21,12 @@ export const GridControls = () => {
           title='Show | Reorder Columns'
           placement='right'
           onClose={() => setShowingSelection(false)}
-          visible={showingSelection}
+          open={showingSelection}
         >
           <SortableList
-            state={state}
-            storeKey={state.columnKey}
-            defaultColumns={state.defaultColumns}
+            grid={grid}
+            storeKey={grid.columnKey}
+            defaultColumns={grid.defaultColumns}
             setShowingSelection={setShowingSelection}
           />
         </Drawer>

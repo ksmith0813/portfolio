@@ -34,6 +34,4 @@ export const slice = createSlice({
 
 export const { setLoading, setClean, setSearch, setData, setSelectedId, setSelectedMedia } = slice.actions
 
-export const getState = (state) => state.media
-
 export default slice.reducer

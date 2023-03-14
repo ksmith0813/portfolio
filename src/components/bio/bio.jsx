@@ -1,15 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Avatar, Row } from 'antd'
-import { getState } from 'store/slices/themeSlice'
 import kevin from 'assets/Kevin.jpg'
 import './bio.scss'
 
 export const Bio = () => {
-  const state = useSelector(getState)
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
 
   return (
-    <div className={`bio-container ${state.selectedTheme}`}>
+    <div className={`bio-container ${selectedTheme}`}>
       <div className='description'>
         <Row className='fs-125'>
           <b>Hello!</b>

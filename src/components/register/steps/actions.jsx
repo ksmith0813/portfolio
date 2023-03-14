@@ -1,12 +1,12 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button } from 'antd'
-import { getState, reset, previousStep, complete } from 'store/slices/registerSlice'
+import { reset, previousStep, complete } from 'store/slices/registerSlice'
 
 export const Actions = ({ form }) => {
-  const state = useSelector(getState)
+  const step = useSelector((state) => state.register.step)
   const dispatch = useDispatch()
-  const step = state.step
+
   return (
     <div className='steps-action'>
       {step < 4 && (

@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 import { Form, Input, Select, Row, Col } from 'antd'
 import { FormItem } from 'components/_siteWide/form/formItem'
 import { instruments } from 'data/dropDowns/instruments'
-import { setClean, setMusic, getState, nextStep } from 'store/slices/registerSlice'
+import { setClean, setMusic, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
 const { Option } = Select
@@ -12,11 +12,11 @@ const inputField = FormItem(Input)
 const selectField = FormItem(Select)
 
 const Music = () => {
-  const state = useSelector(getState)
   const dispatch = useDispatch()
-  const music = state.music
-  const clean = state.clean
+  const music = useSelector((state) => state.register.music)
+  const clean = useSelector((state) => state.register.clean)
   const [form] = Form.useForm()
+
   return (
     <Form
       form={form}

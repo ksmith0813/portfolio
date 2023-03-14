@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import caretUp from 'assets/caretUp.svg'
 import caretDown from 'assets/caretDown.svg'
-import { getState } from 'store/slices/themeSlice'
 import { spacesToProperty } from 'utils/general'
 
 export const SortHeader = ({ property, filter, update, title, noSort }) => {
@@ -31,7 +30,7 @@ export const SortHeader = ({ property, filter, update, title, noSort }) => {
 }
 
 const AntdSortingControls = ({ title, direction }) => {
-  const state = useSelector(getState)
+  const state = useSelector((state) => state.theme)
   const theme = state.selectedTheme
   const sortDirection = direction === 'desc' ? 'active' : ''
   return (

@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row } from 'antd'
-import { getState as getMediaState, setSelectedId } from 'store/slices/mediaSlice'
+import { setSelectedId } from 'store/slices/mediaSlice'
 import { MediaType } from './mediaType'
 
 export const MediaList = () => {
   const dispatch = useDispatch()
-  const state = useSelector(getMediaState)
+  const state = useSelector((state) => state.media)
   const data = state.data
 
   const getMedia = (id) => dispatch(setSelectedId(id))

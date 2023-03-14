@@ -29,8 +29,6 @@ export const slice = createSlice({
 
 export const { setSearch, setData, setSelectedItem, setSelectedItemByName } = slice.actions
 
-export const getState = (state) => state.video
-
 export default slice.reducer
 
 const updateData = (state, action) => {

@@ -7,15 +7,16 @@ import { validatePhone } from 'components/_siteWide/form/validators/validatePhon
 import { validateEmail } from 'components/_siteWide/form/validators/validateEmail'
 import { FormItem } from 'components/_siteWide/form/formItem'
 import { states } from 'data/dropDowns/states'
-import { setClean, setContact, getState, nextStep } from 'store/slices/registerSlice'
+import { setClean, setContact, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
 const inputField = FormItem(Input)
 const autocompleteField = FormItem(AutoComplete)
 
 const Contact = () => {
-  const state = useSelector(getState)
   const dispatch = useDispatch()
+  const contact = useSelector((state) => state.register.contact)
+  const clean = useSelector((state) => state.register.clean)
 
   const statesValues = [...new Set(states.map((s) => s).sort())].map((v) => {
     return { value: v.value }
@@ -23,8 +24,6 @@ const Contact = () => {
 
   const [filteredStates, setFilteredState] = useState(statesValues)
 
-  const contact = state.contact
-  const clean = state.clean
   const [form] = Form.useForm()
 
   return (

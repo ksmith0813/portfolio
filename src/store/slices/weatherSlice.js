@@ -22,6 +22,4 @@ export const slice = createSlice({
 
 export const { setLoading, setSearch, setWeather } = slice.actions
 
-export const getState = (state) => state.weather
-
 export default slice.reducer

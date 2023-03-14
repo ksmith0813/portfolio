@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 import { Form, Input, Select, Row, Col } from 'antd'
 import { FormItem } from 'components/_siteWide/form/formItem'
 import { countries } from 'data/dropDowns/countries'
-import { setClean, setTravel, getState, nextStep } from 'store/slices/registerSlice'
+import { setClean, setTravel, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
 const { Option } = Select
@@ -12,11 +12,11 @@ const inputField = FormItem(Input)
 const selectField = FormItem(Select)
 
 const Travel = () => {
-  const state = useSelector(getState)
   const dispatch = useDispatch()
-  const travel = state.travel
-  const clean = state.clean
+  const travel = useSelector((state) => state.register.travel)
+  const clean = useSelector((state) => state.register.clean)
   const [form] = Form.useForm()
+
   return (
     <Form
       form={form}

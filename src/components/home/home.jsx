@@ -2,15 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Row, Col } from 'antd'
 import { useSelector } from 'react-redux'
-import { getState } from 'store/slices/themeSlice'
 import { LottieFile } from 'components/_siteWide/animation/lottieFile'
 import { data } from './data'
 import './home.scss'
 
 export const Home = () => {
   const navigate = useNavigate()
-  const state = useSelector(getState)
-  const theme = state.selectedTheme
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
 
   const Tile = ({ page, title }) => {
     const lottie = data(page)
@@ -19,7 +17,7 @@ export const Home = () => {
       <div className='tile clickable' onClick={() => navigate(`../${page}`)}>
         <div className='tile-title'>{title}</div>
         <LottieFile
-          animationData={lottie.file[page][theme]}
+          animationData={lottie.file[page][selectedTheme]}
           containerClass={containerClass}
           height={lottie.height}
           width={lottie.width}

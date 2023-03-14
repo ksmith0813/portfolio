@@ -4,13 +4,13 @@ import { Col, Input, Row, Tree as TreeView } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
 import { NoData } from 'components/_siteWide/layout/layout'
 import { treeData } from 'data/tree'
-import { getState, setSearch } from 'store/slices/treeSlice'
+import { setSearch } from 'store/slices/treeSlice'
 import { useEffect } from 'react'
 import { useCallback } from 'react'
 
 export const Tree = () => {
   const [data, setData] = useState([...treeData])
-  const state = useSelector(getState)
+  const state = useSelector((state) => state.tree)
   const search = state.search
   const dispatch = useDispatch()
 

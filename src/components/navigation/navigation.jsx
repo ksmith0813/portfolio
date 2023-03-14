@@ -3,7 +3,6 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Avatar, Col, Layout, Menu, Row, Tooltip } from 'antd'
 import { LinkedinFilled, GithubFilled } from '@ant-design/icons'
-import { getState } from 'store/slices/themeSlice'
 import kevin from 'assets/Kevin.jpg'
 import signature from 'assets/signature.png'
 import { MenuItems } from './menuItems'
@@ -15,7 +14,7 @@ export const Navigation = () => {
   const [activePage, setActivePage] = useState('home')
   const location = useLocation()
   const navigate = useNavigate()
-  const state = useSelector(getState)
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
 
   useEffect(() => {
     if (location.pathname === '/') navigate('../home')
@@ -41,7 +40,7 @@ export const Navigation = () => {
   )
 
   return (
-    <Layout className={`app-layout ${state.selectedTheme}`}>
+    <Layout className={`app-layout ${selectedTheme}`}>
       <Sider trigger={null} collapsible collapsed={true} className='site-nav-container'>
         <div className='logo'>
           <Avatar src={kevin}></Avatar>

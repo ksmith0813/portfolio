@@ -56,6 +56,4 @@ export const slice = createSlice({
 
 export const { setLoading, setTodos, setOriginalTodos, addTodo, removeTodo, updateTodo } = slice.actions
 
-export const getState = (state) => state.list
-
 export default slice.reducer

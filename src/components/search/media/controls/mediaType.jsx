@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux'
-import { getState as getThemeState } from 'store/slices/themeSlice'
 import movieBlue from 'assets/default/movie-default.svg'
 import movieGreen from 'assets/green/movie-green.svg'
 import moviePurple from 'assets/purple/movie-purple.svg'
@@ -11,20 +10,23 @@ import gameGreen from 'assets/green/game-green.svg'
 import gamePurple from 'assets/purple/game-purple.svg'
 
 export const MediaType = ({ type }) => {
-  const themeState = useSelector(getThemeState)
-  const theme = themeState.selectedTheme
-
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
+  const isDefaultTheme = selectedTheme === 'default'
+  const isGreenTheme = selectedTheme === 'green'
+  const mediaTypeIconClass = 'media-type-icon'
+  const mediaTypeTextClass = 'media-type-text'
   let icon
+
   switch (type) {
     case 'game':
       icon = (
         <>
           <img
-            src={theme === 'default' ? gameBlue : theme === 'green' ? gameGreen : gamePurple}
-            className='media-type-icon'
+            src={isDefaultTheme ? gameBlue : isGreenTheme ? gameGreen : gamePurple}
+            className={mediaTypeIconClass}
             alt=''
           />
-          <span className='media-type-text game'>Game</span>
+          <span className={`${mediaTypeTextClass} game`}>Game</span>
         </>
       )
       break
@@ -32,11 +34,11 @@ export const MediaType = ({ type }) => {
       icon = (
         <>
           <img
-            src={theme === 'default' ? tvBlue : theme === 'green' ? tvGreen : tvPurple}
-            className='media-type-icon'
+            src={isDefaultTheme ? tvBlue : isGreenTheme ? tvGreen : tvPurple}
+            className={mediaTypeIconClass}
             alt=''
           />
-          <span className='media-type-text tv'>TV</span>
+          <span className={`${mediaTypeTextClass} tv`}>TV</span>
         </>
       )
       break
@@ -44,11 +46,11 @@ export const MediaType = ({ type }) => {
       icon = (
         <>
           <img
-            src={theme === 'default' ? movieBlue : theme === 'green' ? movieGreen : moviePurple}
-            className='media-type-icon'
+            src={isDefaultTheme ? movieBlue : isGreenTheme ? movieGreen : moviePurple}
+            className={mediaTypeIconClass}
             alt=''
           />
-          <span className='media-type-text movie'>Movie</span>
+          <span className={`${mediaTypeTextClass} movie`}>Movie</span>
         </>
       )
       break

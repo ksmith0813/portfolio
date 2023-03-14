@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 import { Form, Input, Select, Row, Col } from 'antd'
 import { FormItem } from 'components/_siteWide/form/formItem'
 import { movieGenres } from 'data/dropDowns/movieGenres'
-import { setClean, setMovie, getState, nextStep } from 'store/slices/registerSlice'
+import { setClean, setMovie, nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
 const { Option } = Select
@@ -12,10 +12,9 @@ const inputField = FormItem(Input)
 const selectField = FormItem(Select)
 
 const Movie = () => {
-  const state = useSelector(getState)
   const dispatch = useDispatch()
-  const movie = state.movie
-  const clean = state.clean
+  const movie = useSelector((state) => state.register.movie)
+  const clean = useSelector((state) => state.register.clean)
   const [form] = Form.useForm()
 
   return (

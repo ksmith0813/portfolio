@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { Input } from 'antd'
 import { NoData } from 'components/_siteWide/layout/layout'
-import { getState, setSearch, setData, setSelectedItem, setSelectedItemByName } from 'store/slices/videoSlice'
+import { setSearch, setData, setSelectedItem, setSelectedItemByName } from 'store/slices/videoSlice'
 import './video.scss'
 
 export const Video = () => {
   const dispatch = useDispatch()
-  const state = useSelector(getState)
+  const state = useSelector((state) => state.video)
   const data = state.data
   const search = data.search
   const selectedItem = state.selectedItem

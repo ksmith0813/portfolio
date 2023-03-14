@@ -1,9 +1,8 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Form, Tag, Divider } from 'antd'
-import { getState as getThemeState } from 'store/slices/themeSlice'
 import { DataItem } from 'components/_siteWide/layout/layout'
-import { getState, nextStep } from 'store/slices/registerSlice'
+import { nextStep } from 'store/slices/registerSlice'
 import { Actions } from './actions'
 
 export const Review = () => {
@@ -28,8 +27,7 @@ export const Review = () => {
 }
 
 const ContactContent = () => {
-  const state = useSelector(getState)
-  const contact = state.contact
+  const contact = useSelector((state) => state.register.contact)
   return (
     <div className='mt-200'>
       <Divider>Contact</Divider>
@@ -75,10 +73,8 @@ const ContactContent = () => {
 }
 
 const MovieContent = () => {
-  const state = useSelector(getState)
-  const themeState = useSelector(getThemeState)
-  const theme = themeState.selectedTheme
-  const movie = state.movie
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
+  const movie = useSelector((state) => state.register.movie)
   return (
     <>
       <Divider>Movies</Divider>
@@ -92,7 +88,7 @@ const MovieContent = () => {
           <DataItem
             label='Favorite Genres'
             children={movie.FavoriteGenres.map((g, i) => (
-              <Tag key={i} color={theme === 'default' ? 'blue' : theme}>
+              <Tag key={i} color={selectedTheme === 'default' ? 'blue' : selectedTheme}>
                 {g}
               </Tag>
             ))}
@@ -104,10 +100,8 @@ const MovieContent = () => {
 }
 
 const MusicContent = () => {
-  const state = useSelector(getState)
-  const themeState = useSelector(getThemeState)
-  const theme = themeState.selectedTheme
-  const music = state.music
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
+  const music = useSelector((state) => state.register.music)
   return (
     <>
       <Divider>Music</Divider>
@@ -124,7 +118,7 @@ const MusicContent = () => {
           <DataItem
             label='Instruments'
             children={music.Instruments.map((g, i) => (
-              <Tag key={i} color={theme === 'default' ? 'blue' : theme}>
+              <Tag key={i} color={selectedTheme === 'default' ? 'blue' : selectedTheme}>
                 {g}
               </Tag>
             ))}
@@ -141,10 +135,8 @@ const MusicContent = () => {
 }
 
 const TravelContent = () => {
-  const state = useSelector(getState)
-  const themeState = useSelector(getThemeState)
-  const theme = themeState.selectedTheme
-  const travel = state.travel
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
+  const travel = useSelector((state) => state.register.travel)
   return (
     <>
       <Divider>Travel</Divider>
@@ -153,7 +145,7 @@ const TravelContent = () => {
           <DataItem
             label='Favorite Countries'
             children={travel.FavoriteCountries.map((g, i) => (
-              <Tag key={i} color={theme === 'default' ? 'blue' : theme}>
+              <Tag key={i} color={selectedTheme === 'default' ? 'blue' : selectedTheme}>
                 {g}
               </Tag>
             ))}
@@ -168,7 +160,7 @@ const TravelContent = () => {
           <DataItem
             label='Places Visited'
             children={travel.PlacesVisited.map((g, i) => (
-              <Tag key={i} color={theme === 'default' ? 'blue' : theme}>
+              <Tag key={i} color={selectedTheme === 'default' ? 'blue' : selectedTheme}>
                 {g}
               </Tag>
             ))}

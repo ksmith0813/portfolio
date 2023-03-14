@@ -3,22 +3,19 @@ import { useSelector, useDispatch } from 'react-redux'
 import { ShoppingCartOutlined } from '@ant-design/icons'
 import { Loader, Categories } from 'components/_siteWide/layout/layout'
 import { CartModal } from './controls/cartModal'
-import {
-  loading,
-  getState as getShopState,
-  setCategories,
-  setProducts,
-  changeCategory,
-  openModal,
-} from 'store/slices/shopSlice'
-import { getState as getThemeState } from 'store/slices/themeSlice'
+import { loading, setCategories, setProducts, changeCategory, openModal } from 'store/slices/shopSlice'
 import api from 'utils/api'
 import { ProductCard } from './controls/productCard'
 import './shop.scss'
 
 export const Shop = () => {
-  const state = useSelector(getShopState)
-  const themeState = useSelector(getThemeState)
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
+  const loadingProducts = useSelector((state) => state.shop.loadingProducts)
+  const products = useSelector((state) => state.shop.products)
+  const categories = useSelector((state) => state.shop.categories)
+  const selectedCategory = useSelector((state) => state.shop.selectedCategory)
+  const cartItems = useSelector((state) => state.shop.cartItems)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -29,26 +26,26 @@ export const Shop = () => {
 
   useEffect(() => {
     dispatch(loading())
-    if (state.selectedCategory === 'ALL') {
+    if (selectedCategory === 'ALL') {
       api.getAllProducts().then(({ data }) => {
         dispatch(setProducts(data))
       })
     } else {
-      api.getProductsByCategory(state.selectedCategory).then(({ data }) => {
+      api.getProductsByCategory(selectedCategory).then(({ data }) => {
         dispatch(setProducts(data))
       })
     }
-  }, [state.selectedCategory, dispatch])
+  }, [selectedCategory, dispatch])
 
   const onCategoryChange = (category) => dispatch(changeCategory(category))
 
-  const totalItems = state.cartItems.reduce((a, n) => a + n.qty, 0)
+  const totalItems = cartItems.reduce((a, n) => a + n.qty, 0)
 
   return (
     <>
-      {!state.loadingProducts && <CartModal />}
-      <div className={`category-container ${themeState.selectedTheme}`}>
-        <Categories items={state.categories} selected={state.selectedCategory} onClick={onCategoryChange} />
+      {!loadingProducts && <CartModal />}
+      <div className={`category-container ${selectedTheme}`}>
+        <Categories items={categories} selected={selectedCategory} onClick={onCategoryChange} />
         <div className='cart-container flex items-center'>
           <div className='cart-icon-container'>
             <span className='cart-total-count fs-125 pr-025'>{totalItems}</span>
@@ -57,8 +54,8 @@ export const Shop = () => {
         </div>
       </div>
       <div className='product-container'>
-        {state.loadingProducts && <Loader />}
-        {!state.loadingProducts && state.products.map((p, i) => <ProductCard key={i} product={p} />)}
+        {loadingProducts && <Loader />}
+        {!loadingProducts && products.map((p, i) => <ProductCard key={i} product={p} />)}
       </div>
     </>
   )

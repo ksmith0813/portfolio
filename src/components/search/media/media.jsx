@@ -2,22 +2,15 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Input, Spin, Col, Row } from 'antd'
 import { NoData } from 'components/_siteWide/layout/layout'
-import {
-  getState as getMediaState,
-  setLoading,
-  setClean,
-  setSearch,
-  setData,
-  setSelectedMedia,
-} from 'store/slices/mediaSlice'
+import { setLoading, setClean, setSearch, setData, setSelectedMedia } from 'store/slices/mediaSlice'
 import api from 'utils/api'
 import './media.scss'
 import { MediaDetail } from './controls/mediaDetail'
 import { MediaList } from './controls/mediaList'
 
 export const Media = () => {
-  const state = useSelector(getMediaState)
   const dispatch = useDispatch()
+  const state = useSelector((state) => state.media)
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {

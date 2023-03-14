@@ -10,15 +10,15 @@ import './sortableList.scss'
 
 const store = window.localStorage
 
-export const SortableList = ({ state, storeKey, defaultColumns, setShowingSelection }) => {
+export const SortableList = ({ grid, storeKey, defaultColumns, setShowingSelection }) => {
   const getColumnList = () => {
     let columnList = []
-    Object.keys(state.originalData[0]).map((p, i) => {
-      if (state.ignoreColumns.includes(p)) return p
+    Object.keys(grid.originalData[0]).map((p, i) => {
+      if (grid.ignoreColumns.includes(p)) return p
       columnList.push({
         id: i,
         property: p,
-        show: state.visibleColumns.includes(p),
+        show: grid.visibleColumns.includes(p),
       })
       return p
     })
@@ -64,7 +64,7 @@ export const SortableList = ({ state, storeKey, defaultColumns, setShowingSelect
 
     setItems(resetIds(orderedColumns.sort((a, b) => b.show - a.show)))
     // eslint-disable-next-line
-  }, [state.Key])
+  }, [grid.Key])
 
   const onChange = (property, show) => {
     let copy = [...items]

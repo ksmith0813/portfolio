@@ -2,10 +2,10 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Button, Modal } from 'antd'
 import { addCommasToNumber, getAbbreviation } from 'utils/general'
-import { getState, removeProduct, closeModal } from 'store/slices/shopSlice'
+import { removeProduct, closeModal } from 'store/slices/shopSlice'
 
 export const CartModal = () => {
-  const state = useSelector(getState)
+  const state = useSelector((state) => state.shop)
   const dispatch = useDispatch()
   const items = state.cartItems
   const hasItems = items.length > 0
@@ -14,7 +14,7 @@ export const CartModal = () => {
   return (
     <Modal
       title={<span className='fs-125'>Cart Items</span>}
-      visible={state.showingCartModal}
+      open={state.showingCartModal}
       onOk={() => dispatch(closeModal())}
       onCancel={() => dispatch(closeModal())}
       width={900}

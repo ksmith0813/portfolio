@@ -14,6 +14,4 @@ export const slice = createSlice({
 
 export const { setSearch } = slice.actions
 
-export const getState = (state) => state.tree
-
 export default slice.reducer

@@ -5,22 +5,14 @@ import { Input, Row, Col, Select, Switch, Skeleton } from 'antd'
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { NoData } from 'components/_siteWide/layout/layout'
 import { userNames } from 'data/dropDowns/users'
-import {
-  getState,
-  setLoading,
-  setOriginalTodos,
-  setTodos,
-  addTodo,
-  removeTodo,
-  updateTodo,
-} from 'store/slices/listSlice'
+import { setLoading, setOriginalTodos, setTodos, addTodo, removeTodo, updateTodo } from 'store/slices/listSlice'
 import api from 'utils/api'
 import './list.scss'
 
 const { Option } = Select
 
 export const List = () => {
-  const state = useSelector(getState)
+  const state = useSelector((state) => state.list)
   const loading = state.loading
   const todos = state.todos
   const originalTodos = state.originalTodos

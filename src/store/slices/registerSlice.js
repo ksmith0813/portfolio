@@ -96,8 +96,6 @@ export const slice = createSlice({
 export const { setClean, setContact, setMovie, setMusic, setTravel, reset, previousStep, nextStep, complete } =
   slice.actions
 
-export const getState = (state) => state.register
-
 export default slice.reducer
 
 const handleFormUpdate = (state, payload) => {

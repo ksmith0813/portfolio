@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { isArray } from 'underscore'
 import { Row } from 'antd'
 import { GoogleMap, Marker, withScriptjs, withGoogleMap } from 'react-google-maps'
-import { getState } from 'store/slices/themeSlice'
 import { keys } from 'keys'
 import { LottieFile } from '../animation/lottieFile'
 import noData from 'assets/no-data.svg'
@@ -33,7 +32,7 @@ export const Categories = ({ items, selected, onClick }) => {
 }
 
 export const Loader = () => {
-  const state = useSelector(getState)
+  const state = useSelector((state) => state.theme)
   const theme = state.selectedTheme
   const loader = theme === 'default' ? loaderBlue : theme === 'green' ? loaderGreen : loaderPurple
   return (

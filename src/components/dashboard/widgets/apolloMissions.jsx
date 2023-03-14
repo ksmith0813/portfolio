@@ -6,11 +6,9 @@ import defaultAstronaut from 'assets/default/astronaut-default.svg'
 import greenAstronaut from 'assets/green/astronaut-green.svg'
 import purpleAstronaut from 'assets/purple/astronaut-purple.svg'
 import { apolloMissions } from 'data/apolloMissions'
-import { getState } from 'store/slices/themeSlice'
 
 export const ApolloMissions = () => {
-  const state = useSelector(getState)
-  const theme = state.selectedTheme
+  const selectedTheme = useSelector((state) => state.theme.selectedTheme)
   return (
     <Col span={12} className='pt-200'>
       <Card title='Apollo Space Timeline'>
@@ -20,9 +18,9 @@ export const ApolloMissions = () => {
               const name = d.name
               const isLanding = name === 'Apollo 11'
               const image = isLanding
-                ? theme === 'default'
+                ? selectedTheme === 'default'
                   ? defaultAstronaut
-                  : theme === 'green'
+                  : selectedTheme === 'green'
                   ? greenAstronaut
                   : purpleAstronaut
                 : shuttle

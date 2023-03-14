@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row, Progress, Button, Tag } from 'antd'
 import { NoData } from 'components/_siteWide/layout/layout'
-import { getState as getMediaState, setSelectedId, setSelectedMedia } from 'store/slices/mediaSlice'
+import { setSelectedId, setSelectedMedia } from 'store/slices/mediaSlice'
 import { DataItem } from 'components/_siteWide/layout/layout'
 import moment from 'moment'
 
 export const MediaDetail = () => {
-  const state = useSelector(getMediaState)
+  const state = useSelector((state) => state.media)
   const dispatch = useDispatch()
 
   const backToAll = () => {
