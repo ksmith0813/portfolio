@@ -12,7 +12,7 @@ Clone:
 
 `https://github.com/ksmith0813/portfolio.git`
 
-Installation (have to include --legacy-peer-deps for nivo module, for now):
+Installation (have to include --legacy-peer-deps for nivo and lottie modules, for now):
 
 `npm install --legacy-peer-deps`
 
