@@ -4,7 +4,6 @@ import { ApolloMissions } from './widgets/apolloMissions'
 import { Breweries } from './widgets/breweries'
 import { FoodByCountry } from './widgets/foodByCountry'
 import { Election } from './widgets/election'
-import { AnimalCategories } from './widgets/animalCategories'
 import './dashboard.scss'
 
 export const Dashboard = () => {
@@ -15,7 +14,6 @@ export const Dashboard = () => {
       <Breweries />
       <ApolloMissions />
       <FoodByCountry />
-      <AnimalCategories />
     </div>
   )
 }
