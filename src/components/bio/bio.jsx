@@ -20,8 +20,8 @@ export const Bio = () => {
           Node.js, Next.js, SWR, Apollo Client, GraphQL, HTML, SCSS, Tailwind, Nivo, C#, .NET. I love hanging out on the
           beach and getting lost in the woods and canyons. Traveling the world and going on endless adventures will
           always keep me moving forward. Aside from building software applications, I have a passion for making music in
-          a home studio, traveling to the beach, gardening in the summer, naming all my plants, adult lego kits, and
-          also enjoy woodworking in a garage shop. Let's build some cool stuff and rock out!
+          a home studio, gardening in the summer, naming all my plants, adult lego kits, and also enjoy woodworking in a
+          garage shop. Let's build some cool stuff and rock out!
         </Row>
       </div>
       <Avatar className='me-image' src={kevin} alt='' />
