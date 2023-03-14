@@ -13,8 +13,8 @@ export const Dashboard = () => {
       <MyLocation />
       <Election />
       <Breweries />
-      <FoodByCountry />
       <ApolloMissions />
+      <FoodByCountry />
       <AnimalCategories />
     </div>
   )

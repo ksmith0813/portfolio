@@ -22,7 +22,7 @@ export const FoodByCountry = () => {
   )
 
   return (
-    <Col span={12} className='pt-200'>
+    <Col span={12} className='pt-200 pl-200'>
       <Card title='Food By Country' extra={dataButtons}>
         <div className='card-display'>
           <NivoBar customData={data} margin={{ top: 80, right: 80, bottom: 80, left: 80 }} translateY={-60} />
