@@ -16,6 +16,22 @@ Installation (have to include --legacy-peer-deps for nivo and lottie modules, fo
 
 `npm install --legacy-peer-deps`
 
+Create a .env.local file that has all the .env.production config values
+
+#### Create Movie API key
+
+https://www.omdbapi.com/
+
+#### Create Weather API key
+
+https://www.weatherapi.com/docs/
+
+Add the api keys to .env.local
+
+You will need to have a GCP account setup to get the google maps module working.
+
+Click [here](https://developers.google.com/maps/documentation/javascript/get-api-key#:~:text=Go%20to%20the%20Google%20Maps%20Platform%20%3E%20Credentials%20page.&text=On%20the%20Credentials%20page%2C%20click,Click%20Close.) to learn about how to setup API keys.
+
 To build app:
 
 `npm run build`
