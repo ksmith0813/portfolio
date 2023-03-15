@@ -7,7 +7,7 @@ export const randomPositives = [
   'tubular',
   'far out',
   'cooler',
-  'cooler that you',
+  'cooler than you',
   'wicked awesome',
   'more desireable',
   'prominent',
