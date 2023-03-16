@@ -33,7 +33,7 @@ export const Home = () => {
           Hello.
         </Row>
         <Row justify='center' className='home-description'>
-          <Col span={12}>
+          <Col span={16}>
             Welcome to my React portfolio application. My name is Kevin Smith and I am a Principal Software Engineer.
             This application demostrates my frontend engineering skills using the ReactJS library. The tech stack is
             ReactJS, Redux Toolkit, Redux Forms, Functional Components, Webpack, ANT Design, SCSS, Theming, and Axios
@@ -42,18 +42,14 @@ export const Home = () => {
           </Col>
         </Row>
         <div className='tile-container'>
-          <Row justify='center'>
-            <Tile page='dashboard' title='Dashboard' />
-            <Tile page='register' title='Register' />
-            <Tile page='grid' title='User Grid' />
-            <Tile page='video' title='Videos' />
-          </Row>
-          <Row justify='center'>
-            <Tile page='list' title='TODO List' />
-            <Tile page='search/weather' title='Weather Finder' />
-            <Tile page='shop' title='Shop' />
-            <Tile page='visuals' title='Visuals' />
-          </Row>
+          <Tile page='dashboard' title='Dashboard' />
+          <Tile page='register' title='Register' />
+          <Tile page='grid' title='User Grid' />
+          <Tile page='video' title='Videos' />
+          <Tile page='list' title='TODO List' />
+          <Tile page='search/weather' title='Weather Finder' />
+          <Tile page='shop' title='Shop' />
+          <Tile page='visuals' title='Visuals' />
         </div>
       </div>
     </div>

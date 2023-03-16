@@ -6,7 +6,7 @@ import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { NoData } from 'components/_siteWide/layout/layout'
 import { userNames } from 'data/dropDowns/users'
 import { setLoading, setOriginalTodos, setTodos, addTodo, removeTodo, updateTodo } from 'store/slices/listSlice'
-import api from 'utils/api'
+import { getTodos } from 'utils/api/todoApi'
 import './list.scss'
 
 const { Option } = Select
@@ -20,7 +20,7 @@ export const List = () => {
 
   useEffect(() => {
     if (originalTodos.length) return
-    api.getTodos().then(({ data }) => {
+    getTodos().then(({ data }) => {
       dispatch(setOriginalTodos(data))
       dispatch(setLoading(false))
     })

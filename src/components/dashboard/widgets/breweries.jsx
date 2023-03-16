@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { AutoComplete, Card, Col, Table } from 'antd'
-import api from 'utils/api'
+import { getBreweries } from 'utils/api/beerApi'
 
 export const Breweries = () => {
   const [loading, setLoading] = useState(false)
@@ -12,7 +12,7 @@ export const Breweries = () => {
 
   useEffect(() => {
     setLoading(true)
-    api.getBreweries().then(({ data }) => {
+    getBreweries().then(({ data }) => {
       setBreweries(data)
       setAllBreweries(data)
       const uniqueCities = [...new Set(data.map((d) => d.city).sort())].map((c) => {

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { findWhere } from 'underscore'
 import { DataTable } from 'components/_siteWide/dataTable/dataTable'
+import { getUsers } from 'utils/api/userApi'
 import { setInitialLoad, setInitialData, setData } from 'store/slices/gridSlice'
-import api from 'utils/api'
 import { getColumns } from './columns/gridColumns'
 import { GridControls } from './controls/gridControls'
 import qs from 'qs'
@@ -50,7 +50,7 @@ export const Grid = () => {
     const getInitialData = async () => {
       dispatch(setInitialLoad(false))
       if (state.initialLoad) {
-        const { data } = await api.getUsers(params)
+        const { data } = await getUsers(params)
         dispatch(setInitialData({ data: data.results, defaults }))
       }
     }

@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Input, Spin, Col, Row } from 'antd'
 import { NoData } from 'components/_siteWide/layout/layout'
 import { setLoading, setClean, setSearch, setData, setSelectedMedia } from 'store/slices/mediaSlice'
-import api from 'utils/api'
-import './media.scss'
+import { getMedia, getMedias } from 'utils/api/mediaApi'
 import { MediaDetail } from './controls/mediaDetail'
 import { MediaList } from './controls/mediaList'
+import './media.scss'
 
 export const Media = () => {
   const dispatch = useDispatch()
@@ -17,7 +17,7 @@ export const Media = () => {
       if (state.selectedMedia || state.clean) return
       if (state.search) {
         dispatch(setLoading(true))
-        api.getMovies(state.search).then(({ data }) => {
+        getMedias(state.search).then(({ data }) => {
           if (data.Search) {
             dispatch(setData([...new Set(data.Search)]))
           } else {
@@ -39,7 +39,7 @@ export const Media = () => {
 
   useEffect(() => {
     if (!state.selectedId) return
-    api.getMovie(state.selectedId).then(({ data }) => {
+    getMedia(state.selectedId).then(({ data }) => {
       dispatch(setLoading(true))
       dispatch(setSelectedMedia(data))
       dispatch(setLoading(false))

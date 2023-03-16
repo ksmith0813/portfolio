@@ -4,7 +4,7 @@ import { ShoppingCartOutlined } from '@ant-design/icons'
 import { Loader, Categories } from 'components/_siteWide/layout/layout'
 import { CartModal } from './controls/cartModal'
 import { loading, setCategories, setProducts, changeCategory, openModal } from 'store/slices/shopSlice'
-import api from 'utils/api'
+import { getAllProducts, getProductCategories, getProductsByCategory } from 'utils/api/productApi'
 import { ProductCard } from './controls/productCard'
 import './shop.scss'
 
@@ -19,7 +19,7 @@ export const Shop = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    api.getProductCategories().then(({ data }) => {
+    getProductCategories().then(({ data }) => {
       dispatch(setCategories(data))
     })
   }, [dispatch])
@@ -27,11 +27,11 @@ export const Shop = () => {
   useEffect(() => {
     dispatch(loading())
     if (selectedCategory === 'ALL') {
-      api.getAllProducts().then(({ data }) => {
+      getAllProducts().then(({ data }) => {
         dispatch(setProducts(data))
       })
     } else {
-      api.getProductsByCategory(selectedCategory).then(({ data }) => {
+      getProductsByCategory(selectedCategory).then(({ data }) => {
         dispatch(setProducts(data))
       })
     }
