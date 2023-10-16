@@ -1,13 +1,15 @@
-import { createRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
+import { Main } from 'components/navigation/main'
 import store from 'store/store'
 import { ThemeSelector } from 'themeSelector/themeSelector'
-import { Main } from 'components/navigation/main'
 import 'index.scss'
 import 'antd-overrides.scss'
 import 'antd/dist/antd.min.css'
 
-const root = createRoot(document.getElementById('app'))
+const root = ReactDOM.createRoot(document.getElementById('app') as HTMLElement)
+
 root.render(
   <Provider store={store}>
     <ThemeSelector>
