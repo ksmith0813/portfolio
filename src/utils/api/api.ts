@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { showMessage } from 'utils/general'
 
-export const get = (url, endpoint, params = {}) => {
+export const get = (url: string, endpoint: string, params = {}) => {
   return axios.get(`${url}${endpoint}`, { params: params })
 }
 

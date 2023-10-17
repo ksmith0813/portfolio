@@ -6,4 +6,4 @@ export const getProductCategories = () => get(url, 'products/categories', 'produ
 
 export const getAllProducts = () => get(url, `products`, 'product')
 
-export const getProductsByCategory = (category) => get(url, `products/category/${category}`, 'product')
+export const getProductsByCategory = (category: string) => get(url, `products/category/${category}`, 'product')
