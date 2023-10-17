@@ -8,7 +8,7 @@ import 'index.scss'
 import 'antd-overrides.scss'
 import 'antd/dist/antd.min.css'
 
-const root = ReactDOM.createRoot(document.getElementById('app') as HTMLElement)
+const root = ReactDOM.createRoot(document.getElementById('app'))
 
 root.render(
   <Provider store={store}>

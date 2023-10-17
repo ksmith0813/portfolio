@@ -2,7 +2,7 @@ import moment from 'moment'
 import { isArray } from 'underscore'
 import { message } from 'antd'
 
-export const arrayMove = (array: any, from: number, to: number) => {
+export const arrayMove = (array, from, to) => {
   array = [...array]
   const start = from < 0 ? array.length + from : from
 
@@ -15,11 +15,11 @@ export const arrayMove = (array: any, from: number, to: number) => {
   return array
 }
 
-export const getAbbreviation = (value: string, length = 20) => {
+export const getAbbreviation = (value, length = 20) => {
   return `${value.substring(0, length)}${value.length > length ? '...' : ''}`
 }
 
-export const hasProperties = (obj: any) => {
+export const hasProperties = (obj) => {
   for (var prop in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, prop)) {
       return true
@@ -28,7 +28,7 @@ export const hasProperties = (obj: any) => {
   return false
 }
 
-export const sortAlphebetically = (a: any, b: any, property: any) => {
+export const sortAlphebetically = (a, b, property) => {
   if (a[property] < b[property]) {
     return -1
   }
@@ -38,11 +38,11 @@ export const sortAlphebetically = (a: any, b: any, property: any) => {
   return 0
 }
 
-export const addCommasToNumber = (value: string) => {
+export const addCommasToNumber = (value) => {
   return value && value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
-export const spacesToProperty = (property: string) => {
+export const spacesToProperty = (property) => {
   let propertyName = property
   if (isArray(property)) propertyName = property[1]
   if (property.includes('_')) propertyName = propertyName.replace('_', ' ')
@@ -60,7 +60,7 @@ export const getDateRanges = () => {
   }
 }
 
-export const showMessage = (description: string, type = 'error') => {
+export const showMessage = (description, type = 'error') => {
   message.destroy()
   switch (type) {
     case 'success':
