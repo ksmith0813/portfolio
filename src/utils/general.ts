@@ -2,18 +2,7 @@ import moment from 'moment'
 import { isArray } from 'underscore'
 import { message } from 'antd'
 
-export const arrayRemove = (array, property, value) => {
-  for (var i = 0; i < array.length; i++) {
-    if (array[i][property] === value) {
-      array.splice(i, 1)
-      return array
-    }
-  }
-
-  return array
-}
-
-export const arrayMove = (array, from, to) => {
+export const arrayMove = (array: any, from: number, to: number) => {
   array = [...array]
   const start = from < 0 ? array.length + from : from
 
@@ -26,11 +15,11 @@ export const arrayMove = (array, from, to) => {
   return array
 }
 
-export const getAbbreviation = (value, length = 20) => {
+export const getAbbreviation = (value: string, length = 20) => {
   return `${value.substring(0, length)}${value.length > length ? '...' : ''}`
 }
 
-export const hasProperties = (obj) => {
+export const hasProperties = (obj: any) => {
   for (var prop in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, prop)) {
       return true
@@ -39,7 +28,7 @@ export const hasProperties = (obj) => {
   return false
 }
 
-export const sortAlphebetically = (a, b, property) => {
+export const sortAlphebetically = (a: any, b: any, property: any) => {
   if (a[property] < b[property]) {
     return -1
   }
@@ -49,11 +38,11 @@ export const sortAlphebetically = (a, b, property) => {
   return 0
 }
 
-export const addCommasToNumber = (value) => {
+export const addCommasToNumber = (value: string) => {
   return value && value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
-export const spacesToProperty = (property) => {
+export const spacesToProperty = (property: string) => {
   let propertyName = property
   if (isArray(property)) propertyName = property[1]
   if (property.includes('_')) propertyName = propertyName.replace('_', ' ')
@@ -71,7 +60,7 @@ export const getDateRanges = () => {
   }
 }
 
-export const showMessage = (description, type = 'error') => {
+export const showMessage = (description: string, type = 'error') => {
   message.destroy()
   switch (type) {
     case 'success':

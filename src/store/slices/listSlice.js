@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { findWhere } from 'underscore'
-import { arrayRemove } from 'utils/general'
 
 export const slice = createSlice({
   name: 'list',
@@ -33,7 +32,7 @@ export const slice = createSlice({
       state.originalTodos.unshift(newTodo)
     },
     removeTodo: (state, action) => {
-      const remainingItems = arrayRemove([...state.todos], 'id', action.payload.id)
+      const remainingItems = [...state.todos].filter((item) => item.id !== action.payload.id)
       state.todos = remainingItems
       state.originalTodos = remainingItems
     },
