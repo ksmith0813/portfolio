@@ -19,7 +19,7 @@ export const Election = () => {
     const config = {}
     democrats.map((state) => {
       config[state] = {}
-      config[state].fill = '#9abeee'
+      config[state].fill = 'rgb(128, 177, 211)'
       config[state].clickHandler = () => {
         const display = findWhere(states, { code: state })?.value
         const random = randomPositives[Math.floor(Math.random() * randomPositives.length)]
@@ -29,7 +29,7 @@ export const Election = () => {
     })
     republicans.map((state) => {
       config[state] = {}
-      config[state].fill = '#ff7373'
+      config[state].fill = 'rgb(251, 128, 114)'
       config[state].clickHandler = () => {
         const display = findWhere(states, { code: state })?.value
         const random = randomPositives[Math.floor(Math.random() * randomPositives.length)]
